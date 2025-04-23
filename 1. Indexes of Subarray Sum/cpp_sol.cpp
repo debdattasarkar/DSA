@@ -1,4 +1,5 @@
 #include <vector>
+#include <iostream>
 using namespace std;
 
 vector<int> findSubarrayWithSum(const vector<int>& arr, int target) {
@@ -21,7 +22,7 @@ vector<int> findSubarrayWithSum(const vector<int>& arr, int target) {
 
     return {-1};
 }
-#include <iostream>
+
 
 int main() {
     vector<int> arr = {1, 2, 3, 7, 5};
