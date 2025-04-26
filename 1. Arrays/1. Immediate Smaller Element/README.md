@@ -4,6 +4,10 @@ Question
 
 ---
 
+Got it — this is the **Immediate Smaller Element** problem!
+
+---
+
 Awesome! Let’s walk through a **visual dry-run** example for the array:
 
 ---
@@ -77,6 +81,30 @@ int main() {
     // Output: 2 1 -1 3 -1
     return 0;
 }
+
+---
+
+```
+### ✅ Python Code:
+```python
+def immediateSmaller(arr):
+    n = len(arr)
+    for i in range(n - 1):
+        if arr[i + 1] < arr[i]:
+            arr[i] = arr[i + 1]
+        else:
+            arr[i] = -1
+    arr[-1] = -1
+    return arr
+```
+
+---
+
+### 🧪 Example Usage:
+```python
+print(immediateSmaller([4, 2, 1, 5, 3]))  # Output: [2, 1, -1, 3, -1]
+print(immediateSmaller([5, 6, 2, 3, 1, 7]))  # Output: [-1, 2, -1, 1, -1, -1]
+print(immediateSmaller([4, 1]))  # Output: [1, -1]
 ```
 
 ---
@@ -104,9 +132,6 @@ console.log(immediateSmaller([4, 2, 1, 5, 3]));
 ```
 
 ---
-Got it — this is the **Immediate Smaller Element** problem!
-
----
 
 ### 🧠 Problem Summary:
 - You are given an array `arr[]`.
@@ -114,30 +139,6 @@ Got it — this is the **Immediate Smaller Element** problem!
   - If the next element is **smaller**, **update** the current element to the next one.
   - Otherwise, **update** the current element to `-1`.
 - For the **last element**, always update to `-1` (because it has no next).
-
----
-
-### ✅ Python Code:
-```python
-def immediateSmaller(arr):
-    n = len(arr)
-    for i in range(n - 1):
-        if arr[i + 1] < arr[i]:
-            arr[i] = arr[i + 1]
-        else:
-            arr[i] = -1
-    arr[-1] = -1
-    return arr
-```
-
----
-
-### 🧪 Example Usage:
-```python
-print(immediateSmaller([4, 2, 1, 5, 3]))  # Output: [2, 1, -1, 3, -1]
-print(immediateSmaller([5, 6, 2, 3, 1, 7]))  # Output: [-1, 2, -1, 1, -1, -1]
-print(immediateSmaller([4, 1]))  # Output: [1, -1]
-```
 
 ---
 
