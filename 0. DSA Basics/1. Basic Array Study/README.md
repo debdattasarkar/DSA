@@ -1,5 +1,3 @@
----
-
 ### ✍️ Step 1: **C++**
 
 **Let's create a program that:**
