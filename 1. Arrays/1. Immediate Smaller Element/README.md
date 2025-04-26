@@ -1,3 +1,7 @@
+![Question](Question.png)
+
+---
+
 Awesome! Let’s walk through a **visual dry-run** example for the array:
 
 ---
