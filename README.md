@@ -30,7 +30,7 @@ Learning DSA is essential for:
 ## 📈 Repository Stats
 
 ![GitHub Repo Views](https://komarev.com/ghpvc/?username=debdattasarkar&label=Views&color=blue&style=plastic)
-![GitHub Language Count](https://img.shields.io/github/languages/count/debdattasarkar/your-repository-name?style=plastic)
+![GitHub Language Count](https://img.shields.io/github/languages/count/debdattasarkar/DSA?style=plastic)
 
 ---
 
