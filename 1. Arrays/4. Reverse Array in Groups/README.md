@@ -175,6 +175,3 @@ console.log(reverseInGroups([1, 2, 3, 4, 5], 3));
 - **Time Complexity:** `O(n)`
 - **Space Complexity:** `O(1)` (in-place)
 
----
-
-Would you also like a **practice question** based on this to test your understanding? 🚀 (It’ll be fun and quick!)
