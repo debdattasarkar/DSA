@@ -135,5 +135,3 @@ console.log(firstOne([0, 0, 0, 0]));           // Output: -1
 ✅ All work exactly the same way using **Binary Search**!
 
 ---
-
-Would you also like a **flowchart diagram** for how binary search narrows down to the first `1`? 📈 (I can make it visual if you want!)
