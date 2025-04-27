@@ -46,13 +46,8 @@ Learning DSA is essential for:
 <p align="center">
   <img src="https://img.icons8.com/color/96/000000/amazon.png" alt="Amazon" width="50" height="50"/>
   <img src="https://img.icons8.com/color/96/000000/microsoft.png" alt="Microsoft" width="50" height="50"/>
-  <img src="https://img.icons8.com/color/96/000000/adobe.png" alt="Adobe" width="50" height="50"/>
   <img src="https://img.icons8.com/color/96/000000/google-logo.png" alt="Google" width="50" height="50"/>
   <img src="https://img.icons8.com/color/96/000000/samsung.png" alt="Samsung" width="50" height="50"/>
-  <img src="https://img.icons8.com/color/96/000000/morgan-stanley.png" alt="Morgan Stanley" width="50" height="50"/>
-  <img src="https://img.icons8.com/color/96/000000/wipro.png" alt="Wipro" width="50" height="50"/>
-  <img src="https://img.icons8.com/color/96/000000/uber.png" alt="Uber" width="50" height="50"/>
-  <img src="https://img.icons8.com/color/96/000000/infosys.png" alt="Infosys" width="50" height="50"/>
   <img src="https://img.icons8.com/color/96/000000/nvidia.png" alt="Nvidia" width="50" height="50"/>
 </p>
 
