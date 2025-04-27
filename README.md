@@ -29,8 +29,12 @@ Learning DSA is essential for:
 
 ## 📈 Repository Stats
 
-![GitHub Repo Views](https://komarev.com/ghpvc/?username=debdattasarkar&label=Views&color=blue&style=plastic)
-![GitHub Language Count](https://img.shields.io/github/languages/count/debdattasarkar/DSA?style=plastic)
+![GitHub Repo Views](https://komarev.com/ghpvc/?username=debdattasarkar&label=Views&color=blue&style=flat)
+![GitHub Language Count](https://img.shields.io/github/languages/count/debdattasarkar/DSA?style=flat)
+![Stars Badge](https://img.shields.io/github/stars/debdattasarkar/DSA?style=flat)
+![Forks Badge](https://img.shields.io/github/forks/debdattasarkar/DSA?style=flat)
+![Pull Requests Badge](https://img.shields.io/github/issues-pr/debdattasarkar/DSA?style=flat)
+[![Total Downloads](https://img.shields.io/github/downloads/debdattasarkar/DSA/total.svg)](https://github.com/debdattasarkar/DSA/releases/)
 
 ---
 
