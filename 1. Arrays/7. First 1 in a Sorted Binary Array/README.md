@@ -57,5 +57,83 @@ print(firstOne([0, 0, 0, 0]))                 # Output: -1
 
 ---
 
-Would you also like the **C++** and **JavaScript** versions for full mastery? 🚀  
-They're short and almost identical to the Python version!
+Awesome! Here's the full set:
+
+---
+
+### ✅ C++ Code:
+```cpp
+#include <vector>
+using namespace std;
+
+int firstOne(const vector<int>& arr) {
+    int low = 0, high = arr.size() - 1;
+    int answer = -1;
+
+    while (low <= high) {
+        int mid = (low + high) / 2;
+        if (arr[mid] == 1) {
+            answer = mid;
+            high = mid - 1;  // Search on the left side
+        } else {
+            low = mid + 1;
+        }
+    }
+
+    return answer;
+}
+```
+
+### 🧪 Example Usage in C++:
+```cpp
+#include <iostream>
+
+int main() {
+    vector<int> arr = {0, 0, 0, 0, 1, 1, 1};
+    cout << firstOne(arr) << endl; // Output: 4
+}
+```
+
+---
+
+### ✅ JavaScript Code:
+```javascript
+function firstOne(arr) {
+    let low = 0, high = arr.length - 1;
+    let answer = -1;
+
+    while (low <= high) {
+        let mid = Math.floor((low + high) / 2);
+
+        if (arr[mid] === 1) {
+            answer = mid;
+            high = mid - 1; // Search on the left side
+        } else {
+            low = mid + 1;
+        }
+    }
+
+    return answer;
+}
+```
+
+### 🧪 Example Usage in JavaScript:
+```javascript
+console.log(firstOne([0, 0, 0, 0, 1, 1, 1]));  // Output: 4
+console.log(firstOne([0, 0, 0, 0]));           // Output: -1
+```
+
+---
+
+### 🔥 Summary:
+| Language  | Time Complexity | Space Complexity |
+|-----------|------------------|------------------|
+| Python    | O(log n)          | O(1)             |
+| C++       | O(log n)          | O(1)             |
+| JavaScript| O(log n)          | O(1)             |
+
+✅ All work exactly the same way using **Binary Search**!
+
+---
+
+Would you also like a **flowchart diagram** for how binary search narrows down to the first `1`? 📈 (I can make it visual if you want!)
