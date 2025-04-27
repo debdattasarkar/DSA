@@ -113,28 +113,7 @@ print(getOddOccurrence([5, 7, 2, 7, 5, 2, 5], 7))  # Output: 5
 - **Space Complexity:** `O(1)`
 
 ---
-
-Perfect!  
-You want the **twist version** where **TWO numbers** occur odd number of times — and the code for **C++** and **JavaScript**.
-
-Let's do it 🔥:
-
----
-
-## 🧠 Problem: Two Numbers Occur Odd Number of Times
-
-Given an array where:
-- Exactly **two numbers occur odd number of times**.
-- All other numbers occur even times.
-
-**Find both numbers.**
-
----
-
-### 🔥 Key Idea:
-- XOR of the entire array gives `xor = num1 ^ num2`.
-- Now, find any **set bit** in `xor` (means `num1` and `num2` differ at that bit).
-- Divide elements into **two groups** based on that bit and XOR separately.
+Of course! Here’s the **C++** and **JavaScript** versions of your provided **Python code**:
 
 ---
 
@@ -143,23 +122,12 @@ Given an array where:
 #include <vector>
 using namespace std;
 
-vector<int> twoOddNumbers(const vector<int>& arr) {
-    int xor_all = 0;
-    for (int num : arr) {
-        xor_all ^= num;
+int getOddOccurrence(const vector<int>& arr, int n) {
+    int result = 0;
+    for (int i = 0; i < n; i++) {
+        result ^= arr[i];
     }
-
-    int set_bit = xor_all & ~(xor_all - 1);  // Find rightmost set bit
-
-    int num1 = 0, num2 = 0;
-    for (int num : arr) {
-        if (num & set_bit)
-            num1 ^= num;
-        else
-            num2 ^= num;
-    }
-
-    return {max(num1, num2), min(num1, num2)};  // Larger first
+    return result;
 }
 ```
 
@@ -168,9 +136,8 @@ vector<int> twoOddNumbers(const vector<int>& arr) {
 #include <iostream>
 
 int main() {
-    vector<int> arr = {4, 2, 4, 5, 2, 3, 3, 1};
-    vector<int> res = twoOddNumbers(arr);
-    cout << res[0] << " " << res[1] << endl;  // Output: 5 1
+    vector<int> arr = {1, 2, 3, 2, 3, 1, 3};
+    cout << getOddOccurrence(arr, arr.size()) << endl;  // Output: 3
 }
 ```
 
@@ -178,43 +145,22 @@ int main() {
 
 ### ✅ JavaScript Code:
 ```javascript
-function twoOddNumbers(arr) {
-    let xor_all = 0;
+function getOddOccurrence(arr, n) {
+    let result = 0;
     for (let num of arr) {
-        xor_all ^= num;
+        result ^= num;
     }
-
-    let set_bit = xor_all & ~(xor_all - 1);
-
-    let num1 = 0, num2 = 0;
-    for (let num of arr) {
-        if (num & set_bit) {
-            num1 ^= num;
-        } else {
-            num2 ^= num;
-        }
-    }
-
-    return [Math.max(num1, num2), Math.min(num1, num2)];
+    return result;
 }
 ```
 
 ### 🧪 Example Usage in JavaScript:
 ```javascript
-console.log(twoOddNumbers([4, 2, 4, 5, 2, 3, 3, 1]));
-// Output: [5, 1]
+console.log(getOddOccurrence([1, 2, 3, 2, 3, 1, 3], 7));  // Output: 3
 ```
 
 ---
 
-### 📈 Quick Recap of Steps:
-1. XOR all elements → gives `num1 ^ num2`.
-2. Find a **set bit** where `num1` and `num2` differ.
-3. Separate numbers into **two groups** based on the set bit.
-4. XOR inside each group to find `num1` and `num2`.
+✅ All three versions (Python, C++, JavaScript) now match exactly and work perfectly for finding the **single odd-occurring number**!
 
-✅ Final answer!
-
----
-
-Would you like a **diagram** showing how this division happens between two groups visually? 📊 (makes it super intuitive!) 🚀
+Let me know if you want a **small practice problem** based on this XOR trick next! 🚀
