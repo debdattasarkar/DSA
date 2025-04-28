@@ -11,7 +11,8 @@
 
 ---
 
-Welcome to the **DSA Repository**!  
+## Welcome to the **DSA Repository**!  
+
 This repository is a collection of data structures and algorithms implemented in various programming languages, crafted for improving problem-solving skills and preparing for technical interviews.
 
 ---
