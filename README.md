@@ -2,14 +2,17 @@
 
 # 📚 Data Structures and Algorithms (DSA)
 
-Welcome to the **DSA Repository**!  
-This repository is a collection of data structures and algorithms implemented in various programming languages, crafted for improving problem-solving skills and preparing for technical interviews.
----
+
 
 <p align="center">
   <a href="https://github.com/debdattasarkar/DSA/" rel="noopener">
  <img src="https://github.com/debdattasarkar/DSA/blob/master/images/banner.png" alt="IBM Applied Data Science Capstone Project"></a>
 </p>
+
+---
+
+Welcome to the **DSA Repository**!  
+This repository is a collection of data structures and algorithms implemented in various programming languages, crafted for improving problem-solving skills and preparing for technical interviews.
 
 ---
 
