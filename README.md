@@ -1,3 +1,8 @@
+<p align="center">
+  <a href="https://github.com/debdattasarkar/DSA/" rel="noopener">
+ <img src="https://github.com/debdattasarkar/DSA/blob/master/images/banner.png" alt="IBM Applied Data Science Capstone Project"></a>
+</p>
+
 # 📚 Data Structures and Algorithms (DSA)
 
 Welcome to the **DSA Repository**!  
