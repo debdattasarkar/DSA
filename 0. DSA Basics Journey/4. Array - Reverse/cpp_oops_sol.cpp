@@ -102,8 +102,6 @@ public:
             left++;
             right--;
         }
-        cout << "After Reversing:" << endl;
-        display(); // Display the reversed array
     }
 };
 
@@ -127,5 +125,7 @@ int main() {
     // cout << "Smallest number: " << am.findSmallest() << endl;
     // cout << "Largest number: " << am.findLargest() << endl;
     am.reverseArray();
+    cout << "After Reversing:" << endl;
+    am.display(); // Display the reversed array
     return 0;
 }
