@@ -264,3 +264,125 @@ f(5)
 ---
 
 Would you like a visual Python plot of this call stack using `graphviz`, or a tail-recursive version to reduce stack space?
+
+Great catch! 🙌 The error is due to this line in your C++ code:
+
+```cpp
+for (int num : arr) {
+```
+
+This **range-based for loop** works only on containers that support `begin()` and `end()` (like `std::vector` or arrays with known size). But in your function, `arr` is just a **raw pointer**, and C++ can't infer the bounds.
+
+---
+
+## ✅ Fix: Use an index-based loop instead
+
+### 🔧 Corrected Function:
+```cpp
+class Solution {
+  public:
+    int largest(int arr[], int n) {
+        int maxElement = arr[0];
+        for (int i = 1; i < n; ++i) {
+            if (arr[i] > maxElement)
+                maxElement = arr[i];
+        }
+        return maxElement;
+    }
+};
+```
+
+---
+
+## 🧠 Why This Works
+- `arr[]` is just a pointer in this context.
+- Index-based iteration (`for (int i = 0; i < n; ++i)`) is the safest way to loop over it.
+- Range-based for works like this:
+  ```cpp
+  for (auto& num : vector<int>) // okay
+  for (auto& num : arr)         // error if arr is raw pointer
+  ```
+
+---
+
+Let me know if you'd like a version using `std::vector<int>` or recursively instead!
+
+---
+
+Absolutely! Let's turn our **recursive max-finding function** into a **tail-recursive version**, which reduces stack space and is more compiler-friendly for optimization.
+
+---
+
+## 🧠 What is Tail Recursion?
+
+A **tail-recursive function** is one where the recursive call is the **last action** in the function.  
+✅ This allows compilers to optimize the recursion into iteration, **reducing stack usage** to `O(1)`.
+
+---
+
+## 🎯 Tail-Recursive Max Element – Strategy
+
+We'll use an accumulator-style helper function:
+
+1. Start with an index (`i = 0`) and current max (`max_so_far = -∞`)
+2. In each call, compare `arr[i]` with `max_so_far`
+3. Pass the updated max to the next call (`i+1`)
+4. When `i == n`, return `max_so_far`
+
+---
+
+## 🐍 Python Tail-Recursive Version
+
+```python
+def find_max_tail_recursive(arr, i=0, max_so_far=None):
+    if max_so_far is None:
+        max_so_far = arr[0]
+
+    # Base case: end of array
+    if i == len(arr):
+        return max_so_far
+
+    # Recursive call with updated max
+    return find_max_tail_recursive(arr, i + 1, max(max_so_far, arr[i]))
+
+# Example usage
+arr = [1, 8, 7, 56, 90]
+print(find_max_tail_recursive(arr))  # Output: 90
+```
+
+---
+
+## 🧑‍💻 C++ Tail-Recursive Version
+
+C++ doesn’t guarantee tail-call optimization in all compilers, but here’s how you'd write it:
+
+```cpp
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int findMaxTailRecursive(int arr[], int n, int i = 0, int maxSoFar = INT_MIN) {
+    if (i == n)
+        return maxSoFar;
+    return findMaxTailRecursive(arr, n, i + 1, max(maxSoFar, arr[i]));
+}
+
+int main() {
+    int arr[] = {1, 8, 7, 56, 90};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    cout << findMaxTailRecursive(arr, n) << endl; // Output: 90
+    return 0;
+}
+```
+
+---
+
+## ⚙️ Time and Space Complexity
+
+| Metric           | Value    |
+|------------------|----------|
+| Time Complexity  | O(n)     |
+| Space Complexity | O(n) (without optimization), O(1) if tail-call optimized |
+
+---
+
