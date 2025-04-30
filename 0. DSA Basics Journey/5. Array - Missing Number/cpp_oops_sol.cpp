@@ -106,13 +106,13 @@ public:
 
     // Missing number finder (not implemented in this example)
     int findMissingNumber() {
-        // int last_num = arr[n-1];
-        int total = (n + 1) * (n + 2) / 2; // Sum of first n natural numbers
-        int sum = 0;
+        int maxNum = n + 1;  // Since one number is missing
+        int expectedSum = maxNum * (maxNum + 1) / 2;
+        int actualSum = 0;
         for (int i = 0; i < n; i++) {
-            sum += arr[i];
+            actualSum += arr[i];
         }
-        return total - sum; // The missing number
+        return expectedSum - actualSum;
     }
 };
 
@@ -144,9 +144,8 @@ int main() {
     // cout << "After Reversing:" << endl;
     // am.display(); // Display the reversed array
 
-     cout << "Missing number:" << endl;
-    // am.display(); // Display the reversed array
-    printf("%d\n", am.findMissingNumber()); 
+    cout << "Missing number: " << am.findMissingNumber() << endl;
+
 
     return 0;
 }
