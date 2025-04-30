@@ -1,3 +1,9 @@
+Question
+
+![Question](Question.png)
+
+---
+
 The problem is simple but fun — it’s called **“Replace all 0's with 5”**. Let’s break it down and solve it across **C++**, **Python**, and **JavaScript** 🧠💡
 
 ---
