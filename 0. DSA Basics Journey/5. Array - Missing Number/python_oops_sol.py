@@ -42,13 +42,13 @@ class ArrayManager:
 
     # Missing number finder
     def findMissingNumber(self):
+        if not self.arr:
+            print("Array is empty!")
+            return None
         n = len(self.arr)
         maxNum = n + 1  # Since one number is missing
-        expectedSum = maxNum * (maxNum + 1) / 2
-        actualSum = 0
-        i = 0
-        for i in range(len(self.arr)):
-            actualSum += self.arr[i]
+        expectedSum = maxNum * (maxNum + 1) // 2  # Integer division
+        actualSum = sum(self.arr)  # Cleaner!
         return expectedSum - actualSum
     
     
