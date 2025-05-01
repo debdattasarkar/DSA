@@ -1,3 +1,9 @@
+Question
+
+![Question](Question.png)
+
+---
+
 You're now looking at the problem: **"Segregate Even and Odd numbers"** — a great test of array manipulation and sorting!
 
 ---
