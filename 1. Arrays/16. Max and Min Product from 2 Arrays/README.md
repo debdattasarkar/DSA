@@ -241,3 +241,14 @@ Here are the results from testing edge cases and a large input for the **Max-Min
 - The algorithm works well even for **1 million elements** in each array — completed in just ~51ms.
 - Handles edge cases like **single-element arrays** and **negatives** correctly.
 - Efficient even without using built-in `max()` or `min()`.
+
+🎞️ Here's your animated chart showing how the algorithm tracks:
+
+- 🔵 the **maximum** value in `arr1`, and  
+- 🔴 the **minimum** value in `arr2`  
+
+over time as it scans both arrays:
+
+👉 [Click to view the animation](max_min_product_animation.gif)
+
+Would you like a version that overlays the final product visually too?
