@@ -70,7 +70,8 @@ void reverseSubarray(vector<int>& arr, int l, int r) {
 
     // Reverse in-place
     while (l < r) {
-        swap(arr[l], arr[r]);
+        // swap(arr[l], arr[r]);
+        arr[l], arr[r] = arr[r], arr[l];
         l++;
         r--;
     }
