@@ -167,15 +167,32 @@ def count_pairs_with_sum(arr, target):
         curr_sum = arr[left] + arr[right]
 
         if curr_sum == target:
-            count += 1
-            left += 1
-            right -= 1
+            # If elements are different
+            if arr[left] != arr[right]:
+                # Count duplicates on both ends
+                l_count = 1
+                r_count = 1
+                while left + 1 < right and arr[left] == arr[left + 1]:
+                    l_count += 1
+                    left += 1
+                while right - 1 > left and arr[right] == arr[right - 1]:
+                    r_count += 1
+                    right -= 1
+                count += l_count * r_count
+                left += 1
+                right -= 1
+            else:
+                # All elements between left and right are the same
+                n = right - left + 1
+                count += (n * (n - 1)) // 2
+                break
         elif curr_sum < target:
             left += 1
         else:
             right -= 1
 
     return count
+
 
 # Test
 arr = [-1, 1, 5, 5, 7]
