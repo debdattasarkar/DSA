@@ -1,3 +1,9 @@
+Question
+
+![Question](Question.png)
+
+---
+
 You're now solving the problem:
 **"Absolute Difference of 1"** – an elegant pattern-recognition problem on digits. Let’s break it down clearly and then implement it in all three languages (Python, C++, JavaScript) with full explanations.
 
