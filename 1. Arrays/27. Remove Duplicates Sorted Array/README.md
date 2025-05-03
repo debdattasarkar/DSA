@@ -1,4 +1,6 @@
-Absolutely! Here's the **same complete solution** in **Python**, **C++**, and **JavaScript**, with **detailed inline comments** explaining each step clearly.
+Question
+
+![Question](Question.png)
 
 ---
 
