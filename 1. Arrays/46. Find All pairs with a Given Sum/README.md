@@ -186,4 +186,3 @@ rl.on('close', () => {
 
 ---
 
-Would you like me to help package these codes for a competitive coding platform as well?
