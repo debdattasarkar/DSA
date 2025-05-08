@@ -1,3 +1,9 @@
+Question
+
+![Question](Question.png)
+
+---
+
 Here's a full explanation, dry run, and correct implementations for the **"Zeros Count"** problem from GeeksforGeeks:
 
 ---
