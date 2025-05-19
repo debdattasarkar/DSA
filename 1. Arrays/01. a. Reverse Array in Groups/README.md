@@ -1,8 +1,74 @@
-Question
+# 🔄 Reverse Array in Groups
 
-![Question](Question.png)
+## 📝 Problem Statement
+
+Given an array `arr[]` of positive integers, reverse every sub-array group of size `k`.
+
+> 🔹 **Note:**
+> If at any instance, `k` is greater than or equal to the array size, then **reverse the entire array**.
+> You **must not return** a new array. Modify the given array in-place.
 
 ---
+
+## 📌 Examples
+
+### Example 1
+
+* **Input:** `arr[] = [1, 2, 3, 4, 5], k = 3`
+* **Output:** `[3, 2, 1, 5, 4]`
+* **Explanation:** First group: `[1, 2, 3]` → reversed → `[3, 2, 1]`; second group: `[4, 5]` → reversed → `[5, 4]`
+
+---
+
+### Example 2
+
+* **Input:** `arr[] = [5, 6, 8, 9], k = 5`
+* **Output:** `[9, 8, 6, 5]`
+* **Explanation:** Since `k >= array size`, reverse the entire array.
+
+---
+
+## 🔒 Constraints
+
+* `1 ≤ arr.size(), k < 10^7`
+* `1 ≤ arr[i] ≤ 10^18`
+
+---
+
+## ⏱️ Expected Time and Space Complexity
+
+* **Time Complexity:** O(n)
+* **Auxiliary Space:** O(1)
+
+---
+
+## 🧠 Topic Tags
+
+* Arrays
+* Data Structures
+
+---
+
+## 🏢 Company Tags
+
+* Adobe
+
+---
+
+## 💼 Related Interview Experiences
+
+* Adobe Interview Experience SheCodes 2020 Product Intern
+
+---
+
+## 📚 Related Articles
+
+* Reverse An Array In Groups Of Given Size
+
+---
+
+---
+
 Yes! Let's break it down **very visually and clearly**:
 
 ---
