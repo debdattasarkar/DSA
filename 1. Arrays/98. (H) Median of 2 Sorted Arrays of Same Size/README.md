@@ -239,4 +239,3 @@ class Solution {
 
 ---
 
-Would you like a visual diagram or additional test cases to go with it?
