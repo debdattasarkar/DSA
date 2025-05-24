@@ -1,10 +1,4 @@
 # 📘 Kth Smallest Number in Multiplication Table
-
-**Difficulty**: Hard
-**Accuracy**: 44.33%
-**Submissions**: 5K+
-**Points**: 8
-
 ---
 
 ## 🧩 Problem Statement

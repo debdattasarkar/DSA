@@ -1,14 +1,4 @@
-Here is a complete and structured `README.md` based on the "Two Sum - Pair with Given Sum" problem from GeeksforGeeks:
-
----
-
 # 🧮 Two Sum - Pair with Given Sum
-
-**Difficulty:** Easy
-**Points:** 2
-**Average Time:** 20 min
-**Accuracy:** 30.61%
-
 ## 📝 Problem Statement
 
 Given an array `arr[]` of positive integers and another integer `target`, determine if there exist two distinct indices such that the sum of their elements is equal to the target.

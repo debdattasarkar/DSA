@@ -1,11 +1,4 @@
 # The Celebrity Problem
-
-**Difficulty:** Medium
-**Accuracy:** 38.33%
-**Submissions:** 312K+
-**Points:** 4
-**Average Time:** 30 minutes
-
 ## 🧩 Problem Statement
 
 A **celebrity** is a person who is known by everyone but knows no one at a party.

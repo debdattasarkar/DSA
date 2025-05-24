@@ -56,10 +56,6 @@ Here’s a complete response for the **Overlapping Intervals** problem based on 
 
 ## 📘 Problem: Overlapping Intervals
 
-**Difficulty:** Medium
-**Points:** 4
-**Average Time:** 20m
-
 ### Task
 
 Given an array `arr[][]`, where `arr[i] = [startᵢ, endᵢ]`, merge all **overlapping intervals** and return the merged intervals.
