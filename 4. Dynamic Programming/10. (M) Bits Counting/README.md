@@ -1,7 +1,3 @@
-Here is the README file based on the **"Bits Counting"** problem from GeeksforGeeks:
-
----
-
 # Bits Counting
 
 ## 🧩 Problem Statement

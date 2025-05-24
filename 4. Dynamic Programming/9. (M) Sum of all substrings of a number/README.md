@@ -1,7 +1,3 @@
-Here's the README generated from the provided GeeksforGeeks problem **"Sum of all substrings of a number"**:
-
----
-
 # Sum of All Substrings of a Number
 
 ## 🧩 Problem Statement
