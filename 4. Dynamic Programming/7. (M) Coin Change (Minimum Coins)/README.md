@@ -101,7 +101,7 @@ Explanation: Not possible to make the given sum
 
 ---
 
-Here’s a step-by-step explanation with **dry run**, followed by **code in Python, C++, and JavaScript** for the **Coin Change (Minimum Coins)** problem from GeeksforGeeks.
+Here’s a step-by-step explanation with **dry run**, followed by **code in Python, C++, and JavaScript** for the **Coin Change (Minimum Coins)** problem.
 
 ---
 

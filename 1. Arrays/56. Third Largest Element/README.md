@@ -4,7 +4,7 @@ Question
 
 ---
 
-Here’s a complete breakdown and implementation of the **"Third Largest Element"** problem from GeeksforGeeks in **Python**, **C++**, and **JavaScript**, following your specified formats.
+Here’s a complete breakdown and implementation of the **"Third Largest Element"** problem in **Python**, **C++**, and **JavaScript**, following your specified formats.
 
 ---
 

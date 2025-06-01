@@ -104,7 +104,7 @@ Use the **two-pointer elimination** strategy:
 
 ---
 
-Here's the detailed explanation with a **step-by-step dry run** followed by **Python**, **C++**, and **JavaScript** implementations with inline comments for the **Celebrity Problem** from GeeksforGeeks.
+Here's the detailed explanation with a **step-by-step dry run** followed by **Python**, **C++**, and **JavaScript** implementations with inline comments for the **Celebrity Problem**.
 
 ---
 

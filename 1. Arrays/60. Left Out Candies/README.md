@@ -4,7 +4,7 @@ Question
 
 ---
 
-Here's a complete explanation and implementation for the **"Left Out Candies"** problem from GeeksforGeeks.
+Here's a complete explanation and implementation for the **"Left Out Candies"** problem.
 
 ---
 

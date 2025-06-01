@@ -1,4 +1,4 @@
-Here’s a full explanation of the **“Count the Characters”** problem from GeeksforGeeks, including:
+Here’s a full explanation of the **“Count the Characters”** problem, including:
 
 ---
 

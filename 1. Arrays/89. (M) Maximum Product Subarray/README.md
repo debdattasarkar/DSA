@@ -87,7 +87,7 @@ Given an array `arr[]` that contains **positive** and **negative integers** (and
 ---
 ---
 
-Here's a complete breakdown of the **"Maximum Product Subarray"** problem from GeeksforGeeks, including:
+Here's a complete breakdown of the **"Maximum Product Subarray"** problem, including:
 
 * ✅ Explanation
 * ✅ Dry Run

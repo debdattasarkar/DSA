@@ -4,7 +4,7 @@ Question
 
 ---
 
-**“Count the Elements”** problem from GeeksforGeeks:
+**“Count the Elements”** problem:
 
 ---
 

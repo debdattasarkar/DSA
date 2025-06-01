@@ -86,7 +86,7 @@ This problem is optimally solved using **two heaps**:
 
 ---
 
-Here’s a **complete explanation with a step-by-step dry run** for the **Find Median in a Stream** problem from GeeksforGeeks, followed by the **correct implementations** in **Python**, **C++**, and **JavaScript**, with **inline comments**.
+Here’s a **complete explanation with a step-by-step dry run** for the **Find Median in a Stream** problem, followed by the **correct implementations** in **Python**, **C++**, and **JavaScript**, with **inline comments**.
 
 ---
 

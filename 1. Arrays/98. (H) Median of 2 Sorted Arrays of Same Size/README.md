@@ -1,4 +1,4 @@
-Here's the **README** file content for the **"Median of 2 Sorted Arrays of Same Size"** problem from GeeksforGeeks:
+Here's the **README** file content for the **"Median of 2 Sorted Arrays of Same Size"** problem:
 
 ---
 

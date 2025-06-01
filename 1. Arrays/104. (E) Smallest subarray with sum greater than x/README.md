@@ -88,7 +88,7 @@ This problem is frequently asked by:
 
 ---
 
-Here's a complete **text explanation**, **step-by-step dry run**, and implementations in **Python**, **C++**, and **JavaScript** with inline comments for the **Smallest Subarray with Sum Greater than X** problem from GeeksforGeeks.
+Here's a complete **text explanation**, **step-by-step dry run**, and implementations in **Python**, **C++**, and **JavaScript** with inline comments for the **Smallest Subarray with Sum Greater than X** problem.
 
 ---
 

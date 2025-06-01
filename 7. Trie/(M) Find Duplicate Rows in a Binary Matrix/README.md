@@ -174,7 +174,7 @@ class Solution {
 
 ---
 
-Here's the **text explanation with step-by-step dry run** and **code implementations** in **Python**, **C++**, and **JavaScript** for the problem **"Find Duplicate Rows in a Binary Matrix"** from GeeksforGeeks.
+Here's the **text explanation with step-by-step dry run** and **code implementations** in **Python**, **C++**, and **JavaScript** for the problem **"Find Duplicate Rows in a Binary Matrix"**.
 
 ---
 

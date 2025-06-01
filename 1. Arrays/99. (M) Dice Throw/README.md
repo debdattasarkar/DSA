@@ -1,4 +1,4 @@
-Here's a well-structured README based on the "Dice Throw" problem from GeeksforGeeks:
+Here's a well-structured README based on the "Dice Throw" problem:
 
 ---
 

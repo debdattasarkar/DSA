@@ -4,7 +4,7 @@ Question
 
 ---
 
-Sure! Here's a **text explanation** with a **step-by-step dry run** of the **“K-th missing element”** problem from GeeksforGeeks.
+Sure! Here's a **text explanation** with a **step-by-step dry run** of the **“K-th missing element”** problem.
 
 ---
 

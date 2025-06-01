@@ -192,7 +192,7 @@ class Solution {
 
 ---
 
-Here's a **complete text explanation with a step-by-step dry run** for the **"Unique Rows in Boolean Matrix"** problem from GeeksforGeeks, followed by **working code with inline comments** in **Python**, **C++**, and **JavaScript**.
+Here's a **complete text explanation with a step-by-step dry run** for the **"Unique Rows in Boolean Matrix"** problem, followed by **working code with inline comments** in **Python**, **C++**, and **JavaScript**.
 
 ---
 

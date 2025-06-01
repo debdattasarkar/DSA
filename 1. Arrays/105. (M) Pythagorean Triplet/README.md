@@ -1,7 +1,3 @@
-Here's the complete `README.md` file based on the **Pythagorean Triplet** problem statement from GeeksforGeeks:
-
----
-
 # 🧮 Pythagorean Triplet
 
 ### Difficulty: Medium

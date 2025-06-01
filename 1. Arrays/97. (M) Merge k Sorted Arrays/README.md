@@ -123,7 +123,7 @@ Output:
 
 ---
 
-Sure! Here's a **step-by-step dry run explanation**, followed by complete **Python, C++, and JavaScript** solutions with inline comments for the **"Merge K Sorted Arrays"** problem from GeeksforGeeks.
+Sure! Here's a **step-by-step dry run explanation**, followed by complete **Python, C++, and JavaScript** solutions with inline comments for the **"Merge K Sorted Arrays"** problem.
 
 ---
 

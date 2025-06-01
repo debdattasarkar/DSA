@@ -4,7 +4,7 @@ Question
 
 ---
 
-Here's a full explanation, dry run, and correct implementations for the **"Zeros Count"** problem from GeeksforGeeks:
+Here's a full explanation, dry run, and correct implementations for the **"Zeros Count"** problem:
 
 ---
 

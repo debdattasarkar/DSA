@@ -1,4 +1,4 @@
-Here's a full explanation, dry run, and Python/C++/JavaScript solutions for the **nCr (Binomial Coefficient)** problem from GeeksforGeeks.
+Here's a full explanation, dry run, and Python/C++/JavaScript solutions for the **nCr (Binomial Coefficient)** problem.
 
 ---
 

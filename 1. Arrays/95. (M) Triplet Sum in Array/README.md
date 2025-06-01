@@ -1,4 +1,4 @@
-Here’s the generated **README** in Markdown format for the **Triplet Sum in Array** problem from GeeksforGeeks:
+Here’s the generated **README** in Markdown format for the **Triplet Sum in Array** problem:
 
 ---
 
@@ -158,7 +158,7 @@ class Solution {
 
 ---
 
-Here’s the detailed explanation and step-by-step dry run for the **Triplet Sum in Array** problem from GeeksforGeeks, followed by implementations in **Python**, **C++**, and **JavaScript**.
+Here’s the detailed explanation and step-by-step dry run for the **Triplet Sum in Array** problem, followed by implementations in **Python**, **C++**, and **JavaScript**.
 
 ---
 

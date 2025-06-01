@@ -1,4 +1,4 @@
-To solve the **Meeting Rooms III** problem from GeeksforGeeks, we simulate room assignment while keeping track of:
+To solve the **Meeting Rooms III** problem, we simulate room assignment while keeping track of:
 
 * When each room becomes available.
 * Which room has hosted the most meetings.

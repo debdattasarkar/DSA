@@ -1,4 +1,4 @@
-Sure! Let's walk through the **"Find all pairs with a given sum"** problem from GeeksforGeeks, including:
+Sure! Let's walk through the **"Find all pairs with a given sum"** problem, including:
 
 1. ✅ **Text explanation**
 2. 🔍 **Step-by-step dry run**

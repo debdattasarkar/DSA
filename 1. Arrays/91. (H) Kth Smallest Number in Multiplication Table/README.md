@@ -97,7 +97,7 @@ We can’t construct the entire matrix because of its potential size. Instead, w
 
 ---
 
-Here’s the **step-by-step explanation**, dry run, and full **Python, C++, and JavaScript code** for the **“Kth Smallest Number in Multiplication Table”** problem from GeeksforGeeks.
+Here’s the **step-by-step explanation**, dry run, and full **Python, C++, and JavaScript code** for the **“Kth Smallest Number in Multiplication Table”** problem.
 
 ---
 

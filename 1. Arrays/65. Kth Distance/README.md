@@ -3,7 +3,7 @@ Question
 ![Question](Question.png)
 
 ---
-Here’s a full explanation and implementation for the **Kth Distance Duplicate Check** problem from GeeksforGeeks, including step-by-step dry run and code in **Python**, **C++**, and **JavaScript**.
+Here’s a full explanation and implementation for the **Kth Distance Duplicate Check** problem, including step-by-step dry run and code in **Python**, **C++**, and **JavaScript**.
 
 ---
 

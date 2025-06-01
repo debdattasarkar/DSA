@@ -1,4 +1,4 @@
-Here's a **step-by-step explanation** followed by Python, C++, and JavaScript implementations (with inline logic comments) for the **“Sum Except First and Last”** problem from GeeksforGeeks.
+Here's a **step-by-step explanation** followed by Python, C++, and JavaScript implementations (with inline logic comments) for the **“Sum Except First and Last”** problem.
 
 ---
 

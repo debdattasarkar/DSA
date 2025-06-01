@@ -3,7 +3,7 @@ Question
 ![Question](Question.png)
 
 ---
-Here's the **complete explanation**, **dry run**, and **full implementations** for the **"Word with maximum frequency"** problem from GeeksforGeeks in **Python**, **C++**, and **JavaScript** formats.
+Here's the **complete explanation**, **dry run**, and **full implementations** for the **"Word with maximum frequency"** problem in **Python**, **C++**, and **JavaScript** formats.
 
 ---
 

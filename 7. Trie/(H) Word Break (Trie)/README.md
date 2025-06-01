@@ -1,4 +1,4 @@
-Here is the generated **README.md** file based on the "Word Break (Trie)" problem description from GeeksforGeeks:
+Here is the generated **README.md** file based on the "Word Break (Trie)" problem description:
 
 ---
 
@@ -107,7 +107,7 @@ def wordBreak(A: str, B: List[str]) -> int:
 
 ---
 
-Here’s a complete **explanation with step-by-step dry run** for the **Word Break (Trie)** problem from GeeksforGeeks, followed by code implementations in **Python**, **C++**, and **JavaScript**, all with **inline comments**.
+Here’s a complete **explanation with step-by-step dry run** for the **Word Break (Trie)** problem, followed by code implementations in **Python**, **C++**, and **JavaScript**, all with **inline comments**.
 
 ---
 

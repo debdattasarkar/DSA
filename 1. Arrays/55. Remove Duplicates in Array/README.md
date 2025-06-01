@@ -5,7 +5,7 @@ Question
 
 ---
 
-Here's the complete explanation and implementation for the **"Remove Duplicates in Array"** problem from GeeksforGeeks:
+Here's the complete explanation and implementation for the **"Remove Duplicates in Array"** problem:
 
 ---
 

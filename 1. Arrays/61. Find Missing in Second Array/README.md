@@ -4,7 +4,7 @@ Question
 
 ---
 
-Here’s the **full explanation, dry run, and implementation** of the **"Find missing in second array"** problem from GeeksforGeeks in **Python, C++, and JavaScript**, using the formats and templates you provided.
+Here’s the **full explanation, dry run, and implementation** of the **"Find missing in second array"** problem in **Python, C++, and JavaScript**, using the formats and templates you provided.
 
 ---
 

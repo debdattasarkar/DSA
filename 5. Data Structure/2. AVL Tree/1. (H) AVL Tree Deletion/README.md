@@ -1,4 +1,4 @@
-Here’s a comprehensive README in Markdown format for the **“AVL Tree Deletion”** problem from GeeksforGeeks, based on your uploaded image:
+Here’s a comprehensive README in Markdown format for the **“AVL Tree Deletion”** problem, based on your uploaded image:
 
 ---
 

@@ -136,7 +136,7 @@ Zoho, Flipkart, Morgan Stanley, Accolite, Amazon, Microsoft, FactSet, Hike, Adob
 
 ---
 
-Here is the **text explanation with a step-by-step dry run** and code for Python, C++, and JavaScript to solve the **Two Sum - Pair with Given Sum** problem from GeeksforGeeks.
+Here is the **text explanation with a step-by-step dry run** and code for Python, C++, and JavaScript to solve the **Two Sum - Pair with Given Sum** problem.
 
 ---
 

@@ -1,7 +1,3 @@
-Here is a well-structured README file for the **"Trapping Rain Water"** problem from GeeksforGeeks:
-
----
-
 # 🌧️ Trapping Rain Water
 
 ## 📝 Problem Statement
@@ -243,7 +239,7 @@ class Solution {
 Let me know if you'd like this in a downloadable format or additional variations of this problem!
 
 
-Here’s a complete **text explanation**, step-by-step **dry run**, and the **code implementations** in Python, C++, and JavaScript for the **Trapping Rain Water** problem from GeeksforGeeks.
+Here’s a complete **text explanation**, step-by-step **dry run**, and the **code implementations** in Python, C++, and JavaScript for the **Trapping Rain Water** problem.
 
 ---
 

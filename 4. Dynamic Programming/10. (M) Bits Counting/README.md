@@ -133,7 +133,7 @@ class Solution {
 
 ---
 
-Here's a complete explanation with a step-by-step dry run and code implementations for **"Bits Counting"** from GeeksforGeeks:
+Here's a complete explanation with a step-by-step dry run and code implementations for **"Bits Counting"**:
 
 ---
 

@@ -4,7 +4,7 @@ Question
 
 ---
 
-Let's solve the **"Intersection of Arrays with Distinct"** problem from GeeksforGeeks, and implement it in **Python**, **C++**, and **JavaScript** formats.
+Let's solve the **"Intersection of Arrays with Distinct"** problem, and implement it in **Python**, **C++**, and **JavaScript** formats.
 
 ---
 

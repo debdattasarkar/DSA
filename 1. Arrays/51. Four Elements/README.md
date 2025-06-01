@@ -4,7 +4,7 @@ Question
 
 ---
 
-Here's the full breakdown for the "Four Elements" problem from GeeksforGeeks:
+Here's the full breakdown for the "Four Elements" problem:
 
 ---
 

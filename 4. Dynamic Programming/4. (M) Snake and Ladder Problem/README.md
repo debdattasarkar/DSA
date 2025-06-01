@@ -1,4 +1,4 @@
-Here's a **step-by-step explanation with dry run** and complete solutions for the **"Snake and Ladder Problem"** from GeeksforGeeks in **Python, C++, and JavaScript**, with inline logic comments.
+Here's a **step-by-step explanation with dry run** and complete solutions for the **"Snake and Ladder Problem"** in **Python, C++, and JavaScript**, with inline logic comments.
 
 ---
 
