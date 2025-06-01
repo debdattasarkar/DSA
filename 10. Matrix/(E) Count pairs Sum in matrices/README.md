@@ -111,4 +111,139 @@ The pairs are (4, 6) and (3, 7)
 
 ---
 
-Let me know if you’d like a code implementation in Python, C++, or JavaScript for this problem!
+Here’s a complete solution with **text explanation**, **step-by-step dry run**, and **code implementations** in **Python**, **C++**, and **JavaScript**, all with **inline comments**.
+
+---
+
+## ✅ Problem Summary
+
+Given two matrices `mat1[][]` and `mat2[][]` of size `n x n`:
+
+* Each row is sorted in ascending order.
+* The last element of a row is smaller than the first element of the next row.
+
+Find the number of **pairs {a, b}** such that:
+
+* `a` belongs to `mat1`
+* `b` belongs to `mat2`
+* `a + b == x`
+
+---
+
+## 🔍 Step-by-Step Explanation
+
+1. **Flatten** both matrices into one-dimensional lists.
+2. **Insert all elements of `mat2` into a set** for O(1) lookup.
+3. For every element `a` in `mat1`, check if `x - a` exists in the set.
+4. Count such pairs.
+
+---
+
+## 🧪 Dry Run
+
+**Input:**
+
+```python
+mat1 = [[1, 2], [3, 4]]
+mat2 = [[4, 5], [6, 7]]
+x = 10
+```
+
+**Flattened Lists:**
+
+* `mat1`: \[1, 2, 3, 4]
+* `mat2`: {4, 5, 6, 7}
+
+**Check:**
+
+* 10 - 1 = 9 ❌
+* 10 - 2 = 8 ❌
+* 10 - 3 = 7 ✅ ➝ (3, 7)
+* 10 - 4 = 6 ✅ ➝ (4, 6)
+
+**Result**: 2 pairs
+
+---
+
+## 🐍 Python Code
+
+```python
+class Solution:
+    def countPairs(self, mat1, mat2, x):
+        # Flatten mat2 into a set for O(1) lookups
+        mat2_values = set()
+        for row in mat2:
+            mat2_values.update(row)
+
+        count = 0
+        # Check for each element in mat1 if x - element exists in mat2
+        for row in mat1:
+            for val in row:
+                if (x - val) in mat2_values:
+                    count += 1
+
+        return count
+```
+
+---
+
+## 💻 C++ Code
+
+```cpp
+class Solution {
+  public:
+    int countPairs(vector<vector<int>> &mat1, vector<vector<int>> &mat2, int x) {
+        unordered_set<int> mat2_set;
+        // Insert all values from mat2 into a set
+        for (auto &row : mat2) {
+            for (int val : row) {
+                mat2_set.insert(val);
+            }
+        }
+
+        int count = 0;
+        // For each value in mat1, check if x - val exists in mat2_set
+        for (auto &row : mat1) {
+            for (int val : row) {
+                if (mat2_set.find(x - val) != mat2_set.end()) {
+                    count++;
+                }
+            }
+        }
+
+        return count;
+    }
+};
+```
+
+---
+
+## 🌐 JavaScript Code
+
+```javascript
+class Solution {
+    countPairs(mat1, mat2, x) {
+        // Flatten mat2 and put in a Set
+        const mat2Set = new Set();
+        for (const row of mat2) {
+            for (const val of row) {
+                mat2Set.add(val);
+            }
+        }
+
+        let count = 0;
+        // Check for each value in mat1 if x - val is in mat2Set
+        for (const row of mat1) {
+            for (const val of row) {
+                if (mat2Set.has(x - val)) {
+                    count++;
+                }
+            }
+        }
+
+        return count;
+    }
+}
+```
+
+---
