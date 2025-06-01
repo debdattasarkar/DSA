@@ -162,5 +162,3 @@ console.log(getOddOccurrence([1, 2, 3, 2, 3, 1, 3], 7));  // Output: 3
 ---
 
 ✅ All three versions (Python, C++, JavaScript) now match exactly and work perfectly for finding the **single odd-occurring number**!
-
-Let me know if you want a **small practice problem** based on this XOR trick next! 🚀

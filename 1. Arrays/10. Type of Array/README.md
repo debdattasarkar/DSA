@@ -152,10 +152,3 @@ int main() {
 ```
 
 ---
-
-Let me know if you'd like help testing this or integrating it into an application or problem platform.
-
-Would you like a **diagram** showing how ascending/descending and their rotated versions differ visually? 📊
-
-![Question](visual.png)
-

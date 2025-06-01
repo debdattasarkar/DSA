@@ -236,7 +236,6 @@ class Solution {
 
 ---
 
-Let me know if you'd like this in a downloadable format or additional variations of this problem!
 
 
 Here’s a complete **text explanation**, step-by-step **dry run**, and the **code implementations** in Python, C++, and JavaScript for the **Trapping Rain Water** problem.
@@ -386,5 +385,3 @@ class Solution {
 * **Time Complexity:** O(n)
 * **Space Complexity:** O(1)
 * **Use Case:** Best suited for large arrays due to its optimal space/time balance.
-
-Let me know if you'd like a visualization, a test harness, or an explanation of other variations!
