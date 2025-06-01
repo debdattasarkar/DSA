@@ -443,7 +443,7 @@ class Solution {
 
 ---
 
-Let me know if you'd like visual examples of each rotation or unit tests for your implementation!
+if you'd like visual examples of each rotation or unit tests for your implementation!
 
 Absolutely! Here's a **clear and uncropped step-by-step dry run**, followed by **complete AVL deletion code** in **Python**, **C++**, and **JavaScript** — fully explained with inline comments.
 

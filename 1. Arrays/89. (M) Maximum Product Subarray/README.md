@@ -237,5 +237,3 @@ class Solution {
 * Track both min and max products
 * Reset on encountering 0
 * Works efficiently with negatives and zeros
-
-Let me know if you’d like a version that returns the subarray too.

@@ -78,5 +78,3 @@ class Solution {
 ```
 
 ---
-
-Let me know if you'd like variations such as handling negative numbers, large arrays, or optimizing further.

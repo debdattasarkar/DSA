@@ -154,4 +154,3 @@ class Solution {
 
 ---
 
-Let me know if you'd like the dry run or explanation visualized.

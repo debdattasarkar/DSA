@@ -92,5 +92,3 @@ class Solution {
 * **Space:** O(1) — Constant space.
 
 ---
-
-Let me know if you want the version that also returns **actual buy-sell intervals** (i.e. `(buy_day, sell_day)`), or dry run for the second example.

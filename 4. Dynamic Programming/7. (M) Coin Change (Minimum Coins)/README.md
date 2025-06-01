@@ -212,5 +212,3 @@ class Solution {
 
 * **Time:** `O(n * sum)` where `n = coins.length`
 * **Space:** `O(sum)`
-
-Let me know if you'd like a **recursive memoized solution** or if you want to trace a specific test case!

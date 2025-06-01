@@ -154,8 +154,6 @@ console.log(obj.findKRotation(arr)); // Output: 1
 
 ---
 
-Let me know if you'd like a **dry run** on an example!
-
 Let's do a **dry run** of the **Find Kth Rotation** algorithm using **binary search** with the array:
 
 ### 🔹 Input:

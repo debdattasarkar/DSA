@@ -344,5 +344,3 @@ class Solution {
 ```
 
 ---
-
-Let me know if you'd like this wrapped into a README or tested with your own custom input.

@@ -121,8 +121,6 @@ Output: [5, 12]
 
 ---
 
-Let me know if you want the implementation tested in any specific format or system!
-
 
 You're absolutely right — the code you've provided is indeed correct **and efficient** for extracting **leaf nodes from a preorder traversal of a BST** *without explicitly building the tree*.
 

@@ -237,5 +237,3 @@ class Solution {
 ```
 
 ---
-
-Let me know if you'd like this logic extended to return the actual pair or indices, or adapted for other constraints.

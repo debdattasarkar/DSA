@@ -152,5 +152,3 @@ class Solution {
 * **Space Complexity:** `O(N)` — to maintain visited array and board mapping.
 
 ---
-
-Let me know if you'd like a visualization of the BFS tree or a custom test case breakdown!

@@ -244,5 +244,3 @@ These versions now correctly:
 * Skip the first and last element in the search.
 * Work in **O(n)** time and **O(n)** space.
 
-Let me know if you want space-optimized versions too.
-

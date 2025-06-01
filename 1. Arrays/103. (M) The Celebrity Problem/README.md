@@ -259,5 +259,3 @@ class Solution {
 ```
 
 ---
-
-Let me know if you'd like a version with test cases or benchmarking!

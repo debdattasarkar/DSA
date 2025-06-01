@@ -113,8 +113,6 @@ Explanation: Includes 4 (first list), 7 (second), 20 (third).
 
 ---
 
-Let me know if you'd like a Python or C++ implementation, or help visualizing the range computation using heaps.
-
 Here's the full explanation, dry run, and code implementations (Python, C++, JavaScript) for the **"Smallest Range in K Lists"** problem.
 
 ---
@@ -281,5 +279,3 @@ class Solution {
 
 * **Time Complexity:** `O(n * k * log k)` — where `k` is number of lists and `n` is size of each list.
 * **Space Complexity:** `O(k)` for the heap.
-
-Let me know if you want the space-optimized variant or how to convert this into a streaming/online solution.

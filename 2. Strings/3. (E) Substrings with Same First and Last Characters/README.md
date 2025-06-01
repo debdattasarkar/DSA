@@ -110,5 +110,3 @@ class Solution {
 * **Space**: O(1) (since only 26 lowercase letters)
 
 ---
-
-Let me know if you'd like this visualized or extended for Unicode strings.

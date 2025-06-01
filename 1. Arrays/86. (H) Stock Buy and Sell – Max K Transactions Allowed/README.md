@@ -245,5 +245,3 @@ class Solution {
 
 * **Time:** `O(k * n)`
 * **Space:** `O(k * n)` (can be optimized to O(n))
-
-Let me know if you want **space optimization** or **tabulation to recursion** conversion.

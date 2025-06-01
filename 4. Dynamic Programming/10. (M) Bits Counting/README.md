@@ -237,5 +237,3 @@ class Solution {
 ## 🔚 Summary
 
 This problem demonstrates efficient bit manipulation combined with dynamic programming for calculating the number of set bits (`1`s) for all numbers from `0` to `n` in **O(n)** time.
-
-Let me know if you'd like a version using bitwise tricks only or for interview preparation formats.

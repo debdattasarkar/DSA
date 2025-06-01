@@ -293,4 +293,3 @@ class Solution {
 | Time        | O(height of BST) = O(log n) average |
 | Space       | O(1) auxiliary                      |
 
-Let me know if you'd like a recursive or traversal-based version too!

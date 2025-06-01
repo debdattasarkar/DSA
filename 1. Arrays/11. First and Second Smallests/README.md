@@ -166,5 +166,3 @@ findTwoSmallest(arr);  // Output: 2 3
   - If it’s smaller than `first`, it becomes the new smallest; the old `first` becomes `second`.
   - If it’s between `first` and `second`, and not equal to `first`, it becomes the new `second`.
 - If `second` was never updated, return `-1`.
-
-Let me know if you want user input support or edge case demonstrations!

@@ -134,5 +134,3 @@ rl.on("close", () => {
 * Compute `min` and `max`.
 * Check if **every integer** between `min` and `max` is present in the set.
 * If **any are missing**, it’s not contiguous.
-
-Let me know if you'd like downloadable files or want this adapted for online judges or GUI environments!

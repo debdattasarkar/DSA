@@ -96,10 +96,6 @@ Explanation: "zoom" does not contain all characters of "zooe"
 
 ---
 
-Let me know if you'd like a code solution or breakdown of the sliding window technique used to solve this efficiently.
-
----
-
 Here is a **complete explanation**, **step-by-step dry run**, and implementations in **Python**, **C++**, and **JavaScript** for the **"Smallest window containing all characters of another string"** problem.
 
 ---
@@ -272,8 +268,4 @@ class Solution {
 * All solutions run in **O(n)** time using sliding window and hash map.
 * Ensures duplicates in `s2` are respected.
 * Handles edge cases like no window found, and empty strings.
-
-Let me know if you want this integrated with your test framework or if you'd like visual step-by-step on another example.
-
-
 

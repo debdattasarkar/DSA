@@ -301,5 +301,3 @@ class Solution {
 ```
 
 ---
-
-Let me know if you’d like the driver code or sample inputs for testing.

@@ -138,7 +138,6 @@ class Solution {
 
 ---
 
-Let me know if you’d like **unit tests or edge case explanation** too!
 Great! Here's how you can **test this implementation thoroughly** with key **unit tests** and **edge cases**, across all three languages.
 
 ---
@@ -215,5 +214,3 @@ test();
 ```
 
 ---
-
-Let me know if you'd like me to **wrap these into a proper testing framework** like `unittest` (Python), `GoogleTest` (C++), or `Mocha` (JavaScript).

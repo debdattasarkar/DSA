@@ -150,5 +150,3 @@ class Solution {
 
 * **Time:** O(N \* log(sum))
 * **Space:** O(1)
-
-Let me know if you'd like a diagram or interactive visualization of how binary search works in this case.

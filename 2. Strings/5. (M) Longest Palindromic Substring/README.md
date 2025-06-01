@@ -89,10 +89,6 @@ Explanation: The longest palindrome in the string is "ee".
 
 ---
 
-Let me know if you'd like to see optimized solutions (like expand-around-center or dynamic programming) in code for this problem!
-
----
-
 Here’s a full **text explanation with dry run** and **Python / C++ / JavaScript code** for the **Longest Palindromic Substring** problem shown in the image.
 
 ---
@@ -232,5 +228,3 @@ class Solution {
 
 * We explore both odd and even length palindromes by checking single and double character centers.
 * This avoids needing a full DP table and stays optimal for up to 10⁴ characters.
-
-Let me know if you want a **Manacher’s Algorithm** (O(n)) version too.

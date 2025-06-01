@@ -133,4 +133,3 @@ class Solution {
 
 ---
 
-Let me know if you'd like to see the factorial-based implementation or a modulo version (often used in competitive programming).

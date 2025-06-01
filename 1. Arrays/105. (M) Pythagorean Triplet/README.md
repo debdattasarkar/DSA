@@ -145,5 +145,3 @@ print(sol.checkTriplet(arr, len(arr)))  # Output: True
 * [Find Pythagorean Triplet In An Unsorted Array](https://www.geeksforgeeks.org/find-pythagorean-triplet-in-an-unsorted-array/)
 
 ---
-
-Let me know if you want code implementations with inline comments in Python, C++, or JavaScript!

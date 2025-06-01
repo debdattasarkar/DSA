@@ -160,5 +160,3 @@ class Solution:
 * Step 2: `1 - 2 = -1` → need 1 more → total\_cost = 2
 * Step 3: `2 - 3 = -1` → need 1 more → total\_cost = 3
 * Total chocolates bought = 3 ⇒ Cost = 3 × 10 = 30 ✅
-
-Let me know if you'd like the updated C++ or JavaScript versions as well!

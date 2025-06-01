@@ -145,5 +145,3 @@ class Solution {
 `Greedy` `Arrays` `Sliding Window` `One Pass`
 
 ---
-
-Let me know if you'd like this in a `.md` file or packaged with test cases.

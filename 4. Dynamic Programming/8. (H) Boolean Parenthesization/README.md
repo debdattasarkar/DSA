@@ -117,10 +117,6 @@ Range includes 4 from the first list, 7 from the second, and 20 from the third.
 
 ---
 
-Let me know if you would like the implementation of this algorithm in any programming language or further explanation on the heap-based approach to solving this!
-
----
-
 Absolutely! Here's a **language-wise summary** of your correct solution for the **Boolean Parenthesization problem** in **Python, C++, and JavaScript**, keeping the **logic identical** across all three versions. I’ve added inline comments for clarity without changing your structure.
 
 ---
@@ -273,5 +269,3 @@ class Solution {
 
 * The logic is consistent and sound across all three implementations.
 * All versions implement a **bottom-up dynamic programming solution** for counting parenthesization combinations evaluating to `True`.
-
-Let me know if you'd like to plug this into driver code templates or test with specific strings.

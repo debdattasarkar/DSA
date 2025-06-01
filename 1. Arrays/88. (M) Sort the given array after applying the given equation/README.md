@@ -291,6 +291,3 @@ class Solution {
 | Optimal time     | O(n)                                     |
 | Handles parabola | Both upward (A > 0) and downward (A < 0) |
 | Extra space      | O(n) for result array                    |
-
-Let me know if you’d like this code integrated into a web tool or tested against custom input!
-

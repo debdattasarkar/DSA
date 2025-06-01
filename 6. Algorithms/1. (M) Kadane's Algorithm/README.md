@@ -127,8 +127,6 @@ class Solution {
 * It dynamically decides at each index whether to start fresh or extend the current subarray.
 * Works even when all elements are negative.
 
-Let me know if you want to modify this to return the actual subarray (not just the sum).
-
 Here’s the complete solution for **Kadane’s Algorithm** as requested, including:
 
 * ✅ **Text explanation**
@@ -319,5 +317,3 @@ class Solution {
 | Auxiliary Space | O(1)  |
 
 ---
-
-Let me know if you'd like the version that **returns the subarray itself**, not just the sum.

@@ -73,5 +73,3 @@ class Solution {
 // let sol = new Solution();
 // console.log(sol.check_elements([1, 4, 5, 2, 7, 8, 3], 7, 2, 5));  // Output: true
 ```
-
-Let me know if you'd like to include driver code for testing in C++ or JavaScript.

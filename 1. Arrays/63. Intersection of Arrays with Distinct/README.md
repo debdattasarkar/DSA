@@ -104,4 +104,3 @@ class Solution {
 * **Time Complexity:** O(n + m) – where n and m are lengths of arrays `a` and `b`.
 * **Space Complexity:** O(m) – to store set for `b`.
 
-Let me know if you want a version that also returns the actual intersection elements instead of just the count.

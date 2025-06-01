@@ -128,9 +128,3 @@ rl.question('Enter sorted array (space-separated): ', (input) => {
 ```
 
 ---
-
-Let me know if you'd like:
-
-* Diagrams for pointer movement
-* File download links
-* Optimizations or extensions for unsorted arrays

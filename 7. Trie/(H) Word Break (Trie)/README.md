@@ -421,8 +421,8 @@ class Solution {
   `O(n * l)` where `n` is the length of `A` and `l` is average word length in Trie traversal.
 * **Space Complexity**:
   `O(|A| + total length of all words)` for DP + Trie.
-
-Let me know if you want a visual explanation or test harness for this code!
+  
+---
 
 Great! Let’s walk through a **visual dry run** of the **Word Break (Trie-based)** solution using a concrete example and provide a clear diagrammatic explanation. We'll then show how to run tests in all three languages.
 

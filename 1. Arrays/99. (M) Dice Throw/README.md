@@ -182,5 +182,3 @@ class Solution {
 * [Dice Throw DP 30](https://www.geeksforgeeks.org/dice-throw-dp-30/)
 
 ---
-
-Let me know if you'd like an optimized version using 1D space.

@@ -306,6 +306,3 @@ class Solution {
 ```
 
 ---
-
-Let me know if you'd like a version that uses Trie instead of hashing!
-

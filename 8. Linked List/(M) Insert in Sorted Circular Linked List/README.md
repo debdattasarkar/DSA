@@ -400,5 +400,3 @@ After Insertion:
 **`11 48 49 53 54 61`**
 
 This matches the **expected output** from your earlier test result!
-
-Let me know if you'd like a diagram or dry run for a special case (e.g., insert as last or duplicate insertion).

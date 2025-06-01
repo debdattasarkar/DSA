@@ -305,10 +305,6 @@ class Solution {
 
 ---
 
-Let me know if you'd like a version using `std::vector<int>` or recursively instead!
-
----
-
 Absolutely! Let's turn our **recursive max-finding function** into a **tail-recursive version**, which reduces stack space and is more compiler-friendly for optimization.
 
 ---

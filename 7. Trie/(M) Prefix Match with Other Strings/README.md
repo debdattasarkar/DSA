@@ -283,5 +283,3 @@ class Solution {
 * **Space Complexity**: O(1) — no extra space used apart from basic variables
 
 ---
-
-Let me know if you want a Trie-based version too (if the dataset is huge or for advanced optimization)!

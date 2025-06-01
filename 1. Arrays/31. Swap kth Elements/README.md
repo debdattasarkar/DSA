@@ -67,5 +67,3 @@ const sol = new Solution();
 sol.swapKth(arr, k);
 console.log(arr);  // Output: [1, 2, 6, 4, 5, 3, 7, 8]
 ```
-
-Let me know if you want input/output handling for multiple test cases or constraints validation added too.

@@ -107,5 +107,3 @@ const arr = [10, 3, 5, 6, 2];
 const sol = new Solution();
 console.log(sol.productExceptSelf(arr)); // Output: [1800, 6000, 3600, 3000, 9000]
 ```
-
-Let me know if you’d like the same logic in a different variation (e.g. space-optimized, in-place, or using division with zero handling).

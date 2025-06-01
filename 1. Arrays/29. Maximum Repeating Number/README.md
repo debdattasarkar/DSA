@@ -154,8 +154,6 @@ class Solution {
 
 ---
 
-Let me know if you want a **dry-run example** 
-
 Let’s **dry-run** the example from the prompt:
 
 ---
@@ -210,10 +208,3 @@ count = [0, 0, 0]  # for numbers 0, 1, 2
   ✅ Return **2**
 
 ---
-
-Let me know if you'd like the same dry run for a tie case like:
-
-```
-arr = [2, 1, 0, 0, 1], k = 3
-```
-
