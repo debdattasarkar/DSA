@@ -1,9 +1,5 @@
 # 🧵 LCS of Three Strings
-
-**Difficulty:** Medium
-**Accuracy:** 48.52%
-**Submissions:** 75K+
-**Points:** 4
+---
 
 ## 📘 Problem Statement
 

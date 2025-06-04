@@ -1,10 +1,4 @@
 # 📐 Longest Arithmetic Subsequence
-
-**Difficulty:** Medium
-**Accuracy:** 23.82%
-**Submissions:** 41K+
-**Points:** 4
-
 ---
 
 ## 🧾 Problem Statement
