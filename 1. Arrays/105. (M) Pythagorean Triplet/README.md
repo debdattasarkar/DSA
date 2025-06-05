@@ -1,11 +1,5 @@
 # 🧮 Pythagorean Triplet
 
-### Difficulty: Medium
-
-**Accuracy**: 24.77%
-**Average Time**: 20 mins
-**Points**: 4
-
 ## 📝 Problem Statement
 
 Given an array `arr[]`, determine whether there exists a **triplet (a, b, c)** such that:
