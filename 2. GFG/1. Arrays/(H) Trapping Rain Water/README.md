@@ -119,6 +119,83 @@ Trapped water:
 
 ## 💻 Code Implementation
 
+The code you've posted solves the **Trapping Rain Water** problem using a **stack-based approach**. Let's walk through the logic with **line-by-line explanation and inline comments**:
+
+---
+
+### ✅ Full Code with Detailed Comments:
+
+```python
+from collections import deque
+
+class Solution:
+    def maxWater(self, arr):
+        # Get length of input array
+        n = len(arr)
+        
+        # Initialize stack to store indices of bars
+        stack = deque()
+        
+        # Variable to accumulate total trapped water
+        out = 0
+        
+        # Iterate over each block
+        for i in range(n):
+            # While stack is not empty and current height is greater than top of stack
+            while len(stack) > 0 and arr[i] > arr[stack[-1]]:
+                # Pop the top element (this is the bottom of the water container)
+                lower_height = arr[stack[-1]]
+                stack.pop()
+
+                # If stack becomes empty, no left boundary exists
+                if len(stack) == 0:
+                    break
+
+                # Now the stack's new top is the left boundary
+                left = stack[-1]
+                
+                # Width between left and right boundary, minus the bottom block
+                dist = i - left - 1
+
+                # Height of water is limited by the shorter of the two walls
+                bounded_height = min(arr[i], arr[left]) - lower_height
+
+                # Water volume = width * bounded_height
+                out += dist * bounded_height
+
+            # Push current index onto the stack
+            stack.append(i)
+
+        # Return the total trapped water
+        return out
+```
+
+---
+
+### 🧠 How It Works (Concept Summary):
+
+* We use a **stack to store indices of the bars**.
+* When we see a bar **taller than the top of the stack**, it means we’ve found a **right boundary** and can try to trap water between this bar and the previous "walls" in the stack.
+* The trapped water is calculated using:
+
+  ```
+  Water = width * (min(left_wall, right_wall) - bottom)
+  ```
+
+---
+
+### 🧪 Example Walkthrough:
+
+For `arr = [3, 0, 1, 0, 4, 0, 2]`:
+
+* Water is trapped in valleys like between index `0` and `4`, and `4` and `6`.
+* Stack helps to backtrack and find the **previous left boundary**.
+
+---
+
+Let me know if you want a dry run on a specific test case or a version using the **two-pointer** O(1) space method!
+
+
 ### Python
 
 ```python
