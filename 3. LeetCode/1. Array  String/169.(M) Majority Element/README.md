@@ -1,4 +1,3 @@
-Here is the full **README-style explanation** for **Leetcode 169 – Majority Element**, including a dry run and optimal solutions in **Python, C++, and JavaScript**, all using **Boyer-Moore Voting Algorithm** for `O(n)` time and `O(1)` space.
 
 ---
 
