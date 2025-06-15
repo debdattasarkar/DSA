@@ -1,10 +1,5 @@
-![ViewCount](https://views.whatilearened.today/views/github/debdattasarkar/DSA.svg?cache=remove)
 ![GitHub top language](https://img.shields.io/github/languages/top/debdattasarkar/DSA?style=flat)
 ![GitHub language count](https://img.shields.io/github/languages/count/debdattasarkar/DSA?style=flat)
-![Stars Badge](https://img.shields.io/github/stars/debdattasarkar/DSA?style=flat)
-![Forks Badge](https://img.shields.io/github/forks/debdattasarkar/DSA?style=flat)
-![Pull Requests Badge](https://img.shields.io/github/issues-pr/debdattasarkar/DSA?style=flat)
-[![Total Downloads](https://img.shields.io/github/downloads/debdattasarkar/DSA/total.svg)](https://github.com/debdattasarkar/DSA/releases/)
 
 # 📚 Data Structures and Algorithms (DSA)
 
