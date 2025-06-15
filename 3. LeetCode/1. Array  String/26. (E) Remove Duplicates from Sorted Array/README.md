@@ -129,5 +129,3 @@ var removeDuplicates = function(nums) {
 * **Space Complexity:** `O(1)`
 * Modifies the array in-place using the **two-pointer technique**.
 * Preserves the **order of unique elements**.
-
-Let me know if you want a version allowing **at most 2 duplicates**, or test case generator!
