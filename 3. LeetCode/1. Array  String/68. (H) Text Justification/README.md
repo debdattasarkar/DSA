@@ -302,6 +302,3 @@ var fullJustify = function(words, maxWidth) {
 ```
 
 ---
-
-Would you like a **flowchart** or **visual simulation** for the above logic as well?
-
