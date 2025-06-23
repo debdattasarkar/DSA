@@ -1,4 +1,3 @@
-Here is the full README-style conversion of the **"Minimum Sum"** problem from the image you provided, without omitting any part:
 
 ---
 
