@@ -481,3 +481,109 @@ class Solution {
 > Yes, we avoid integer overflow by using `string`/`BigInt` and the logic is linear after sorting.
 
 ---
+
+Here's a **hash map (frequency array)** based solution for the **"Minimum Sum"** problem — using all digits in the array to form two numbers whose **sum is minimized**, and return that sum as a string **without leading zeroes**.
+
+---
+
+## ✅ Idea (Using Hash Map)
+
+We don’t need an actual `dict` — a **frequency array of size 10** (digits 0–9) works as a hash map here.
+
+### ⚙️ Strategy:
+
+1. Count frequency of each digit (hash map of digit → count).
+2. Build two numbers `num1` and `num2` by picking the **smallest available digit** alternately (greedy).
+3. Convert both to strings, add using custom `addString()` to avoid overflow.
+
+---
+
+## 🐍 Python Code (Hash Map Based)
+
+```python
+class Solution:
+    # Function to add two large numbers represented as strings
+    def addString(self, s1, s2):
+        i, j = len(s1) - 1, len(s2) - 1
+        carry = 0
+        res = []
+        
+        # Loop until all digits and carry are processed
+        while i >= 0 or j >= 0 or carry:
+            total = carry
+            if i >= 0:
+                total += int(s1[i])
+                i -= 1
+            if j >= 0:
+                total += int(s2[j])
+                j -= 1
+            res.append(str(total % 10))
+            carry = total // 10
+        
+        # Result is in reverse
+        return ''.join(reversed(res))
+
+    def minSum(self, arr):
+        # Step 1: Frequency map of digits (0–9)
+        freq = [0] * 10
+        for digit in arr:
+            freq[digit] += 1
+
+        num1, num2 = "", ""
+
+        # Step 2: Alternately build num1 and num2 from smallest digits
+        flag = True  # Toggle to alternate between num1 and num2
+        for digit in range(10):
+            while freq[digit] > 0:
+                if flag:
+                    num1 += str(digit)
+                else:
+                    num2 += str(digit)
+                flag = not flag
+                freq[digit] -= 1
+
+        # Step 3: Return the sum as a string
+        return self.addString(num1, num2)
+```
+
+---
+
+## 🔍 Dry Run
+
+For input:
+
+```python
+arr = [6, 8, 4, 5, 2, 3]
+```
+
+Sorted digits: `2, 3, 4, 5, 6, 8`
+
+Alternating assignment:
+
+* `num1 = 2, 4, 6` → 246
+* `num2 = 3, 5, 8` → 358
+
+Sum = 604 → returned as **"604"**
+
+---
+
+## ✅ Time & Space Complexity
+
+| Metric           | Complexity                                 |
+| ---------------- | ------------------------------------------ |
+| Time Complexity  | **O(n)** (count + assign)                  |
+| Space Complexity | **O(1)** (since digit space is fixed: 0–9) |
+
+---
+
+## ✅ Interview-Focused Questions
+
+| Question                                                | Answer                                                        |
+| ------------------------------------------------------- | ------------------------------------------------------------- |
+| What is the greedy decision?                            | Distribute smaller digits early to minimize high place values |
+| Why use frequency array?                                | Digits are 0–9, constant space                                |
+| Why use `addString()` instead of `int(num1)+int(num2)`? | To avoid integer overflow (for large inputs)                  |
+| Could this fail with all zeros?                         | Yes, but `addString` ensures "0" is returned cleanly          |
+
+---
+
