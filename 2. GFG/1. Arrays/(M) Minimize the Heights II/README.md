@@ -85,9 +85,6 @@ The difference between the largest and the smallest is 17 - 6 = 11.
 * [Minimize The Maximum Difference Between The Heights](https://www.geeksforgeeks.org/minimize-the-maximum-difference-between-the-heights/)
 
 ---
-Here is the complete explanation, dry run, and **optimized implementation** of **"Minimize the Heights II"** in Python, C++, and JavaScript formats.
-
----
 
 ## 🔍 Problem Understanding
 

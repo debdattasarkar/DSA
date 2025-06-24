@@ -1,4 +1,3 @@
-Here is the complete **README-style explanation**, **step-by-step dry run**, and **solution in Python, C++, and JavaScript** (with inline comments) for **Leetcode #80 – Remove Duplicates from Sorted Array II**.
 
 ---
 

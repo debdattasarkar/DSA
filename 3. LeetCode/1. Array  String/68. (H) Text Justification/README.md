@@ -1,4 +1,3 @@
-Here is the complete **README-style explanation** of **Leetcode Problem 68: Text Justification**, based on the image:
 
 ---
 
@@ -99,10 +98,6 @@ Output:
 * Array
 * String
 * Simulation
-
----
-
-Here is the complete README-style breakdown with step-by-step dry run, explanation, and code implementations for the **Text Justification** problem:
 
 ---
 

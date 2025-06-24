@@ -1,4 +1,3 @@
-Here is the complete **README-style documentation** based on the given image, including problem description, constraints, examples, tags, and complexity:
 
 ---
 

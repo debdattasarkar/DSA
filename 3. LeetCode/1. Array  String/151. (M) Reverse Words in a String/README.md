@@ -1,4 +1,3 @@
-Here is the complete README-style conversion of the LeetCode problem **151. Reverse Words in a String**:
 
 ---
 
