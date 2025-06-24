@@ -239,3 +239,269 @@ var romanToInt = function(s) {
 | Time Complexity  | O(n)              |
 | Space Complexity | O(1)              |
 | Method Used      | Hash Map + Greedy |
+
+Absolutely! Below are **interview questions** related to the `romanToInt()` function, along with **clear answers** and code references where applicable.
+
+---
+
+## ✅ Function Recap
+
+The function:
+
+```python
+class Solution:
+    def romanToInt(self, s: str) -> int:
+        roman = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
+        total = 0
+        prev = 0
+        for ch in reversed(s):
+            val = roman[ch]
+            total += val if val >= prev else -val
+            prev = val
+        return total
+```
+
+---
+
+## 🎯 Common Interview Questions & Answers
+
+---
+
+### 🔸 Q1: **What is the time and space complexity of your solution?**
+
+**A**:
+
+* **Time Complexity**: O(n), where n is the length of the input string.
+* **Space Complexity**: O(1), since the mapping dictionary size is fixed (7 symbols).
+
+---
+
+### 🔸 Q2: **Why do you traverse the string from right to left?**
+
+**A**:
+Because Roman numerals subtract when a smaller numeral appears *before* a larger one (e.g., `IV` = 4).
+
+* By traversing from **right to left**, we can check if the **current value** is less than the **previous one** (to the right).
+* This allows us to easily subtract when needed without looking ahead.
+
+---
+
+### 🔸 Q3: **Can you implement the reverse — Integer to Roman?**
+
+**A**: Yes, using a greedy subtraction approach:
+
+```python
+class Solution:
+    def intToRoman(self, num: int) -> str:
+        val_sym = [
+            (1000, 'M'), (900, 'CM'), (500, 'D'), (400, 'CD'),
+            (100, 'C'), (90, 'XC'), (50, 'L'), (40, 'XL'),
+            (10, 'X'), (9, 'IX'), (5, 'V'), (4, 'IV'), (1, 'I')
+        ]
+        res = ""
+        for val, sym in val_sym:
+            while num >= val:
+                res += sym
+                num -= val
+        return res
+```
+
+---
+
+### 🔸 Q4: **Can you validate if a Roman numeral is valid?**
+
+**A**:
+Validation includes checking for:
+
+* No more than 3 repetitions (`XXXX` is invalid)
+* Subtractive patterns (`IL` is invalid, only `IV`, `IX`, `XL`, etc. are allowed)
+
+**Idea**: Use regular expression or build a finite automaton.
+
+---
+
+### 🔸 Q5: **Can you do it without reversing the string?**
+
+**A**:
+Yes, using left-to-right traversal with a look-ahead:
+
+```python
+def romanToInt(s: str) -> int:
+    roman = {'I': 1, 'V': 5, 'X': 10, 'L': 50,
+             'C': 100, 'D': 500, 'M': 1000}
+    total = 0
+    for i in range(len(s)):
+        if i + 1 < len(s) and roman[s[i]] < roman[s[i+1]]:
+            total -= roman[s[i]]
+        else:
+            total += roman[s[i]]
+    return total
+```
+
+---
+
+### 🔸 Q6: **What design changes would you make to support extended Roman numerals (> 3999)?**
+
+**A**:
+Introduce a way to handle overlined letters representing 1000× multiplier. For example:
+
+* An overlined `V̄` = 5000
+* Can be simulated using a `__` prefix (`__V`) or added in a mapping.
+
+---
+
+### 🔸 Q7: **Which DSA pattern does this problem follow?**
+
+**A**:
+Reverse traversal + comparison with previous element (similar to two-pointer or greedy pattern), optimized for Roman numeral rules.
+
+---
+
+### 🔸 Q8: **How would you test this function?**
+
+**A**:
+Test basic, subtractive, and edge cases:
+
+```python
+assert romanToInt("III") == 3
+assert romanToInt("IV") == 4
+assert romanToInt("IX") == 9
+assert romanToInt("LVIII") == 58
+assert romanToInt("MCMXCIV") == 1994
+assert romanToInt("MMMCMXCIX") == 3999
+```
+
+---
+
+### 🔸 Q9: **What if the input is lowercase or invalid characters?**
+
+**A**:
+Enhance with input validation:
+
+```python
+if any(ch not in roman for ch in s.upper()):
+    raise ValueError("Invalid Roman numeral")
+```
+
+---
+
+### 🔸 Q10: **Can you make it object-oriented (OOP style)?**
+
+**A**:
+
+```python
+class RomanConverter:
+    def __init__(self):
+        self.roman = {'I': 1, 'V': 5, 'X': 10, 'L': 50,
+                      'C': 100, 'D': 500, 'M': 1000}
+
+    def to_integer(self, s: str) -> int:
+        total = 0
+        prev = 0
+        for ch in reversed(s):
+            val = self.roman[ch]
+            total += val if val >= prev else -val
+            prev = val
+        return total
+```
+
+---
+
+Here’s a **Cheat Sheet** for the **Roman to Integer** DSA problem – perfect for interview revision:
+
+---
+
+# 🧠 Roman to Integer – Cheat Sheet
+
+---
+
+### ✅ Problem Statement
+
+Convert a Roman numeral string `s` into its integer value.
+
+---
+
+### 🧩 Core Roman Mapping
+
+```python
+roman = {
+  'I': 1, 'V': 5, 'X': 10, 'L': 50,
+  'C': 100, 'D': 500, 'M': 1000
+}
+```
+
+---
+
+### 🔄 Optimal Logic (Reverse Traversal)
+
+```python
+def romanToInt(s: str) -> int:
+    total, prev = 0, 0
+    for ch in reversed(s):
+        val = roman[ch]
+        total += val if val >= prev else -val
+        prev = val
+    return total
+```
+
+⏱️ **Time**: O(n)
+💾 **Space**: O(1)
+
+---
+
+### 📐 Pattern Used
+
+* **Reverse traversal + running comparison**
+  Similar to greedy logic — subtract when current < prev.
+
+---
+
+### ✅ Test Cases
+
+| Roman       | Integer |
+| ----------- | ------- |
+| "III"       | 3       |
+| "IV"        | 4       |
+| "IX"        | 9       |
+| "LVIII"     | 58      |
+| "MCMXCIV"   | 1994    |
+| "MMMCMXCIX" | 3999    |
+
+---
+
+### 💬 Interview Q\&A
+
+| **Question**                         | **Answer**                                |
+| ------------------------------------ | ----------------------------------------- |
+| Time and space complexity?           | O(n), O(1)                                |
+| Why reverse the string?              | Easier subtractive handling               |
+| Can you do it L→R instead?           | Yes, using look-ahead                     |
+| Reverse: Integer → Roman?            | Use greedy subtraction with symbol pairs  |
+| Handle invalid input?                | Validate characters & order               |
+| Extend for values > 3999?            | Add overline notation (e.g., 𝑉̄ = 5000)  |
+| Pattern used?                        | Reverse traversal, greedy subtraction     |
+| What about lowercase or mixed input? | `s = s.upper()` before loop               |
+| How would you test it?               | Cover basic, subtractive, and edge inputs |
+| Can you design it in OOP style?      | Yes, using a class like `RomanConverter`  |
+
+---
+
+### 🔁 Related Questions
+
+* 🔁 Integer to Roman
+* 🔁 Validate Roman numeral
+* 🔁 String to Integer (atoi)
+* 🔁 Expression evaluators (e.g., RPN)
+* 🔁 Subarray sum problems (prefix-like logic)
+
+---
+
+### 🛠️ Tip for Interviews
+
+* If the input is *always valid*, use reverse traversal.
+* If not, **validate**:
+
+  * Disallow repeated 4+ chars
+  * Check invalid subtractive combos (`IC`, `IL`, etc.)
+
+---
