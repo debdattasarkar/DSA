@@ -1,4 +1,3 @@
-Here is the complete README-style documentation based on the problem statement in your image:
 
 ---
 
