@@ -74,325 +74,249 @@ We return an array that contains `-2`, `-1`, `3`, and `4`, and we exclude the tw
 * [Program To Find Largest Element In An Array](#)
 
 ---
-
-Great! You’re now tackling the problem **“At least two greater elements”**, where you're asked to return all elements in **sorted order** **except** the two greatest ones from the array.
-
-Let’s break it down in a simple way 🔍
+Sure! Let's break it down as requested:
 
 ---
 
-## 🧠 Problem Understanding:
+## ✅ 1. Text Explanation & Step-by-Step Dry Run
 
-Given an array of **distinct** integers:
+### **Problem Summary**
 
-- **Remove the two largest elements**.
-- **Return the rest in sorted order**.
+You are given an array `arr[]` of **distinct integers**. You need to return a **sorted list** of all elements **except the two greatest elements**.
 
 ---
 
-### ✅ Examples:
+### **Approach**
 
-#### Example 1:
-```plaintext
-Input:  [2, 8, 7, 1, 5]
-Output: [1, 2, 5]
-Explanation: Removed 7 and 8 (the two largest)
+1. **Find the two largest elements**.
+2. **Exclude** them from the array.
+3. **Sort** the remaining elements and return them.
+
+---
+
+### 🔍 **Dry Run**
+
+#### Input:
+
+```
+arr = [2, 8, 7, 1, 5]
 ```
 
-#### Example 2:
-```plaintext
-Input:  [7, -2, 3, 4, 9, -1]
-Output: [-2, -1, 3, 4]
-Explanation: Removed 7 and 9
-```
+#### Steps:
+
+* Step 1: Sort the array → `[1, 2, 5, 7, 8]`
+* Step 2: Remove last 2 elements → `[1, 2, 5]`
+* Step 3: Return this list → Output: `[1, 2, 5]`
 
 ---
 
-## ⚙️ Expected Complexity:
-
-- **Time:** `O(n log n)` (sorting-based approach)
-- **Space:** `O(n)` (to store the final result)
+## ✅ 2. Code Implementations with Inline Comments
 
 ---
 
-## 🧑‍💻 Python Solution (With Comments)
+### ✅ Python Code
 
 ```python
-def at_least_two_greater_elements(arr):
-    # Step 1: Sort the array
-    arr.sort()  # O(n log n)
-
-    # Step 2: Return all elements except the last two (which are the greatest)
-    return arr[:-2]  # O(n)
-
-# Example usage
-print(at_least_two_greater_elements([2, 8, 7, 1, 5]))     # Output: [1, 2, 5]
-print(at_least_two_greater_elements([7, -2, 3, 4, 9, -1])) # Output: [-2, -1, 3, 4]
+class Solution:
+    def findElements(self, arr):
+        # Sort the array in ascending order
+        arr.sort()
+        
+        # Remove the last two elements (the largest two)
+        result = arr[:-2]
+        
+        return result
 ```
 
 ---
 
-## 🧑‍💻 C++ Solution
+### ✅ C++ Code
 
 ```cpp
-#include <iostream>
-#include <vector>
-#include <algorithm>
-using namespace std;
+class Solution {
+  public:
+    vector<int> findElements(vector<int> arr) {
+        // Step 1: Sort the array
+        sort(arr.begin(), arr.end());
 
-vector<int> atLeastTwoGreaterElements(vector<int>& arr) {
-    sort(arr.begin(), arr.end()); // O(n log n)
-    
-    // Remove last two greatest elements
-    vector<int> result(arr.begin(), arr.end() - 2); // O(n)
-    return result;
-}
+        // Step 2: Remove last two elements (exclude two greatest)
+        arr.resize(arr.size() - 2);
 
-int main() {
-    vector<int> arr = {2, 8, 7, 1, 5};
-    vector<int> result = atLeastTwoGreaterElements(arr);
-
-    for (int num : result)
-        cout << num << " ";
-    cout << endl;
-    return 0;
-}
+        return arr;
+    }
+};
 ```
 
 ---
 
-## 🌐 JavaScript Solution
+### ✅ JavaScript Code
 
 ```javascript
-function atLeastTwoGreaterElements(arr) {
-    arr.sort((a, b) => a - b); // Sort in ascending order
-    return arr.slice(0, arr.length - 2); // Remove last 2 elements
-}
+/**
+ * @param {number[]} arr
+ * @return {number[]}
+ */
+class Solution {
+    findElements(arr) {
+        // Step 1: Sort the array
+        arr.sort((a, b) => a - b);
 
-// Example usage
-console.log(atLeastTwoGreaterElements([2, 8, 7, 1, 5]));     // [1, 2, 5]
-console.log(atLeastTwoGreaterElements([7, -2, 3, 4, 9, -1])); // [-2, -1, 3, 4]
+        // Step 2: Remove last two elements
+        return arr.slice(0, arr.length - 2);
+    }
+}
 ```
 
 ---
 
-### 🚀 Alternate Approach (Without Full Sort)
-
-If you want to go beyond the required `O(n log n)` and try for `O(n)`:
-
-1. **Find top two max elements** in one pass (O(n))
-2. **Filter out those two**
-3. **Sort remaining list (O((n-2) log n))** — Still ends up near `O(n log n)`
-
-### Optimized version-
-
-Awesome! Let's now tackle the **optimized version** of the “At Least Two Greater Elements” problem using a smarter approach that avoids sorting the entire array upfront.
+## ✅ 3. Interview Questions & Sample Answers
 
 ---
 
-## ⚙️ Optimized Strategy (Better than sorting full array)
+### ❓Q1. What is the time complexity of your solution?
 
-### ✅ Steps:
-
-1. **Find the two greatest elements** in a single pass (O(n)).
-2. **Collect all other elements** into a result list (O(n)).
-3. **Sort only the result list**, which has `n-2` elements (O((n-2) log(n-2))).
-
-➡️ Total Time Complexity: **O(n + (n-2) log(n-2)) ≈ O(n log n)** (but faster in practice than full sort).  
-➡️ Space Complexity: **O(n)**.
+**🅰️:** Sorting takes `O(n log n)`, and slicing/removal is `O(n)` in worst case, so total time complexity is `O(n log n)`.
 
 ---
 
-## 🐍 Python Optimized Version
+### ❓Q2. Can this be done without sorting?
+
+**🅰️:** Yes, we can use a **two-pass scan** to find the top two largest elements in `O(n)`, then do a filter to remove them. But if output needs to be **sorted**, we still need sorting → `O(n log n)`.
+
+---
+
+### ❓Q3. Can you do it in-place?
+
+**🅰️:** Not if we need to **return a new sorted array**. But we can do it in-place before copying to result using `partition` methods if allowed.
+
+---
+
+### ❓Q4. Will this code work if there are **duplicates** in the array?
+
+**🅰️:** No, the problem specifies **distinct** elements. If duplicates were allowed, we’d need to carefully handle counts or use a multiset.
+
+---
+
+Would you like the in-place `O(n)` version as an alternative approach too?
+
+Great! Here's the optimized **O(n)** approach **without sorting**, assuming you do **not need the result in sorted order** (or you can sort at the end if needed).
+
+---
+
+## ✅ Optimized O(n) Approach (Without Sorting)
+
+### 🔍 **Idea**
+
+* First pass: Find the largest and second largest elements.
+* Second pass: Collect all elements except those two.
+
+---
+
+### ✅ Python Code
 
 ```python
-def at_least_two_greater_elements(arr):
-    if len(arr) <= 2:
-        return []
+class Solution:
+    def findElements(self, arr):
+        n = len(arr)
+        if n < 3:
+            return []  # Less than 3 elements means no valid result
 
-    # Step 1: Find the two largest elements
-    first = second = float('-inf')
-    for num in arr:
-        if num > first:
-            second = first
-            first = num
-        elif num > second:
-            second = num
+        # Step 1: Find the top two maximum elements
+        first = second = float('-inf')
+        for num in arr:
+            if num > first:
+                second = first
+                first = num
+            elif num > second:
+                second = num
 
-    # Step 2: Filter out first and second max
-    result = [num for num in arr if num != first and num != second]
-
-    # Step 3: Sort the remaining
-    result.sort()
-
-    return result
-
-# Example usage
-print(at_least_two_greater_elements([2, 8, 7, 1, 5]))      # Output: [1, 2, 5]
-print(at_least_two_greater_elements([7, -2, 3, 4, 9, -1])) # Output: [-2, -1, 3, 4]
+        # Step 2: Collect elements except the top two
+        result = [num for num in arr if num != first and num != second]
+        return result
 ```
 
 ---
 
-## 🧑‍💻 C++ Optimized Version
+### ✅ C++ Code
 
 ```cpp
-#include <iostream>
-#include <vector>
-#include <algorithm>
-using namespace std;
+class Solution {
+  public:
+    vector<int> findElements(vector<int> arr) {
+        int n = arr.size();
+        if (n < 3) return {};
 
-vector<int> atLeastTwoGreaterElements(vector<int>& arr) {
-    if (arr.size() <= 2) return {};
-
-    int first = INT_MIN, second = INT_MIN;
-
-    // Step 1: Find top two elements
-    for (int num : arr) {
-        if (num > first) {
-            second = first;
-            first = num;
-        } else if (num > second) {
-            second = num;
+        // Step 1: Find largest and second largest
+        int first = INT_MIN, second = INT_MIN;
+        for (int num : arr) {
+            if (num > first) {
+                second = first;
+                first = num;
+            } else if (num > second) {
+                second = num;
+            }
         }
+
+        // Step 2: Collect elements excluding the top two
+        vector<int> result;
+        for (int num : arr) {
+            if (num != first && num != second) {
+                result.push_back(num);
+            }
+        }
+
+        return result;
     }
-
-    // Step 2: Filter out first and second
-    vector<int> result;
-    for (int num : arr) {
-        if (num != first && num != second)
-            result.push_back(num);
-    }
-
-    // Step 3: Sort the result
-    sort(result.begin(), result.end());
-    return result;
-}
-
-int main() {
-    vector<int> arr = {7, -2, 3, 4, 9, -1};
-    vector<int> res = atLeastTwoGreaterElements(arr);
-
-    for (int x : res)
-        cout << x << " ";
-    cout << endl;
-    return 0;
-}
+};
 ```
 
 ---
 
-## 🌐 JavaScript Optimized Version
+### ✅ JavaScript Code
 
 ```javascript
-function atLeastTwoGreaterElements(arr) {
-    if (arr.length <= 2) return [];
+class Solution {
+    findElements(arr) {
+        if (arr.length < 3) return [];
 
-    let first = -Infinity, second = -Infinity;
-
-    // Step 1: Find the top two max elements
-    for (let num of arr) {
-        if (num > first) {
-            second = first;
-            first = num;
-        } else if (num > second) {
-            second = num;
+        // Step 1: Find the largest and second largest
+        let first = -Infinity, second = -Infinity;
+        for (let num of arr) {
+            if (num > first) {
+                second = first;
+                first = num;
+            } else if (num > second) {
+                second = num;
+            }
         }
+
+        // Step 2: Filter out top two elements
+        return arr.filter(num => num !== first && num !== second);
     }
-
-    // Step 2: Filter out first and second
-    let result = arr.filter(num => num !== first && num !== second);
-
-    // Step 3: Sort the result
-    result.sort((a, b) => a - b);
-    return result;
 }
-
-// Example usage
-console.log(atLeastTwoGreaterElements([2, 8, 7, 1, 5]));      // [1, 2, 5]
-console.log(atLeastTwoGreaterElements([7, -2, 3, 4, 9, -1])); // [-2, -1, 3, 4]
 ```
 
 ---
 
-### 💬 Final Notes:
+### 🔁 Optional: Sort the Result
 
-- This version is **faster in practice**, especially on large arrays.
-- It meets the expected `O(n log n)` time but with fewer comparisons due to skipping the top 2 before sorting.
+If output must be sorted, you can sort the `result` array at the end:
 
-Would you like to benchmark both versions on a large test case to compare their actual runtimes?
-
----
-
-Perfect! Let's **benchmark the two versions** (Full Sort vs. Optimized Sort) to compare actual runtimes using Python — it's quick to set up and great for performance comparisons.
+* Python: `return sorted(result)`
+* C++: `sort(result.begin(), result.end());`
+* JS: `result.sort((a, b) => a - b);`
 
 ---
 
-### ⚔️ **Benchmark Battle: Full Sort vs Optimized**
+### ✅ Time & Space Complexity
 
-We’ll:
-1. Generate a large random array (e.g., 100,000 elements).
-2. Time each function using `time` module.
-3. Compare runtimes side by side.
+| Operation           | Time       | Space |
+| ------------------- | ---------- | ----- |
+| Find top 2 elements | O(n)       | O(1)  |
+| Filter elements     | O(n)       | O(n)  |
+| (Optional) Sort     | O(n log n) | O(1)  |
 
----
-
-## 🐍 **Python Benchmark Script**
-
-```python
-import time
-import random
-
-# Generate large test case
-n = 100_000
-arr = random.sample(range(1, 10**6), n)  # Unique integers
-
-# Full Sort Version
-def full_sort_version(arr):
-    return sorted(arr)[:-2]
-
-# Optimized Version
-def optimized_version(arr):
-    first = second = float('-inf')
-    for num in arr:
-        if num > first:
-            second = first
-            first = num
-        elif num > second:
-            second = num
-    result = [x for x in arr if x != first and x != second]
-    result.sort()
-    return result
-
-# Benchmark full sort version
-start = time.time()
-_ = full_sort_version(arr.copy())
-end = time.time()
-print(f"Full Sort Version Time: {end - start:.5f} seconds")
-
-# Benchmark optimized version
-start = time.time()
-_ = optimized_version(arr.copy())
-end = time.time()
-print(f"Optimized Version Time: {end - start:.5f} seconds")
-```
+👉 If sorting is not needed, overall is **O(n) time and O(n) space**.
 
 ---
-
-## 🧪 **Typical Output**
-```plaintext
-Full Sort Version Time: 0.12743 seconds
-Optimized Version Time: 0.08852 seconds
-```
-
----
-
-### ✅ Conclusion
-
-| Version           | Time        | Efficiency Verdict       |
-|-------------------|-------------|---------------------------|
-| Full Sort         | ~0.12 sec   | Simple but not minimal    |
-| Optimized Sort    | ~0.09 sec   | Faster, avoids sorting top 2 |
-
-Even though **both are O(n log n)** in theory, the **optimized version shaves off time** by reducing the data sorted.
 
