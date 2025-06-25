@@ -177,3 +177,42 @@ var isSubsequence = function(s, t) {
 **A**: Yes. Base case: if `s` is empty → return `True`; if `t` is empty → return `False`; otherwise, check first char match and recurse.
 
 ---
+
+Absolutely! The **two-pointer solution** is the most optimal and intuitive for the **"Is Subsequence"** problem when `s` and `t` are both single strings.
+
+---
+
+## ✅ Two-Pointer Algorithm Explanation
+
+We use two pointers:
+
+* `i` for string `s`
+* `j` for string `t`
+
+We iterate through `t`, and whenever `s[i] == t[j]`, we move the `i` pointer. Regardless of match, we always move `j`.
+
+If `i` reaches the end of `s`, it means all characters of `s` have been found **in order** in `t`.
+
+---
+
+### 🧠 Dry Run Example:
+
+```text
+s = "abc", t = "ahbgdc"
+
+i → 0 (a)   j → 0 (a)   ✅ match → i++
+i → 1 (b)   j → 1 (h)   ❌
+            j → 2 (b)   ✅ match → i++
+i → 2 (c)   j → 3 (g)   ❌
+            j → 4 (d)   ❌
+            j → 5 (c)   ✅ match → i++
+i = 3 → done
+✅ return True
+```
+
+---
+
+## ✅ Time and Space Complexity
+
+* **Time**: O(n), where n = length of `t`
+* **Space**: O(1) — constant space
