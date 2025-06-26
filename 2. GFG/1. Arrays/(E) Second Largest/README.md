@@ -202,3 +202,155 @@ class Solution {
 **A:** Sorting is O(n log n). We can find the second largest in a single pass using O(n) time and O(1) space.
 
 ---
+
+Here's a detailed comparison of the four provided solutions for **finding the second largest distinct element** in an array:
+
+---
+
+### ✅ **1. Optimal Single-Pass without Sorting or Extra Structures**
+
+```python
+def secondLargest(arr):
+    if len(arr) < 2:
+        return -1
+
+    largest = second = -1
+
+    for num in arr:
+        if num > largest:
+            second = largest
+            largest = num
+        elif num > second and num != largest:
+            second = num
+
+    return second
+```
+
+**Pros**:
+
+* ✅ Time Complexity: **O(n)**
+* ✅ Space Complexity: **O(1)**
+* ✅ No sorting, no extra memory
+* ✅ Clean and direct logic
+* ✅ Handles duplicates
+
+**Cons**:
+
+* ❌ Might be slightly less intuitive to beginners due to dual tracking
+
+✅ **Recommended in interviews** for optimality and simplicity.
+
+---
+
+### ⚙️ **2. Sort-Based with `set()` for Uniqueness**
+
+```python
+class Solution:
+    def getSecondLargest(self, n):
+        n = list(set(n))  # Remove duplicates
+        if len(n) < 2:
+            return -1
+        n.sort(reverse=True)
+        return n[1]
+```
+
+**Pros**:
+
+* ✅ Very **readable and short**
+* ✅ Correct due to deduplication
+
+**Cons**:
+
+* ❌ Time Complexity: **O(n log n)** due to sorting
+* ❌ Uses extra space for `set`
+
+🔸 **Good for clarity**, but **not optimal**.
+
+---
+
+### 🔁 **3. Two-buffer Manual Tracking**
+
+```python
+class Solution:
+    def getSecondLargest(self, arr):
+        if len(arr) < 2:
+            return -1
+        buff = arr[:2]
+        if buff[0] < buff[1]:
+            buff[0], buff[1] = buff[1], buff[0]
+
+        for i in range(2, len(arr)):
+            if buff[0] == arr[i]:
+                continue
+            if buff[1] < arr[i]:
+                buff[1] = arr[i]
+                if buff[0] < buff[1]:
+                    buff[0], buff[1] = buff[1], buff[0]
+
+        return -1 if buff[0] == buff[1] else buff[1]
+```
+
+**Pros**:
+
+* ✅ Works correctly
+* ✅ Time Complexity: **O(n)**
+
+**Cons**:
+
+* ❌ Verbose
+* ❌ Fragile on edge cases
+* ❌ Less readable due to buffer manipulation
+
+🟡 **Valid but not elegant or optimal**.
+
+---
+
+### 🧪 **4. Variation with Sorted Buffer**
+
+```python
+class Solution:
+    def getSecondLargest(self, arr):
+        if len(arr) < 2:
+            return -1
+
+        buff = arr[:2]
+        buff.sort(reverse=True)
+
+        for i in range(2, len(arr)):
+            if buff[0] == arr[i]:
+                continue
+            if buff[1] < arr[i]:
+                buff[1] = arr[i]
+                buff.sort(reverse=True)
+
+        return -1 if buff[1] == buff[0] else buff[1]
+```
+
+**Pros**:
+
+* ✅ Works for many cases
+* ✅ Logic is clear
+
+**Cons**:
+
+* ❌ Unnecessarily uses `sort()` inside loop ⇒ **O(n log k)** inefficiency
+* ❌ Still depends on initial 2 elements without checks for uniqueness
+
+🔸 **Readable but inefficient. Avoid using `sort()` repeatedly inside loop.**
+
+---
+
+### ✅ Final Verdict
+
+| Version           | Time         | Space   | Clarity   | Optimal |
+| ----------------- | ------------ | ------- | --------- | ------- |
+| **1. Pure O(n)**  | ✅ O(n)       | ✅ O(1)  | ✅ Good    | ✅ Best  |
+| **2. Set + Sort** | ❌ O(n log n) | ❌ Extra | ✅ Best    | ❌       |
+| 3. Manual Buffer  | ✅ O(n)       | ✅ O(1)  | ❌ Verbose | ✅       |
+| 4. Sort-in-Loop   | ❌ O(n log k) | ✅ O(1)  | ✅         | ❌       |
+
+---
+
+### ✅ Recommended: **First Approach** (`secondLargest` function)
+
+Use it in interviews to showcase both performance and correctness.
