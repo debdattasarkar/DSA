@@ -79,6 +79,43 @@ and update `max_profit` accordingly.
 
 ---
 
+You are given an array `prices` where `prices[i]` is the price of a given stock on the `iᵗʰ` day.
+You must **buy** on one day and **sell** on another **future** day to maximize your profit.
+
+---
+
+### 🧠 Key Insight:
+
+We must find the maximum difference `prices[j] - prices[i]` such that `j > i`.
+
+---
+
+### 🔍 Step-by-Step Explanation (Greedy - Optimal)
+
+We use a **single pass** with two variables:
+
+* `min_price`: tracks the lowest price seen so far.
+* `max_profit`: stores the maximum profit achievable at each step.
+
+#### Dry Run Example:
+
+```text
+prices = [7, 1, 5, 3, 6, 4]
+min_price = 7
+max_profit = 0
+
+Day 1: price = 7 → min_price = 7, profit = 0
+Day 2: price = 1 → min_price = 1, profit = 0
+Day 3: price = 5 → profit = 5 - 1 = 4 → max_profit = 4
+Day 4: price = 3 → profit = 3 - 1 = 2 → max_profit = 4
+Day 5: price = 6 → profit = 6 - 1 = 5 → max_profit = 5
+Day 6: price = 4 → profit = 4 - 1 = 3 → max_profit = 5
+```
+
+🔚 Final answer: `5`
+
+---
+
 ## 🐍 Python Code
 
 ```python
@@ -86,16 +123,16 @@ from typing import List
 
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        min_price = float('inf')
-        max_profit = 0
+        min_price = float('inf')  # Initialize with maximum possible value
+        max_profit = 0  # Start with no profit
 
         for price in prices:
             if price < min_price:
-                min_price = price  # Found a better day to buy
+                min_price = price  # Update to new min price
             else:
                 profit = price - min_price
-                max_profit = max(max_profit, profit)  # Better profit found
-
+                max_profit = max(max_profit, profit)  # Update max profit
+        
         return max_profit
 ```
 
@@ -398,3 +435,21 @@ class Solution:
 
 ---
 
+## ❓ Common Interview Questions & Answers:
+
+1. **Q: Why can't we buy and sell on the same day?**
+   **A:** Because the profit must be calculated from a future sell day (`j > i`), which would result in 0 or negative profit if done on same day.
+
+2. **Q: What's the time complexity?**
+   **A:** O(n), where `n` is the number of days. Only one pass is needed.
+
+3. **Q: Can we solve this with O(1) space?**
+   **A:** Yes, we're only using two variables (`min_price` and `max_profit`), so space complexity is O(1).
+
+4. **Q: What happens if prices are always decreasing?**
+   **A:** The algorithm will return `0` as there's no profitable day to sell.
+
+5. **Q: Can we use dynamic programming?**
+   **A:** Yes, but it's overkill. Greedy is optimal here because we only need the best min-buy and max-profit relation.
+
+---
