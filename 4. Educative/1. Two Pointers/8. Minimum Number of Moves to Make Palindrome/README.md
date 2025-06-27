@@ -74,4 +74,56 @@ ccaxx → ccxax → ccxxa → cxcxa → xccxa → axccx → xccxa
 
 ---
 
+## 💡 Problem: Minimum Number of Moves to Make a Palindrome
 
+### ✅ Strategy:
+
+Use a **two-pointer technique** combined with **greedy swaps** to bring matching characters from both ends toward the center.
+
+---
+
+### 🧩 Step-by-Step Breakdown:
+
+1. **Initialize:**
+
+   * `moves = 0` – track number of adjacent swaps.
+   * Two pointers:
+
+     * `i = 0` → start of string
+     * `j = len(s) - 1` → end of string
+
+2. **Match and Swap:**
+
+   * Goal: Match `s[i]` with `s[j]`.
+   * If `s[i] == s[j]` → move inward.
+   * If not:
+
+     * Search from `j` to `i` to find a match for `s[i]`.
+     * If match is found at `k`, swap it toward `j`, incrementing `moves` for each step.
+     * If match not found, `s[i]` is the unique center char → move it to center in `(n // 2) - i` steps.
+
+3. **Post-Match:**
+
+   * Continue matching next unmatched pair after each move.
+   * Terminate when `i >= j`.
+
+---
+
+### 🧮 Time Complexity:
+
+* **Worst Case:** `O(n²)`
+  (Nested pointer movement with multiple swaps per character)
+
+### 🗂 Space Complexity:
+
+* **O(n)** – due to character list manipulation.
+
+---
+
+### 💡 Key Observations:
+
+* At most one character can be unmatched (odd-length center).
+* Swaps are local (adjacent only), so count each shift individually.
+* Efficient greedy search from `j → i` minimizes swap count.
+
+---
