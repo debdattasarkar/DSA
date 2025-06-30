@@ -265,3 +265,27 @@ var removeElement = function(nums, val) {
 ```
 
 ---
+
+## 💡 Hints and Insights
+
+1. Don't worry about clearing out removed values. Just count how many values ≠ val.
+2. Use a `k` pointer to overwrite only valid elements.
+3. You **don't need to preserve order**.
+
+---
+
+## 📌 Common Interview Questions
+
+### Q1. Why is in-place important?
+
+**A**: In-place means O(1) extra space. It shows you can optimize memory by overwriting instead of copying.
+
+### Q2. Does the order matter?
+
+**A**: No, order does **not** matter in this question.
+
+### Q3. Can you do this in one pass?
+
+**A**: Yes, using a single loop and overwrite pointer.
+
+---
