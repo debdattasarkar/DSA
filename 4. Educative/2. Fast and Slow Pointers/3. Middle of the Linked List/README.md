@@ -209,119 +209,67 @@ def get_middle_node(head):
 * Optimized for both time and space.
 * Works for both odd and even lengths by returning the **second** middle in even case.
 
-Great! You've shared the full walkthrough from Grokking's “Middle of the Linked List” problem, including both naive and optimized approaches.
-
-Here's the **complete README** version, converted and structured from your image (including diagrams and logic).
+Here is the extracted and cleaned-up text from your image:
 
 ---
 
-# 📘 Solution: Middle of the Linked List
+## Solution: Middle of the Linked List
 
-## 🧠 Problem Statement
-
-Given the **head** of a singly linked list, return the **middle node**.
-If the number of nodes is even, **return the second middle node**.
+Let's solve the **Middle of the Linked List** problem using the **Fast and Slow Pointers** pattern.
 
 ---
 
-## 🔒 Constraints
+### 🧾 Statement
 
-* $1 \leq n \leq 100$ — where `n` is the number of nodes
-* $-100 \leq \text{node.val} \leq 100$
-* Head is guaranteed to be non-null.
+Given the `head` of a singly linked list, return the **middle node** of the linked list.
+If the number of nodes in the linked list is even, return the **second** middle node.
 
----
+#### Constraints:
 
-## 🪜 Naive Approach
+Let `n` be the number of nodes in a linked list:
 
-### Idea:
-
-* Store all nodes in an array.
-* Return the node at index `len(nodes) // 2`.
-
-### Time Complexity:
-
-* $O(n)$
-
-### Space Complexity:
-
-* $O(n)$
+* $1 \leq n \leq 100$
+* $-100 \leq \text{Node.value} \leq 100$
+* `head` ≠ NULL
 
 ---
 
-## ⚡ Optimized Approach: Fast and Slow Pointers
+### 💡 Solution
 
-### Core Idea:
-
-* Use **two pointers**:
-
-  * `slow` moves one step at a time.
-  * `fast` moves two steps at a time.
-
-### Algorithm:
-
-1. Initialize both `slow` and `fast` at the head.
-2. Move `slow` by 1 and `fast` by 2 steps until `fast` reaches the end.
-3. When `fast` reaches the end, `slow` will be at the middle.
-
-> This method ensures constant space and linear time.
-
-### Dry Run Example:
-
-Given:
-
-```
-head -> 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> NULL
-```
-
-Steps:
-
-* Iteration 1: slow = 2, fast = 3
-* Iteration 2: slow = 3, fast = 5
-* Iteration 3: slow = 4, fast = NULL
-  \=> return node with value **4**
+You've likely brainstormed some approaches already. Let’s explore which to choose based on **time and space complexity**.
 
 ---
 
-## ✅ Python Code
+### 🐌 Naive Approach
 
-```python
-class ListNode:
-    def __init__(self, val=0, next=None):
-        self.val = val
-        self.next = next
+Store all nodes in an external array and return the element at index `array.length // 2`
+This gives us the middle node.
 
-def get_middle_node(head):
-    slow = head
-    fast = head
-
-    while fast and fast.next:
-        slow = slow.next
-        fast = fast.next.next
-
-    return slow
-```
+* **Time complexity:** $O(n)$
+* **Space complexity:** $O(n)$
 
 ---
 
-## 🧮 Time and Space Complexity
+### ⚡ Optimized Approach: Fast and Slow Pointers
 
-| Metric           | Value  |
-| ---------------- | ------ |
-| Time Complexity  | O(n)   |
-| Space Complexity | O(1) ✅ |
+This technique minimizes space and completes the task in **a single pass**.
+
+#### Steps:
+
+1. Initialize two pointers `slow` and `fast` at the head:
+
+   ```
+   slow = head
+   fast = head
+   ```
+
+2. Move through the list:
+
+   ```
+   slow = slow.next        # move 1 step
+   fast = fast.next.next   # move 2 steps
+   ```
+
+3. When `fast` reaches the end (`NULL`), `slow` is at the middle node. Return `slow`.
 
 ---
-
-## 🧪 Example Test Case
-
-**Input:** `1 -> 2 -> 3 -> 4 -> 5 -> 6`
-**Output:** `4`
-
----
-
-## 🎯 Summary
-
-* This is a classic two-pointer technique.
-* Optimized for both time and space.
-* Works for both odd and even lengths by returning the **second** middle in even case.
