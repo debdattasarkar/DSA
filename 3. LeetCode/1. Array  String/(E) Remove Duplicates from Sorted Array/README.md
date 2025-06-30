@@ -1,4 +1,3 @@
-Here’s a README-style explanation, including a dry run and full code in **Python**, **C++**, and **JavaScript** with inline comments, based on the Leetcode/GeeksforGeeks-style problem **Remove Duplicates from Sorted Array**.
 
 ---
 
@@ -129,3 +128,75 @@ var removeDuplicates = function(nums) {
 * **Space Complexity:** `O(1)`
 * Modifies the array in-place using the **two-pointer technique**.
 * Preserves the **order of unique elements**.
+
+---
+
+### ✅ **Expected Interview Questions and Answers**
+
+---
+
+#### 1. **Q: Why does the sorted nature of the array help in solving this problem efficiently?**
+
+**A:**
+Since the array is sorted in non-decreasing order, all duplicates are grouped together. This property helps us easily identify duplicates by comparing adjacent elements, which makes it feasible to solve the problem in a single pass using a two-pointer technique.
+
+---
+
+#### 2. **Q: What is the optimal time and space complexity for this problem?**
+
+**A:**
+
+* **Time Complexity:** O(n), where `n` is the length of the input array.
+* **Space Complexity:** O(1), since we do the modifications in-place without allocating extra space.
+
+---
+
+#### 3. **Q: Can we use extra space for this problem? Why or why not?**
+
+**A:**
+No, the problem explicitly requires **in-place** modification, so using additional data structures like sets or hash maps would violate the constraints. This forces the need for a space-efficient two-pointer solution.
+
+---
+
+#### 4. **Q: Explain the two-pointer approach.**
+
+**A:**
+
+* Use two pointers `i` and `j`.
+* Pointer `i` keeps track of the position of the last unique element found.
+* Pointer `j` scans the array from left to right.
+* When `nums[j] != nums[i]`, increment `i` and update `nums[i] = nums[j]`.
+
+---
+
+#### 5. **Q: What value should the function return?**
+
+**A:**
+Return the count of unique elements `k`. The first `k` elements of the array will be the updated array with no duplicates, as per the problem’s requirement.
+
+---
+
+#### 6. **Q: Why does the problem not care about the elements beyond the first k positions?**
+
+**A:**
+Only the first `k` positions are considered part of the “logical” output. The remaining elements may be ignored or left in any order because they’re not required as part of the result.
+
+---
+
+#### 7. **Q: What edge cases should be handled?**
+
+**A:**
+
+* An empty array.
+* An array with only one element.
+* An array with all duplicate values.
+* An array with all unique values.
+
+---
+
+#### 8. **Q: Is this problem a good example of the two-pointer technique? Why?**
+
+**A:**
+Yes. It demonstrates a classic use case: processing sorted arrays to filter or compress information efficiently using two pointers—one for reading and one for writing—without extra space.
+
+---
