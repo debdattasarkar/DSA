@@ -2,4 +2,4 @@
 class Solution:
     # Function to find values in array equal to their indices
     def valueEqualToIndex(self, arr):
-        return [arr[i] for i in range(len(arr)) if arr[i]== i+1]
+        return [ i for i in range(1, len(arr)+1) if arr[i-1] == i ]
