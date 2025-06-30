@@ -1,6 +1,89 @@
-Question
 
-![Question](Question.png)
+---
+
+# 🧩 Problem: Value Equal to Index Value
+
+**Difficulty:** Basic
+**Accuracy:** 54.83%
+**Submissions:** 228K+
+**Points:** 1
+**Average Time:** 20m
+
+---
+
+## 📝 Problem Statement
+
+Given an array `arr`, your task is to find the elements whose value is equal to that of their index value (**1-based indexing**).
+
+🔸 **Note:**
+There can be more than one element in the array which have the same value as their index. You need to include **every such element's index** in the output.
+
+---
+
+## 🔍 Examples
+
+### Example 1:
+
+```
+Input: arr[] = [15, 2, 45, 4, 7]
+Output: [2, 4]
+Explanation: 
+  arr[2] = 2 ✅
+  arr[4] = 4 ✅
+```
+
+### Example 2:
+
+```
+Input: arr[] = [1]
+Output: [1]
+Explanation:
+  arr[1] = 1 ✅
+```
+
+---
+
+## 📌 Constraints
+
+* $1 \leq \text{arr.size()} \leq 10^5$
+* $1 \leq \text{arr}[i] \leq 10^6$
+
+---
+
+## ✅ Expected Complexities
+
+* **Time Complexity:** O(n)
+* **Auxiliary Space:** O(k) — where `k` is the count of matched indices.
+
+---
+
+## 🏷️ Tags
+
+* Arrays
+* Searching
+* Data Structures
+* Algorithms
+
+---
+
+## 🏢 Company Tags
+
+* Flipkart
+* Amazon
+* FactSet
+* Hike
+
+---
+
+## 📚 Related Articles
+
+* [Find A Fixed Point In A Given Array](https://www.geeksforgeeks.org/find-a-fixed-point-in-a-given-array/)
+
+---
+
+## 👨‍💼 Related Interview Experiences
+
+* Flipkart Interview Experience Set 3
 
 ---
 🎯 **"Value equal to index value"** problem.
@@ -225,14 +308,102 @@ Try this common test case in your `insert()` calls:
 
 ---
 
-# 🔥 Boom! You’ve now added a **custom utility method** to your `ArrayManager` class that:
-- Solves a real interview problem
-- Uses 1-based indexing logic
-- Strengthens your class design
+Comprehensive breakdown of the **“Value Equal to Index Value”** problem including:
 
 ---
 
-🎯 Would you like to test this in **one language together** and I’ll help check your code?  
-Or shall we go to the **next interview question** after this?
+## ✅ 1. Text Explanation with Step-by-Step Dry Run
 
-Let’s keep riding this hot streak! 💪
+### 🧠 Problem:
+
+Find all indices `i` such that `arr[i] == i` (**1-based indexing**).
+
+### 🧾 Key Point:
+
+Use **1-based index** comparison: check if `arr[i - 1] == i` while looping.
+
+---
+
+### 🔄 Dry Run
+
+For example:
+
+```python
+arr = [15, 2, 45, 4, 7]
+         ↑  ↑      ↑
+Index:   1  2  3  4  5
+```
+
+**Loop iteration:**
+
+| i (1-based) | arr\[i-1] | Check   | Match? |
+| ----------- | --------- | ------- | ------ |
+| 1           | 15        | 15 == 1 | ❌      |
+| 2           | 2         | 2 == 2  | ✅      |
+| 3           | 45        | 45 == 3 | ❌      |
+| 4           | 4         | 4 == 4  | ✅      |
+| 5           | 7         | 7 == 5  | ❌      |
+
+**Output:** `[2, 4]`
+
+---
+
+## ✅ 2. Optimized Python Solution (Expected in Interviews)
+
+```python
+class Solution:
+    def valueEqualToIndex(self, arr):
+        result = []
+        for i in range(1, len(arr) + 1):
+            if arr[i - 1] == i:
+                result.append(i)
+        return result
+
+# Example Usage
+arr = [15, 2, 45, 4, 7]
+sol = Solution()
+print(sol.valueEqualToIndex(arr))  # Output: [2, 4]
+```
+
+### ⏱️ Time & Space Complexity:
+
+* **Time:** O(n)
+* **Space:** O(k), where `k` is number of matched indices
+
+---
+
+## ✅ 3. Common Interview Questions & Answers
+
+### 🔹 Q1: What is the time complexity of your solution?
+
+**A:** It is **O(n)** since we iterate through the array once.
+
+---
+
+### 🔹 Q2: How does 1-based indexing affect your logic?
+
+**A:** Normally array indices are 0-based. But since the problem uses 1-based indexing, we compare `arr[i - 1] == i` during iteration.
+
+---
+
+### 🔹 Q3: Can the array be sorted? Would that help?
+
+**A:** The array can be unsorted. Sorting would not help since we need to maintain original positions to match with their 1-based indices.
+
+---
+
+### 🔹 Q4: What happens if there are duplicates?
+
+**A:** Duplicates don’t affect correctness since we are matching values to index positions individually.
+
+---
+
+### 🔹 Q5: How would you solve it using list comprehension in Python?
+
+**A:**
+
+```python
+[i for i in range(1, len(arr) + 1) if arr[i - 1] == i]
+```
+
+---
