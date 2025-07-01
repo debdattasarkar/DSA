@@ -80,6 +80,55 @@ def LIS(nums):
 
 ---
 
+## ✅ Problem:
+
+For each element in array **A**, count how many elements in array **B** are **less than or equal to it**.
+
+---
+
+### 🔍 Example:
+
+**Input:**
+
+```python
+A = [4, 8, 1]
+B = [1, 2, 5, 7]
+```
+
+**Explanation:**
+
+* For `4` → B elements ≤ 4: `[1, 2]` → count = **2**
+* For `8` → B elements ≤ 8: `[1, 2, 5, 7]` → count = **4**
+* For `1` → B elements ≤ 1: `[1]` → count = **1**
+
+**Output:**
+
+```python
+[2, 4, 1]
+```
+
+---
+
+### ✅ Python Code:
+
+```python
+from bisect import bisect_right
+
+A = [4, 8, 1]
+B = [1, 2, 5, 7]
+
+B.sort()  # Must be sorted for bisect to work
+
+result = []
+for a in A:
+    count = bisect_right(B, a)
+    result.append(count)
+
+print(result)  # Output: [2, 4, 1]
+```
+
+---
+
 ### 3. **K-th Smallest Pair Distance**
 
 **Binary Search + bisect** to count how many pairs have distance ≤ `mid`.
