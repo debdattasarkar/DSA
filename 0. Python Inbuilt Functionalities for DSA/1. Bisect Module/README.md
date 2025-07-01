@@ -59,26 +59,8 @@ b.sort()
 for a in A:
     count = bisect_right(b, a)
 ```
-
 ---
 
-### 2. **Longest Increasing Subsequence (LIS) - O(n log n)**
-
-```python
-from bisect import bisect_left
-
-def LIS(nums):
-    dp = []
-    for x in nums:
-        i = bisect_left(dp, x)
-        if i == len(dp):
-            dp.append(x)
-        else:
-            dp[i] = x
-    return len(dp)
-```
-
----
 
 ## ✅ Problem:
 
@@ -125,6 +107,24 @@ for a in A:
     result.append(count)
 
 print(result)  # Output: [2, 4, 1]
+```
+
+---
+
+### 2. **Longest Increasing Subsequence (LIS) - O(n log n)**
+
+```python
+from bisect import bisect_left
+
+def LIS(nums):
+    dp = []
+    for x in nums:
+        i = bisect_left(dp, x)
+        if i == len(dp):
+            dp.append(x)
+        else:
+            dp[i] = x
+    return len(dp)
 ```
 
 ---
