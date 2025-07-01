@@ -206,6 +206,324 @@ print(LIS(nums))  # Output: 4
 
 ---
 
+**K-th Smallest Pair Distance** is a classic problem that uses **binary search + bisect** for optimization.
+
+---
+
+## ✅ Problem:
+
+Given an array `nums` and an integer `k`, find the **k-th smallest absolute difference** between any two elements in the array.
+
+---
+
+## 🧪 Example Input:
+
+```python
+nums = [1, 3, 1]
+k = 1
+```
+
+---
+
+### ✅ Expected Output:
+
+```
+0
+```
+
+---
+
+## 🧠 Explanation:
+
+All pairwise absolute differences:
+
+* |1 - 1| = **0**
+* |1 - 3| = 2
+* |3 - 1| = 2
+
+All distances: **\[0, 2, 2]**
+Sorted distances: **\[0, 2, 2]**
+
+* The **1st smallest** distance is `0`.
+
+---
+
+## 🛠️ Dry Run: Binary Search + Bisect Count
+
+### Key idea:
+
+Binary search the answer (distance), and count how many pairs have distance ≤ `mid`.
+
+---
+
+### 🧩 Helper Function: Count pairs with distance ≤ `mid`
+
+```python
+from bisect import bisect_right
+
+def count_pairs_within(nums, max_dist):
+    count = 0
+    for i in range(len(nums)):
+        j = bisect_right(nums, nums[i] + max_dist, i + 1)
+        count += j - i - 1
+    return count
+```
+
+---
+
+### 🔁 Binary Search Flow:
+
+```python
+nums = [1, 3, 1]
+k = 1
+nums.sort()  # [1, 1, 3]
+```
+
+Binary search over `dist = 0 to (3 - 1) = 2`
+
+#### Step 1:
+
+* mid = 1
+* Count pairs with dist ≤ 1 → Only (1, 1) → count = 1
+* count ≥ k → try smaller → `high = 1`
+
+#### Step 2:
+
+* mid = 0
+* Count pairs with dist ≤ 0 → Only (1, 1) → count = 1
+* count ≥ k → `high = 0`
+
+Loop ends → answer = 0 ✅
+
+---
+
+## ✅ Final Code
+
+```python
+from bisect import bisect_right
+
+class Solution:
+    def smallestDistancePair(self, nums, k):
+        nums.sort()
+        n = len(nums)
+
+        def count_pairs(max_dist):
+            count = 0
+            for i in range(n):
+                j = bisect_right(nums, nums[i] + max_dist, i + 1)
+                count += j - i - 1
+            return count
+
+        low, high = 0, nums[-1] - nums[0]
+        while low < high:
+            mid = (low + high) // 2
+            if count_pairs(mid) >= k:
+                high = mid
+            else:
+                low = mid + 1
+        return low
+```
+
+---
+
+## ✅ Example Usage
+
+```python
+sol = Solution()
+print(sol.smallestDistancePair([1, 3, 1], 1))  # Output: 0
+```
+
+---
+
+# Extract **k-th largest**
+
+Extracting the **k-th largest pair distance** using `bisect` is a twist on the k-th **smallest** version — we can still use **binary search**, but need to tweak the counting logic.
+
+---
+
+## 💡 Problem:
+
+> Given an array `nums` and integer `k`, find the **k-th largest absolute difference** among all unique pairs `(i, j)` where `i < j`.
+
+---
+
+## ✅ Key Observations:
+
+* Total number of pairs = `n * (n - 1) // 2`
+* Sort `nums` to make bisect and pair-counting easier.
+* Use binary search to find the smallest distance such that **at least (total\_pairs - k + 1)** pairs have distance ≤ `mid`.
+  (Because that would make `mid` the **k-th largest** distance)
+
+---
+
+## 🧪 Example:
+
+```python
+nums = [1, 3, 6]
+k = 1  # Find the **largest** pair distance
+```
+
+All distances:
+
+* |1 - 3| = 2
+* |1 - 6| = 5
+* |3 - 6| = 3
+
+Sorted distances: **\[2, 3, 5]**
+Largest (1st) = **5**
+
+✅ Output: `5`
+
+---
+
+## ✅ Python Code using `bisect_right` + binary search:
+
+```python
+from bisect import bisect_right
+
+class Solution:
+    def kthLargestDistancePair(self, nums, k):
+        nums.sort()
+        n = len(nums)
+        total_pairs = n * (n - 1) // 2
+
+        def count_pairs_within(d):
+            count = 0
+            for i in range(n):
+                j = bisect_right(nums, nums[i] + d, i + 1)
+                count += j - i - 1
+            return count
+
+        # Binary search for distance
+        low, high = 0, nums[-1] - nums[0]
+        while low < high:
+            mid = (low + high) // 2
+            count = count_pairs_within(mid)
+
+            # If we have at least (total_pairs - k + 1) pairs ≤ mid,
+            # then mid might be the kth LARGEST
+            if count >= total_pairs - k + 1:
+                high = mid
+            else:
+                low = mid + 1
+        return low
+```
+
+---
+
+### 🔁 Dry Run for nums = \[1, 3, 6], k = 1
+
+* Total pairs = 3
+* We want 3 - 1 + 1 = 3 pairs with dist ≤ mid
+* Binary search gives:
+
+  * mid = 2 → count = 1 (too small)
+  * mid = 3 → count = 2 (still small)
+  * mid = 5 → count = 3 ✅
+
+---
+
+## ✅ Example Use:
+
+```python
+sol = Solution()
+print(sol.kthLargestDistancePair([1, 3, 6], 1))  # Output: 5
+```
+
+---
+
+# Pairs with sum ≤ x using bisect
+
+Great! Let's tackle the classic problem: **Count the number of pairs (i, j)** such that:
+
+> `nums[i] + nums[j] ≤ x` and `i < j`
+
+We’ll use **`bisect_right`** for this, which gives a very clean and efficient solution when the array is **sorted**.
+
+---
+
+## 🧩 Problem Statement
+
+**Input:**
+
+* An array `nums`
+* An integer `x`
+
+**Goal:**
+Count the number of **unique pairs** `(i, j)` where:
+
+* `i < j`
+* `nums[i] + nums[j] ≤ x`
+
+---
+
+### ✅ Key Idea
+
+1. **Sort the array**.
+2. For every `nums[i]`, use `bisect_right()` to find the **largest index `j`** where `nums[i] + nums[j] ≤ x`.
+3. For each index `i`, count how many `j > i` satisfy the condition.
+
+---
+
+## ✅ Python Code Using `bisect_right`
+
+```python
+from bisect import bisect_right
+
+def count_pairs_with_sum_leq_x(nums, x):
+    nums.sort()
+    n = len(nums)
+    count = 0
+
+    for i in range(n):
+        # max value nums[j] can be so that nums[i] + nums[j] ≤ x
+        target = x - nums[i]
+        j = bisect_right(nums, target)
+
+        # j is 1 past the last valid index; subtract i+1 to exclude same/previous
+        valid_pairs = max(0, j - i - 1)
+        count += valid_pairs
+
+    return count
+```
+
+---
+
+### 🧪 Example
+
+```python
+nums = [1, 3, 5, 2]
+x = 6
+```
+
+**Sorted**: `[1, 2, 3, 5]`
+Valid pairs:
+
+* (1,2)=3
+* (1,3)=4
+* (1,5)=6
+* (2,3)=5
+
+✅ Total = **4 pairs**
+
+```python
+print(count_pairs_with_sum_leq_x([1, 3, 5, 2], 6))  # Output: 4
+```
+
+---
+
+## 🧠 Time Complexity
+
+* `O(n log n)` for sorting
+* `O(n log n)` for the bisect loop
+
+✅ **Total = O(n log n)** — fast and scalable
+
+---
+
+
+---
+
 ### 4. **Sliding Window Median (SortedList + bisect)**
 
 Maintain a sorted list of size `k` and use `bisect.insort` and `bisect.bisect_left` to remove efficiently.
