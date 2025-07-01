@@ -126,6 +126,77 @@ def LIS(nums):
             dp[i] = x
     return len(dp)
 ```
+A **step-by-step input/output example** for the **Longest Increasing Subsequence (LIS)** function using `bisect_left`.
+
+---
+
+## ✅ Problem:
+
+Find the **length** of the **Longest Increasing Subsequence** in a list of numbers.
+
+---
+
+### 🔍 Example Input:
+
+```python
+nums = [10, 9, 2, 5, 3, 7, 101, 18]
+```
+
+---
+
+### ✅ Output:
+
+```
+4
+```
+
+---
+
+### 🧠 Explanation (LIS steps):
+
+We are building a `dp[]` array such that:
+
+* `dp[i]` stores the **smallest possible tail value** of an increasing subsequence of length `i + 1`.
+
+**Dry Run:**
+
+| num | dp (after processing)        |
+| --- | ---------------------------- |
+| 10  | \[10]                        |
+| 9   | \[9] (replace 10 with 9)     |
+| 2   | \[2] (replace 9 with 2)      |
+| 5   | \[2, 5]                      |
+| 3   | \[2, 3] (replace 5 with 3)   |
+| 7   | \[2, 3, 7]                   |
+| 101 | \[2, 3, 7, 101]              |
+| 18  | \[2, 3, 7, 18] (replace 101) |
+
+📌 Final `dp`: `[2, 3, 7, 18]`
+🔢 Length = **4** → So the LIS is of length **4**
+
+Note: the actual LIS is not `[2, 3, 7, 18]` always — `dp` is just used to track the **length**.
+
+---
+
+### ✅ Code:
+
+```python
+from bisect import bisect_left
+
+def LIS(nums):
+    dp = []
+    for x in nums:
+        i = bisect_left(dp, x)
+        if i == len(dp):
+            dp.append(x)
+        else:
+            dp[i] = x
+    return len(dp)
+
+# Example usage
+nums = [10, 9, 2, 5, 3, 7, 101, 18]
+print(LIS(nums))  # Output: 4
+```
 
 ---
 
