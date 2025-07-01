@@ -12,21 +12,131 @@ The `bisect` module provides functions for **binary searching** and **inserting*
 
 ## 📚 Key Functions in `bisect`
 
-### 1. `bisect_left(arr, x)`
+Let’s break this down **with intuitive examples** and visuals so it’s crystal clear how `bisect` functions behave and **when to use them**.
 
-Returns the index where `x` **should be inserted to keep the list sorted**, and **inserts before duplicates**.
+---
 
-### 2. `bisect_right(arr, x)`
+## ✅ Imagine You Have a Sorted List:
 
-Same as `bisect_left`, but **inserts after duplicates**.
+```python
+arr = [10, 20, 20, 30]
+```
 
-### 3. `insort_left(arr, x)`
+Let’s say you want to **insert `20`** and keep the list sorted.
 
-Inserts `x` at the correct position using `bisect_left`.
+---
 
-### 4. `insort_right(arr, x)`
+## 🔍 1. `bisect_left(arr, x)`
 
-Inserts `x` using `bisect_right`.
+> Finds **first position** where `x` can be inserted.
+> If `x` already exists, it goes **before the first occurrence**.
+
+```python
+from bisect import bisect_left
+index = bisect_left([10, 20, 20, 30], 20)
+print(index)  # Output: 1
+```
+
+📌 Result:
+
+* Insert 20 at index 1 (before both 20s)
+
+📦 New list (if you inserted manually):
+`[10, 20, 20, 20, 30]`
+
+---
+
+## 🔍 2. `bisect_right(arr, x)`
+
+> Finds **last position** where `x` can be inserted.
+> If `x` exists, it goes **after the last occurrence**.
+
+```python
+from bisect import bisect_right
+index = bisect_right([10, 20, 20, 30], 20)
+print(index)  # Output: 3
+```
+
+📌 Result:
+
+* Insert 20 at index 3 (after all 20s)
+
+📦 New list:
+`[10, 20, 20, 20, 30]`
+
+---
+
+## ⚒️ Summary So Far:
+
+| Function       | Inserts `20` at index | Goes before/after duplicates |
+| -------------- | --------------------- | ---------------------------- |
+| `bisect_left`  | 1                     | **Before** duplicates        |
+| `bisect_right` | 3                     | **After** duplicates         |
+
+---
+
+## 🔧 3. `insort_left(arr, x)`
+
+> Inserts `x` **in-place** using `bisect_left`.
+
+```python
+from bisect import insort_left
+
+arr = [10, 20, 20, 30]
+insort_left(arr, 20)
+print(arr)  # Output: [10, 20, 20, 20, 30]
+```
+
+✅ Internally uses `bisect_left` to find where to insert.
+
+---
+
+## 🔧 4. `insort_right(arr, x)`
+
+> Inserts `x` **in-place** using `bisect_right`.
+
+```python
+from bisect import insort_right
+
+arr = [10, 20, 20, 30]
+insort_right(arr, 20)
+print(arr)  # Output: [10, 20, 20, 20, 30]
+```
+
+✅ Internally uses `bisect_right` for the position.
+
+---
+
+## 🚀 Visual Comparison
+
+```text
+arr = [10, 20, 20, 30]
+           ↑     ↑
+        left=1  right=3
+```
+
+| Use Case                 | Method         | Result Position |
+| ------------------------ | -------------- | --------------- |
+| Insert before duplicates | `bisect_left`  | Index 1         |
+| Insert after duplicates  | `bisect_right` | Index 3         |
+| Insert in-place (left)   | `insort_left`  | Index 1         |
+| Insert in-place (right)  | `insort_right` | Index 3         |
+
+---
+
+## 🧠 When to Use What?
+
+* Use **`bisect_left`** to find:
+
+  * How many elements are **< x**
+  * First position for duplicates
+
+* Use **`bisect_right`** to find:
+
+  * How many elements are **≤ x**
+  * Last position for duplicates
+
+* Use **`insort_*`** when you want to **insert while maintaining order**
 
 ---
 
