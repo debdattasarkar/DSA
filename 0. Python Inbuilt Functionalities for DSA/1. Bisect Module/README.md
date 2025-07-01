@@ -1,3 +1,5 @@
+# 🥸 1. Bisect Module
+
 The `bisect` module is a **powerful binary search utility** built into Python that helps you efficiently insert or find elements in **sorted arrays** — which is incredibly useful in many DSA problems.
 
 ---
