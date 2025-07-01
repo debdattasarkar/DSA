@@ -111,6 +111,8 @@ print(result)  # Output: [2, 4, 1]
 
 ---
 
+---
+
 ### 2. **Longest Increasing Subsequence (LIS) - O(n log n)**
 
 ```python
@@ -200,6 +202,8 @@ print(LIS(nums))  # Output: 4
 
 ---
 
+---
+
 ### 3. **K-th Smallest Pair Distance**
 
 **Binary Search + bisect** to count how many pairs have distance ≤ `mid`.
@@ -245,6 +249,8 @@ All distances: **\[0, 2, 2]**
 Sorted distances: **\[0, 2, 2]**
 
 * The **1st smallest** distance is `0`.
+
+---
 
 ---
 
@@ -332,6 +338,8 @@ class Solution:
 sol = Solution()
 print(sol.smallestDistancePair([1, 3, 1], 1))  # Output: 0
 ```
+
+---
 
 ---
 
@@ -442,6 +450,9 @@ We’ll use **`bisect_right`** for this, which gives a very clean and efficient 
 
 ---
 
+
+---
+
 ## 🧩 Problem Statement
 
 **Input:**
@@ -521,7 +532,6 @@ print(count_pairs_with_sum_leq_x([1, 3, 5, 2], 6))  # Output: 4
 
 ---
 
-
 ---
 
 ### 4. **Sliding Window Median (SortedList + bisect)**
@@ -530,10 +540,216 @@ Maintain a sorted list of size `k` and use `bisect.insort` and `bisect.bisect_le
 
 ---
 
+## 🧩 Problem: Sliding Window Median
+
+> Given an array `nums` and integer `k`, return the **median of every sliding window of size `k`**.
+
+---
+
+### ✅ Key Idea
+
+We maintain a sorted window of size `k`. For each new element:
+
+1. **Insert** it into the window in sorted order using `bisect.insort()`.
+2. **Remove** the outgoing element using `bisect.bisect_left()` + `del`.
+3. Get the **median** from the middle of the window.
+
+---
+
+### ⚡ Tools from `bisect`:
+
+```python
+from bisect import insort, bisect_left
+```
+
+* `insort(window, x)`: inserts `x` in sorted position.
+* `bisect_left(window, x)`: finds index of `x` to remove it efficiently.
+
+---
+
+## ✅ Python Code
+
+```python
+from bisect import insort, bisect_left
+
+def sliding_window_median(nums, k):
+    window = []
+    medians = []
+
+    for i, num in enumerate(nums):
+        insort(window, num)  # Insert new element into window
+
+        if i >= k:
+            # Remove the element sliding out of the window
+            out_elem = nums[i - k]
+            idx = bisect_left(window, out_elem)
+            del window[idx]
+
+        if i >= k - 1:
+            # Get the median
+            if k % 2 == 1:
+                medians.append(float(window[k // 2]))
+            else:
+                mid = k // 2
+                medians.append((window[mid - 1] + window[mid]) / 2)
+
+    return medians
+```
+
+---
+
+### 🧪 Example
+
+```python
+nums = [1, 3, -1, -3, 5, 3, 6, 7]
+k = 3
+
+print(sliding_window_median(nums, k))
+```
+
+**Output:**
+
+```
+[1.0, -1.0, -1.0, 3.0, 5.0, 6.0]
+```
+
+---
+
+## 🧠 Time Complexity:
+
+* `O(n log k)`:
+
+  * Each insertion/removal is `O(log k)`
+  * Done `n` times
+
+---
+
+---
+
 ### 5. **Insert Interval / Merge Intervals**
 
 Find where to insert the new interval using `bisect`.
 
+---
+
+Let's walk through both:
+
+---
+
+## 🧩 1. Insert Interval
+
+### 🔍 Problem:
+
+> You are given a list of **non-overlapping intervals** sorted by start time.
+> Insert a new interval and **merge if necessary**, so the result remains sorted and non-overlapping.
+
+---
+
+### ✅ Example
+
+**Input:**
+
+```python
+intervals = [[1, 3], [6, 9]]
+new_interval = [2, 5]
+```
+
+**Output:**
+
+```python
+[[1, 5], [6, 9]]
+```
+
+**Explanation:**
+
+* \[1, 3] and \[2, 5] overlap → merge to \[1, 5]
+* \[6, 9] remains unchanged
+
+---
+
+## ✅ Python Code
+
+```python
+def insert(intervals, new_interval):
+    result = []
+    i = 0
+    n = len(intervals)
+
+    # 1. Add all intervals before new_interval
+    while i < n and intervals[i][1] < new_interval[0]:
+        result.append(intervals[i])
+        i += 1
+
+    # 2. Merge overlapping intervals
+    while i < n and intervals[i][0] <= new_interval[1]:
+        new_interval[0] = min(new_interval[0], intervals[i][0])
+        new_interval[1] = max(new_interval[1], intervals[i][1])
+        i += 1
+    result.append(new_interval)
+
+    # 3. Add remaining intervals
+    while i < n:
+        result.append(intervals[i])
+        i += 1
+
+    return result
+```
+
+---
+
+## 🧩 2. Merge Intervals
+
+### 🔍 Problem:
+
+> Given a list of **intervals**, merge all overlapping intervals.
+
+---
+
+### ✅ Example
+
+**Input:**
+
+```python
+intervals = [[1, 4], [2, 5], [7, 9]]
+```
+
+**Output:**
+
+```python
+[[1, 5], [7, 9]]
+```
+
+**Explanation:**
+
+* \[1, 4] and \[2, 5] overlap → merge to \[1, 5]
+* \[7, 9] is disjoint → keep as is
+
+---
+
+## ✅ Python Code
+
+```python
+def merge(intervals):
+    if not intervals:
+        return []
+
+    # Sort by start time
+    intervals.sort(key=lambda x: x[0])
+    result = [intervals[0]]
+
+    for start, end in intervals[1:]:
+        last_end = result[-1][1]
+
+        if start <= last_end:
+            # Overlap → merge
+            result[-1][1] = max(last_end, end)
+        else:
+            result.append([start, end])
+
+    return result
+```
+
+---
 ---
 
 ## 🧠 Benefits in DSA
