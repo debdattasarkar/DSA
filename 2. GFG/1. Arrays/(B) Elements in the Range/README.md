@@ -1,7 +1,7 @@
 
 ---
 
-# ✅ Elements in the Range – README
+# ✅ Elements in the Range 
 
 **Difficulty**: Basic
 **Accuracy**: 37.28%

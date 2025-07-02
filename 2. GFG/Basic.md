@@ -2,14 +2,13 @@
 | Title                             | Difficulty   | Companies                          | Type                          |
 |:----------------------------------|:-------------|:-----------------------------------|:-----------------------------------|
 | [Elements in the Range](<1. Arrays/(B) Elements in the Range>)             | [Basic](https://www.geeksforgeeks.org/problems/elements-in-the-range2834/)        | Amazon                             |Array                          |
-
+| [Swap kth elements](<1. Arrays/(B) Swap kth Elements>)                 | [Basic](https://www.geeksforgeeks.org/problems/swap-kth-elements5500/1)        | Morgan Stanley, Rockstand          |Array                          |
+| [Implement stack using array](<1. Arrays/(B) Implement stack using array>)       | [Basic](https://www.geeksforgeeks.org/problems/implement-stack-using-array/1)        | FactSet, Visa, + 3 more            |Array                          |
+| [Array Subset](<1. Arrays/(B) Array Subset>)                      | [Basic](https://www.geeksforgeeks.org/problems/array-subset-of-another-array2317/1)        | Accolite, Qualcomm, + 1 more       |Array                          |
+| [Segregate Even and Odd numbers](<1. Arrays/(B) Segregate Even and Odd numbers>)    | [Basic](https://www.geeksforgeeks.org/problems/segregate-even-and-odd-numbers4629/1)        | Paytm, Accolite, + 3 more          |Array                          |
 # Rest:
 | Title                             | Difficulty   | Companies                          | 
 |:----------------------------------|:-------------|:-----------------------------------|
-| Swap kth elements                 | Basic        | Morgan Stanley, Rockstand          |
-| Implement stack using array       | Basic        | FactSet, Visa, + 3 more            |
-| Array Subset                      | Basic        | Accolite, Qualcomm, + 1 more       |
-| Segregate Even and Odd numbers    | Basic        | Paytm, Accolite, + 3 more          |
 | Replace all 0's with 5            | Basic        | Amazon                             |
 | Queue Using Array                 | Basic        | Amazon, Goldman Sachs              |
 | Largest Element in Array          | Basic        | Infosys, Oracle, + 2 more          |
