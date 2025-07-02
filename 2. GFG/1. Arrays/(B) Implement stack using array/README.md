@@ -200,3 +200,14 @@ MyStack.prototype.pop = function() {
 
 ---
 
+## Company Tags
+
+- `FactSet`, `Visa`, `Goldman Sachs`, `Qualcomm`, `Kritikal Solutions`
+
+## Topic Tags
+
+- `Arrays`, `Stack`, `Data Structures`
+
+## Related Articles
+
+- [Implement Stack Using Array](https://www.geeksforgeeks.org/dsa/implement-stack-using-array/),  [Introduction To Stack Data Structure And Algorithm Tutorials](https://www.geeksforgeeks.org/dsa/introduction-to-stack-data-structure-and-algorithm-tutorials/)
