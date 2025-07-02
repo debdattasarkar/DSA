@@ -89,19 +89,18 @@ arr = [12, 34, 45, 9, 8, 90, 3]
 ```python
 class Solution:
     def segregateEvenOdd(self, arr):
-        # Separate evens and odds
-        evens = [x for x in arr if x % 2 == 0]
-        odds = [x for x in arr if x % 2 != 0]
+       n = len(arr)
 
-        # Sort both sublists
-        evens.sort()
-        odds.sort()
+        # Step 1: Partition even and odd using extra indices
+        i = 0
+        for j in range(n):
+            if arr[j] % 2 == 0:
+                arr[i], arr[j] = arr[j], arr[i]
+                i += 1
 
-        # Overwrite original array in-place
-        for i in range(len(evens)):
-            arr[i] = evens[i]
-        for i in range(len(odds)):
-            arr[len(evens) + i] = odds[i]
+        # Step 2: Sort even and odd parts separately in-place
+        arr[:i] = sorted(arr[:i])
+        arr[i:] = sorted(arr[i:])
 ```
 
 
@@ -189,7 +188,88 @@ class Solution:
 * Your solution is **correct** but uses **extra space** → not fully in line with the "in-place" constraint.
 * Use the **partition + slice sort** strategy shown above for an **optimized in-place version** (preferred in interviews).
 
-Would you like this version translated into C++/JS too?
+---
+
+Your revised code is functionally correct and clean. However, **from an interview optimization standpoint**, it is **still not fully in-place** due to temporary lists (`evens` and `odds`), and **uses O(n) space**. Let's break it down fully:
+
+---
+
+## ✅ Your Code (Current Version)
+
+```python
+class Solution:
+
+    def segregateEvenOdd(self, arr):
+        # Separate even and odd numbers
+        evens = [x for x in arr if x % 2 == 0]
+        odds = [x for x in arr if x % 2 == 1]
+
+        # Sort both lists
+        evens.sort()
+        odds.sort()
+
+        # Combine back into arr (in-place)
+        arr[:] = evens + odds
+```
+
+---
+
+## 🔍 Time & Space Analysis
+
+| Aspect              | Value          | Notes                              |
+| ------------------- | -------------- | ---------------------------------- |
+| Time Complexity     | **O(n log n)** | Due to sorting evens and odds      |
+| Space Complexity    | **O(n)**       | Extra lists `evens` and `odds`     |
+| In-Place?           | ❌ No           | Uses new lists, not constant space |
+| Readable & Correct? | ✅ Yes          | Passes all tests                   |
+
+---
+
+## 🔧 Interview Expectation
+
+Interviewers often expect:
+
+* **True in-place operations** (i.e., no `evens + odds` slices or intermediate lists).
+* **Space complexity: O(1)** (excluding input).
+* This is critical in large-scale systems, embedded, or hardware-bound environments.
+
+---
+
+## ✅ Recommended Fully In-Place Version
+
+```python
+class Solution:
+    def segregateEvenOdd(self, arr):
+        n = len(arr)
+
+        # Step 1: Partition evens to front
+        i = 0
+        for j in range(n):
+            if arr[j] % 2 == 0:
+                arr[i], arr[j] = arr[j], arr[i]
+                i += 1
+
+        # Step 2: Sort even and odd sections
+        arr[:i] = sorted(arr[:i])    # sort evens
+        arr[i:] = sorted(arr[i:])    # sort odds
+```
+
+* ✅ In-place
+* ✅ O(1) space
+* ✅ Still O(n log n) time due to sort
+* ✅ Follows constraints better
+
+---
+
+## 🔚 Summary
+
+| Version                              | Space | Time       | In-place? | Interview Fit               |
+| ------------------------------------ | ----- | ---------- | --------- | --------------------------- |
+| Your version (evens + odds)          | O(n)  | O(n log n) | ❌ No      | ✅ OK for junior/clear logic |
+| Optimized version (partition + sort) | O(1)  | O(n log n) | ✅ Yes     | ✅✅ Stronger for interviews  |
+
+---
+
 
 ---
 
