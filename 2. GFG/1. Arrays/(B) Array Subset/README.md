@@ -220,15 +220,15 @@ class Solution {
 
 ---
 
-## Company Tags
+## 🏢 Company Tags
 
 * `Accolite`, `Qualcomm`, `GE`
 
-## Topic Tags
+## 🏷 Topic Tags
 
 * `Arrays`, `Searching`, `Hash`, `Binary Search`, `Data Structures`, `Algorithms`
 
-## Related Articles
+## 📚 Related Articles
 
 * [Find Whether An Array Is Subset Of Another Array Set 1](https://www.geeksforgeeks.org/find-whether-an-array-is-subset-of-another-array-set-1/)
 

@@ -373,15 +373,15 @@ Yes. Sorting arrays of that size is feasible in modern systems and well-supporte
 
 ---
 
-## Company Tags
+## 🏢 Company Tags
 
 * `Paytm`, `Accolite`, `Amazon`, `MakeMyTrip`, `Linkedin`
 
-## Topic Tags
+## 🏷 Topic Tags
 
 * `Arrays`, `Data Structures`
 
-## Related Articles
+## 📚 Related Articles
 
 * [Segregate Even And Odd Numbers](https://www.geeksforgeeks.org/segregate-even-and-odd-numbers/)
 

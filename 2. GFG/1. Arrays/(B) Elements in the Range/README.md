@@ -211,15 +211,15 @@ class Solution {
 
 ---
 
-## Company Tags
+## 🏢 Company Tags
 
 * `Amazon`
 
-## Topic Tags
+## 🏷 Topic Tags
 
 * `Arrays`, `Searching`, `Data Structures`, `Algorithms`
 
-## Related Articles
+## 📚 Related Articles
 
 * [Check If An Array Contains All Elements Of A Given Range](https://www.geeksforgeeks.org/check-if-an-array-contains-all-elements-of-a-given-range/)
 
