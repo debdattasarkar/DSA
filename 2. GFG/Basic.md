@@ -1,6 +1,6 @@
 | Title                             | Difficulty   | Companies                          |
 |:----------------------------------|:-------------|:-----------------------------------|
-| ![Elements in the Range](1. Arrays/(B) Elements in the Range)             | Basic        | Amazon                             |
+| [Elements in the Range](<1. Arrays/(B) Elements in the Range>)             | Basic        | Amazon                             |
 | Swap kth elements                 | Basic        | Morgan Stanley, Rockstand          |
 | Implement stack using array       | Basic        | FactSet, Visa, + 3 more            |
 | Array Subset                      | Basic        | Accolite, Qualcomm, + 1 more       |
