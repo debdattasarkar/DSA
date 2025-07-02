@@ -305,6 +305,41 @@ class Solution:
                     queue.append(node.right)
         return result
 ```
+You're right to ask that—while the `Node` class is defined in the Python code, it's not *explicitly* used in the `LeftView` function because the function assumes that the input `root` is already an instance of `Node`.
+
+### Here's how it's used **implicitly**:
+
+In the function:
+
+```python
+node = queue.pop(0)
+```
+
+This `node` is an instance of the `Node` class. From this, we access:
+
+* `node.data` — which uses the `.data` attribute of the `Node`
+* `node.left`, `node.right` — which are expected to be either `Node` instances or `None`
+
+### So the lines where `Node` attributes are used (which rely on the class structure) are:
+
+* **Line 12:** `queue = [root]` → expects `root` to be a `Node`
+* **Line 15:** `node = queue.pop(0)` → `node` is a `Node`
+* **Line 17:** `result.append(node.data)` → accesses `Node.data`
+* **Line 18:** `if node.left:` → accesses `Node.left`
+* **Line 19:** `queue.append(node.left)` → again assumes `node.left` is a `Node`
+* **Line 20:** `if node.right:` and `queue.append(node.right)`
+
+### Summary of lines where `Node`'s structure is used:
+
+| Line No. | Code                                          | Use of `Node`        |
+| -------- | --------------------------------------------- | -------------------- |
+| 12       | `queue = [root]`                              | `root` is a `Node`   |
+| 15       | `node = queue.pop(0)`                         | Retrieves a `Node`   |
+| 17       | `result.append(node.data)`                    | Accesses `Node.data` |
+| 18       | `if node.left:`                               | Accesses `Node.left` |
+| 19       | `queue.append(node.left)`                     | Uses left `Node`     |
+| 20       | `if node.right:` / `queue.append(node.right)` | Uses right `Node`    |
+
 
 ---
 
