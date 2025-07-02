@@ -1,6 +1,11 @@
-| Title                             | Difficulty   | Companies                          |
+# Revised:
+| Title                             | Difficulty   | Companies                          | Type                          |
+|:----------------------------------|:-------------|:-----------------------------------|:-----------------------------------|
+| [Elements in the Range](<1. Arrays/(B) Elements in the Range>)             | [Basic](https://www.geeksforgeeks.org/problems/elements-in-the-range2834/)        | Amazon                             |Array                          |
+
+# Rest:
+| Title                             | Difficulty   | Companies                          | 
 |:----------------------------------|:-------------|:-----------------------------------|
-| [Elements in the Range](<1. Arrays/(B) Elements in the Range>)             | Basic        | Amazon                             |
 | Swap kth elements                 | Basic        | Morgan Stanley, Rockstand          |
 | Implement stack using array       | Basic        | FactSet, Visa, + 3 more            |
 | Array Subset                      | Basic        | Accolite, Qualcomm, + 1 more       |
