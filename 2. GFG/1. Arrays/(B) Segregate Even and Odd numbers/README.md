@@ -104,6 +104,93 @@ class Solution:
             arr[len(evens) + i] = odds[i]
 ```
 
+
+Your implementation is **correct** and readable, but let’s break down whether it is **fully optimized**, especially in terms of **space and in-place requirements**, as expected by interviewers:
+
+---
+
+## ✅ Your Code: Analysis
+
+```python
+class Solution:
+    def segregateEvenOdd(self, arr):
+        evens = [x for x in arr if x % 2 == 0]
+        odds = [x for x in arr if x % 2 != 0]
+
+        evens.sort()
+        odds.sort()
+
+        for i in range(len(evens)):
+            arr[i] = evens[i]
+        for i in range(len(odds)):
+            arr[len(evens) + i] = odds[i]
+```
+
+---
+
+## 🔍 Time and Space Complexity
+
+| Metric           | Value          | Notes                                     |
+| ---------------- | -------------- | ----------------------------------------- |
+| Time Complexity  | **O(n log n)** | Due to `sort()` on evens/odds             |
+| Space Complexity | **O(n)**       | Uses **extra space** for evens/odds lists |
+
+---
+
+## ❗ But the Problem Says:
+
+> “You don’t have to return the array, **you have to modify it in-place.**”
+
+So technically, your solution is **not in-place**, since it uses **extra memory** (i.e., `evens[]` and `odds[]`).
+
+---
+
+## ✅ Optimized In-Place Approach (Space: O(1))
+
+To meet the **in-place** requirement with sorting:
+
+1. Partition evens and odds using two pointers or stable partition.
+2. Sort the even segment and odd segment in-place.
+
+Here’s a more optimized variant:
+
+```python
+class Solution:
+    def segregateEvenOdd(self, arr):
+        n = len(arr)
+
+        # Step 1: Partition even and odd using extra indices
+        i = 0
+        for j in range(n):
+            if arr[j] % 2 == 0:
+                arr[i], arr[j] = arr[j], arr[i]
+                i += 1
+
+        # Step 2: Sort even and odd parts separately in-place
+        arr[:i] = sorted(arr[:i])
+        arr[i:] = sorted(arr[i:])
+```
+
+---
+
+## 🔬 Optimized Version: Time & Space
+
+| Metric | Value                                  |
+| ------ | -------------------------------------- |
+| Time   | O(n log n)                             |
+| Space  | O(1) extra (modifies input directly) ✅ |
+
+✅ **Now it's truly in-place**, satisfies the problem’s expectation, and still keeps sorting.
+
+---
+
+## ✅ Conclusion
+
+* Your solution is **correct** but uses **extra space** → not fully in line with the "in-place" constraint.
+* Use the **partition + slice sort** strategy shown above for an **optimized in-place version** (preferred in interviews).
+
+Would you like this version translated into C++/JS too?
+
 ---
 
 ## ✅ C++ Code
