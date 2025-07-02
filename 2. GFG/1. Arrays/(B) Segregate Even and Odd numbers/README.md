@@ -372,3 +372,17 @@ Yes. Sorting arrays of that size is feasible in modern systems and well-supporte
 * Alternating even and odd: \[1, 2, 3, 4]
 
 ---
+
+## Company Tags
+
+* `Paytm`, `Accolite`, `Amazon`, `MakeMyTrip`, `Linkedin`
+
+## Topic Tags
+
+* `Arrays`, `Data Structures`
+
+## Related Articles
+
+* [Segregate Even And Odd Numbers](https://www.geeksforgeeks.org/segregate-even-and-odd-numbers/)
+
+---

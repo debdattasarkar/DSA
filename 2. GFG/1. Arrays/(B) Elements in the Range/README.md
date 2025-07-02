@@ -210,3 +210,17 @@ class Solution {
 * Yes. Python’s built-in `set` and C++’s `unordered_set` are efficient and suitable for 10 million entries in practice.
 
 ---
+
+## Company Tags
+
+* `Amazon`
+
+## Topic Tags
+
+* `Arrays`, `Searching`, `Data Structures`, `Algorithms`
+
+## Related Articles
+
+* [Check If An Array Contains All Elements Of A Given Range](https://www.geeksforgeeks.org/check-if-an-array-contains-all-elements-of-a-given-range/)
+
+---
