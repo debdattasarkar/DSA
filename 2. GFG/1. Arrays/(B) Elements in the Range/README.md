@@ -206,5 +206,7 @@ class Solution {
 ### 🔹 Q11: Can this solution scale to 10^7 elements?
 
 **A**:
-Yes. Python’s built-in `set` and C++’s `unordered_set` are efficient and suitable for 10 million entries in practice.
+
+* Yes. Python’s built-in `set` and C++’s `unordered_set` are efficient and suitable for 10 million entries in practice.
+
 ---
