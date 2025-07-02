@@ -219,3 +219,17 @@ class Solution {
 **A:** It’s useful in permission systems, inventory validation, and search filtering (e.g., verifying if all requested items exist in stock).
 
 ---
+
+## Company Tags
+
+* `Accolite`, `Qualcomm`, `GE`
+
+## Topic Tags
+
+* `Arrays`, `Searching`, `Hash`, `Binary Search`, `Data Structures`, `Algorithms`
+
+## Related Articles
+
+* [Find Whether An Array Is Subset Of Another Array Set 1](https://www.geeksforgeeks.org/find-whether-an-array-is-subset-of-another-array-set-1/)
+
+---
