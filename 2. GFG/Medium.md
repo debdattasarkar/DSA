@@ -1,7 +1,7 @@
 # Revised:
 | Title                             | Difficulty   | Companies                          | Type  | Logic | Time | Space Complexity   |
 |:----------------------------------|:-------------|:----------------------|:-------------|:-----------------------------------|:--------------|:--------------|
-| [Longest Substring with K Uniques](<2. Strings/(M) Longest Substring with K Uniques>)             | [Medium](https://www.geeksforgeeks.org/problems/longest-k-unique-characters-substring0853/1)        | Amazon, Google, SAP Labs                             |Array  | Two Pointer, defaultdict | O(1) and O(1)   |
+| [Longest Substring with K Uniques](<2. Strings/(M) Longest Substring with K Uniques>)             | [Medium](https://www.geeksforgeeks.org/problems/longest-k-unique-characters-substring0853/1)        | Amazon, Google, SAP Labs                             |Array  | Two Pointer, defaultdict | O(1) | O(1)   |
 
 
 | Title                                | Companies                                  | Difficulty |
