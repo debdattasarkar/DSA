@@ -1,4 +1,3 @@
-Here is the **full program** for checking if a list contains nearby duplicates within distance `k`, using an index map (dictionary), along with inline comments and `timeit` benchmarking:
 
 ---
 

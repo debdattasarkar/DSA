@@ -1,262 +1,262 @@
-# 🧟‍♂️ Top Interview 150
+# 👨‍💻 Top Interview 150
 
 ### 🧮 Array / String Problems
 
 | Title                                           | Difficulty |
 |--------------------------------------------------|------------|
-| Merge Sorted Array                               | Easy       |
-| Remove Element                                   | Easy       |
-| Remove Duplicates from Sorted Array              | Easy       |
-| Remove Duplicates from Sorted Array II           | Medium     |
-| Majority Element                                 | Easy       |
-| Rotate Array                                     | Medium     |
-| Best Time to Buy and Sell Stock                  | Easy       |
-| Best Time to Buy and Sell Stock II               | Medium     |
-| Jump Game                                        | Medium     |
-| Jump Game II                                     | Medium     |
-| H-Index                                          | Medium     |
-| Insert Delete GetRandom O(1)                     | Medium     |
-| Product of Array Except Self                     | Medium     |
-| Gas Station                                      | Medium     |
-| Candy                                            | Hard       |
-| Trapping Rain Water                              | Hard       |
-| Roman to Integer                                 | Easy       |
-| Integer to Roman                                 | Medium     |
-| Length of Last Word                              | Easy       |
-| Longest Common Prefix                            | Easy       |
-| Reverse Words in a String                        | Medium     |
-| Zigzag Conversion                                | Medium     |
-| Find the Index of the First Occurrence in String | Easy       |
-| Text Justification                               | Hard       |
+| Merge Sorted Array                               | ![Easy](https://img.shields.io/badge/-Easy-brightgreen)       |
+| Remove Element                                   | ![Easy](https://img.shields.io/badge/-Easy-brightgreen)       |
+| Remove Duplicates from Sorted Array              | ![Easy](https://img.shields.io/badge/-Easy-brightgreen)       |
+| Remove Duplicates from Sorted Array II           | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| Majority Element                                 | ![Easy](https://img.shields.io/badge/-Easy-brightgreen)       |
+| Rotate Array                                     | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| Best Time to Buy and Sell Stock                  | ![Easy](https://img.shields.io/badge/-Easy-brightgreen)       |
+| Best Time to Buy and Sell Stock II               | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| Jump Game                                        | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| Jump Game II                                     | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| H-Index                                          | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| Insert Delete GetRandom O(1)                     | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| Product of Array Except Self                     | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| Gas Station                                      | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| Candy                                            | ![Hard](https://img.shields.io/badge/-Hard-red)       |
+| Trapping Rain Water                              | ![Hard](https://img.shields.io/badge/-Hard-red)       |
+| Roman to Integer                                 | ![Easy](https://img.shields.io/badge/-Easy-brightgreen)       |
+| Integer to Roman                                 | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| Length of Last Word                              | ![Easy](https://img.shields.io/badge/-Easy-brightgreen)       |
+| Longest Common Prefix                            | ![Easy](https://img.shields.io/badge/-Easy-brightgreen)       |
+| Reverse Words in a String                        | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| Zigzag Conversion                                | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| Find the Index of the First Occurrence in String | ![Easy](https://img.shields.io/badge/-Easy-brightgreen)       |
+| Text Justification                               | ![Hard](https://img.shields.io/badge/-Hard-red)       |
 
 
 ### 👯‍♂️ Two Pointers Problems
 
 | Title                                  | Difficulty |
 |----------------------------------------|------------|
-| Valid Palindrome                       | Easy       |
-| Is Subsequence                         | Easy       |
-| Two Sum II - Input Array Is Sorted     | Medium     |
-| Container With Most Water              | Medium     |
-| 3Sum                                   | Medium     |
+| Valid Palindrome                       | ![Easy](https://img.shields.io/badge/-Easy-brightgreen)       |
+| Is Subsequence                         | ![Easy](https://img.shields.io/badge/-Easy-brightgreen)       |
+| Two Sum II - Input Array Is Sorted     | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| Container With Most Water              | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| 3Sum                                   | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
 
 
 ### 🚪 Sliding Window Problems
 
 | Title                                           | Difficulty |
 |--------------------------------------------------|------------|
-| Minimum Size Subarray Sum                       | Medium     |
-| Longest Substring Without Repeating Characters  | Medium     |
-| Substring with Concatenation of All Words       | Hard       |
-| Minimum Window Substring                        | Hard       |
+| Minimum Size Subarray Sum                       | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| Longest Substring Without Repeating Characters  | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| Substring with Concatenation of All Words       | ![Hard](https://img.shields.io/badge/-Hard-red)       |
+| Minimum Window Substring                        | ![Hard](https://img.shields.io/badge/-Hard-red)       |
 
 
 ### 🧮 Matrix Problems
 
 | Title             | Difficulty |
 |-------------------|------------|
-| Valid Sudoku      | Medium     |
-| Spiral Matrix     | Medium     |
-| Rotate Image      | Medium     |
-| Set Matrix Zeroes | Medium     |
-| Game of Life      | Medium     |
+| Valid Sudoku      | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| Spiral Matrix     | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| Rotate Image      | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| Set Matrix Zeroes | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| Game of Life      | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
 
 ### 🧠 Hashmap Problems
 
 | Title                        | Difficulty |
 |-----------------------------|------------|
-| Ransom Note                 | Easy       |
-| Isomorphic Strings          | Easy       |
-| Word Pattern                | Easy       |
-| Valid Anagram               | Easy       |
-| Group Anagrams              | Medium     |
-| Two Sum                     | Easy       |
-| Happy Number                | Easy       |
-| Contains Duplicate II       | Easy       |
-| Longest Consecutive Sequence| Medium     |
+| Ransom Note                 | ![Easy](https://img.shields.io/badge/-Easy-brightgreen)       |
+| Isomorphic Strings          | ![Easy](https://img.shields.io/badge/-Easy-brightgreen)       |
+| Word Pattern                | ![Easy](https://img.shields.io/badge/-Easy-brightgreen)       |
+| Valid Anagram               | ![Easy](https://img.shields.io/badge/-Easy-brightgreen)       |
+| Group Anagrams              | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| Two Sum                     | ![Easy](https://img.shields.io/badge/-Easy-brightgreen)       |
+| Happy Number                | ![Easy](https://img.shields.io/badge/-Easy-brightgreen)       |
+| Contains Duplicate II       | ![Easy](https://img.shields.io/badge/-Easy-brightgreen)       |
+| Longest Consecutive Sequence| ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
 
 
 ### 🕒 Intervals Problems
 
 | Title                                          | Difficulty |
 |------------------------------------------------|------------|
-| Summary Ranges                                 | Easy       |
-| Merge Intervals                                | Medium     |
-| Insert Interval                                | Medium     |
-| Minimum Number of Arrows to Burst Balloons     | Medium     |
+| Summary Ranges                                 | ![Easy](https://img.shields.io/badge/-Easy-brightgreen)       |
+| Merge Intervals                                | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| Insert Interval                                | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| Minimum Number of Arrows to Burst Balloons     | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
 
 ### 🧱 Stack Problems
 
 | Title                               | Difficulty |
 |-------------------------------------|------------|
-| Valid Parentheses                   | Easy       |
-| Simplify Path                       | Medium     |
-| Min Stack                           | Medium     |
-| Evaluate Reverse Polish Notation    | Medium     |
-| Basic Calculator                    | Hard       |
+| Valid Parentheses                   | ![Easy](https://img.shields.io/badge/-Easy-brightgreen)       |
+| Simplify Path                       | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| Min Stack                           | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| Evaluate Reverse Polish Notation    | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| Basic Calculator                    | ![Hard](https://img.shields.io/badge/-Hard-red)       |
 
 ### 🔗 Linked List Problems
 
 | Title                                   | Difficulty |
 |-----------------------------------------|------------|
-| Linked List Cycle                       | Easy       |
-| Add Two Numbers                         | Medium     |
-| Merge Two Sorted Lists                  | Easy       |
-| Copy List with Random Pointer           | Medium     |
-| Reverse Linked List II                  | Medium     |
-| Reverse Nodes in k-Group                | Hard       |
-| Remove Nth Node From End of List        | Medium     |
-| Remove Duplicates from Sorted List II   | Medium     |
-| Rotate List                             | Medium     |
-| Partition List                          | Medium     |
-| LRU Cache                               | Medium     |
+| Linked List Cycle                       | ![Easy](https://img.shields.io/badge/-Easy-brightgreen)       |
+| Add Two Numbers                         | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| Merge Two Sorted Lists                  | ![Easy](https://img.shields.io/badge/-Easy-brightgreen)       |
+| Copy List with Random Pointer           | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| Reverse Linked List II                  | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| Reverse Nodes in k-Group                | ![Hard](https://img.shields.io/badge/-Hard-red)       |
+| Remove Nth Node From End of List        | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| Remove Duplicates from Sorted List II   | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| Rotate List                             | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| Partition List                          | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| LRU Cache                               | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
 
 ### 🌳 Binary Tree (General) Problems
 
 | Title                                                        | Difficulty |
 |--------------------------------------------------------------|------------|
-| Maximum Depth of Binary Tree                                 | Easy       |
-| Same Tree                                                    | Easy       |
-| Invert Binary Tree                                           | Easy       |
-| Symmetric Tree                                               | Easy       |
-| Construct Binary Tree from Preorder and Inorder Traversal    | Medium     |
-| Construct Binary Tree from Inorder and Postorder Traversal   | Medium     |
-| Populating Next Right Pointers in Each Node II               | Medium     |
-| Flatten Binary Tree to Linked List                           | Medium     |
-| Path Sum                                                     | Easy       |
-| Sum Root to Leaf Numbers                                     | Medium     |
-| Binary Tree Maximum Path Sum                                 | Hard       |
-| Binary Search Tree Iterator                                  | Medium     |
-| Count Complete Tree Nodes                                    | Easy       |
-| Lowest Common Ancestor of a Binary Tree                      | Medium     |
+| Maximum Depth of Binary Tree                                 | ![Easy](https://img.shields.io/badge/-Easy-brightgreen)       |
+| Same Tree                                                    | ![Easy](https://img.shields.io/badge/-Easy-brightgreen)       |
+| Invert Binary Tree                                           | ![Easy](https://img.shields.io/badge/-Easy-brightgreen)       |
+| Symmetric Tree                                               | ![Easy](https://img.shields.io/badge/-Easy-brightgreen)       |
+| Construct Binary Tree from Preorder and Inorder Traversal    | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| Construct Binary Tree from Inorder and Postorder Traversal   | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| Populating Next Right Pointers in Each Node II               | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| Flatten Binary Tree to Linked List                           | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| Path Sum                                                     | ![Easy](https://img.shields.io/badge/-Easy-brightgreen)       |
+| Sum Root to Leaf Numbers                                     | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| Binary Tree Maximum Path Sum                                 | ![Hard](https://img.shields.io/badge/-Hard-red)       |
+| Binary Search Tree Iterator                                  | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| Count Complete Tree Nodes                                    | ![Easy](https://img.shields.io/badge/-Easy-brightgreen)       |
+| Lowest Common Ancestor of a Binary Tree                      | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
 
 ### 🔍 Binary Tree - BFS Problems
 
 | Title                                      | Difficulty |
-|--------------------------------------------|------------|
-| Binary Tree Right Side View                | Medium     |
-| Average of Levels in Binary Tree           | Easy       |
-| Binary Tree Level Order Traversal          | Medium     |
-| Binary Tree Zigzag Level Order Traversal   | Medium     |
+|--------------------------------------------------------------|------------|
+| Binary Tree Right Side View                | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| Average of Levels in Binary Tree           | ![Easy](https://img.shields.io/badge/-Easy-brightgreen)       |
+| Binary Tree Level Order Traversal          | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| Binary Tree Zigzag Level Order Traversal   | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
 
 ### 🌲 Binary Search Tree (BST) Problems
 
 | Title                                | Difficulty |
-|--------------------------------------|------------|
-| Minimum Absolute Difference in BST   | Easy       |
-| Kth Smallest Element in a BST        | Medium     |
-| Validate Binary Search Tree          | Medium     |
+|--------------------------------------------------------------|------------|
+| Minimum Absolute Difference in BST   | ![Easy](https://img.shields.io/badge/-Easy-brightgreen)       |
+| Kth Smallest Element in a BST        | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| Validate Binary Search Tree          | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
 
 ### 🌐 Graph - General Problems
 
 | Title                | Difficulty |
-|----------------------|------------|
-| Number of Islands     | Medium     |
-| Surrounded Regions    | Medium     |
-| Clone Graph           | Medium     |
-| Evaluate Division     | Medium     |
-| Course Schedule       | Medium     |
-| Course Schedule II    | Medium     |
+|--------------------------------------------------------------|------------|
+| Number of Islands     | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| Surrounded Regions    | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| Clone Graph           | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| Evaluate Division     | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| Course Schedule       | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| Course Schedule II    | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
 
 ### 🔡 Trie Problems
 
 | Title                                               | Difficulty |
-|-----------------------------------------------------|------------|
-| Implement Trie (Prefix Tree)                        | Medium     |
-| Design Add and Search Words Data Structure          | Medium     |
-| Word Search II                                      | Hard       |
+|--------------------------------------------------------------|------------|
+| Implement Trie (Prefix Tree)                        | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| Design Add and Search Words Data Structure          | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| Word Search II                                      | ![Hard](https://img.shields.io/badge/-Hard-red)       |
 
 ### 🔁 Backtracking Problems
 
 | Title                                       | Difficulty |
-|---------------------------------------------|------------|
-| Letter Combinations of a Phone Number       | Medium     |
-| Combinations                                | Medium     |
-| Permutations                                | Medium     |
-| Combination Sum                             | Medium     |
-| N-Queens II                                 | Hard       |
-| Generate Parentheses                        | Medium     |
-| Word Search                                 | Medium     |
+|--------------------------------------------------------------|------------|
+| Letter Combinations of a Phone Number       | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| Combinations                                | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| Permutations                                | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| Combination Sum                             | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| N-Queens II                                 | ![Hard](https://img.shields.io/badge/-Hard-red)       |
+| Generate Parentheses                        | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| Word Search                                 | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
 
 ### ✂️ Divide & Conquer Problems
 
 | Title                                       | Difficulty |
-|---------------------------------------------|------------|
-| Convert Sorted Array to Binary Search Tree  | Easy       |
-| Sort List                                   | Medium     |
-| Construct Quad Tree                         | Medium     |
-| Merge k Sorted Lists                        | Hard       |
+|--------------------------------------------------------------|------------|
+| Convert Sorted Array to Binary Search Tree  | ![Easy](https://img.shields.io/badge/-Easy-brightgreen)       |
+| Sort List                                   | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| Construct Quad Tree                         | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| Merge k Sorted Lists                        | ![Hard](https://img.shields.io/badge/-Hard-red)       |
 
 ### 📈 Kadane's Algorithm Problems
 
 | Title                           | Difficulty |
-|---------------------------------|------------|
-| Maximum Subarray                | Medium     |
-| Maximum Sum Circular Subarray  | Medium     |
+|--------------------------------------------------------------|------------|
+| Maximum Subarray                | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| Maximum Sum Circular Subarray  | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
 
 ### 🔍 Binary Search Problems
 
 | Title                                                           | Difficulty |
 |------------------------------------------------------------------|------------|
-| Search Insert Position                                           | Easy       |
-| Search a 2D Matrix                                               | Medium     |
-| Find Peak Element                                                | Medium     |
-| Search in Rotated Sorted Array                                   | Medium     |
-| Find First and Last Position of Element in Sorted Array          | Medium     |
-| Find Minimum in Rotated Sorted Array                             | Medium     |
-| Median of Two Sorted Arrays                                      | Hard       |
+| Search Insert Position                                           | ![Easy](https://img.shields.io/badge/-Easy-brightgreen)       |
+| Search a 2D Matrix                                               | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| Find Peak Element                                                | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| Search in Rotated Sorted Array                                   | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| Find First and Last Position of Element in Sorted Array          | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| Find Minimum in Rotated Sorted Array                             | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| Median of Two Sorted Arrays                                      | ![Hard](https://img.shields.io/badge/-Hard-red)       |
 
 ### 🛠️ Heap Problems
 
-| Title                                | Difficulty |
-|--------------------------------------|------------|
-| Kth Largest Element in an Array      | Medium     |
-| IPO                                   | Hard       |
-| Find K Pairs with Smallest Sums      | Medium     |
-| Find Median from Data Stream         | Hard       |
+| Title                                                           | Difficulty |
+|------------------------------------------------------------------|------------|
+| Kth Largest Element in an Array      | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| IPO                                   | ![Hard](https://img.shields.io/badge/-Hard-red)       |
+| Find K Pairs with Smallest Sums      | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| Find Median from Data Stream         | ![Hard](https://img.shields.io/badge/-Hard-red)       |
 
 ### ⚙️ Bit Manipulation Problems
 
-| Title                                | Difficulty |
-|--------------------------------------|------------|
-| Add Binary                           | Easy       |
-| Reverse Bits                         | Easy       |
-| Number of 1 Bits                     | Easy       |
-| Single Number                        | Easy       |
-| Single Number II                     | Medium     |
-| Bitwise AND of Numbers Range         | Medium     |
+| Title                                                           | Difficulty |
+|------------------------------------------------------------------|------------|
+| Add Binary                           | ![Easy](https://img.shields.io/badge/-Easy-brightgreen)       |
+| Reverse Bits                         | ![Easy](https://img.shields.io/badge/-Easy-brightgreen)       |
+| Number of 1 Bits                     | ![Easy](https://img.shields.io/badge/-Easy-brightgreen)       |
+| Single Number                        | ![Easy](https://img.shields.io/badge/-Easy-brightgreen)       |
+| Single Number II                     | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| Bitwise AND of Numbers Range         | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
 
 ### ➗ Math Problems
 
-| Title                         | Difficulty |
-|-------------------------------|------------|
-| Palindrome Number            | Easy       |
-| Plus One                     | Easy       |
-| Factorial Trailing Zeroes    | Medium     |
-| Sqrt(x)                      | Easy       |
-| Pow(x, n)                    | Medium     |
-| Max Points on a Line         | Hard       |
+| Title                                                           | Difficulty |
+|------------------------------------------------------------------|------------|
+| Palindrome Number            | ![Easy](https://img.shields.io/badge/-Easy-brightgreen)       |
+| Plus One                     | ![Easy](https://img.shields.io/badge/-Easy-brightgreen)       |
+| Factorial Trailing Zeroes    | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| Sqrt(x)                      | ![Easy](https://img.shields.io/badge/-Easy-brightgreen)       |
+| Pow(x, n)                    | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| Max Points on a Line         | ![Hard](https://img.shields.io/badge/-Hard-red)       |
 
 ### 🧮 1D Dynamic Programming (DP) Problems
 
-| Title                          | Difficulty |
-|--------------------------------|------------|
-| Climbing Stairs                | Easy       |
-| House Robber                   | Medium     |
-| Word Break                     | Medium     |
-| Coin Change                    | Medium     |
-| Longest Increasing Subsequence| Medium     |
+| Title                                                           | Difficulty |
+|------------------------------------------------------------------|------------|
+| Climbing Stairs                | ![Easy](https://img.shields.io/badge/-Easy-brightgreen)       |
+| House Robber                   | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| Word Break                     | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| Coin Change                    | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| Longest Increasing Subsequence| ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
 
 ### 🧩 Multidimensional Dynamic Programming (DP) Problems
 
-| Title                                     | Difficulty |
-|-------------------------------------------|------------|
-| Triangle                                  | Medium     |
-| Minimum Path Sum                          | Medium     |
-| Unique Paths II                           | Medium     |
-| Longest Palindromic Substring             | Medium     |
-| Interleaving String                       | Medium     |
-| Edit Distance                             | Medium     |
-| Best Time to Buy and Sell Stock III       | Hard       |
-| Best Time to Buy and Sell Stock IV        | Hard       |
-| Maximal Square                            | Medium     |
+| Title                                                           | Difficulty |
+|------------------------------------------------------------------|------------|
+| Triangle                                  | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| Minimum Path Sum                          | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| Unique Paths II                           | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| Longest Palindromic Substring             | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| Interleaving String                       | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| Edit Distance                             | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
+| Best Time to Buy and Sell Stock III       | ![Hard](https://img.shields.io/badge/-Hard-red)       |
+| Best Time to Buy and Sell Stock IV        | ![Hard](https://img.shields.io/badge/-Hard-red)       |
+| Maximal Square                            | ![Medium](https://img.shields.io/badge/-Medium-yellow)     |
