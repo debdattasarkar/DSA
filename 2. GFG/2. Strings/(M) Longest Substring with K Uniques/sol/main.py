@@ -1,41 +1,45 @@
 class Solution:
-    def swapKth(self, arr, n, k):
-        # 1-based indexing in the problem → convert to 0-based indices
-        left_index = k - 1          # Kth element from start
-        right_index = n - k         # Kth element from end
+    def longestKSubstr(self, s, k):
+        from collections import defaultdict
 
-        # Edge case: if left_index and right_index are same, do nothing
-        if left_index == right_index:
-            return arr
+        n = len(s)
+        left = 0               # Left pointer of the sliding window
+        max_len = -1           # To track the length of the longest valid substring
+        char_freq = defaultdict(int)  # Stores frequency of characters in the window
 
-        # Step: Swap the elements in-place
-        arr[left_index], arr[right_index] = arr[right_index], arr[left_index]  # O(1)
+        for right in range(n):
+            # Expand window by adding the right character
+            char_freq[s[right]] += 1  # Time: O(1)
 
-        return arr  # Return is optional depending on interface
+            # If we have more than k distinct characters, shrink from the left
+            while len(char_freq) > k:
+                char_freq[s[left]] -= 1  # Shrink from the left
+                if char_freq[s[left]] == 0:
+                    del char_freq[s[left]]  # Remove character if its count is 0
+                left += 1  # Move left pointer forward
 
+            # If the window has exactly k distinct characters, update max_len
+            if len(char_freq) == k:
+                max_len = max(max_len, right - left + 1)
+
+        return max_len
 if __name__ == "__main__":
     sol = Solution()
 
     # Test Case 1
-    arr1 = [1, 2, 3, 4, 5, 6, 7, 8]
+    s1 = "aabacbebebe"
     k1 = 3
-    print("Original:", arr1)
-    print(f"Swap {k1}th from start & end")
-    result1 = sol.swapKth(arr1, len(arr1), k1)
-    print("Modified:", result1)  # Expected: [1, 2, 6, 4, 5, 3, 7, 8]
+    print("Input:", s1, "| k =", k1)
+    print("Output:", sol.longestKSubstr(s1, k1))  # Expected: 7 ("cbebebe")
 
-    # Test Case 2 (middle element, no-op)
-    arr2 = [1, 2, 3, 4, 5]
-    k2 = 3
-    print("\nOriginal:", arr2)
-    print(f"Swap {k2}th from start & end")
-    result2 = sol.swapKth(arr2, len(arr2), k2)
-    print("Modified:", result2)  # Expected: [1, 2, 3, 4, 5]
+    # Test Case 2
+    s2 = "aaaa"
+    k2 = 2
+    print("\nInput:", s2, "| k =", k2)
+    print("Output:", sol.longestKSubstr(s2, k2))  # Expected: -1
 
-    # Test Case 3 (first and last)
-    arr3 = [10, 20, 30, 40]
-    k3 = 1
-    print("\nOriginal:", arr3)
-    print(f"Swap {k3}th from start & end")
-    result3 = sol.swapKth(arr3, len(arr3), k3)
-    print("Modified:", result3)  # Expected: [40, 20, 30, 10]
+    # Test Case 3
+    s3 = "abcbaa"
+    k3 = 2
+    print("\nInput:", s3, "| k =", k3)
+    print("Output:", sol.longestKSubstr(s3, k3))  # Expected: 4 ("bcba")
