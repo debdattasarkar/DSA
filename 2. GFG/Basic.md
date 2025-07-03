@@ -1,11 +1,11 @@
 # Revised:
-| Title                             | Difficulty   | Companies                          | Type                          |
-|:----------------------------------|:-------------|:-----------------------------------|:-----------------------------------|
-| [Elements in the Range](<1. Arrays/(B) Elements in the Range>)             | [Basic](https://www.geeksforgeeks.org/problems/elements-in-the-range2834/)        | Amazon                             |Array                          |
-| [Swap kth elements](<1. Arrays/(B) Swap kth Elements>)                 | [Basic](https://www.geeksforgeeks.org/problems/swap-kth-elements5500/1)        | Morgan Stanley, Rockstand          |Array                          |
-| [Implement stack using array](<1. Arrays/(B) Implement stack using array>)       | [Basic](https://www.geeksforgeeks.org/problems/implement-stack-using-array/1)        | FactSet, Visa, + 3 more            |Array                          |
-| [Array Subset](<1. Arrays/(B) Array Subset>)                      | [Basic](https://www.geeksforgeeks.org/problems/array-subset-of-another-array2317/1)        | Accolite, Qualcomm, + 1 more       |Array                          |
-| [Segregate Even and Odd numbers](<1. Arrays/(B) Segregate Even and Odd numbers>)    | [Basic](https://www.geeksforgeeks.org/problems/segregate-even-and-odd-numbers4629/1)        | Paytm, Accolite, + 3 more          |Array                          |
+| Title                             | Difficulty   | Companies                          | Type                          | Logic     | Time | Space Complexity   |
+|:----------------------------------|:-------------|:-----------------------------------|:-----------------------------------|:-----------------------------------|:--------------|:--------------|
+| [Elements in the Range](<1. Arrays/(B) Elements in the Range>)    | [Basic](https://www.geeksforgeeks.org/problems/elements-in-the-range2834/)   | Amazon    |Array  | Set, Range Search till B + 1  | O(n + (B-A)) | O(n) |
+| [Swap kth elements](<1. Arrays/(B) Swap kth Elements>)    | [Basic](https://www.geeksforgeeks.org/problems/swap-kth-elements5500/1)   | Morgan Stanley, Rockstand |Array  | k-1, n-k index array swap | O(1)  |    O(1) |
+| [Implement stack using array](<1. Arrays/(B) Implement stack using array>)       | [Basic](https://www.geeksforgeeks.org/problems/implement-stack-using-array/1)  | FactSet, Visa, + 3 more    |Array | append(), pop() | O(1) per op | O(n) total |
+| [Array Subset](<1. Arrays/(B) Array Subset>)  | [Basic](https://www.geeksforgeeks.org/problems/array-subset-of-another-array2317/1)   | Accolite, Qualcomm, + 1 more  |Array  | Counter() | O(n + m) | O(n) |
+| [Segregate Even and Odd numbers](<1. Arrays/(B) Segregate Even and Odd numbers>)    | [Basic](https://www.geeksforgeeks.org/problems/segregate-even-and-odd-numbers4629/1)    | Paytm, Accolite, + 3 more |Array   | Two Pointer, In place sorted() | O(n log n) | O(1)   |
 # Rest:
 | Title                             | Difficulty   | Companies                          | 
 |:----------------------------------|:-------------|:-----------------------------------|
