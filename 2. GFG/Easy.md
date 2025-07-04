@@ -1,3 +1,9 @@
+# Revised:
+| Title | Companies | Difficulty | Type  | Logic     | Time | Space Complexity   |
+|:----------------------------------|:-------------|:----------------------|:-------------|:-----------------------------------|:--------------|:--------------|
+| [Stack using two queues](<1. Arrays/(E) Stack using two queues>)  | Accolite, Amazon, +10 more    | [Easy](https://www.geeksforgeeks.org/problems/stack-using-two-queues/1)  | Array |  put(), get(), empty() | O(n) | O(1) |
+
+
 | Title                                | Companies                                | Difficulty |
 |--------------------------------------|------------------------------------------|------------|
 | Non-Repeating Element                | Snapdeal, Goldman Sachs, +1 more         | Easy       |
@@ -152,7 +158,6 @@
 | Find length of Loop                  | Amazon, Adobe, +1 more                      | Easy       |
 | Queue using stack                    | Microsoft                                   | Easy       |
 | Queue using two Stacks               | Flipkart, Morgan Stanley, +13 more          | Easy       |
-| Stack using two queues               | Accolite, Amazon, +10 more                  | Easy       |
 | Special Stack                        | Paytm, VMWare, +11 more                     | Easy       |
 | Reverse First K of Queue             | Amazon                                      | Easy       |
 | Queue Reversal                       | Amazon                                      | Easy       |

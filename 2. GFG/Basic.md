@@ -10,6 +10,8 @@
 | [Operations on Queue](<1. Arrays/(B) Operations on Queue>) | [Basic](https://www.geeksforgeeks.org/problems/operations-on-queue/) | Amazon | Array | deque(), append(), popleft()  | O(n) | O(1)  |
 | [Segregate Even and Odd numbers](<1. Arrays/(B) Segregate Even and Odd numbers>)    | [Basic](https://www.geeksforgeeks.org/problems/segregate-even-and-odd-numbers4629/1)    | Paytm, Accolite, + 3 more |Array   | Two Pointer, In place sorted() | O(n log n) | O(1)   |
 | [Replace all 0's with 5](<1. Arrays/(B) Replace all 0's with 5>) | [Basic](https://www.geeksforgeeks.org/problems/replace-all-0s-with-5/1)    | Amazon   | Array  | Arithmetic |  O(log₁₀n)   | O(1) |
+
+
 # Rest:
 | Title                             | Difficulty   | Companies                          | 
 |:----------------------------------|:-------------|:-----------------------------------|
