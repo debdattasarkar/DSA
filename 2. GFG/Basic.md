@@ -6,6 +6,8 @@
 | [Implement stack using array](<1. Arrays/(B) Implement stack using array>)       | [Basic](https://www.geeksforgeeks.org/problems/implement-stack-using-array/1)  | FactSet, Visa, + 3 more    | Array |  deque(), append(), pop() | O(1) per op | O(n) total |
 | [Queue Using Array](<1. Arrays/(B) Queue Using Array>) | [Basic](https://www.geeksforgeeks.org/problems/implement-queue-using-array/1) | Amazon, Goldman Sachs | Array | deque(), append(), popleft()  | O(n) for n ops  | O(n)  |
 | [Array Subset](<1. Arrays/(B) Array Subset>)  | [Basic](https://www.geeksforgeeks.org/problems/array-subset-of-another-array2317/1)   | Accolite, Qualcomm, + 1 more  |Array  | Counter() | O(n + m) | O(n) |
+| [Operations on Queue](<1. Arrays/(B) Operations on Queue/version old>) | [Basic](https://www.geeksforgeeks.org/problems/operations-on-queue/) | Amazon | Array | append(), pop(0)  | O(n) | O(1)  |
+| [Operations on Queue](<1. Arrays/(B) Operations on Queue>) | [Basic](https://www.geeksforgeeks.org/problems/operations-on-queue/) | Amazon | Array | deque(), append(), popleft()  | O(n) | O(1)  |
 | [Segregate Even and Odd numbers](<1. Arrays/(B) Segregate Even and Odd numbers>)    | [Basic](https://www.geeksforgeeks.org/problems/segregate-even-and-odd-numbers4629/1)    | Paytm, Accolite, + 3 more |Array   | Two Pointer, In place sorted() | O(n log n) | O(1)   |
 | [Replace all 0's with 5](<1. Arrays/(B) Replace all 0's with 5>) | [Basic](https://www.geeksforgeeks.org/problems/replace-all-0s-with-5/1)    | Amazon   | Array  | Arithmetic |  O(log₁₀n)   | O(1) |
 # Rest:
@@ -24,12 +26,9 @@
 | Immediate Smaller Element         | Basic        | Flipkart, Amazon                   |
 | First 1 in a Sorted Binary Arr... | Basic        | Amazon, MakeMyTrip                 |
 | Make a Distinct Digit Array       | Basic        | Zoho, Amazon, + 1 more             |
-| Swap kth elements                 | Basic        | Morgan Stanley, Rockstand          |
 | Elements in the Range             | Basic        | Amazon                             |
 | Absolute Difference of 1          | Basic        | Amazon, Jabong                     |
 | Maximum Element in Array          | Basic        | Infosys, Oracle, + 2 more          |
-| Implement stack using array       | Basic        | FactSet, Visa, + 3 more            |
-| Queue Using Array                 | Basic        | Amazon, Goldman Sachs              |
 | Count the characters              | Basic        | Zoho, Amazon                       |
 | Unique Numbers                    | Basic        | Amazon                             |
 | Anagram Palindrome                | Basic        | Amazon, Snapdeal, + 1 more         |
@@ -62,8 +61,6 @@
 | Most Frequent Character           | Basic        | Flipkart                           |
 | Linked List Insertion At End      | Basic        | Hike, Wipro, + 1 more              |
 | Preorder Traversal                | Basic        | Flipkart, Amazon, + 2 more         |
-| Operations on Queue               | Basic        | Amazon                             |
-| Operations on Queue               | Basic        | Amazon                             |
 | Postorder Traversal               | Basic        | Morgan Stanley, Snapdeal, + 1 more |
 | Count Leaves in Binary Tree       | Basic        | Samsung, Ola Cabs                  |
 | Minimum element in BST            | Basic        | Microsoft                          |
