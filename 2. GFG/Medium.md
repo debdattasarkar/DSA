@@ -2,7 +2,7 @@
 | Title                             | Difficulty   | Companies                          | Type  | Logic | Time | Space Complexity   |
 |:----------------------------------|:-------------|:----------------------|:-------------|:-----------------------------------|:--------------|:--------------|
 | [Longest Substring with K Uniques](<2. Strings/(M) Longest Substring with K Uniques>)             | [Medium](https://www.geeksforgeeks.org/problems/longest-k-unique-characters-substring0853/1)        | Amazon, Google, SAP Labs                             |Array  | Two Pointer, defaultdict() | O(n) |	O(k)  |
-
+| [Subarrays With At Most K Distinct Integers](<1. Arrays/(M) Subarrays With At Most K Distinct Integers>) |[Medium](https://www.geeksforgeeks.org/problems/subarrays-with-at-most-k-distinct-integers/1) | PoD | Array  | Two Pointer, defaultdict() | O(n) | O(k) |
 
 | Title                                | Companies                                  | Difficulty |
 |--------------------------------------|--------------------------------------------|------------|
@@ -329,3 +329,5 @@
 | Most frequent word in an array of strings  | Microsoft, Citrix, +1 more              | Medium     |
 | Minimum XOR value pair                     | Microsoft                               | Medium     |
 | Fraction pairs with sum 1                  | Microsoft                               | Medium     |
+
+PoD - Problem of the Day
