@@ -1,8 +1,8 @@
 # Revised:
 | Title | Companies | Difficulty | Type  | Logic     | Time | Space Complexity   |
 |:----------------------------------|:-------------|:----------------------|:-------------|:-----------------------------------|:--------------|:--------------|
-| [Stack using two queues](<1. Arrays/(E) Stack using two queues>)  | Accolite, Amazon, +10 more    | [Easy](https://www.geeksforgeeks.org/problems/stack-using-two-queues/1)  | Array |  put(), get(), empty() | O(n) | O(1) |
-
+| [Stack using two queues](<1. Arrays/(E) Stack using two queues>)  | Accolite, Amazon, +10 more    | [Easy](https://www.geeksforgeeks.org/problems/stack-using-two-queues/1)  | Array | Queue, put(), get(), empty() | O(n) | O(1) |
+| [Reverse First K of Queue](<1. Arrays/(E) Reverse First K of Queue>) | Amazon | [Easy](https://www.geeksforgeeks.org/problems/reverse-first-k-elements-of-queue--123903/1) | Array |  Queue, append(), pop(), get() | O(n) | O(1) |
 
 | Title                                | Companies                                | Difficulty |
 |--------------------------------------|------------------------------------------|------------|
