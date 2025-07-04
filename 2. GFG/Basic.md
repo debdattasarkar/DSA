@@ -1,16 +1,16 @@
 # Revised:
 | Title                             | Difficulty   | Companies                          | Type  | Logic     | Time | Space Complexity   |
 |:----------------------------------|:-------------|:----------------------|:-------------|:-----------------------------------|:--------------|:--------------|
-| [Elements in the Range](<1. Arrays/(B) Elements in the Range>)    | [Basic](https://www.geeksforgeeks.org/problems/elements-in-the-range2834/)   | Amazon    |Array  | Set, Range Search till B + 1  | O(n + (B-A)) | O(n) |
+| [Elements in the Range](<1. Arrays/(B) Elements in the Range>)    | [Basic](https://www.geeksforgeeks.org/problems/elements-in-the-range2834/)   | Amazon    | Array  | Set, Range Search till B + 1  | O(n + (B-A)) | O(n) |
 | [Swap kth elements](<1. Arrays/(B) Swap kth Elements>)    | [Basic](https://www.geeksforgeeks.org/problems/swap-kth-elements5500/1)   | Morgan Stanley, Rockstand |Array  | k-1, n-k index array swap | O(1)  |    O(1) |
-| [Implement stack using array](<1. Arrays/(B) Implement stack using array>)       | [Basic](https://www.geeksforgeeks.org/problems/implement-stack-using-array/1)  | FactSet, Visa, + 3 more    |Array | append(), pop() | O(1) per op | O(n) total |
+| [Implement stack using array](<1. Arrays/(B) Implement stack using array>)       | [Basic](https://www.geeksforgeeks.org/problems/implement-stack-using-array/1)  | FactSet, Visa, + 3 more    | Array |  deque(), append(), pop() | O(1) per op | O(n) total |
+| [Queue Using Array](<1. Arrays/(B) Queue Using Array>) | [Basic](https://www.geeksforgeeks.org/problems/implement-queue-using-array/1) | Amazon, Goldman Sachs | Array | deque(), append(), popleft()  | O(n) for n ops  | O(n)  |
 | [Array Subset](<1. Arrays/(B) Array Subset>)  | [Basic](https://www.geeksforgeeks.org/problems/array-subset-of-another-array2317/1)   | Accolite, Qualcomm, + 1 more  |Array  | Counter() | O(n + m) | O(n) |
 | [Segregate Even and Odd numbers](<1. Arrays/(B) Segregate Even and Odd numbers>)    | [Basic](https://www.geeksforgeeks.org/problems/segregate-even-and-odd-numbers4629/1)    | Paytm, Accolite, + 3 more |Array   | Two Pointer, In place sorted() | O(n log n) | O(1)   |
 | [Replace all 0's with 5](<1. Arrays/(B) Replace all 0's with 5>) | [Basic](https://www.geeksforgeeks.org/problems/replace-all-0s-with-5/1)    | Amazon   | Array  | Arithmetic |  O(log₁₀n)   | O(1) |
 # Rest:
 | Title                             | Difficulty   | Companies                          | 
 |:----------------------------------|:-------------|:-----------------------------------|
-| Queue Using Array                 | Basic        | Amazon, Goldman Sachs              |
 | Largest Element in Array          | Basic        | Infosys, Oracle, + 2 more          |
 | Absolute Difference of 1          | Basic        | Amazon, Jabong                     |
 | Type of array                     | Basic        | Amazon                             |
