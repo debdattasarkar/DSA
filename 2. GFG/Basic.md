@@ -6,6 +6,7 @@
 | [Implement stack using array](<1. Arrays/(B) Implement stack using array>)       | [Basic](https://www.geeksforgeeks.org/problems/implement-stack-using-array/1)  | FactSet, Visa, + 3 more    |Array | append(), pop() | O(1) per op | O(n) total |
 | [Array Subset](<1. Arrays/(B) Array Subset>)  | [Basic](https://www.geeksforgeeks.org/problems/array-subset-of-another-array2317/1)   | Accolite, Qualcomm, + 1 more  |Array  | Counter() | O(n + m) | O(n) |
 | [Segregate Even and Odd numbers](<1. Arrays/(B) Segregate Even and Odd numbers>)    | [Basic](https://www.geeksforgeeks.org/problems/segregate-even-and-odd-numbers4629/1)    | Paytm, Accolite, + 3 more |Array   | Two Pointer, In place sorted() | O(n log n) | O(1)   |
+| [Replace all 0's with 5](<1. Arrays/(B) Replace all 0's with 5>) | [Basic](https://www.geeksforgeeks.org/problems/replace-all-0s-with-5/1)    | Amazon   | Array  | Arithmetic |  O(log₁₀n)   | O(1) |
 # Rest:
 | Title                             | Difficulty   | Companies                          | 
 |:----------------------------------|:-------------|:-----------------------------------|

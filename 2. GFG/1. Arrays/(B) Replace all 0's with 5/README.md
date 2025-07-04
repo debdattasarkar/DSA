@@ -1,199 +1,269 @@
-Question
-
-![Question](Question.png)
 
 ---
 
-The problem is simple but fun — it’s called **“Replace all 0's with 5”**. Let’s break it down and solve it across **C++**, **Python**, and **JavaScript** 🧠💡
+# Replace all 0's with 5
+
+### Difficulty: Basic
+
+**Accuracy**: 75.55%
+**Submissions**: 91K+
+**Points**: 1
+**Average Time**: 15m
 
 ---
 
-## ✅ **Problem Summary**
-You are given an integer `n`. Replace **every digit `0`** in `n` with **`5`**, and return the modified number.
+## 🧩 Problem Statement
+
+You are given an integer `n`.
+You need to **convert all zeroes of `n` to fives**.
 
 ---
 
-## 🧮 Constraints:
-- `0 <= n <= 10^4`  
-- Time: `O(k)`, where `k = number of digits`  
-- Space: `O(1)`
+## 🧪 Examples
+
+### Example 1:
+
+```
+Input: 
+n = 1004
+
+Output:
+1554
+
+Explanation:
+There are two zeroes in 1004. On replacing all zeroes with fives, 
+the new number will be 1554.
+```
 
 ---
 
-## ✅ Example:
-```text
-Input:  1004
+### Example 2:
+
+```
+Input: 
+n = 121
+
+Output:
+121
+
+Explanation:
+Since there are no zeroes in 121, the number remains unchanged.
+```
+
+---
+
+## 📚 Constraints:
+
+```
+0 <= n <= 10^4
+```
+
+---
+
+## ✅ Expected Complexities:
+
+* **Time Complexity**: O(k), where k is the number of digits in `n`.
+* **Auxiliary Space**: O(1)
+
+---
+
+## 🏷️ Company Tags:
+
+* Amazon
+
+---
+
+## 🧠 Topic Tags:
+
+* `Arrays`, `Mathematical`, `Data Structures`, `Algorithms`
+
+---
+
+## 📄 Related Articles:
+
+* [Replace 0 5 Input Integer](https://www.geeksforgeeks.org/replace-0-5-input-integer/)
+
+---
+
+---
+Here's a complete explanation, dry run, and optimal implementation for the problem **"Replace all 0's with 5"**.
+
+---
+
+## ✅ Step-by-Step Explanation
+
+### Problem:
+
+Given an integer `n`, replace **every `0` digit** in `n` with `5` and return the new number.
+
+### Example 1:
+
+```
+Input: n = 1004
 Output: 1554
 
-Input:  121
+Explanation:
+Digits in 1004 → ['1', '0', '0', '4']
+Replace 0s → ['1', '5', '5', '4'] → 1554
+```
+
+### Example 2:
+
+```
+Input: n = 121
 Output: 121
+
+Explanation:
+No 0s to replace, so return number as is.
 ```
 
 ---
 
-## 🧑‍💻 C++ Code (With Inline Comments)
-```cpp
-#include <iostream>
-using namespace std;
+## 🔍 Dry Run (with n = 1004)
 
-int convertZeroToFive(int n) {
-    if (n == 0)
-        return 5;
+**Initial number:** 1004
+**Convert to string:** '1004'
+**Iterate each character:**
 
-    int result = 0, place = 1;
+* '1' → keep
+* '0' → replace with '5'
+* '0' → replace with '5'
+* '4' → keep
 
-    while (n > 0) {
-        int digit = n % 10;
-        if (digit == 0)
-            digit = 5;
-
-        result += digit * place;
-        place *= 10;
-        n /= 10;
-    }
-
-    return result;
-}
-
-int main() {
-    int n;
-    cin >> n;
-    cout << convertZeroToFive(n) << endl;
-    return 0;
-}
-```
+**Final string:** '1554'
+**Convert back to int:** 1554 → ✅
 
 ---
 
-## 🐍 Python Code (With Inline Comments)
-```python
-def convert_zero_to_five(n):
-    if n == 0:
-        return 5
+## ✅ Optimized Code
 
-    result = 0
-    place = 1
 
-    while n > 0:
-        digit = n % 10
-        if digit == 0:
-            digit = 5
-        result += digit * place
-        place *= 10
-        n //= 10
-
-    return result
-
-# Example usage
-n = int(input())
-print(convert_zero_to_five(n))
-```
-
----
-
-## 🌐 JavaScript Code (With Inline Comments)
-```javascript
-function convertZeroToFive(n) {
-    if (n === 0) return 5;
-
-    let result = 0;
-    let place = 1;
-
-    while (n > 0) {
-        let digit = n % 10;
-        if (digit === 0) digit = 5;
-        result += digit * place;
-        place *= 10;
-        n = Math.floor(n / 10);
-    }
-
-    return result;
-}
-
-// Example usage
-let n = parseInt(prompt("Enter number:"));
-console.log(convertZeroToFive(n));
-```
-
----
-
-### 🧠 Key Insight
-We don’t convert the number to string (though you could). This approach uses **mathematical digit manipulation**, making it efficient and suitable for larger inputs with constant space.
-
-### String-based solution:
-
----
-
-Awesome! Let's now solve the **“Replace all 0's with 5”** problem using a **string-based approach**. This can be a bit more intuitive, especially for beginners, and it's still efficient for the input range in this problem.
-
----
-
-### ✅ Logic (String-Based):
-1. Convert the number to a string.
-2. Replace all `'0'` characters with `'5'`.
-3. Convert the modified string back to an integer.
-
----
-
-## 🧑‍💻 C++ (String-Based)
-
-```cpp
-#include <iostream>
-#include <string>
-using namespace std;
-
-int convertZeroToFive(int n) {
-    // Edge case: if input is 0, return 5 directly
-    if (n == 0) return 5;
-
-    string s = to_string(n);
-    for (char &ch : s) {
-        if (ch == '0')
-            ch = '5';
-    }
-    return stoi(s); // Convert back to integer
-}
-
-int main() {
-    int n;
-    cin >> n;
-    cout << convertZeroToFive(n) << endl;
-    return 0;
-}
-```
-
----
-
-## 🐍 Python (String-Based)
+## 🐍 Python Code (Mathematical Version)
 
 ```python
-def convert_zero_to_five(n):
-    # Convert to string, replace '0' with '5', then convert back to int
-    return int(str(n).replace('0', '5')) if n != 0 else 5
+class Solution:
+    def convertFive(self, n):
+        if n == 0:
+            return 5
 
-# Example usage
-n = int(input())
-print(convert_zero_to_five(n))
+        result = 0
+        place = 1
+
+        while n > 0:
+            digit = n % 10
+            if digit == 0:
+                digit = 5
+            result += digit * place
+            place *= 10
+            n //= 10
+
+        return result
+
+```
+
+### 🐍 Python (String-based approach)
+
+```python
+# Function should return an integer value
+class Solution:
+    def convertFive(self, n):
+        # Convert number to string, replace '0' with '5', and convert back to int
+        return int(str(n).replace('0', '5'))
+```
+---
+
+### 🧑‍💻 C++
+
+```cpp
+class Solution {
+  public:
+    int convertFive(int n) {
+        if (n == 0) return 5;
+
+        int result = 0, place = 1;
+
+        while (n > 0) {
+            int digit = n % 10;
+            if (digit == 0)
+                digit = 5;
+
+            result += digit * place;
+            place *= 10;
+            n /= 10;
+        }
+
+        return result;
+    }
+};
 ```
 
 ---
 
-## 🌐 JavaScript (String-Based)
+### 🌐 JavaScript
 
 ```javascript
-function convertZeroToFive(n) {
-    if (n === 0) return 5;
-
-    // Convert number to string, replace '0' with '5', then parse back to int
-    return parseInt(n.toString().replace(/0/g, '5'));
+/**
+ * @param {number} num
+ * @returns {number}
+ */
+class Solution {
+    convertFive(num) {
+        // Convert number to string, replace '0' with '5', then parse to int
+        return parseInt(num.toString().replace(/0/g, '5'));
+    }
 }
-
-// Example usage
-let n = parseInt(prompt("Enter number:"));
-console.log(convertZeroToFive(n));
 ```
 
 ---
+
+## 🎯 Interview Q\&A
+
+### Q1: What is the time and space complexity?
+
+* **Time Complexity:** O(k), where k is the number of digits in `n`
+* **Space Complexity:** O(1) if string conversion is constant-space, else O(k)
+
+---
+
+### Q2: Can this problem be solved without string manipulation?
+
+Yes. You can extract each digit using `% 10`, convert 0 to 5, and reconstruct the number. This is shown in the C++ version.
+
+---
+
+### Q3: What happens when n = 0?
+
+Return `5`, because we treat 0 as a digit to replace.
+
+---
+
+### Q4: Can the number have leading zeroes?
+
+No, since `int` type doesn't store leading zeroes. Only internal zeroes are relevant.
+
+---
+
+### Q5: Why use string conversion in Python/JS?
+
+Because string operations like `replace()` are simple and readable for this task, and they're optimal for small inputs like integers.
+
+---
+
+### 🔍 Which is **preferred in interviews**?
+
+| Interview Style                             | Preferred Approach                                 |
+| ------------------------------------------- | -------------------------------------------------- |
+| **Python developer**                        | String-based (concise, Pythonic)                   |
+| **Core DSA/data structure/system roles**    | Arithmetic (shows understanding of number systems) |
+| **Embedded/C++/low-level roles**            | Arithmetic (avoid string conversion)               |
+| **Competitive coding or tight constraints** | Arithmetic (faster and leaner)                     |
+
+---
+
+### 🔥 Verdict:
+
+**Use the arithmetic version** in interviews unless the interviewer is okay with a Pythonic one-liner. It shows deeper algorithmic understanding and avoids abstracted operations like string handling.
+
 
 ### 🤔 Which approach is better?
 - Use **math-based** if you want to avoid strings (e.g., in embedded systems).
