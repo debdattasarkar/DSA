@@ -10,7 +10,6 @@
 # Rest:
 | Title                             | Difficulty   | Companies                          | 
 |:----------------------------------|:-------------|:-----------------------------------|
-| Replace all 0's with 5            | Basic        | Amazon                             |
 | Queue Using Array                 | Basic        | Amazon, Goldman Sachs              |
 | Largest Element in Array          | Basic        | Infosys, Oracle, + 2 more          |
 | Absolute Difference of 1          | Basic        | Amazon, Jabong                     |
