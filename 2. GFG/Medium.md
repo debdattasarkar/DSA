@@ -4,6 +4,7 @@
 | [Longest Substring with K Uniques](<2. Strings/(M) Longest Substring with K Uniques>)             | [Medium](https://www.geeksforgeeks.org/problems/longest-k-unique-characters-substring0853/1)        | Amazon, Google, SAP Labs                             |Array  | Two Pointer, defaultdict() | O(n) |	O(k)  |
 | [Subarrays With At Most K Distinct Integers](<1. Arrays/(M) Subarrays With At Most K Distinct Integers>) |[Medium](https://www.geeksforgeeks.org/problems/subarrays-with-at-most-k-distinct-integers/1) | PoD | Array  | Two Pointer, defaultdict() | O(n) | O(k) |
 | [Max Score from Subarray Mins](<1. Arrays/(M) Max Score from Subarray Mins>) |[Medium](https://www.geeksforgeeks.org/problems/max-sum-in-sub-arrays0824/1) | PoD | Array  | float('-inf') | O(n) | O(1) |
+| [Rotate Array](<1. Arrays/(B) Value Equal to Index Value>)    | Amazon, Microsoft, +1 more    | Medium    | hcf, Juggling algorithm |  O(n) | O(1) |
 
 | Title                                | Companies                                  | Difficulty |
 |--------------------------------------|--------------------------------------------|------------|
