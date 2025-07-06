@@ -10,7 +10,11 @@
 | [Operations on Queue](<1. Arrays/(B) Operations on Queue>) | [Basic](https://www.geeksforgeeks.org/problems/operations-on-queue/) | Amazon | Array | deque(), append(), popleft()  | O(n) | O(1)  |
 | [Segregate Even and Odd numbers](<1. Arrays/(B) Segregate Even and Odd numbers>)    | [Basic](https://www.geeksforgeeks.org/problems/segregate-even-and-odd-numbers4629/1)    | Paytm, Accolite, + 3 more |Array   | Two Pointer, In place sorted() | O(n log n) | O(1)   |
 | [Replace all 0's with 5](<1. Arrays/(B) Replace all 0's with 5>) | [Basic](https://www.geeksforgeeks.org/problems/replace-all-0s-with-5/1)    | Amazon   | Array  | Arithmetic |  O(log₁₀n)   | O(1) |
-| [Value equal to index value](<1. Arrays/(B) Value Equal to Index Value>) | [Basic](https://www.geeksforgeeks.org/problems/value-equal-to-index-value1330/1)| Flipkart, Amazon, + 2 more| [ i for i in range(1, len(arr)+1) if arr[i-1] == i ] | O(n) | O(k)   |
+| [Value equal to index value](<1. Arrays/(B) Value Equal to Index Value>) | [Basic](https://www.geeksforgeeks.org/problems/value-equal-to-index-value1330/1)| Flipkart, Amazon, + 2 more | Array  | [ i for i in range(1, len(arr)+1) if arr[i-1] == i ] | O(n) | O(k)   |
+| [Peak Element](<1. Arrays/(B) Peak Element>) | [Basic](https://www.geeksforgeeks.org/problems/peak-element/1)| Google, Amazon, + 3 more | Array  | Binary Search, mid = (start + end) // 2, float('-inf') | 	O(log n) | O(1)   |
+
+
+
 
 # Rest:
 | Title                             | Difficulty   | Companies                          | 
