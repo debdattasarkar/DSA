@@ -4,13 +4,12 @@
 | [Longest Substring with K Uniques](<2. Strings/(M) Longest Substring with K Uniques>)             | [Medium](https://www.geeksforgeeks.org/problems/longest-k-unique-characters-substring0853/1)        | Amazon, Google, SAP Labs                             |Array  | Two Pointer, defaultdict() | O(n) |	O(k)  |
 | [Subarrays With At Most K Distinct Integers](<1. Arrays/(M) Subarrays With At Most K Distinct Integers>) |[Medium](https://www.geeksforgeeks.org/problems/subarrays-with-at-most-k-distinct-integers/1) | PoD | Array  | Two Pointer, defaultdict() | O(n) | O(k) |
 | [Max Score from Subarray Mins](<1. Arrays/(M) Max Score from Subarray Mins>) |[Medium](https://www.geeksforgeeks.org/problems/max-sum-in-sub-arrays0824/1) | PoD | Array  | float('-inf') | O(n) | O(1) |
-| [Rotate Array](<1. Arrays/(M) Rotate Array>)    | Amazon, Microsoft, +1 more    | Medium    | hcf, Juggling algorithm |  O(n) | O(1) |
-| [Maximum Sum Combination](<1. Arrays/(M) Maximum Sum Combination>)    | PoD    | Medium    | heapq, sort(reverse=True), .heappush() |  O(n) | O(1) |
-
+| [Rotate Array](<1. Arrays/(M) Rotate Array>)    | Amazon, Microsoft, +1 more    | Medium    | Array  | hcf, Juggling algorithm |  O(n) | O(1) |
+| [Maximum Sum Combination](<1. Arrays/(M) Maximum Sum Combination>)    | PoD    | Medium    | Array  | heapq, sort(reverse=True), .heappush() |  O(n) | O(1) |
+| [The Celebrity Problem](<1. Arrays/(M) The Celebrity Problem>) | Microsoft, Google, +6 more | [Medium](https://www.geeksforgeeks.org/problems/the-celebrity-problem/1) | Array  | Matrix |  O(n) | O(1) |
 
 | Title                                | Companies                                  | Difficulty |
 |--------------------------------------|--------------------------------------------|------------|
-| The Celebrity Problem                | Zoho, Flipkart, +6 more                     | Medium     |
 | Earliest Common Slot                 | Amazon, Microsoft, +3 more                 | Medium     |
 | Rearrange an array with O(1) extra...| Amazon                                     | Medium     |
 | Majority Element                     | Flipkart, Accolite, +6 more                | Medium     |
