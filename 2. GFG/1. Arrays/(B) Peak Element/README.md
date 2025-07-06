@@ -1,140 +1,356 @@
-Question
-
-![Question](Question.png)
 
 ---
 
-This is the **Peak Element** problem — a very popular question!
+# Peak Element
+
+**Difficulty:** Basic
+**Accuracy:** 38.86%
+**Submissions:** 550K+
+**Points:** 1
+**Average Time:** 30m
 
 ---
 
-### 🧠 Problem Summary:
-Given an array `arr[]` where **no two adjacent elements are the same**, find the **index** of a **peak element**.
+## 🧠 Problem Statement
 
-A **peak** is an element that is:
-- Greater than its neighbors.
-- For the **first** and **last** element, treat the out-of-bound neighbor as `-∞` (negative infinity).
+Given an array `arr[]` where **no two adjacent elements are the same**, find the **index of a peak element**.
 
-You must **return the index** of any one peak.
+An element is considered to be a **peak** if it is **greater than its adjacent elements** (if they exist).
+
+If there are multiple peak elements, return the index of **any one of them**.
+
+The output will be **"true"** if the index returned by your function is correct; otherwise, it will be **"false"**.
+
+> **Note:** Consider the element **before the first element** and the element **after the last element** to be **negative infinity**.
 
 ---
-  
-### ✅ Python Code (Binary Search Approach):
+
+## ✨ Examples
+
+### Example 1:
+
+**Input:**
+
+```
+arr = [1, 2, 4, 5, 7, 8, 3]
+```
+
+**Output:**
+
+```
+true
+```
+
+**Explanation:**
+`arr[5] = 8` is a peak element because `arr[4] < arr[5] > arr[6]`.
+
+---
+
+### Example 2:
+
+**Input:**
+
+```
+arr = [10, 20, 15, 2, 23, 90, 80]
+```
+
+**Output:**
+
+```
+true
+```
+
+**Explanation:**
+`arr[1] = 20` and `arr[5] = 90` are peak elements because:
+
+* `arr[0] < arr[1] > arr[2]`, and
+* `arr[4] < arr[5] > arr[6]`
+
+---
+
+### Example 3:
+
+**Input:**
+
+```
+arr = [1, 2, 3]
+```
+
+**Output:**
+
+```
+true
+```
+
+**Explanation:**
+`arr[2] = 3` is a peak element because:
+
+* `arr[1] < arr[2]`
+* and `arr[2]` is the last element (i.e., it has `-∞` to its right)
+
+---
+
+## ✅ Constraints
+
+* $1 \leq \text{arr.size()} \leq 10^6$
+* $-2^{31} \leq \text{arr}[i] \leq 2^{31} - 1$
+
+---
+
+## ⏱ Expected Complexities
+
+* **Time Complexity:** O(log n)
+* **Auxiliary Space:** O(1)
+
+---
+
+## 🏷 Topic Tags
+
+* Arrays
+* Searching
+* Data Structures
+* Algorithms
+
+---
+
+## 🏢 Company Tags
+
+* Accolite
+* Amazon
+* Visa
+* Adobe
+* Google
+
+---
+
+## 📚 Related Interview Experiences
+
+* [Amazon Interview Experience Set 257 Off Campus](https://www.geeksforgeeks.org/amazon-interview-experience-set-257-off-campus/)
+
+---
+
+## 📄 Related Articles
+
+* [Find A Peak In A Given Array](https://www.geeksforgeeks.org/find-a-peak-in-a-given-array/)
+
+---
+
+---
+
+Here’s your complete solution to the **Peak Element** problem in four parts:
+
+---
+
+## 📘 1. Text Explanation
+
+A **peak element** in an array is an element that is **strictly greater** than its neighbors. You need to return **any one** such index.
+
+### Special Conditions:
+
+* The first element has only the right neighbor.
+* The last element has only the left neighbor.
+* Elements before the first and after the last are considered `-∞` (negative infinity).
+
+---
+
+## 🔍 2. Step-by-Step Dry Run
+
+### Input:
+
 ```python
-def findPeak(arr):
-    low = 0
-    high = len(arr) - 1
-
-    while low <= high:
-        mid = (low + high) // 2
-        
-        left = arr[mid - 1] if mid > 0 else float('-inf')
-        right = arr[mid + 1] if mid < len(arr) - 1 else float('-inf')
-        
-        if arr[mid] >= left and arr[mid] >= right:
-            return mid  # Peak found
-        elif left > arr[mid]:
-            high = mid - 1
-        else:
-            low = mid + 1
-
-    return -1  # Should never happen if input is valid
+arr = [10, 20, 15, 2, 23, 90, 80]
 ```
+
+### Binary Search-based Dry Run:
+
+* `start = 0`, `end = 6`
+
+* `mid = (0 + 6) // 2 = 3 → arr[3] = 2`
+  → `arr[3] < arr[4]`, so peak must be in **right half**.
+
+* `start = 4`, `end = 6`
+
+* `mid = (4 + 6) // 2 = 5 → arr[5] = 90`
+  → `arr[5] > arr[4]` and `arr[5] > arr[6]`
+  ✅ Found a **peak** at index 5 → return 5
 
 ---
 
-### 🧪 Example Usage:
+## ✅ 3. Optimized Python Solutions
+
+---
+
+### 🔹 Brute Force (Not recommended in interviews unless explicitly asked)
+
 ```python
-print(findPeak([1, 2, 4, 5, 7, 8, 3]))  # Output: 5
-print(findPeak([10, 20, 15, 2, 23, 90, 80]))  # Output: 1 or 5
-print(findPeak([1, 2, 3]))  # Output: 2
+class Solution:   
+    def peakElement(self, arr):
+        n = len(arr)
+        for i in range(n):
+            left = float('-inf') if i == 0 else arr[i - 1]
+            right = float('-inf') if i == n - 1 else arr[i + 1]
+            if arr[i] > left and arr[i] > right:
+                return i  # Peak element found
+        return -1
+```
+
+* ⏱ Time: O(n)
+* 🧠 Space: O(1)
+
+---
+
+### 🔸 Optimized Binary Search (Interview Preferred — O(log n))
+
+```python
+class Solution:   
+    def peakElement(self, arr):
+        n = len(arr)
+        start, end = 0, n - 1
+
+        while start <= end:
+            mid = (start + end) // 2
+
+            # Get neighbors safely
+            left = float('-inf') if mid == 0 else arr[mid - 1]
+            right = float('-inf') if mid == n - 1 else arr[mid + 1]
+
+            # Check peak condition
+            if arr[mid] >= left and arr[mid] >= right:
+                return mid
+            elif arr[mid] < right:
+                start = mid + 1  # Move right
+            else:
+                end = mid - 1    # Move left
+
+        return -1
+```
+
+* ⏱ Time: O(log n)
+* 🧠 Space: O(1)
+
+---
+
+## 🧠 4. Interview Questions & Answers
+
+---
+
+### ❓ Q1: Why is binary search applicable here?
+
+**A:** Because we can discard half of the array each time:
+
+* If `arr[mid] < arr[mid+1]`, then a peak **must** exist on the right.
+* If `arr[mid] < arr[mid-1]`, then a peak **must** exist on the left.
+
+---
+
+### ❓ Q2: Can there be multiple peaks?
+
+**A:** Yes. The problem allows returning **any one** of them.
+
+---
+
+### ❓ Q3: What are edge cases?
+
+* Single-element array → It is always a peak
+* Increasing array → Last element is the peak
+* Decreasing array → First element is the peak
+
+---
+
+### ❓ Q4: What’s the difference between this and "maximum element"?
+
+**A:** The **maximum element** must be the greatest overall.
+A **peak** is only required to be greater than its immediate neighbors.
+
+---
+
+### ❓ Q5: What if adjacent elements are equal?
+
+**A:** The problem states **no two adjacent elements are the same**, so this case won't happen.
+
+---
+
+Here is the **full Python program** for the **Peak Element** problem using your provided binary search code, complete with:
+
+* ✅ **Inline comments** explaining each step
+* ✅ **Time and space complexity** per operation
+* ✅ A working **test input and output**
+* ✅ `time.time()` to record total execution time
+
+---
+
+```python
+import time
+
+class Solution:   
+    def peakElement(self, arr):
+        n = len(arr)
+        start, end = 0, n - 1
+
+        # Step 1: Binary Search Loop
+        # Time Complexity: O(log n) — halves the search space each iteration
+        # Space Complexity: O(1) — constant space used
+        while start <= end:
+            mid = (start + end) // 2
+
+            # Step 2: Define neighbors with edge protection
+            # Time: O(1) per access
+            left = float('-inf') if mid == 0 else arr[mid - 1]
+            right = float('-inf') if mid == n - 1 else arr[mid + 1]
+
+            # Step 3: Peak Check
+            if arr[mid] >= left and arr[mid] >= right:
+                return mid  # Found a peak
+
+            # Step 4: Decide search direction
+            elif arr[mid] < right:
+                start = mid + 1  # Move to right half
+            else:
+                end = mid - 1    # Move to left half
+
+        return -1  # This shouldn't happen as a peak is guaranteed
+
+# ---------- 🧪 Example Execution and Timing ----------
+
+if __name__ == "__main__":
+    # Example input array
+    arr = [10, 20, 15, 2, 23, 90, 80]
+
+    print("Input Array:", arr)
+
+    # Start timer
+    start_time = time.time()
+
+    sol = Solution()
+    peak_index = sol.peakElement(arr)
+
+    # End timer
+    end_time = time.time()
+    elapsed_time = end_time - start_time
+
+    # Output result
+    print("Output (Peak Index):", peak_index)
+    print("Peak Element Value:", arr[peak_index] if peak_index != -1 else None)
+    print("Execution Time: {:.6f} seconds".format(elapsed_time))
 ```
 
 ---
 
-### ⏱ Time & Space Complexity:
-- **Time Complexity:** `O(log n)` (because of binary search)
-- **Space Complexity:** `O(1)` (constant extra space)
+### ✅ Sample Output:
 
----
-
-Awesome! Here's the **C++** and **JavaScript** versions for the **Peak Element** problem:
-
----
-
-### ✅ C++ Code (Binary Search):
-```cpp
-#include <vector>
-#include <iostream>
-using namespace std;
-
-int findPeak(const vector<int>& arr) {
-    int low = 0, high = arr.size() - 1;
-
-    while (low <= high) {
-        int mid = (low + high) / 2;
-
-        int left = (mid > 0) ? arr[mid - 1] : INT_MIN;
-        int right = (mid < arr.size() - 1) ? arr[mid + 1] : INT_MIN;
-
-        if (arr[mid] >= left && arr[mid] >= right) {
-            return mid;  // Found a peak
-        } else if (left > arr[mid]) {
-            high = mid - 1;
-        } else {
-            low = mid + 1;
-        }
-    }
-
-    return -1;  // Shouldn't happen if input is valid
-}
 ```
-
-### 🧪 Example Usage in C++:
-```cpp
-int main() {
-    vector<int> arr = {1, 2, 4, 5, 7, 8, 3};
-    cout << findPeak(arr) << endl;  // Output: 5 (arr[5] = 8)
-}
+Input Array: [10, 20, 15, 2, 23, 90, 80]
+Output (Peak Index): 5
+Peak Element Value: 90
+Execution Time: 0.0000XX seconds
 ```
 
 ---
 
-### ✅ JavaScript Code (Binary Search):
-```javascript
-function findPeak(arr) {
-    let low = 0, high = arr.length - 1;
+### 🔍 Complexity Summary
 
-    while (low <= high) {
-        let mid = Math.floor((low + high) / 2);
-
-        let left = (mid > 0) ? arr[mid - 1] : -Infinity;
-        let right = (mid < arr.length - 1) ? arr[mid + 1] : -Infinity;
-
-        if (arr[mid] >= left && arr[mid] >= right) {
-            return mid;  // Found a peak
-        } else if (left > arr[mid]) {
-            high = mid - 1;
-        } else {
-            low = mid + 1;
-        }
-    }
-
-    return -1;
-}
-```
-
-### 🧪 Example Usage in JavaScript:
-```javascript
-console.log(findPeak([1, 2, 4, 5, 7, 8, 3]));  // Output: 5
-```
-
----
-
-### 🔥 Quick Summary:
-- **Binary search** guarantees `O(log n)` time.
-- **First or last element** can also be a peak (compare to `-∞`).
-- Multiple peaks may exist — returning **any** one is acceptable!
-
----
-
+| Step                    | Time Complexity | Space Complexity |
+| ----------------------- | --------------- | ---------------- |
+| Binary Search (`while`) | O(log n)        | O(1)             |
+| Neighbor Check          | O(1)            | O(1)             |
+| **Total**               | **O(log n)**    | **O(1)**         |
