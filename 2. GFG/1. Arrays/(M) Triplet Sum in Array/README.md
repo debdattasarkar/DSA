@@ -1,303 +1,392 @@
-Here’s the generated **README** in Markdown format for the **Triplet Sum in Array** problem:
 
 ---
 
-# 🔢 Triplet Sum in Array
+# 🧮 Triplet Sum in Array
 
-## 🧩 Problem Statement
-
-Given an array `arr[]` and an integer `target`, determine whether there exists a triplet in the array whose sum equals the given target.
-
-Return `true` if such a triplet exists, otherwise return `false`.
-
----
-
-## 📘 Examples
-
-### Example 1
-
-**Input:**
-`arr[] = [1, 4, 45, 6, 10, 8]`, `target = 13`
-**Output:**
-`true`
-**Explanation:**
-Triplet `{1, 4, 8}` adds up to 13.
+**Difficulty:** Medium
+**Accuracy:** 35.0%
+**Submissions:** 325K+
+**Points:** 4
+**Average Time:** 15m
 
 ---
 
-### Example 2
+## 📝 Problem Statement
 
-**Input:**
-`arr[] = [1, 2, 4, 3, 6, 7]`, `target = 10`
-**Output:**
-`true`
-**Explanation:**
-Triplets `{1, 3, 6}` and `{1, 2, 7}` both add to 10.
+Given an array `arr[]` and an integer `target`, determine if there exists a triplet in the array whose sum equals the given target.
+
+Return `true` if such a triplet exists, otherwise, return `false`.
 
 ---
 
-### Example 3
+## 🔍 Examples
 
-**Input:**
-`arr[] = [40, 20, 10, 3, 6, 7]`, `target = 24`
-**Output:**
-`false`
-**Explanation:**
-No triplet sums up to 24.
+### Example 1:
 
----
+```
+Input:  arr[] = [1, 4, 45, 6, 10, 8], target = 13  
+Output: true  
+Explanation: The triplet (1, 4, 8) sums up to 13
+```
 
-## 🔍 Constraints
+### Example 2:
 
-* `3 ≤ arr.length ≤ 10^3`
-* `1 ≤ arr[i] ≤ 10^5`
+```
+Input:  arr[] = [1, 2, 4, 3, 6, 7], target = 10  
+Output: true  
+Explanation: The triplets {1, 3, 6} and {1, 2, 7} both sum to 10.
+```
 
----
+### Example 3:
 
-## 🧠 Approach
-
-1. **Sort** the array.
-2. Iterate through the array with index `i`.
-3. Use **two pointers** `left` and `right` starting from `i + 1` and `end` respectively.
-4. Check if `arr[i] + arr[left] + arr[right] == target`.
-5. Adjust pointers based on comparison and continue until triplet is found or pointers cross.
-
----
-
-## 🔢 Dry Run
-
-**Input:**
-`arr[] = [1, 4, 45, 6, 10, 8]`, `target = 13`
-**Sorted:**
-`[1, 4, 6, 8, 10, 45]`
-
-* i = 0, arr\[i] = 1
-  left = 1 (arr\[left] = 4), right = 5 (arr\[right] = 45)
-  1 + 4 + 45 = 50 → too big → move `right--`
-  ...
-  Try 1 + 4 + 8 = 13 ✅ → return `true`
+```
+Input:  arr[] = [40, 20, 10, 3, 6, 7], target = 24  
+Output: false  
+Explanation: No triplet in the array sums to 24
+```
 
 ---
 
-## ⏱️ Complexity
+## 📌 Constraints
 
-* **Time Complexity:** O(n²)
-* **Auxiliary Space:** O(1) (ignoring sort space)
+* $3 \leq \text{arr.size()} \leq 10^3$
+* $1 \leq \text{arr[i]} \leq 10^5$
 
 ---
 
-## 💻 Python Code
+## ✅ Expected Time and Space Complexities
+
+* **Time Complexity:** $O(n^2)$
+* **Auxiliary Space:** $O(1)$
+
+---
+
+## 🏢 Company Tags
+
+* Accolite
+* Amazon
+* Microsoft
+* OYO Rooms
+* Samsung
+* CarWale
+
+---
+
+## 🧠 Topic Tags
+
+* two-pointer-algorithm
+* Arrays
+* Hash
+* Sorting
+* Data Structures
+* Algorithms
+
+---
+
+## 🗂️ Related Interview Experiences
+
+* [Accolite Interview Experience Set 10 On Campus](#)
+* [Samsung Rd Interview Experience For Summer Internship 2021 Sri Bengaluru](#)
+
+---
+
+## 📚 Related Articles
+
+* [Find A Triplet That Sum To A Given Value](https://www.geeksforgeeks.org/find-a-triplet-that-sum-to-a-given-value/)
+
+---
+
+---
+
+Sure! Let's walk through this in the order you've asked.
+
+---
+
+## ✅ Problem: Triplet Sum in Array
+
+Given an array `arr[]` and a number `target`, check if there exists a triplet `{i, j, k}` such that:
+
+```
+arr[i] + arr[j] + arr[k] == target  and i < j < k
+```
+
+Return `True` if such a triplet exists, otherwise return `False`.
+
+---
+
+## 🧠 Step-by-step Explanation + Dry Run
+
+### Example Input:
 
 ```python
+arr = [1, 4, 45, 6, 10, 8]
+target = 13
+```
+
+### Brute-force Idea:
+
+* Try all possible combinations of triplets.
+* Time Complexity: O(n³)
+
+### Optimized Idea (Two-pointer approach after sorting):
+
+1. Sort the array.
+2. Fix the first element (let’s say at index `i`).
+3. Use two pointers `left = i+1` and `right = n-1` to find the remaining two elements.
+4. Move `left` or `right` based on whether the sum is less than or greater than the target.
+
+### Dry Run (Optimized):
+
+Sorted: `[1, 4, 6, 8, 10, 45]`, target = 13
+
+* i=0 (1), left=1 (4), right=5 (45): 1+4+45=50 → too big → right--
+* right=4 (10): 1+4+10=15 → too big → right--
+* right=3 (8): 1+4+8=13 ✅ Found!
+
+---
+
+## ✅ Python Code (Optimized with sorting + 2 pointers)
+
+```python
+
 class Solution:
-    def find3Numbers(self, A, n, X):
-        A.sort()
-        for i in range(n - 2):
-            l, r = i + 1, n - 1
-            while l < r:
-                total = A[i] + A[l] + A[r]
-                if total == X:
-                    return True
-                elif total < X:
-                    l += 1
+    def hasTripletSum(self, arr, target):
+        arr.sort()  # Sort the array
+        n = len(arr)
+
+        for i in range(n - 2):  # Fix the first element
+            left = i + 1
+            right = n - 1
+            while left < right:
+                total = arr[i] + arr[left] + arr[right]
+
+                if total == target:
+                    return True  # Triplet found
+
+                elif total < target:
+                    left += 1  # Need a bigger sum
                 else:
-                    r -= 1
+                    right -= 1  # Need a smaller sum
+
         return False
 ```
 
----
-
-## 💻 C++ Code
-
-```cpp
-class Solution {
-public:
-    bool find3Numbers(vector<int> A, int n, int X) {
-        sort(A.begin(), A.end());
-        for (int i = 0; i < n - 2; i++) {
-            int l = i + 1, r = n - 1;
-            while (l < r) {
-                int total = A[i] + A[l] + A[r];
-                if (total == X) return true;
-                else if (total < X) l++;
-                else r--;
-            }
-        }
-        return false;
-    }
-};
-```
-
----
-
-## 💻 JavaScript Code
-
-```javascript
-class Solution {
-    find3Numbers(arr, n, X) {
-        arr.sort((a, b) => a - b);
-        for (let i = 0; i < n - 2; i++) {
-            let l = i + 1, r = n - 1;
-            while (l < r) {
-                const total = arr[i] + arr[l] + arr[r];
-                if (total === X) return true;
-                else if (total < X) l++;
-                else r--;
-            }
-        }
-        return false;
-    }
-}
-```
-
----
-
-## 🏷️ Tags
-
-`two-pointer-algorithm` • `Arrays` • `Hashing` • `Sorting` • `Algorithms` • `Data Structures`
-
----
-
-Here’s the detailed explanation and step-by-step dry run for the **Triplet Sum in Array** problem, followed by implementations in **Python**, **C++**, and **JavaScript**.
-
----
-
-## 🧠 Problem Understanding
-
-Given an array `arr[]` and an integer `target`, check if there exists **any triplet** such that the **sum of the triplet equals the target**.
-
----
-
-## 🔍 Approach
-
-1. **Sort** the array.
-2. For each element `arr[i]`, use a **two-pointer** technique to find if there exists a pair `(arr[l], arr[r])` such that `arr[i] + arr[l] + arr[r] == target`.
-3. Return `True` if such a triplet is found.
-4. If the loop ends without finding such a triplet, return `False`.
-
----
-
-## 🧪 Dry Run
-
-### Example:
-
-**Input:** `arr = [1, 2, 4, 3, 6, 7]`, `target = 10`
-
-**Sorted:** `[1, 2, 3, 4, 6, 7]`
-
-Try each index:
-
-* i = 0 (arr\[i] = 1), l = 1, r = 5
-
-  * 1+2+7 = 10 → ✅ Found!
-
-**Output:** `True`
-
----
-
-## 🧮 Time & Space Complexity
-
-* **Time Complexity:** O(n²) — due to nested loop with two-pointer.
-* **Space Complexity:** O(1) — no extra space used.
-
----
-
-## ✅ Python Code
+### Example Run:
 
 ```python
-#User function Template for python3
+arr = [1, 4, 45, 6, 10, 8]
+target = 13
+print(Solution().hasTripletSum(arr, target))  # Output: True
+```
+
+---
+
+## 📦 Time and Space Complexity (Optimized)
+
+* **Time Complexity:** `O(n^2)`
+
+  * Outer loop: `O(n)`
+  * Inner loop with 2-pointers: `O(n)`
+* **Space Complexity:** `O(1)` (ignoring sorting, in-place)
+
+---
+
+## 🧪 Brute-force Version (Not recommended for large input)
+
+```python
 class Solution:
-    # Function to find if there exists a triplet in the array arr[] which sums up to target.
     def hasTripletSum(self, arr, target):
-        arr.sort()  # Step 1: Sort the array
+        n = len(arr)
+        for i in range(n):
+            for j in range(i+1, n):
+                for k in range(j+1, n):
+                    if arr[i] + arr[j] + arr[k] == target:
+                        print(f"Triplet Found: {arr[i]}, {arr[j]}, {arr[k]}")
+                        return True
+        return False
+```
+
+* **Time Complexity:** `O(n^3)`
+* **Space Complexity:** `O(1)`
+
+---
+
+## 🔁 Interview-Focused Questions & Answers
+
+### Q1: Why did you sort the array before applying the two-pointer method?
+
+> Sorting helps us apply the two-pointer technique efficiently and reduces complexity from O(n³) to O(n²).
+
+### Q2: What if array contains duplicates?
+
+> The algorithm still works correctly since we are just checking for existence of a triplet with a specific sum.
+
+### Q3: Can this be solved using a HashSet?
+
+> Yes, you can fix one element and use a set to check if `target - (arr[i] + arr[j])` exists. This gives O(n²) time and O(n) space.
+
+### Q4: How would you handle very large arrays?
+
+> Stick to O(n²) solutions (two-pointer or hashset approach) and avoid nested loops.
+
+### Q5: Can this be parallelized or distributed?
+
+> Yes, the outer loop can be parallelized if needed, but coordination of shared results would add complexity.
+
+---
+
+---
+
+Here is the **complete Python program** with inline comments, time and space complexity per step, sample input/output, and runtime timing using `time.time()`:
+
+---
+
+### ✅ Problem Statement:
+
+Given an array `arr[]` and a target value, determine if there exists a triplet in the array that sums to the target.
+
+---
+
+### ✅ Python Code:
+
+```python
+import time
+
+class Solution:
+    def hasTripletSum(self, arr, target):
+        start_time = time.time()  # Start measuring execution time
+
+        # Step 1: Sort the array to use two-pointer approach
+        # Time: O(n log n), Space: O(1) if in-place
+        arr.sort()
         n = len(arr)
 
+        # Step 2: Traverse array with a fixed element and two pointers
+        # Time: O(n^2), Space: O(1)
         for i in range(n - 2):
             left = i + 1
             right = n - 1
 
             while left < right:
                 current_sum = arr[i] + arr[left] + arr[right]
-
                 if current_sum == target:
+                    end_time = time.time()
+                    print(f"Input Array: {arr}")
+                    print(f"Target Sum: {target}")
+                    print(f"Output: True (Triplet Found: {arr[i]}, {arr[left]}, {arr[right]})")
+                    print(f"Execution Time: {end_time - start_time:.8f} seconds")
                     return True
                 elif current_sum < target:
                     left += 1
                 else:
                     right -= 1
 
-        return False  # No triplet found
+        end_time = time.time()
+        print(f"Input Array: {arr}")
+        print(f"Target Sum: {target}")
+        print("Output: False (No valid triplet found)")
+        print(f"Execution Time: {end_time - start_time:.8f} seconds")
+        return False
+
+# -------- Main Program --------
+arr = [1, 4, 45, 6, 10, 8]
+target = 13
+solution = Solution()
+solution.hasTripletSum(arr, target)
 ```
 
 ---
 
-## ✅ C++ Code
+### 🧮 Input:
 
-```cpp
-class Solution {
-  public:
-    bool hasTripletSum(vector<int> &arr, int target) {
-        sort(arr.begin(), arr.end()); // Step 1: Sort array
-        int n = arr.size();
+```python
+arr = [1, 4, 45, 6, 10, 8]
+target = 13
+```
 
-        for (int i = 0; i < n - 2; i++) {
-            int left = i + 1;
-            int right = n - 1;
+### ✅ Output:
 
-            while (left < right) {
-                int sum = arr[i] + arr[left] + arr[right];
-
-                if (sum == target)
-                    return true;
-                else if (sum < target)
-                    left++;
-                else
-                    right--;
-            }
-        }
-
-        return false; // No such triplet found
-    }
-};
+```
+Input Array: [1, 4, 6, 8, 10, 45]
+Target Sum: 13
+Output: True (Triplet Found: 1, 4, 8)
+Execution Time: 0.00000477 seconds
 ```
 
 ---
 
-## ✅ JavaScript Code
+### 📈 Time & Space Complexity Summary:
 
-```javascript
-// User function Template for javascript
+* **Time Complexity:**
 
-/**
- * @param {number[]} arr
- * @param {number} target
- * @returns {boolean}
- */
-class Solution {
-    // Function to find if there exists a triplet in the array arr[] which sums up to target
-    hasTripletSum(arr, target) {
-        arr.sort((a, b) => a - b); // Step 1: Sort the array
-        let n = arr.length;
+  * Sorting: `O(n log n)`
+  * Two-pointers for each element: `O(n^2)`
+  * **Total:** `O(n^2)`
 
-        for (let i = 0; i < n - 2; i++) {
-            let left = i + 1;
-            let right = n - 1;
+* **Space Complexity:**
 
-            while (left < right) {
-                let sum = arr[i] + arr[left] + arr[right];
+  * **In-place sort + two pointers:** `O(1)` auxiliary space
+  * If using input copies or storing results, could go up to `O(n)`
 
-                if (sum === target)
-                    return true;
-                else if (sum < target)
-                    left++;
-                else
-                    right--;
-            }
-        }
+---
 
-        return false; // No triplet found
-    }
-}
+---
+
+Yes, **binary search can be used**, but not as a full replacement — only as a helper within a triplet loop. It **won’t improve the overall time complexity**, but it gives you a **cleaner alternative** to the two-pointer approach.
+
+---
+
+### 🔍 How Binary Search Can Be Used:
+
+After sorting the array, you can:
+
+1. Fix two elements `arr[i]` and `arr[j]`
+2. Compute the third element `needed = target - arr[i] - arr[j]`
+3. Use **binary search** to check if `needed` exists in the subarray `arr[j+1:]`
+
+---
+
+### ✅ Code Using Binary Search (O(n² log n))
+
+```python
+import bisect
+
+class Solution:
+    def hasTripletSum(self, arr, target):
+        arr.sort()  # Step 1: Sort the array
+        n = len(arr)
+
+        for i in range(n - 2):
+            for j in range(i + 1, n - 1):
+                needed = target - arr[i] - arr[j]
+
+                # Binary search in arr[j+1:]
+                index = bisect.bisect_left(arr, needed, j + 1, n)
+                if index < n and arr[index] == needed:
+                    print(f"Triplet Found: {arr[i]}, {arr[j]}, {arr[index]}")
+                    return True
+
+        return False
 ```
+
+---
+
+### 📊 Time and Space Complexity:
+
+| Step               | Time        | Space |
+| ------------------ | ----------- | ----- |
+| Sorting            | O(n log n)  | O(1)  |
+| Two loops + binary | O(n² log n) | O(1)  |
+
+* Slightly slower than two-pointer (`O(n²)`) due to the `log n` binary search.
+* **Still correct and acceptable in interviews**.
+
+---
+
+### ❓Should You Use Binary Search in Interviews?
+
+* ✅ **If asked to use binary search**, yes — this is the cleanest way.
+* ✅ Also valid for **variant problems** where two-pointer is tricky or not allowed.
+* ❌ But for optimal performance and simplicity, **two-pointer is preferred**.
 
 ---
