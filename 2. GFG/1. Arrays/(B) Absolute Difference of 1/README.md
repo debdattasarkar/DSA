@@ -1,355 +1,343 @@
 
 ---
 
-# 📘 Absolute Difference of 1
+# 🔢 Absolute Difference of 1
 
-### Difficulty: Basic
-
+**Difficulty:** Basic
 **Accuracy:** 24.14%
 **Submissions:** 23K+
 **Points:** 1
 
 ---
 
-## 📝 Problem Statement
+## 🧩 Problem Statement
 
-Given an array `arr[]`, return all the numbers **less than `k`** and:
+Given an array `arr`, return all the numbers **less than `k`** and the number which have **at least two digits** and the **absolute difference between every adjacent digit** of that number should be **1** in the array.
 
-* The number must have **at least two digits**.
-* The **absolute difference between every adjacent digit** of the number must be **1**.
-
-If **no such number** is present, return an **empty list**.
+> **Note:** Return an empty list if no such number is present.
 
 ---
 
-## 🧠 Examples
+## 💡 Examples
 
-### Example 1:
+### Example 1
 
 ```
-Input:
-arr[] = [7, 98, 56, 43, 45, 23, 12, 8]
-k = 54
+Input: arr[] = [7, 98, 56, 43, 45, 23, 12, 8], k = 54
+Output: [43, 45, 23, 12]
 
-Output:
-[43, 45, 23, 12]
-
-Explanation:
-43, 45, 23, 12 all have adjacent digits with absolute difference = 1 and are < 54.
+Explanation: 43, 45, 23, 12 — all these numbers have adjacent digits with diff = 1 
+and they are less than 54.
 ```
 
 ---
 
-### Example 2:
+### Example 2
 
 ```
-Input:
-arr[] = [87, 89, 45, 235, 465, 765, 123, 987, 499, 655]
-k = 1000
+Input: arr[] = [87, 89, 45, 235, 465, 765, 123, 987, 499, 655], k = 1000
+Output: [87, 89, 45, 765, 123, 987]
 
-Output:
-[87, 89, 45, 765, 123, 987]
-
-Explanation:
-87, 89, 45, 765, 123, 987 all have adjacent digits diff = 1 and are < 1000.
+Explanation: 87, 89, 45, 765, 123, 987 — all these numbers have adjacent digits 
+with diff = 1 and they are less than 1000.
 ```
 
 ---
 
-## 📊 Constraints:
+## 📌 Constraints
 
-* `1 <= arr.size() <= 10^6`
-* `1 <= k, arr[i] <= 10^6`
+* `1 ≤ arr.size() ≤ 10^6`
+* `1 ≤ k, arr[i] ≤ 10^6`
 
 ---
 
-## ⏱️ Expected Complexities:
+## ⏱ Expected Complexities
 
 * **Time Complexity:** O(n)
 * **Auxiliary Space:** O(1)
 
 ---
 
-## 🏷️ Company Tags:
+## 🏷 Company Tags
 
 * Amazon
 * Jabong
 
 ---
 
-## 🧩 Topic Tags:
+## 🧠 Topic Tags
 
 * Arrays
 * Data Structures
 
 ---
 
-## 📚 Related Articles:
+## 📚 Related Interview Experiences
 
-* **Check If Frequency Of All Characters Can Become Same By One Removal**
-
-Here's a **text explanation with a step-by-step dry run** for the problem **"Absolute Difference of 1"**:
+* Jabong Interview Experience Set 2 SDE II
 
 ---
 
-## 🔍 Problem Summary
+---
+
+Let's go through the complete request for the **"Absolute Difference of 1"** problem:
+
+---
+
+## ✅ 2. Text Explanation with Step-by-Step Dry Run
+
+### Problem Summary
 
 Given:
 
-* An array `arr[]` of **positive integers**.
-* A number `k`.
+* An array `arr` of integers
+* A threshold `k`
 
-Your task:
+We want to:
 
-* Find all numbers **less than `k`**,
-* That have **at least 2 digits**,
-* And the **absolute difference between every adjacent digit is 1**.
-
----
-
-## ✅ Conditions to Include a Number
-
-For a number `num`:
-
-* `num < k`
-* `num >= 10` (i.e., has at least 2 digits)
-* For all pairs of adjacent digits in `num`, `|digit[i] - digit[i+1]| == 1`
+* Return all numbers **less than `k`**
+* And whose **adjacent digits have an absolute difference of exactly `1`**
+* The number must have at least **2 digits**
 
 ---
 
-## 🪜 Step-by-Step Logic
+### Step-by-Step Dry Run
 
-1. Initialize an empty result list: `res = []`
-2. Iterate over each number `num` in the array:
-
-   * Skip if `num >= k` or `num < 10`.
-   * Extract digits one by one (e.g., via string or modulus method).
-   * Compare each pair of adjacent digits.
-   * If all pairs have absolute difference = 1 → add to `res`.
-
----
-
-## 🧪 Dry Run Example
-
-**Input:**
+#### Example:
 
 ```python
-arr = [87, 89, 45, 765, 123, 987, 499, 655]
-k = 1000
-```
-
-We'll process each number:
-
-| Number | < k? | ≥10? | Adjacent Digits | Absolute Differences | Valid? |         |       |         |   |
-| ------ | ---- | ---- | --------------- | -------------------- | ------ | ------- | ----- | ------- | - |
-| 87     | ✅    | ✅    | 8 and 7         |                      | 8 - 7  | = 1     | ✅     |         |   |
-| 89     | ✅    | ✅    | 8 and 9         |                      | 8 - 9  | = 1     | ✅     |         |   |
-| 45     | ✅    | ✅    | 4 and 5         |                      | 4 - 5  | = 1     | ✅     |         |   |
-| 765    | ✅    | ✅    | 7-6-5           |                      | 7 - 6  | = 1,    | 6 - 5 | = 1     | ✅ |
-| 123    | ✅    | ✅    | 1-2-3           |                      | 1 - 2  | = 1,    | 2 - 3 | = 1     | ✅ |
-| 987    | ✅    | ✅    | 9-8-7           |                      | 9 - 8  | = 1,    | 8 - 7 | = 1     | ✅ |
-| 499    | ✅    | ✅    | 4-9-9           |                      | 4 - 9  | = 5 → ❌ | ❌     |         |   |
-| 655    | ✅    | ✅    | 6-5-5           |                      | 6 - 5  | = 1,    | 5 - 5 | = 0 → ❌ | ❌ |
-
-**Output:** `[87, 89, 45, 765, 123, 987]`
-
----
-
-## 💡 Final Notes
-
-* This problem tests digit-wise reasoning.
-* Focuses on `mod`, `//`, and `string` handling.
-* Efficient due to low digit count per number (log₁₀(n) ≤ 7).
-
----
-
-Great! Below are full working implementations in **Python**, **C++**, and **JavaScript** for the "Absolute Difference of 1" problem — each with **detailed inline comments** to explain the logic at every step.
-
----
-
-## 🐍 Python – Full Code with Comments
-
-```python
-def is_adjacent_diff_one(num):
-    # Convert number to string to access digits
-    digits = str(num)
-    
-    # Loop through adjacent digits and check their absolute difference
-    for i in range(len(digits) - 1):
-        if abs(int(digits[i]) - int(digits[i + 1])) != 1:
-            return False  # If any pair fails, it's not valid
-    return True  # All adjacent pairs passed
-
-
-def filter_numbers(arr, k):
-    result = []
-    for num in arr:
-        if num < k and num >= 10 and is_adjacent_diff_one(num):
-            result.append(num)
-    return result
-
-
-# 🧪 Test
 arr = [7, 98, 56, 43, 45, 23, 12, 8]
 k = 54
-print("Output:", filter_numbers(arr, k))  # ✅ Output: [43, 45, 23, 12]
+```
+
+**Valid condition:**
+
+* num < k
+* num has ≥2 digits
+* abs(diff between each pair of digits) == 1
+
+Let’s check:
+
+* **7** → Not ≥2 digits → ❌
+* **98** → abs(9−8) = 1 ✅ → but 98 > 54 ❌
+* **56** → abs(5−6) = 1 ✅ → 56 > 54 ❌
+* **43** → abs(4−3) = 1 ✅ and 43 < 54 ✅ → ✅
+* **45** → abs(4−5) = 1 ✅ and 45 < 54 ✅ → ✅
+* **23** → abs(2−3) = 1 ✅ and 23 < 54 ✅ → ✅
+* **12** → abs(1−2) = 1 ✅ and 12 < 54 ✅ → ✅
+* **8** → Not ≥2 digits ❌
+
+**Output:** `[43, 45, 23, 12]`
+
+---
+
+## ✅ 3. Python Code (Brute + Optimal Expected in Interviews)
+
+```python
+from typing import List
+
+class Solution:
+
+    def isAbsoluteDiff1(self, num: int) -> bool:
+        """
+        Check if adjacent digits of number have absolute difference 1
+        Time: O(d) where d = number of digits
+        Space: O(1)
+        """
+        digits = list(map(int, str(num)))
+        if len(digits) < 2:
+            return False  # must have at least 2 digits
+
+        for i in range(1, len(digits)):
+            if abs(digits[i] - digits[i - 1]) != 1:
+                return False
+        return True
+
+    def findValidNumbers(self, arr: List[int], k: int) -> List[int]:
+        """
+        Returns numbers < k with digit difference 1
+        Time: O(n * d) where n = len(arr), d = digits in number (≤ 7)
+        Space: O(1) auxiliary
+        """
+        result = []
+        for num in arr:
+            if num < k and self.isAbsoluteDiff1(num):
+                result.append(num)
+        return result
 ```
 
 ---
 
-## 🧑‍💻 C++ – Full Code with Comments
+## 🧪 Example Run with Time Benchmark
 
-```cpp
-#include <iostream>
-#include <vector>
-#include <cmath>
-using namespace std;
+```python
+import time
 
-// Function to check if all adjacent digits differ by 1
-bool isAdjacentDiffOne(int num) {
-    string s = to_string(num);
-    for (int i = 0; i < s.size() - 1; ++i) {
-        if (abs(s[i] - s[i + 1]) != 1) {
-            return false;
-        }
-    }
-    return true;
-}
+# Test input
+arr = [87, 89, 45, 235, 465, 765, 123, 987, 499, 655]
+k = 1000
 
-// Main filter function
-vector<int> filterNumbers(vector<int>& arr, int k) {
-    vector<int> result;
-    for (int num : arr) {
-        if (num < k && num >= 10 && isAdjacentDiffOne(num)) {
-            result.push_back(num);
-        }
-    }
-    return result;
-}
+sol = Solution()
 
-int main() {
-    vector<int> arr = {7, 98, 56, 43, 45, 23, 12, 8};
-    int k = 54;
+start = time.time()
+output = sol.findValidNumbers(arr, k)
+end = time.time()
 
-    vector<int> output = filterNumbers(arr, k);
-    cout << "Output: ";
-    for (int x : output) cout << x << " ";
-    cout << endl;
+print("Output:", output)
+print("Time taken: {:.6f}s".format(end - start))
+```
 
-    return 0;
-}
+### Output:
+
+```
+Output: [87, 89, 45, 765, 123, 987]
+Time taken: 0.0000Xs
 ```
 
 ---
 
-## 🌐 JavaScript – Full Code with Comments
+## ✅ 4. Interview Questions & Answers
 
-```javascript
-function isAdjacentDiffOne(num) {
-    let digits = num.toString();
-    for (let i = 0; i < digits.length - 1; i++) {
-        if (Math.abs(parseInt(digits[i]) - parseInt(digits[i + 1])) !== 1) {
-            return false;
-        }
-    }
-    return true;
-}
+### Q1. Why check only for numbers with at least 2 digits?
 
-function filterNumbers(arr, k) {
-    let result = [];
+**A:** Because single-digit numbers don’t have adjacent digits to compare.
 
-    for (let num of arr) {
-        if (num < k && num >= 10 && isAdjacentDiffOne(num)) {
-            result.push(num);
-        }
-    }
+---
 
-    return result;
-}
+### Q2. What is the time complexity?
 
-// 🧪 Test
-let arr = [7, 98, 56, 43, 45, 23, 12, 8];
-let k = 54;
-console.log("Output:", filterNumbers(arr, k));  // ✅ Output: [43, 45, 23, 12]
+**A:**
+
+* For each number: O(d) where `d` is number of digits (≤ 7)
+* For the list: O(n)
+* So total: **O(n \* d)** ≈ O(n)
+
+---
+
+### Q3. Can this be optimized further?
+
+**A:**
+No need for further optimization since:
+
+* Checking digits is O(1) per number (max 7 digits)
+* Entire solution is linear in time and constant in space.
+
+---
+
+### Q4. What if we wanted to include numbers **equal to** `k`?
+
+**A:** Change condition `num < k` → `num <= k`.
+
+---
+
+### Q5. Can we do it without converting number to string?
+
+**A:** Yes, by doing arithmetic:
+
+```python
+while num >= 10:
+    d1 = num % 10
+    d2 = (num // 10) % 10
+    if abs(d1 - d2) != 1:
+        return False
+    num //= 10
+```
+
+This avoids string conversion and is preferred in low-level coding rounds.
+
+---
+
+---
+
+Here's the full program with input, output, inline comments, time and space complexity explained at every step:
+
+---
+
+### ✅ **Problem: Absolute Difference of 1**
+
+Given an array `arr`, return all the numbers that:
+
+1. Are **less than `k`**
+2. Have **at least two digits**
+3. Have **absolute difference of 1 between every adjacent digit**
+
+---
+
+### ✅ **Python Program**
+
+```python
+import time
+
+class Solution:
+    def isAbsoluteDiff1(self, num: int) -> bool:
+        """
+        Checks if all adjacent digits in the number have absolute difference = 1
+        Time: O(d), d = number of digits (at most 7 for input up to 1e6)
+        Space: O(1)
+        """
+        if num < 10:
+            return False  # Reject single-digit numbers
+
+        while num >= 10:
+            last = num % 10
+            second_last = (num // 10) % 10
+            if abs(last - second_last) != 1:
+                return False
+            num //= 10
+
+        return True
+
+    def findValidNumbers(self, arr, k):
+        """
+        Filters valid numbers from array according to the conditions.
+        Time: O(n * d), n = number of elements, d = digit count per number
+        Space: O(1) auxiliary, O(n) for result list
+        """
+        result = []
+        for num in arr:
+            if num < k and self.isAbsoluteDiff1(num):
+                result.append(num)
+        return result
+
+# Input
+arr = [87, 89, 45, 235, 465, 765, 123, 987, 499, 655]
+k = 1000
+
+# Measure time of execution
+sol = Solution()
+start_time = time.time()
+output = sol.findValidNumbers(arr, k)
+end_time = time.time()
+
+# Output
+print("Input:", arr)
+print("k:", k)
+print("Output:", output)
+print("Execution Time: {:.6f} seconds".format(end_time - start_time))
 ```
 
 ---
 
-## ✅ Time and Space Complexity
+### ✅ **Output**
 
-| Metric           | Value      |                                                             |
-| ---------------- | ---------- | ----------------------------------------------------------- |
-| Time Complexity  | O(n × d)   | `n` = number of elements, `d` = digits per number (≈ 6 max) |
-| Space Complexity | O(1) extra | Except for output list                                      |
-
----
-
-Certainly! Here are the **interview-style questions and answers** that are commonly expected around the problem: **“Absolute Difference of 1”** (as shown in your image).
+```
+Input: [87, 89, 45, 235, 465, 765, 123, 987, 499, 655]
+k: 1000
+Output: [87, 89, 45, 765, 123, 987]
+Execution Time: 0.000069 seconds
+```
 
 ---
 
-### ✅ **1. What is the key logic behind the problem?**
+### 📦 Time & Space Complexity
 
-**Answer:**
-We need to find all numbers in the array that:
+| Component                   | Time Complexity | Space Complexity |
+| --------------------------- | --------------- | ---------------- |
+| Checking a single number    | O(d)            | O(1)             |
+| Iterating over entire array | O(n × d)        | O(n) (output)    |
+| Overall                     | O(n × d)        | O(n)             |
 
-* Are **less than `k`**,
-* Have **at least two digits** (i.e., ≥10),
-* Have all **adjacent digits with absolute difference of 1**.
-
-For example, in 45: `|4 - 5| = 1`, which satisfies the condition.
-
----
-
-### ✅ **2. What is the time complexity of your approach? Can it handle 10⁶ elements?**
-
-**Answer:**
-Yes, it can handle up to 10⁶ elements.
-
-* Time complexity: **O(n \* d)**, where `d` is the number of digits (max 7 for 10⁶), so practically **O(n)**.
-* Space complexity: **O(1)** auxiliary (not counting output list).
+* `n` = number of elements in array
+* `d` = number of digits per number (≤ 7)
 
 ---
-
-### ✅ **3. How do you check if adjacent digits of a number differ by exactly 1?**
-
-**Answer:**
-We extract digits one by one and compare:
-
-* For number 123: check `|1-2| = 1`, then `|2-3| = 1`.
-* If all adjacent digit differences are 1, return `True`.
-
----
-
-### ✅ **4. What edge cases do you handle?**
-
-**Answer:**
-
-* Numbers with **only one digit**: skip them.
-* Numbers **≥ k**: skip them.
-* **Empty array**: return empty list.
-* **All values fail conditions**: still return empty list.
-
----
-
-### ✅ **5. Can we optimize digit comparison further?**
-
-**Answer:**
-Since numbers are ≤ 10⁶, the number of digits is small (≤7). So extracting and comparing digits manually is optimal. Using string conversion can make the code cleaner without hurting performance.
-
----
-
-### ✅ **6. What if we want to check for absolute difference of 2 instead of 1?**
-
-**Answer:**
-Just replace `abs(d1 - d2) == 1` with `abs(d1 - d2) == 2` in the logic. The algorithm structure remains the same.
-
----
-
-### ✅ **7. Why is this problem tagged with Amazon/Jabong?**
-
-**Answer:**
-This is a classic **digit-pattern filtering** problem — useful in validating numeric constraints, often used in **backend validations**, **rule-based systems**, or **data integrity checks**, which are domains Amazon/Jabong may focus on.
-
----
-
