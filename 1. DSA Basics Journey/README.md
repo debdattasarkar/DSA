@@ -1,61 +1,210 @@
-Awesome! You're at the exciting starting line of your DSA (Data Structures and Algorithms) journey—and trust me, it's going to be a game-changer. You're not just learning how to write better code, you're gearing up to think like a problem solver. Let’s lay your foundation nice and strong. Here's your roadmap from “what’s a data structure?” to “I can implement and optimize that!”—step by step:
 
 ---
 
-### **STEP 1: Understand What You're Getting Into**
-**What are Data Structures and Algorithms?**
-- **Data Structure:** A way to store and organize data so we can use it efficiently. Think of it like a toolbox (arrays, stacks, queues, trees, etc.).
-- **Algorithm:** A step-by-step recipe for solving a problem or doing a task (like sorting numbers or searching through data).
+# 📘 DSA Problem Solving Techniques Cheat Sheet
 
-**Why learn them?**
-Because every serious coding challenge or real-world application needs speed and structure. This is the **secret sauce** behind Google searches, Instagram feeds, and even Spotify’s song recommendations.
+A quick reference to the most common techniques used to solve algorithmic and data structure problems.
 
 ---
 
-### **STEP 2: The Beginner’s Roadmap (Follow This Order)**
+## 🔍 Search Techniques
 
-#### **Hour 1-5: The Basics**
-- **Hour 1:** Overview — Why DSA matters and what problems it solves.
-- **Hour 2:** Arrays — Your first data structure (think lists of stuff).
-- **Hour 3:** Ordered Arrays — Now let's add some order and speed up searches.
-- **Hour 4:** Bubble Sort — Learn to sort in a very “bubbly” way.
-- **Hour 5:** Insertion Sort — Smarter sorting than Bubble, still beginner-friendly.
+* **Binary Search**
+  Find an element in a sorted array in `O(log n)` time.
+  *Example*: Search a target in a rotated sorted array.
 
-#### **How to Learn Effectively**
-For each chapter:
-1. **Read the concept.**
-2. **Run the code examples.**
-3. **Try writing your own version.**
-4. **Do the Workshop/Quiz/Exercise** at the end.
+* **Ternary Search**
+  Used to find the minimum or maximum of a unimodal function.
+  *Example*: Optimize a convex cost function.
 
 ---
 
-### **STEP 3: Coding Time! (Here’s Your Mission for Now)**
+## 🪟 Window and Pointer Techniques
 
-Let’s implement your **first data structure: an Array!**
+* **Two Pointer**
+  Use left and right pointers to find pairs, subarrays, etc.
+  *Example*: Two sum in sorted array.
 
-**Task: Create a program in your preferred language (C++ is used in the book, but Python or Java is fine too)** that:
-- Creates an array
-- Adds items to it
-- Displays all items
-- Deletes an item
-- Searches for an item
+* **Sliding Window**
+  Maintain a window of elements for fixed/variable-length problems.
+  *Example*: Longest substring without repeating characters.
 
-If you want help writing this—just say the word and I’ll guide you line-by-line.
-
----
-
-### **STEP 4: Keep the Momentum**
-Once you complete the first 5 chapters, we’ll move to:
-- **Stacks and Queues (Hour 6-7)** — Super useful in undo features, processing tasks, etc.
-- **Linked Lists (Hour 8)** — Flexible data storage, unlike rigid arrays.
-- **Recursion (Hour 11)** — It’s like functions calling themselves... kind of trippy but powerful.
+* **Fast and Slow Pointers (Tortoise & Hare)**
+  Detect cycles in linked lists or arrays.
+  *Example*: Detect cycle in linked list.
 
 ---
 
-### **Encouragement Corner**
-Remember: Every expert once had no idea what a "stack" or "binary tree" was. The difference? They *started*, just like you're doing now. And hey, you’ve got me to guide and cheer you on!
+## 🔁 Recursion & Backtracking
 
-**Let’s make it official. Want to try your first array-based program together?** I’ll walk you through it in the language of your choice.
+* **Basic Recursion**
+  Solve subproblems recursively.
+  *Example*: Tower of Hanoi.
 
-Ready? Let’s do this!
+* **Backtracking**
+  Try all possibilities and backtrack if invalid.
+  *Example*: N-Queens, Sudoku Solver.
+
+* **Memoized Recursion**
+  Cache previous calls to avoid recomputation.
+  *Example*: Fibonacci with memoization.
+
+---
+
+## 📚 Dynamic Programming (DP)
+
+* **Top-down (Memoization)**
+  Recursive + cache for overlapping subproblems.
+
+* **Bottom-up (Tabulation)**
+  Iterative DP to build up the answer.
+  *Example*: 0/1 Knapsack, LIS.
+
+* **Bitmask DP**
+  Used when the state depends on subsets.
+  *Example*: Traveling Salesman Problem (TSP).
+
+---
+
+## 📈 Greedy Algorithms
+
+* **Interval Scheduling**
+  Select max number of non-overlapping intervals.
+
+* **Coin Change (Greedy)**
+  Works if coin denominations are canonical.
+
+* **Huffman Coding**
+  Optimal prefix code generation.
+
+---
+
+## ⛓ Divide and Conquer
+
+* **Divide, Solve, Combine**
+  *Example*: Merge Sort, Quick Sort.
+
+* **2D Problems**
+  *Example*: Closest pair of points.
+
+---
+
+## 🌐 Graph Algorithms
+
+* **DFS / BFS**
+  Traverse or search nodes.
+
+* **Topological Sort**
+  Ordering for DAGs.
+
+* **Dijkstra’s Algorithm**
+  Shortest path with non-negative weights.
+
+* **Union-Find (DSU)**
+  Track components for Kruskal’s MST.
+
+---
+
+## 🌲 Tree Techniques
+
+* **DFS Traversals**
+  Inorder / Preorder / Postorder.
+
+* **Level-order (BFS)**
+  Using a queue.
+
+* **Lowest Common Ancestor**
+  Binary lifting or Euler tour.
+
+* **Segment Tree / BIT**
+  Efficient range queries and updates.
+
+---
+
+## 📦 Heap / Priority Queue
+
+* **Kth Largest Element**
+  Min-heap of size k.
+
+* **Merging Sorted Lists**
+  Use a min-heap for efficiency.
+
+---
+
+## 🧮 Mathematical Techniques
+
+* **Prefix Sum / Difference Array**
+  O(1) range queries or updates.
+
+* **Modular Arithmetic**
+  Avoid overflow, handle divisibility.
+
+* **Sieve of Eratosthenes**
+  Prime generation up to n.
+
+---
+
+## 🧩 Hashing Techniques
+
+* **Hash Maps / Sets**
+  Fast lookup and frequency count.
+
+* **Rolling Hash**
+  Pattern matching (Rabin-Karp).
+
+---
+
+## 🔣 Bit Manipulation
+
+* **XOR Tricks**
+  Find unique elements.
+
+* **Bitmasking**
+  Represent subsets and flags.
+
+---
+
+## 🔃 Sorting-Based Techniques
+
+* **Sort + Logic**
+  Apply two-pointer or greedy logic post-sort.
+
+* **Custom Comparators**
+  Useful in greedy scheduling.
+
+---
+
+## 🧵 Trie / Prefix Tree
+
+* **Prefix Matching**
+  Efficient for dictionaries, autocomplete.
+
+* **Word Filters**
+  Check word prefixes/suffixes quickly.
+
+---
+
+## 📉 Monotonic Stack / Queue
+
+* **Next Greater/Smaller Element**
+  Use stack for O(n) solutions.
+
+* **Largest Rectangle in Histogram**
+  Classic stack problem.
+
+---
+
+## 🔄 Simulation & State Machines
+
+* **Emulate Step-by-Step**
+  *Example*: Game of Life, finite automata.
+
+---
+
+## 🧠 Constraint Propagation
+
+* **Reduce Possibilities Early**
+  *Example*: Sudoku with forward checking.
+
+---
+
