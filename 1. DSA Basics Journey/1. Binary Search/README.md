@@ -14,12 +14,12 @@ Here's a structured progression of **Binary Search problems**, from basic to adv
 2. **First and Last Occurrence**
 
    * Find first or last index of target (use left/right bias).
-   * LeetCode 34: [Find First and Last Position of Element in Sorted Array](https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/)
+   * ✔️ LeetCode 34: [Find First and Last Position of Element in Sorted Array](https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/)
 
 3. **Insert Position**
 
    * Where to insert target if not found.
-   * LeetCode 35: [Search Insert Position](https://leetcode.com/problems/search-insert-position/)
+   * ✔️ LeetCode 35: [Search Insert Position](https://leetcode.com/problems/search-insert-position/)
 
 4. **Square Root of Integer**
 
