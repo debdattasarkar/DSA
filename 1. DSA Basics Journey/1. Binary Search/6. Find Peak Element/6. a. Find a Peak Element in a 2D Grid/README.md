@@ -390,7 +390,7 @@ Brute-force becomes necessary (unless grid has helpful structure)
 
 ---
 
-# Real-World Use Cases
+# 🌍 Real-World Use Cases
 
 Great question! Finding **2D peak elements** has several **real-world use cases**, especially in fields like image processing, signal analysis, optimization, and terrain modeling. Here's a breakdown:
 
