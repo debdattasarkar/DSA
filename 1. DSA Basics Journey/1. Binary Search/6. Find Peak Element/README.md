@@ -317,3 +317,40 @@ It uses a **greedy column-wise binary search**, finding a column's max, then che
 
 ---
 
+---
+
+# Real-World Use Cases
+
+Here are a few **important real-world use cases** of **1D and 2D peak finding**:
+
+---
+
+### ✅ 1. **Image Processing**
+
+* Used to detect **bright spots**, **blobs**, or **corners** in images.
+* Example: Finding stars in astronomical images or objects in vision systems.
+
+---
+
+### ✅ 2. **Terrain Analysis**
+
+* Peaks in elevation data represent **mountains or high points** in geographic maps.
+* Used in **route planning**, **3D mapping**, or **flood modeling**.
+
+---
+
+### ✅ 3. **Signal & Audio Processing**
+
+* Peaks in 1D signals represent **events**, **beats**, or **spikes**.
+* Used in **music beat detection**, **speech analysis**, **seismic activity**.
+
+---
+
+### ✅ 4. **Model Attention Maps (Deep Learning)**
+
+* In attention or heatmaps, peaks show **where a model focuses**.
+* Used in **model interpretability** or **explainable AI**.
+
+---
+
+These are widely used in **real-time applications**, and peak-finding is a **fundamental tool** in both research and industry.

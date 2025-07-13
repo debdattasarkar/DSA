@@ -387,3 +387,103 @@ Brute-force becomes necessary (unless grid has helpful structure)
 * Time: `O(n² × log d)` where d is depth
 
 ---
+
+---
+
+# Real-World Use Cases
+
+Great question! Finding **2D peak elements** has several **real-world use cases**, especially in fields like image processing, signal analysis, optimization, and terrain modeling. Here's a breakdown:
+
+---
+
+## ✅ Real-World Use Cases of 2D Peak Finding
+
+---
+
+### 🖼️ 1. **Image Processing (Feature Detection)**
+
+* Images are 2D matrices of pixel intensities.
+* Finding peaks = locating **local brightness maxima**, edges, or blobs.
+* Used in:
+
+  * **Object detection** (e.g., finding stars in astronomy images)
+  * **Blob detection** in computer vision (e.g., SIFT, SURF)
+  * **Corner detection** (Harris detector)
+
+---
+
+### 🧭 2. **Terrain Analysis (Geospatial Mapping)**
+
+* Elevation maps are 2D grids with height values.
+* Peaks represent **mountains or ridges**.
+* Used in:
+
+  * Topographic maps
+  * GIS systems
+  * Route planning for drones and hikers
+
+---
+
+### 🎵 3. **Signal Processing (2D Spectrograms)**
+
+* Audio is converted to **spectrograms** (time vs frequency).
+* Local maxima represent **dominant frequencies** over time.
+* Used in:
+
+  * Music analysis
+  * Speech recognition
+  * Noise filtering
+
+---
+
+### ⚙️ 4. **Optimization Problems**
+
+* In **surface optimization** (e.g., cost landscapes), peaks are **local maxima** of cost or utility.
+* Used in:
+
+  * Reinforcement learning (finding reward peaks)
+  * Hyperparameter tuning (grid search)
+  * Response surface modeling
+
+---
+
+### 🧠 5. **Neural Networks and Heatmaps**
+
+* Attention maps or CAMs (Class Activation Maps) in vision models are 2D.
+* Peak indicates the **most focused region** for a prediction.
+* Used in:
+
+  * Model interpretability
+  * Saliency maps
+  * Region proposal networks
+
+---
+
+### 📈 6. **Financial Heatmaps or Risk Surfaces**
+
+* Matrices representing **asset risk or volatility** over time and parameters.
+* Peaks indicate **risk spikes** or **profit hotspots**.
+
+---
+
+### 🧪 7. **Medical Imaging (CT/MRI Scans)**
+
+* Brain activity or tissue density often represented as 2D slices.
+* Peaks can signal **tumors**, **lesions**, or **activity centers**.
+
+---
+
+## 🧠 Summary Table
+
+| Field             | Grid Meaning          | Peak Represents             |
+| ----------------- | --------------------- | --------------------------- |
+| Image Processing  | Pixels                | Bright objects/blobs        |
+| Terrain Mapping   | Elevation             | Hills/mountains             |
+| Signal Processing | Frequency/time energy | Dominant signals            |
+| Deep Learning     | Attention/heatmap     | Focused/important regions   |
+| Optimization      | Cost surface          | Local/global optima         |
+| Medicine          | Scan intensities      | Tumors/anomalies            |
+| Finance           | Risk maps             | High-risk/high-reward zones |
+
+---
+
