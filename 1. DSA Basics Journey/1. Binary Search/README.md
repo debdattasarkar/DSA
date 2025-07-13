@@ -24,7 +24,8 @@ Here's a structured progression of **Binary Search problems**, from basic to adv
 4. **Square Root of Integer**
 
    * Find floor of sqrt(n) using binary search.
-   * GFG: [Square root of a number](https://www.geeksforgeeks.org/square-root-of-an-integer/)
+   * ✔️ LeetCode 69: [Sqrt(x)](https://leetcode.com/problems/sqrtx/)
+   * ✔️ GFG: [Square root of a number](https://www.geeksforgeeks.org/square-root-of-an-integer/)
 
 ---
 
@@ -34,8 +35,10 @@ Here's a structured progression of **Binary Search problems**, from basic to adv
 
 5. **Search in Rotated Sorted Array**
 
-   * LeetCode 33: [Search in Rotated Sorted Array](https://leetcode.com/problems/search-in-rotated-sorted-array/)
-   * With duplicates: LeetCode 81
+   * ✔️ LeetCode 33: [Search in Rotated Sorted Array](https://leetcode.com/problems/search-in-rotated-sorted-array/)
+   * ✔️ LeetCode 81: [With duplicates: ](https://leetcode.com/problems/search-in-rotated-sorted-array-ii/)
+   * ✔️ LeetCode 153: [Find Minimum in Rotated Sorted Array](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/)
+
 
 6. **Peak Element**
 
