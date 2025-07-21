@@ -126,3 +126,79 @@ Max at x = 3, Value: 12
 | Function over ℤ | Integer | Best `x` in range  |
 
 ---
+
+---
+
+Great! Here's a **curated list** of popular and interview-relevant **Ternary Search** DSA problems (from basic to hard), mainly focused on **unimodal functions**, **optimization over continuous domains**, or **peak-like structures**.
+
+---
+
+## ✅ Basic to Intermediate Ternary Search Problems
+
+### 1. **Find the Maximum/Minimum Value of a Unimodal Function**
+
+* 📌 **Type:** Classic Ternary Search
+* 🎯 **Goal:** Find max/min in unimodal array or convex function
+* 🧠 **Used for:** Cost minimization, profit maximization
+
+> ✅ Common setup:
+
+```python
+def f(x): return (x - 3)**2 + 7  # convex function
+
+left, right = 0, 10
+while right - left > 1e-6:
+    m1 = left + (right - left) / 3
+    m2 = right - (right - left) / 3
+    if f(m1) < f(m2):
+        right = m2
+    else:
+        left = m1
+```
+
+---
+
+### 2. **\[GFG] Minimum Time to Complete Tasks with Given Speeds**
+
+* 🔗 [Link](https://www.geeksforgeeks.org/minimum-time-required-to-produce-m-items/)
+* 🎯 Given multiple workers with different speeds, minimize the time to produce `m` items.
+* 🧠 Use ternary search on time.
+
+---
+
+### 3. **\[Leetcode 875] Koko Eating Bananas** *(use binary or ternary)*
+
+* 🎯 Find the **minimum eating speed** such that she can eat all bananas in `h` hours.
+* Can also use ternary search on integer speed.
+* 🔥 Related to cost optimization over discrete values.
+
+---
+
+## 🔷 Advanced/Hard Ternary Search Problems
+
+### 4. **\[GFG] Maximum Value of an Arithmetic Expression With Parentheses**
+
+* 🔗 [Link](https://www.geeksforgeeks.org/maximum-value-expression/)
+* 🎯 Use ternary search when evaluating expression values over floating domains.
+
+---
+
+### 5. **\[Leetcode 4] Median of Two Sorted Arrays (variant)**
+
+* ✅ Ternary search-based idea to minimize the median difference (less common in interviews, more theoretical).
+
+---
+
+### 6. **\[Codeforces] Find Point of Minimum Distance Between Two Functions**
+
+* 🎯 Given two functions `f1(x)` and `f2(x)`, find `x` minimizing `|f1(x) - f2(x)|`
+* ⏱️ Ternary search on `x` from `l` to `r`.
+
+---
+
+### 7. **\[GFG] Aggressive Cows Variant — Maximize Distance with Cost Penalty**
+
+* 🎯 Minimize `(distance_penalty * k + placement_cost)`
+* Combines binary/ternary with DP/Greedy.
+
+---
