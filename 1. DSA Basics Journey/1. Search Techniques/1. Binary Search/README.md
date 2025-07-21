@@ -92,3 +92,77 @@ Here's a structured progression of **Binary Search problems**, from basic to adv
 * LeetCode 1802: Advanced BS on sum constraints
 
 ---
+
+---
+
+Great! Here's the **standard Binary Search template** — a must-have in your DSA toolbox. It works for both classic search problems and "binary search on answer" optimization problems.
+
+---
+
+## ✅ Classic Binary Search Template (Search in Sorted Array)
+
+```python
+def binary_search(arr, target):
+    left, right = 0, len(arr) - 1
+    
+    while left <= right:
+        mid = left + (right - left) // 2
+        
+        if arr[mid] == target:
+            return mid  # target found
+        elif arr[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+    
+    return -1  # target not found
+```
+
+---
+
+## ✅ Binary Search on Answer Template (Optimization Problems)
+
+Use this when:
+
+* You need to **maximize/minimize** a value
+* You can check feasibility using a monotonic function `is_valid(value)`
+
+```python
+def binary_search_answer(is_valid, low, high):
+    result = low  # or -1 depending on the problem
+
+    while low <= high:
+        mid = (low + high) // 2
+        
+        if is_valid(mid):
+            result = mid         # save valid answer
+            low = mid + 1        # try higher (for max)
+        else:
+            high = mid - 1       # try lower
+    
+    return result
+```
+
+> 🔁 For **minimization**: move `high = mid - 1` when valid, and track lowest valid value.
+
+---
+
+## 🧪 Example: First `x` such that `x*x >= target`
+
+```python
+def is_valid(x): return x * x >= 20
+binary_search_answer(is_valid, 0, 100)  # Output: 5
+```
+
+---
+
+## 📌 Key Patterns
+
+| Use Case                 | Technique        | Example Problem               |
+| ------------------------ | ---------------- | ----------------------------- |
+| Find target in sorted    | Classic binary   | Leetcode 704                  |
+| First/last position      | Modified binary  | Leetcode 34                   |
+| Search insert position   | Lower bound      | Leetcode 35                   |
+| Minimum/max feasible val | Binary on answer | Leetcode 1011, 410, 875, 1802 |
+
+---
