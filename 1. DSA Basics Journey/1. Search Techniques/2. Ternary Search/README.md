@@ -33,6 +33,70 @@ Ternary Search is a powerful technique for **unimodal functions** — problems w
 
 ---
 
+Here are **5 pure ternary search problems** from **Leetcode** and **GeeksforGeeks** that strictly involve **unimodal function optimization** — perfect for focused practice on **Ternary Search**:
+
+---
+
+## ✅ **🧠 5 Pure Ternary Search Problems (With Links)**
+
+### 1. **Minimum Time to Complete m Items**
+
+📍 **GFG**
+🔗 [Problem Link](https://www.geeksforgeeks.org/minimum-time-required-to-produce-m-items/)
+🔹 Given machines with different speeds, find the minimum time to produce `m` items.
+🔹 **Function:** Total items produced over time is unimodal.
+
+> Use **ternary search on time (float or int)** to minimize.
+
+---
+
+### 2. **Aggressive Cows (Distance Maximization)**
+
+📍 **GFG**
+🔗 [Problem Link](https://www.geeksforgeeks.org/aggressive-cows/)
+🔹 Place `k` cows in `n` stalls such that **minimum distance** between any two is **maximized**.
+🔹 Function is **monotonically increasing**, so can be solved via **ternary or binary search** on distance.
+
+---
+
+### 3. **Minimize Maximum Distance to Gas Station**
+
+📍 **Leetcode 774**
+🔗 [Problem Link](https://leetcode.com/problems/minimize-max-distance-to-gas-station/)
+🔹 Insert `k` gas stations to minimize the **maximum distance** between stations.
+🔹 Search over real values ⇒ **float ternary search**.
+
+---
+
+### 4. **Find a Peak Element II (2D Grid Peak)**
+
+📍 **Leetcode 1901**
+🔗 [Problem Link](https://leetcode.com/problems/find-a-peak-element-ii/)
+🔹 Find any peak in a 2D grid — use **ternary search on columns** in divide-and-conquer style.
+🔹 Efficient in `O(m * log n)` for `m x n` matrix.
+
+---
+
+### 5. **Minimize Cost to Move Chips to the Same Position**
+
+📍 **Leetcode 1217** (conceptually adaptable)
+🔹 While solved greedily in O(1), if weights/costs were real-valued, minimizing total cost to a **point** would use **ternary search** to minimize sum of distances.
+
+---
+
+## 🔁 Summary Table
+
+| Problem                              | Domain    | Function Type   | Technique               |
+| ------------------------------------ | --------- | --------------- | ----------------------- |
+| Minimum Time to Produce Items        | Float/int | Monotonic       | Ternary (optimize time) |
+| Aggressive Cows                      | Integer   | Monotonic       | Ternary/Binary          |
+| Minimize Max Distance to Gas Station | Float     | Unimodal        | Float Ternary Search    |
+| Find Peak in 2D Matrix               | 2D Grid   | Divide-and-conq | Column Ternary          |
+| Cost to Move Chips (variant)         | Real line | Convex          | Ternary                 |
+
+
+---
+
 ---
 
 Awesome! Let’s start with a **ternary search implementation template** for both:
