@@ -157,35 +157,34 @@ Sorted stalls: `[1, 2, 4, 8, 9]`
 from timeit import default_timer as timer
 
 class Solution:
-    def canPlaceCows(self, stalls, k, dist):
-        count = 1  # Place first cow at the first stall
-        last_pos = stalls[0]
-
-        for i in range(1, len(stalls)):
-            if stalls[i] - last_pos >= dist:
-                count += 1
-                last_pos = stalls[i]
-            if count == k:
-                return True
-        return False
-
     def aggressiveCows(self, stalls, k):
         # Time: O(n log m), where m = max(stalls) - min(stalls)
         # Space: O(1) auxiliary
         stalls.sort()  # O(n log n)
 
-        low = 1
-        high = stalls[-1] - stalls[0]
-        ans = 0
+        def canPlaceCows(min_gap):
+            countCows = 1  # Place first cow at the first stall
+            prev_stall_loc = 0
+            no_of_stalls = len(stalls)
+            for curr_stall_loc in range(1, no_of_stalls):
+                if stalls[curr_stall_loc] - stalls[prev_stall_loc] >= min_gap:
+                    countCows += 1
+                    prev_stall_loc = curr_stall_loc
+                if countCows >= k:
+                    return True
+            return False
 
-        while low <= high:
-            mid = (low + high) // 2
-            if self.canPlaceCows(stalls, k, mid):
-                ans = mid
-                low = mid + 1
+        left, right = 0, stalls[-1] - stalls[0]
+        maxGap = 0
+
+        while left <= right:
+            gap = (left + right) // 2
+            if canPlaceCows(gap):
+                maxGap = gap
+                left = gap + 1  # Try for larger min distance
             else:
-                high = mid - 1
-        return ans
+                right = gap - 1  # Try smaller distance
+        return maxGap
 
 # Main program with timing
 if __name__ == "__main__":
