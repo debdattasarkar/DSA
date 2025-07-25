@@ -62,6 +62,64 @@ class Solution:
         return answer
 ```
 
+Let’s break down this Python line of code:
+
+```python
+hours_needed = sum(math.ceil(pile / mid) for pile in piles)
+```
+
+---
+
+## ✅ Context
+
+* `piles` is a list of banana piles.
+* `mid` represents a **candidate eating speed** (bananas per hour).
+* We want to find out how many **hours** it would take to finish all piles at that speed.
+
+---
+
+## ✅ Explanation
+
+### 🔸 `pile / mid`
+
+* This computes how many **hours it would take** to eat the `pile` if Koko eats `mid` bananas per hour.
+
+### 🔸 `math.ceil(pile / mid)`
+
+* Since Koko **can’t eat a fraction of an hour**, we **round up**:
+
+  * If `pile = 8` and `mid = 3`, then she takes `ceil(8/3) = ceil(2.67) = 3 hours`.
+* This tells you **how many full hours** are needed for that pile.
+
+### 🔸 `for pile in piles`
+
+* Apply this logic to **each pile** in the `piles` list.
+
+### 🔸 `sum(...)`
+
+* Add up all the hours required for each pile.
+
+---
+
+## ✅ Example
+
+```python
+piles = [3, 6, 7, 11]
+mid = 4  # candidate speed
+```
+
+We compute:
+
+```python
+hours_needed = sum(ceil(3/4), ceil(6/4), ceil(7/4), ceil(11/4))
+             = sum(1, 2, 2, 3)
+             = 8
+```
+
+So, Koko needs `8` hours to eat all bananas at speed `mid = 4`.
+
+---
+
 ---
 
 ## 🧪 Dry Run: `piles = [3,6,7,11], h = 8`
