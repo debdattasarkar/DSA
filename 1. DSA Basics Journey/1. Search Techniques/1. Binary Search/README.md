@@ -47,7 +47,7 @@ Here's a structured progression of **Binary Search problems**, from basic to adv
 
 7. **Binary Search on Answer**
 
-   * LeetCode 875: [Koko Eating Bananas](https://leetcode.com/problems/koko-eating-bananas/)
+   * ✔️ LeetCode 875: [Koko Eating Bananas](https://leetcode.com/problems/koko-eating-bananas/)
    * LeetCode 410: [Split Array Largest Sum](https://leetcode.com/problems/split-array-largest-sum/)
 
 8. **Minimum in Rotated Sorted Array**
@@ -56,7 +56,7 @@ Here's a structured progression of **Binary Search problems**, from basic to adv
 
 9. **Aggressive Cows (Binary Search on Distance)**
 
-   * GFG: [Aggressive cows](https://www.geeksforgeeks.org/aggressive-cows-dynamic-programming-approach/)
+   * ✔️ GFG: [Aggressive cows](https://www.geeksforgeeks.org/aggressive-cows-dynamic-programming-approach/)
 
 ---
 
