@@ -1,47 +1,28 @@
-#{ 
- # Driver Code Starts
-#Initial Template for Python 3
-
-# } Driver Code Ends
-
-#User function Template for python3
 class Solution:
     def longestSubarray(self, arr, k):
         # Code Here
-        prefix = {}  # maps balance to earliest index
-        Sum = 0      # balance: +1 for >k, -1 for <=k
-        maxLen = 0
+        # Step 1: Transform the array into +1 and -1
+        n = len(arr)
+        nums = [1 if num > k else -1 for num in arr]
 
-        for i in range(len(arr)):
-            # Update balance
-            Sum += 1 if arr[i] > k else -1
+        # Step 2: Use prefix sum and a hash map to track first seen positions
+        prefix_sum = 0
+        first_occurrence = {}  # stores earliest index for each prefix sum
+        max_len = 0
 
-            # If more elements > k till now
-            if Sum > 0:
-                maxLen = i + 1
-            else:
-                # Check for (Sum - 1) previously seen
-                if (Sum - 1) in prefix:
-                    maxLen = max(maxLen, i - prefix[Sum - 1])
+        for i in range(n):
+            prefix_sum += nums[i]
 
-            # Store the first occurrence of this balance
-            if Sum not in prefix:
-                prefix[Sum] = i
+            # Case 1: total sum is positive → whole subarray [0..i] is valid
+            if prefix_sum > 0:
+                max_len = i + 1
 
-        return maxLen
+            # Case 2: check if prefix_sum - 1 occurred before
+            if prefix_sum - 1 in first_occurrence:
+                max_len = max(max_len, i - first_occurrence[prefix_sum - 1])
 
-#{ 
- # Driver Code Starts.
+            # Store the first occurrence only
+            if prefix_sum not in first_occurrence:
+                first_occurrence[prefix_sum] = i
 
-if __name__ == "__main__":
-    t = int(input())
-    while t > 0:
-        
-        arr = [int(x) for x in input().strip().split()]
-        k = int(input())
-        
-        ob = Solution()
-        print(ob.longestSubarray(arr, k))
-        print("~")
-        t -= 1
-# } Driver Code Ends
+        return max_len
