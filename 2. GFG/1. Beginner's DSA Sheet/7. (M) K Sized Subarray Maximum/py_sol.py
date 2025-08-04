@@ -1,5 +1,3 @@
-from collections import deque
-
 class Solution:
     def maxOfSubarrays(self, arr, k):
         # code here
