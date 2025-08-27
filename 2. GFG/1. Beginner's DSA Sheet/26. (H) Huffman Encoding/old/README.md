@@ -1,4 +1,3 @@
-Here's a comprehensive `README.md` file for the problem **"Minimum Cost Path"** as described in the uploaded image:
 
 ---
 
