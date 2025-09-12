@@ -1,41 +1,21 @@
-#User function Template for python3
+# User function Template for python3
 
 class Solution:
-    
-    def KthMissingElement(self,arr,k) : 
-        #Complete the function
+    def KthMissingElement(self, arr, k):
+        """
+        Linear scan across gaps between consecutive elements.
+        Time:  O(n)
+        Space: O(1)
+        Returns -1 if the k-th missing does not exist within [arr[0], arr[-1]].
+        """
         n = len(arr)
+        if n == 0 or k <= 0:
+            return -1
 
-        for i in range(1, n):
-            # Calculate how many numbers are missing between arr[i-1] and arr[i]
-            missing = arr[i] - arr[i - 1] - 1
+        for i in range(n - 1):
+            gap = arr[i + 1] - arr[i] - 1  # how many integers are missing here
+            if gap >= k:
+                return arr[i] + k          # k-th missing lies in this gap
+            k -= gap                       # otherwise consume this gap and move on
 
-            if k <= missing:
-                # If k is within the missing range, return the result
-                return arr[i - 1] + k
-
-            # Otherwise, skip these missing numbers
-            k -= missing
-
-        # If k-th missing is beyond the last element
-        return -1
-
-
-#{ 
- # Driver Code Starts
-#Initial Template for Python 3
-#Position this line where user code will be pasted.
-#Initial Template for Python 3
-
-if __name__ == "__main__":
-    t = int(input())
-    while t > 0:
-        k = int(input())
-        arr = list(map(int, input().split()))
-        ob = Solution()
-        res = ob.KthMissingElement(arr, k)
-        print(res)
-        print("~")
-        t -= 1
-
-# } Driver Code Ends
+        return -1                           # not enough missing numbers
