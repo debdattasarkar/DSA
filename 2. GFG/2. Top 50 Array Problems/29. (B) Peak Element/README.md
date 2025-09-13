@@ -1,7 +1,4 @@
-
----
-
-# Peak Element
+# Peak element
 
 **Difficulty:** Basic
 **Accuracy:** 38.86%
@@ -11,115 +8,61 @@
 
 ---
 
-## 🧠 Problem Statement
-
-Given an array `arr[]` where **no two adjacent elements are the same**, find the **index of a peak element**.
-
-An element is considered to be a **peak** if it is **greater than its adjacent elements** (if they exist).
-
-If there are multiple peak elements, return the index of **any one of them**.
+Given an array `arr[]` where no two adjacent elements are same, find the **index of a peak element**.
+An element is considered to be a **peak** if it is greater than its adjacent elements (if they exist).
+If there are multiple peak elements, return index of any one of them.
 
 The output will be **"true"** if the index returned by your function is correct; otherwise, it will be **"false"**.
 
-> **Note:** Consider the element **before the first element** and the element **after the last element** to be **negative infinity**.
+**Note:** Consider the element **before the first** element and the element **after the last** element to be negative infinity.
 
 ---
 
-## ✨ Examples
+## Examples
 
-### Example 1:
+### Example 1
 
-**Input:**
+**Input:** `arr = [1, 2, 4, 5, 7, 8, 3]`
+**Output:** `true`
+**Explanation:** `arr[5] = 8` is a peak element because `arr[4] < arr[5] > arr[6]`.
 
-```
-arr = [1, 2, 4, 5, 7, 8, 3]
-```
+### Example 2
 
-**Output:**
+**Input:** `arr = [10, 20, 15, 2, 23, 90, 80]`
+**Output:** `true`
+**Explanation:** `arr[1] = 20` and `arr[5] = 90` are peak elements because `arr[0] < arr[1] > arr[2]` and `arr[4] < arr[5] > arr[6]`.
 
-```
-true
-```
+### Example 3
 
-**Explanation:**
-`arr[5] = 8` is a peak element because `arr[4] < arr[5] > arr[6]`.
-
----
-
-### Example 2:
-
-**Input:**
-
-```
-arr = [10, 20, 15, 2, 23, 90, 80]
-```
-
-**Output:**
-
-```
-true
-```
-
-**Explanation:**
-`arr[1] = 20` and `arr[5] = 90` are peak elements because:
-
-* `arr[0] < arr[1] > arr[2]`, and
-* `arr[4] < arr[5] > arr[6]`
+**Input:** `arr = [1, 2, 3]`
+**Output:** `true`
+**Explanation:** `arr[2]` is a peak element because `arr[1] < arr[2]` and `arr[2]` is the last element, so it has negative infinity to its right.
 
 ---
 
-### Example 3:
+## Constraints
 
-**Input:**
-
-```
-arr = [1, 2, 3]
-```
-
-**Output:**
-
-```
-true
-```
-
-**Explanation:**
-`arr[2] = 3` is a peak element because:
-
-* `arr[1] < arr[2]`
-* and `arr[2]` is the last element (i.e., it has `-∞` to its right)
+* `1 < arr.size() ≤ 10^6`
+* `-2^31 ≤ arr[i] ≤ 2^31 - 1`
 
 ---
 
-## ✅ Constraints
+## Expected Complexities
 
-* $1 \leq \text{arr.size()} \leq 10^6$
-* $-2^{31} \leq \text{arr}[i] \leq 2^{31} - 1$
-
----
-
-## ⏱ Expected Complexities
-
-* **Time Complexity:** O(log n)
-* **Auxiliary Space:** O(1)
+* **Time Complexity:** `O(log n)`
+* **Auxiliary Space:** `O(1)`
 
 ---
 
-## 🏷 Topic Tags
+## Company Tags
 
-* Arrays
-* Searching
-* Data Structures
-* Algorithms
+* `Accolite`, `Amazon`, `Visa`, `Adobe`, `Google`
 
 ---
 
-## 🏢 Company Tags
+## Topic Tags
 
-* Accolite
-* Amazon
-* Visa
-* Adobe
-* Google
+* `Arrays`, `Searching`, `Data Structures`, `Algorithms`
 
 ---
 
@@ -354,3 +297,9 @@ Execution Time: 0.0000XX seconds
 | Binary Search (`while`) | O(log n)        | O(1)             |
 | Neighbor Check          | O(1)            | O(1)             |
 | **Total**               | **O(log n)**    | **O(1)**         |
+
+---
+
+---
+
+
