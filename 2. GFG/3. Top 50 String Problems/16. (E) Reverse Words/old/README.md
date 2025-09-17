@@ -1,4 +1,3 @@
-Here's the full README-style documentation for the **Reverse Words** problem as shown in the image:
 
 ---
 
