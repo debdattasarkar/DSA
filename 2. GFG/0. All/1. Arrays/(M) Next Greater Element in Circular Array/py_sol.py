@@ -1,33 +1,21 @@
 class Solution:
-    def nextLargerElement(self, arr):
-        # code here
+    def nextGreater(self, arr):
+        """
+        Monotonic stack over two passes (simulate circular array):
+        - Time : O(n)  (each index pushed and popped at most once)
+        - Space: O(n)  (stack + output)
+        """
         n = len(arr)
+        ans = [-1] * n
+        st = []  # stack of indices whose NGE we haven't found yet
 
-        # Step 1: Initialize result array with -1
-        # Time: O(n)
-        res = [-1] * n
-
-        # Step 2: Stack to store indices of next greater candidates
-        # Space: O(n) in worst case
-        stack = []
-
-        # Step 3: Traverse the array in reverse (2n - 1 to 0)
-        # to simulate circular array behavior
-        # Time: O(2n) = O(n), each element pushed/popped at most once
-        for i in range(2 * n - 1, -1, -1):
-            cur = arr[i % n]
-
-            # Pop smaller/equal elements from the stack
-            while stack and arr[stack[-1]] <= cur:
-                stack.pop()
-
-            # Fill result only in the first n indices
+        # Traverse twice; only push indices from the first pass
+        for i in range(2 * n):
+            j = i % n
+            # Resolve as long as current value is greater than stack top
+            while st and arr[j] > arr[st[-1]]:
+                ans[st.pop()] = arr[j]
+            # Push only during the first pass so each index is pushed once
             if i < n:
-                if stack:
-                    res[i] = arr[stack[-1]]
-                # If no greater element found, result[i] remains -1
-
-            # Push current index modulo n to stack
-            stack.append(i % n)
-
-        return res
+                st.append(j)
+        return ans
