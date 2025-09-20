@@ -1,4 +1,3 @@
-Here is a complete `README.md` in Markdown format based on the problem statement from the provided image:
 
 ---
 
