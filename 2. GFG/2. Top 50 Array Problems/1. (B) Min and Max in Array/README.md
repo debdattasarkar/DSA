@@ -78,263 +78,427 @@ Explanation: Since the array contains only one element, both min & max are the s
 
 ---
 
-Sure! Below is the complete explanation and step-by-step dry run, followed by two Python implementations (brute force and optimized) using the format you requested.
+great pick—this is a classic you’ll see a lot. here’s the full interview-ready pack.
 
 ---
 
-## 🔍 2. Explanation and Step-by-Step Dry Run
+# 2) Explanation + step-by-step dry run
 
-### ✅ Goal
+## Problem recap
 
-Find the **minimum** and **maximum** values in an integer array.
+Given an array `arr`, return **both** the minimum and maximum.
+Constraints are large, so we should aim for **O(n) time** and **O(1) extra space**.
 
----
+### Approaches you should know
 
-### 🔁 Naive Idea (Brute Force)
+1. **Brute (scan twice):**
 
-Loop twice:
+   * `min(arr)` then `max(arr)` in two passes — simple but **2n − 2** comparisons.
 
-* First loop to find the **min**
-* Second loop to find the **max**
+2. **Single scan (most common in interviews):**
 
-**Time Complexity:** O(2n) = O(n)
-**Space Complexity:** O(1)
+   * Track `min_val` and `max_val` in one pass — **2(n − 1)** comparisons.
 
----
+3. **Pairwise / Tournament method (optimized comparisons):**
 
-### ⚡ Optimized Idea
+   * Compare elements **in pairs** to reduce total comparisons to about **3n/2** (precisely `3⌊n/2⌋` if n even, else `3⌊n/2⌋ + 2`).
+   * Idea: first compare the two in a pair to decide local min/max, then compare those against global `min_val`/`max_val`.
 
-Traverse the array once:
-
-* Initialize both `min_val` and `max_val` to the first element.
-* For each element:
-
-  * If it's less than `min_val`, update `min_val`.
-  * If it's greater than `max_val`, update `max_val`.
-
-**Time Complexity:** O(n)
-**Space Complexity:** O(1)
+All are linear; approach (3) minimizes comparisons (useful if comparisons are expensive).
 
 ---
 
-### 🔁 Dry Run Example
+## Dry run (Pairwise / Tournament)
 
-```python
-arr = [3, 2, 1, 56, 10000, 167]
+Input: `arr = [3, 2, 1, 56, 10000, 167]`
 
-Start:
-  min_val = max_val = 3
+* `n = 6` (even)
+* Initialize by comparing the first pair `(3, 2)` → local min=2, max=3
+  `min_val=2, max_val=3`
+* Process remaining pairs:
 
-i=1 → arr[1]=2:  min_val = 2 (since 2 < 3), max_val stays 3  
-i=2 → arr[2]=1:  min_val = 1 (since 1 < 2), max_val stays 3  
-i=3 → arr[3]=56: max_val = 56 (since 56 > 3), min_val stays 1  
-i=4 → arr[4]=10000: max_val = 10000  
-i=5 → arr[5]=167: no change
+1. Pair `(1, 56)` → local min=1, max=56
 
-Final result: (1, 10000)
-```
+   * `min_val = min(2, 1) = 1`
+   * `max_val = max(3, 56) = 56`
 
----
+2. Pair `(10000, 167)` → local min=167, max=10000
 
-## 🧠 3. Python Code (Interview Format)
+   * `min_val = min(1, 167) = 1`
+   * `max_val = max(56, 10000) = 10000`
 
-### ✅ Optimized Code
+**Result:** `(1, 10000)`
 
-```python
-class Solution:
-    def get_min_max(self, arr):
-        # Handle edge case: if array is empty
-        if not arr:
-            return None, None
+Comparisons count:
 
-        # Initialize min and max to the first element
-        min_val = max_val = arr[0]
-
-        # Traverse the array
-        for num in arr[1:]:
-            if num < min_val:
-                min_val = num
-            elif num > max_val:
-                max_val = num
-
-        return min_val, max_val
-```
-
-### 🧪 Test the function
-
-```python
-if __name__ == "__main__":
-    sol = Solution()
-    arr = [3, 2, 1, 56, 10000, 167]
-    print("Input:", arr)
-    min_val, max_val = sol.get_min_max(arr)
-    print("Output:", min_val, max_val)
-```
+* 1 per pair to decide local order → 3 pairs → 3
+* 2 per pair to update globals → 3 pairs × 2 = 6
+* Total = **9 comparisons** vs single scan **10 comparisons** (2(n−1)=10) and two scans **10 comparisons**. For larger n the savings trend to ~25%.
 
 ---
 
-### 🐌 Brute Force Version
+# 3) Python solutions (with inline comments)
+
+Return format: I’ll return a tuple `(min_val, max_val)` which is Pythonic and easy to unpack.
+If your platform expects a list, just wrap: `[min_val, max_val]`.
+
+### A) Two passes (brute, simplest)
 
 ```python
 class Solution:
-    def get_min_max(self, arr):
-        if not arr:
-            return None, None
-
-        min_val = min(arr)  # O(n)
-        max_val = max(arr)  # O(n)
-
-        return min_val, max_val
+    def getMinMax(self, arr):
+        """
+        Two full scans.
+        Time  : O(n) + O(n) = O(n)
+        Space : O(1)
+        """
+        # Guard: array has at least one element per constraints
+        min_val = arr[0]  # O(1)
+        for x in arr[1:]:        # O(n)
+            if x < min_val:
+                min_val = x
+        max_val = arr[0]
+        for x in arr[1:]:        # O(n)
+            if x > max_val:
+                max_val = x
+        return (min_val, max_val)
 ```
 
-> This version uses Python built-ins, still O(n) time, but may be less favored in interviews due to lack of explicit logic.
-
 ---
 
-## 💬 4. Expected Interview Q\&A
-
-### Q1. Can you solve it without using Python built-ins?
-
-**A:** Yes, by manually iterating and tracking `min_val` and `max_val`.
-
----
-
-### Q2. What is the time and space complexity?
-
-**A:**
-
-* Time: O(n), as we visit each element once.
-* Space: O(1), using only constant extra variables.
-
----
-
-### Q3. Can you optimize the number of comparisons?
-
-**A:** Yes, using **Tournament Method**, we can reduce comparisons from `2n` to about `3n/2`, but it’s more complex and usually not required unless mentioned.
-
----
-
-### Q4. What happens if the array is empty?
-
-**A:** We should return `(None, None)` or raise an exception depending on problem constraints.
-
----
-
----
-
-### ✅ Full Python Program – Min and Max in Array
-
-This implementation finds the minimum and maximum values in a given array using a single pass (O(n) time). It includes inline explanations for logic, time complexity, and space complexity, plus timing the execution.
-
----
-
-### ✅ Code (with Time and Space Complexity Comments)
+### B) One pass (most expected in interviews)
 
 ```python
+class SolutionOnePass:
+    def getMinMax(self, arr):
+        """
+        Single linear scan with two trackers.
+        Time  : O(n)   (n-1 comparisons for min + n-1 for max interleaved; 2(n-1) total)
+        Space : O(1)
+        """
+        min_val = max_val = arr[0]             # O(1)
+        for x in arr[1:]:            # O(n-1)
+            # One comparison to decide direction, then one update.
+            if x < min_val:
+                min_val = x
+            elif x > max_val:
+                max_val = x
+        return (min_val, max_val)
+```
+
+---
+
+### C) Pairwise / Tournament (optimized comparisons ≈ 1.5n)
+
+```python
+class SolutionTournament:
+    def getMinMax(self, arr):
+        """
+        Pairwise comparisons to reduce total comparisons.
+        Time  : O(n)  (≈ 1.5n comparisons)
+        Space : O(1)
+        """
+        n = len(arr)
+        # Handle first one or two elements to seed min_val/max_val and set start index
+        if n % 2 == 0:
+            # Even length: initialize by comparing first pair
+            a, b = arr[0], arr[1]
+            if a < b:
+                min_val, max_val = a, b
+            else:
+                min_val, max_val = b, a
+            i = 2
+        else:
+            # Odd length: start with first element as both min_val and max_val
+            min_val = max_val = arr[0]
+            i = 1
+
+        # Process remaining elements in pairs
+        while i < n:
+            a, b = arr[i], arr[i + 1]
+            # First compare within pair (1 comparison)
+            if a < b:
+                # Compare local min and max to globals (2 comparisons)
+                if a < min_val:
+                    min_val = a
+                if b > max_val:
+                    max_val = b
+            else:
+                if b < min_val:
+                    min_val = b
+                if a > max_val:
+                    max_val = a
+            i += 2
+
+        return (min_val, max_val)
+```
+
+---
+
+### D) Python built-ins (be honest about trade-off)
+
+```python
+class SolutionBuiltins:
+    def getMinMax(self, arr):
+        """
+        Uses Python's built-ins.
+        Time  : O(n) twice if done separately; or O(n) once with a single pass via reduce,
+                but most readable is two calls. In CP setting, prefer explicit one-pass.
+        Space : O(1)
+        """
+        return (min(arr), max(arr))
+```
+
+> In interviews, mention built-ins but implement **B** or **C**.
+
+---
+
+### Edge cases to test
+
+* Single element: `[56789]` → `(56789, 56789)`
+* All equal: `[5,5,5]` → `(5,5)`
+* Monotonic increasing / decreasing
+* Large values near limits
+
+---
+
+# 4) Interviewer-style Q&A
+
+**Q1. What’s the optimal time and space complexity?**
+**A.** Time **O(n)** (you must inspect every element); space **O(1)** auxiliary.
+
+**Q2. How many comparisons does each method do?**
+**A.**
+
+* Two passes: `2n − 2` comparisons.
+* One pass (track min_val/max_val): also `2n − 2` in worst case.
+* Pairwise/tournament: about `1.5n` (exactly `3⌊n/2⌋` if even, else `3⌊n/2⌋ + 2`).
+
+**Q3. Why does the pairwise method save comparisons?**
+**A.** By first comparing the two elements in each pair, we avoid comparing both against both globals. We only compare the **smaller** of the pair to `min_val` and the **larger** to `max_val`, cutting one comparison per pair.
+
+**Q4. When do you prefer the one-pass vs tournament method?**
+**A.** If comparisons are cheap and clarity matters, one-pass is perfect. If comparisons are expensive (e.g., custom comparators on big objects), the tournament method’s reduced comparisons can help.
+
+**Q5. Can we do better than O(n)?**
+**A.** Not in the worst case. Decision-tree lower bounds require inspecting every element at least once to be certain of min and max.
+
+**Q6. What about streaming data?**
+**A.** Maintain running `min_val`/`max_val` as new items arrive—same one-pass logic; always O(1) update per item.
+
+**Q7. Any pitfalls?**
+**A.** Forgetting to initialize properly for odd/even lengths in the pairwise method; not handling single-element arrays; mixing up comparisons when updating globals.
+
+---
+
+---
+
+awesome — here’s a **complete runnable Python program** that:
+
+* reads an integer array from stdin (space-separated),
+* computes **min & max** using three approaches (One-Pass, Tournament/Pairwise, Built-ins),
+* prints the results,
+* and **times** each with both a single wall-clock run and a `timeit` average.
+
+Every major step includes **inline comments** describing **time/space complexity**.
+
+---
+
+## Full Program
+
+```python
+#!/usr/bin/env python3
+"""
+Min and Max in Array — Full Program with Timing and Inline Complexity Notes
+
+Input format (single line):
+  space-separated integers
+Example:
+  3 2 1 56 10000 167
+
+Output:
+  (min, max) for three approaches + timing
+"""
+
+from time import perf_counter
 import timeit
+import sys
 
-class Solution:
-    def get_min_max(self, arr):
-        # Time Complexity: O(n), where n is the number of elements in arr
-        # Space Complexity: O(1), constant extra space used
 
-        # Handle edge case: empty array
-        if not arr:
-            return None, None
+# ------------------------------------------------------------
+# Approach A: One-Pass scan (most expected in interviews)
+# ------------------------------------------------------------
+def get_min_max_one_pass(arr):
+    """
+    Single linear scan with two trackers.
+    Time  : O(n)  -- touch each element once
+    Space : O(1)  -- only two variables
+    """
+    min_val = max_val = arr[0]              # O(1)
+    for x in arr[1:]:             # O(n-1)
+        # 1 comparison to check if it's a new min;
+        # if not, 1 comparison to check if it's a new max.
+        if x < min_val:
+            min_val = x
+        elif x > max_val:
+            max_val = x
+    return min_val, max_val
 
-        # Initialize both min and max with the first element
+
+# ------------------------------------------------------------
+# Approach B: Tournament / Pairwise (fewer comparisons ≈ 1.5n)
+# ------------------------------------------------------------
+def get_min_max_tournament(arr):
+    """
+    Compare elements in pairs:
+      - First compare within the pair (1 cmp),
+      - Compare smaller to global min_val, larger to global max_val (2 cmps).
+    Time  : O(n)     -- still linear work
+    Space : O(1)
+    """
+    n = len(arr)
+    if n % 2 == 0:
+        a, b = arr[0], arr[1]
+        if a < b: min_val, max_val = a, b
+        else:     min_val, max_val = b, a
+        i = 2
+    else:
         min_val = max_val = arr[0]
+        i = 1
 
-        # Traverse the array from second element onward
-        for num in arr[1:]:
-            if num < min_val:
-                min_val = num  # Update min if smaller value found
-            elif num > max_val:
-                max_val = num  # Update max if larger value found
+    while i < n:                     # O(n/2) iterations
+        a, b = arr[i], arr[i + 1]
+        if a < b:                    # 1 comparison inside the pair
+            if a < min_val: min_val = a        # compare local min to global min_val
+            if b > max_val: max_val = b        # compare local max to global max_val
+        else:
+            if b < min_val: min_val = b
+            if a > max_val: max_val = a
+        i += 2
+    return min_val, max_val
 
-        return min_val, max_val
+
+# ------------------------------------------------------------
+# Approach C: Python built-ins (readable baseline)
+# ------------------------------------------------------------
+def get_min_max_builtins(arr):
+    """
+    Uses Python's built-ins.
+    Time  : O(n) + O(n) if called separately (min + max), still linear.
+    Space : O(1)   (ignoring Python iterator overhead)
+    """
+    return min(arr), max(arr)
 
 
-# Test the implementation
+# ------------------------------------------------------------
+# Timing helpers
+# ------------------------------------------------------------
+def time_single_run(func, *args, **kwargs):
+    """
+    Single wall-clock timing using perf_counter.
+    """
+    t0 = perf_counter()
+    result = func(*args, **kwargs)
+    t1 = perf_counter()
+    return result, (t1 - t0)
+
+
+def time_with_timeit(stmt_callable, number=5):
+    """
+    Average runtime over `number` runs using timeit.
+    """
+    total = timeit.timeit(stmt_callable, number=number)
+    return total / number
+
+
+# ------------------------------------------------------------
+# Main driver
+# ------------------------------------------------------------
 def main():
-    arr = [3, 2, 1, 56, 10000, 167]
-    sol = Solution()
-    result = sol.get_min_max(arr)
-    print("Input:", arr)
-    print("Output:", result)  # Expected Output: (1, 10000)
+    # ---------- Input ----------
+    # Read one line of integers; per constraints n >= 1
+    tokens = sys.stdin.read().strip().split()
+    if not tokens:
+        print("No input provided. Example: 3 2 1 56 10000 167")
+        return
+    arr = list(map(int, tokens))  # O(n) time, O(n) space for parsed ints
 
-# Time the execution of the full program
-execution_time = timeit.timeit(main, number=1)
-print(f"\nExecution Time: {execution_time:.10f} seconds")
+    print("Input array:", arr)
+
+    # ---------- A: One-Pass ----------
+    (min_val_a, max_val_a), t_a = time_single_run(get_min_max_one_pass, arr)
+    avg_a = time_with_timeit(lambda: get_min_max_one_pass(arr), number=5)
+    print("\n[One-Pass]        ->", (min_val_a, max_val_a))
+    print(f"  Single-run time : {t_a:.8f} s")
+    print(f"  Avg over 5 runs : {avg_a:.8f} s")
+
+    # ---------- B: Tournament / Pairwise ----------
+    (min_val_b, max_val_b), t_b = time_single_run(get_min_max_tournament, arr)
+    avg_b = time_with_timeit(lambda: get_min_max_tournament(arr), number=5)
+    print("\n[Tournament/Pair] ->", (min_val_b, max_val_b))
+    print(f"  Single-run time : {t_b:.8f} s")
+    print(f"  Avg over 5 runs : {avg_b:.8f} s")
+
+    # ---------- C: Built-ins ----------
+    (min_val_c, max_val_c), t_c = time_single_run(get_min_max_builtins, arr)
+    avg_c = time_with_timeit(lambda: get_min_max_builtins(arr), number=5)
+    print("\n[Built-ins]       ->", (min_val_c, max_val_c))
+    print(f"  Single-run time : {t_c:.8f} s")
+    print(f"  Avg over 5 runs : {avg_c:.8f} s")
+
+    # ---------- Complexity Summary ----------
+    print("\nComplexity Summary:")
+    print("  One-Pass       : Time O(n), Space O(1)")
+    print("  Tournament     : Time O(n), Space O(1), ~1.5n comparisons")
+    print("  Built-ins      : Time O(n), Space O(1) (but two passes)")
+
+if __name__ == "__main__":
+    """
+    Example:
+      echo "3 2 1 56 10000 167" | python3 minmax.py
+      -> (1, 10000)
+    """
+    main()
+```
+
+### Example run
+
+Input:
+
+```
+3 2 1 56 10000 167
+```
+
+Output (your times will vary):
+
+```
+Input array: [3, 2, 1, 56, 10000, 167]
+
+[One-Pass]        -> (1, 10000)
+  Single-run time : 0.00000310 s
+  Avg over 5 runs : 0.00000301 s
+
+[Tournament/Pair] -> (1, 10000)
+  Single-run time : 0.00000305 s
+  Avg over 5 runs : 0.00000296 s
+
+[Built-ins]       -> (1, 10000)
+  Single-run time : 0.00000290 s
+  Avg over 5 runs : 0.00000285 s
+
+Complexity Summary:
+  One-Pass       : Time O(n), Space O(1)
+  Tournament     : Time O(n), Space O(1), ~1.5n comparisons
+  Built-ins      : Time O(n), Space O(1) (but two passes)
 ```
 
 ---
 
-### 🧪 Sample Output
+## 6) Real-World Use Cases (high-value)
 
-```
-Input: [3, 2, 1, 56, 10000, 167]
-Output: (1, 10000)
+* **Streaming analytics / monitoring:** Maintain running min and max of telemetry (latency, CPU, stock ticks) in O(1) per update.
+* **Graphics & geometry:** Compute **axis-aligned bounding boxes** (AABB) by tracking min/max x/y/z as vertices stream in.
+* **Data quality & validation:** Quick sanity checks (e.g., min ≥ 0, max ≤ threshold) before expensive processing.
+* **Compression & normalization:** Normalize values to `[0,1]` using `(x - min) / (max - min)`; min/max are first-pass stats.
 
-Execution Time: 0.0004994490 seconds
-```
-
----
-
-### 🔍 Step-by-Step Dry Run
-
-For input `[3, 2, 1, 56, 10000, 167]`:
-
-1. Start: `min_val = 3`, `max_val = 3`
-2. Compare 2 → update `min_val = 2`
-3. Compare 1 → update `min_val = 1`
-4. Compare 56 → update `max_val = 56`
-5. Compare 10000 → update `max_val = 10000`
-6. Compare 167 → no change
-
-Final result: `(min_val = 1, max_val = 10000)`
-
----
-
----
-
-# 🌍 Real-World Use Cases
-
-Here are a few **important real-world use cases** of finding the **minimum and maximum elements in an array**:
-
----
-
-### ✅ 1. **Sensor Data Analysis (IoT, Weather, Health)**
-
-* **Use Case**: In time-series data from sensors (e.g., temperature, heartbeat, air quality), you often need to know the **minimum and maximum readings** over a period.
-* **Example**: Find the lowest and highest temperature of the week.
-
----
-
-### ✅ 2. **Financial Analytics**
-
-* **Use Case**: Analyzing **stock prices**, **sales trends**, or **currency fluctuations** where identifying daily/monthly highs and lows is essential.
-* **Example**: Maximum price of a stock in the last 30 days to flag peaks.
-
----
-
-### ✅ 3. **Image Processing**
-
-* **Use Case**: In grayscale image processing, `min` and `max` pixel intensity values help in contrast enhancement and normalization.
-* **Example**: Auto-adjusting brightness/contrast using histogram normalization.
-
----
-
-### ✅ 4. **Database Query Optimization**
-
-* **Use Case**: SQL-like operations (e.g., `SELECT MIN(value), MAX(value) FROM table`) are translated into memory-level array scanning when using in-memory DBs or dataframes (Pandas, NumPy).
-
----
-
-### ✅ 5. **Machine Learning Preprocessing**
-
-* **Use Case**: **Min-Max normalization** is widely used in feature scaling.
-* **Example**: Transforming feature range from `[original_min, original_max]` → `[0, 1]` for better gradient descent performance.
-
----
-
+> For interviews, implement **One-Pass** confidently, mention **Tournament** for reduced comparisons, and acknowledge built-ins for readability.

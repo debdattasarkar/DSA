@@ -4,9 +4,9 @@
 ### 🧩 Array Problems List
 | Title                      | Logic     |
 |:--------------------|:--------------|
-| 1. Reverse an Array | 1. Swapping loop - `s = list(s)` `left, right = 0, len(arr) - 1` `while left < right: arr[left]` `arr[right] = arr[right], arr[left]` `return ''.join(s)` , 2. Slice creates reversed copy - `arr[::-1]`, 3. Modifies list in-place - `arr.reverse()` |
-2. Find the maximum and minimum element in an array
-3. Find the "Kth" max and min element of an array
+| 1. [Reverse an Array](https://www.geeksforgeeks.org/problems/reverse-a-string/1) | 1. Swapping loop - `s = list(s)` `left, right = 0, len(arr) - 1` `while left < right: arr[left]` `arr[right] = arr[right], arr[left]` `return ''.join(s)` , 2. Slice creates reversed copy - `arr[::-1]`, 3. Modifies list in-place - `arr.reverse()` |
+| 2. [Find the maximum and minimum element in an array](https://www.geeksforgeeks.org/problems/find-minimum-and-maximum-element-in-an-array4428/1) | implement **One-Pass** confidently, mention **Tournament** for reduced comparisons, and acknowledge built-ins for readability |
+3. Find the "Kth" max and min element of an array 
 4. Given an array which consists of only 0, 1, and 2. Sort the array without using any sorting algorithm
 5. Move all the negative elements to one side of the array
 6. Find the Union and Intersection of the two sorted arrays
