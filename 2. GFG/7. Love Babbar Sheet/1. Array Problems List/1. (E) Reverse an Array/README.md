@@ -1,4 +1,6 @@
-# Reverse an Array
+# 1️⃣ Question
+
+## 🔄️ Reverse an Array
 
 **Difficulty:** Easy
 **Accuracy:** 55.32%
@@ -89,22 +91,12 @@ The array has only a single element; hence, the reversed array is the same as th
 
 ## Related Articles
 
-* C Reverse Array
-* How To Reverse An Array Using STL In C
-* Javascript Array Reverse Method
-* Program Reverse Array Using Pointers
-* Program To Reverse An Array
-* Python Reversing List
-* Reverse An Array In Java
-* Reverse An Array In Javascript
-* Reverse An Array Using Stack
-* Reverse Array Without Using Subtract Sign Anywhere Code
+* [C Reverse Array](https://www.geeksforgeeks.org/cpp-program-to-print-reverse-of-a-string-using-recursion/)
+* [How To Reverse An Array Using STL In C](https://www.geeksforgeeks.org/reverse-a-string-in-c-cpp-different-methods/)
+* [Reverse An Array In Java](https://www.geeksforgeeks.org/reverse-a-string-in-java/)
+* [Reverse String](https://www.geeksforgeeks.org/string-reverse/)
 
 ---
-
----
-
-perfect—let’s make this one **interview-ready** in the same structured format.
 
 ---
 
@@ -221,6 +213,8 @@ class Solution:
 
 ### 🧩 **Version 3: Two-pointer swap method (manual in-place)**
 
+> “🏁 🏇🏻 Left and right players race toward the middle — swapping flags without fiddle.”
+
 👉 *Expected approach in coding interviews!*
 
 ```python
@@ -301,7 +295,7 @@ class Solution:
             s[l], s[r] = s[r], s[l]
             helper(l + 1, r - 1)
         
-        helper(0, len(arr) - 1)
+        helper(0, len(s) - 1)
         s = ''.join(s)
         return s
 ```
@@ -342,9 +336,7 @@ print(sol.reverseString(arr))  # Output: [5, 6, 2, 3, 4, 1]
 ---
 
 ---
-
-Perfect 👍
-Here’s a **complete runnable program** (with timing, I/O, inline comments explaining time/space complexity per step, and final real-world use cases).
+**Complete runnable program** (with timing, I/O, inline comments explaining time/space complexity per step, and final real-world use cases).
 
 ---
 

@@ -46,7 +46,7 @@ Then just fill in syntax:
 Imagine two runners starting from both ends of a track (array).
 Each step they swap flags (elements) and move inward until they meet.
 
-> “🏁 Left and right race toward the middle — swapping souvenirs each lap.”
+> “🏁 🏇🏻 Left and right players race toward the middle — swapping flags without fiddle.”
 
 That image sticks **and** captures the exact pointer logic.
 
