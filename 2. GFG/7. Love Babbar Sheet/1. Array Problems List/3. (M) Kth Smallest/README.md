@@ -258,31 +258,40 @@ class Solution:
 # 4) Interviewer-Style Q&A
 
 **Q1. Why not sort?**
+
 Sorting is `O(n log n)` and touches elements more than needed. Quickselect gets average **O(n)** by discarding half the array each step.
 
 **Q2. Quickselect worst case and how to avoid it?**
+
 Worst case is `O(n²)` (e.g., always picking smallest/largest as pivot with already ordered data).
 Use **randomized pivot** (as above) or **median-of-medians (BFPRT)** to guarantee `O(n)` worst-case (but more constants/complexity).
 
 **Q3. How does Quickselect differ from Quicksort?**
+
 Both partition. Quicksort recurses on **both** sides; Quickselect only recurses into the **side containing the k-th index**, making it linear on average.
 
 **Q4. When is a heap better than Quickselect?**
+
 When `k` is small relative to `n` and/or you’re in a **streaming** setting: maintain a **max-heap** of size `k` and update per item in `O(log k)`.
 
 **Q5. What about duplicates?**
+
 All approaches handle duplicates naturally. The k-th order statistic counts duplicates as distinct positions.
 
 **Q6. Counting approach applicability?**
+
 Use when values are **non-negative and bounded** with a **small range** `U` (e.g., ≤ 10^6). Complexity `O(n + U)` can beat Quickselect if `U` is small; memory is the limiter.
 
 **Q7. Stability and order?**
+
 We’re returning a single value (order statistic). Stability of sorting is irrelevant.
 
 **Q8. Can you find k-th largest with same code?**
+
 Yes. For Quickselect, target index becomes `n - k`. For heap, use a **min-heap of size k** to retain the k largest.
 
 **Q9. What if `k` is out of bounds?**
+
 Always validate `1 ≤ k ≤ n` and raise/handle errors accordingly.
 
 ---
