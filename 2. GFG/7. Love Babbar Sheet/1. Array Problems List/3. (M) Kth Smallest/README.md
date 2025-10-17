@@ -146,8 +146,9 @@ import heapq
 from typing import List
 
 class Solution:
-    def kthSmallest(self, arr: List[int], k: int) -> int:
+    def kthSmallest_DNF(self, arr: List[int], k: int) -> int:
         """
+        Version 1 = 3-way (Dutch National Flag) partition.
         Quickselect with 3-way partition (Dutch National Flag).
         Average time: O(n), worst-case: O(n^2) -- mitigated by random pivot
         Space: O(1) extra (in-place)
@@ -191,6 +192,48 @@ class Solution:
                 low = right + 1                 # go right
             else:
                 return arr[target]          # inside the equal block → done
+
+    # ---------- Primary: Quickselect (average O(n), in-place O(1) space) ----------
+    def kthSmallest_LP(self, arr: List[int], k: int) -> int:
+        """
+        Version 2 = 2-way (Lomuto) partition.
+        Randomized Quickselect to find k-th smallest (1-indexed).
+        Time : Average O(n), Worst O(n^2) (mitigated by random pivot)
+        Space: O(1) auxiliary (iterative)
+        """
+        if not arr or k < 1 or k > len(arr):
+            raise ValueError("k out of bounds")
+
+        target_index = k - 1            # O(1)
+        left, right = 0, len(arr) - 1   # O(1)
+
+        # Iterative quickselect keeps memory O(1)
+        while left <= right:            # Expected O(n) total work
+            # --- choose a random pivot to avoid adversarial inputs (O(1)) ---
+            pivot_index = random.randint(left, right)
+            arr[pivot_index], arr[right] = arr[right], arr[pivot_index]  # move pivot to end (O(1))
+
+            # --- Lomuto partition around pivot_value in one linear pass ---
+            pivot_value = arr[right]    # O(1)
+            store_index = left          # where next smaller element goes
+            for i in range(left, right):           # O(right-left+1) per iteration
+                if arr[i] < pivot_value:
+                    arr[i], arr[store_index] = arr[store_index], arr[i]  # O(1)
+                    store_index += 1
+
+            # put pivot into its final sorted location
+            arr[store_index], arr[right] = arr[right], arr[store_index]  # O(1)
+
+            # --- Decide which side to continue searching (O(1)) ---
+            if store_index == target_index:
+                return arr[store_index]
+            elif store_index < target_index:
+                left = store_index + 1
+            else:
+                right = store_index - 1
+
+        # If k valid, we must have returned
+        raise RuntimeError("Unexpected state in quickselect")
 
     # ----------------------- Alternative 1: Heap (max-heap of size k) -----------------------
     def kthSmallest_heap(self, arr: List[int], k: int) -> int:
