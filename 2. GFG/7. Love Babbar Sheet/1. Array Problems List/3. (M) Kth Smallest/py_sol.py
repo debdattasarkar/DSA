@@ -22,24 +22,24 @@ class Solution:
             pivot_idx = random.randint(left, right)
             pivot = arr[pivot_idx]
             # 3-way partition around pivot: < pivot | == pivot | > pivot
-            pleft, i , pright = left, left, right
-            while i <= pright:
+            partsn_left, i , partsn_right = left, left, right
+            while i <= partsn_right:
                 if arr[i] < pivot:
-                    arr[pleft], arr[i] = arr[i], arr[pleft]
-                    pleft += 1
+                    arr[partsn_left], arr[i] = arr[i], arr[partsn_left]
+                    partsn_left += 1
                     i += 1
                 elif arr[i] > pivot:
-                    arr[i], arr[pright] = arr[pright], arr[i]
-                    pright -= 1
+                    arr[i], arr[partsn_right] = arr[partsn_right], arr[i]
+                    partsn_right -= 1
                 else: # equal
                     i += 1
             # Now:
-            # arr[low:left]   < pivot
-            # arr[left:right+1] == pivot
-            # arr[right+1:high+1] > pivot
-            if target < pleft:
-                right = pleft - 1 # go left
-            elif target > pright:
-                left = pright + 1 # go right
+            # arr[left:          partsn_left]    <  pivot
+            # arr[partsn_left:partsn_right+1]   ==  pivot
+            # arr[partsn_right+1:    right+1]    >  pivot
+            if target < partsn_left:
+                right = partsn_left - 1 # go left
+            elif target > partsn_right:
+                left = partsn_right + 1 # go right
             else:
                 return arr[target] # inside the equal block → done
