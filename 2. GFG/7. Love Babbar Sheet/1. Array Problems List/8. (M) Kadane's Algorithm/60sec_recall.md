@@ -1,99 +1,72 @@
-**“60-second recall kit”** and **5-line pseudo-code skeleton** for **Kadane’s Algorithm (Maximum Subarray Sum)** — the one-liner every interviewer loves you to know by heart.
+**Interview muscle-memory version** of **Kadane’s Algorithm** — the 5-line pseudo-code, a 60-second recall flow, and a mnemonic that sticks 🔥
 
 ---
 
-## 🧠 5-Line Pseudo-Code Template (universal)
+## 🧠 **5-Line Pseudo-Code Template (Language Agnostic)**
 
 ```
 function maxSubarraySum(arr):
-    cur = best = arr[0]              # start with first element
-    for each x in arr[1:]:           
-        cur = max(x, cur + x)        # extend or start new subarray
-        best = max(best, cur)        # update global best
+    curr = best = arr[0]                # init
+    for x in arr[1:]:
+        curr = max(x, curr + x)         # extend or restart
+        best = max(best, curr)          # track global best
     return best
 ```
 
-✅ Works in any language (Python / C++ / Java / JS).
-Only needs `O(n)` time and `O(1)` space.
+✅ **Time:** O(n)
+✅ **Space:** O(1)
 
 ---
 
-## 🧩 Mnemonic (to instantly recall)
+## ⚡ **Mnemonic to Recall Quickly**
 
-> **“Extend or Restart, then Compare.”**
+> 🧩 **“Extend — Compare — Keep — Return.”**
 
-1️⃣ **Extend:** Add current element to previous sum (`cur + x`).
-2️⃣ **Restart:** If previous sum was negative, start fresh with current `x`.
-3️⃣ **Compare:** Update the global best so far.
+Or simpler:
 
-Say it like a mantra before interviews:
+> **ECKR → Extend, Compare, Keep, Return**
 
-> “Extend or Restart → Compare → Done.”
+| Step  | Meaning                  | Variable                  |
+| ----- | ------------------------ | ------------------------- |
+| **E** | Extend or restart        | `curr = max(x, curr + x)` |
+| **C** | Compare with global best | `best = max(best, curr)`  |
+| **K** | Keep track across array  | inside the loop           |
+| **R** | Return final answer      | `return best`             |
 
----
+You can literally say to yourself before coding:
 
-## ⚙️ Why it Works (Mental Picture)
-
-Imagine walking through numbers:
-
-* You keep a “running sum” (`cur`) that resets whenever it goes below zero.
-* `best` always stores the **highest sum seen so far**.
-* When all numbers are negative, initialization with `arr[0]` ensures the *least negative* is returned.
+> “Extend or restart → Compare → Return best.”
 
 ---
 
-## 🧩 10-Second Example to Verify Logic
+## ⏱️ **60-Second Recall (Quick Rebuild Flow)**
 
+**0–10 sec** → “Kadane’s = max subarray sum, contiguous, linear scan.”
+**10–20 sec** → Initialize `curr` & `best` with `arr[0]`.
+**20–40 sec** → Loop each element:
+
+```text
+curr = max(x, curr + x)
+best = max(best, curr)
 ```
-arr = [2, 3, -8, 7, -1, 2, 3]
-```
 
-| i | x  | cur = max(x, cur+x) | best |
-| - | -- | ------------------- | ---- |
-| 0 | 2  | 2                   | 2    |
-| 1 | 3  | 5                   | 5    |
-| 2 | -8 | -3                  | 5    |
-| 3 | 7  | 7                   | 7    |
-| 4 | -1 | 6                   | 7    |
-| 5 | 2  | 8                   | 8    |
-| 6 | 3  | 11                  | 11   |
-
-✅ Output = **11** (`[7, -1, 2, 3]`)
+**40–50 sec** → Handles all-negatives automatically.
+**50–60 sec** → Mention O(n), O(1), dynamic programming → done ✅
 
 ---
 
-## 🧠 60-Second Pre-Interview Recall Routine
+## 💬 **How to Explain in Interview**
 
-When interviewer says:
-
-> “Find the maximum subarray sum.”
-
-You immediately say:
-1️⃣ “Kadane’s Algorithm — O(n) time, O(1) space.”
-2️⃣ “I track two sums: `cur` (best ending here) and `best` (global best).”
-3️⃣ “At each step, either extend the previous subarray or restart fresh.”
-4️⃣ “Return `best` at the end.”
-
-✅ Speak it out once — then code in 30 seconds.
+> “At each step, I decide whether to extend the current subarray or start a new one, based on which gives a higher sum.
+> I keep track of the global best while iterating once through the array — that’s O(n) time, O(1) space.”
 
 ---
 
-## 💬 Interview Sound Bite
+### 🧩 One-Line Summary to Say Aloud Before You Code:
 
-> “Kadane’s Algorithm greedily builds the best subarray ending at each index; if the current sum becomes negative, it restarts.
-> This guarantees an O(n) scan and O(1) space.”
+> “Kadane’s scans once, keeps a running sum, resets if it goes negative, and records the best sum — extend or restart, compare, return.”
 
 ---
 
-## 🧩 Quick Summary Table
-
-| Step | Action                         | Purpose              | Keyword |
-| ---- | ------------------------------ | -------------------- | ------- |
-| 1️⃣  | Initialize `cur=best=arr[0]`   | Handle all-negatives | Init    |
-| 2️⃣  | For each x: `cur=max(x,cur+x)` | Extend or Restart    | Extend  |
-| 3️⃣  | `best=max(best,cur)`           | Track global max     | Compare |
-| 4️⃣  | Return `best`                  | Final result         | Return  |
-
-> **Mnemonic:** “Init → Extend → Compare → Return.”
-
-Remember that rhythm — it’s the heartbeat of Kadane’s Algorithm ❤️
+That’s your **mental 5-line skeleton + ECKR mnemonic** —
+you can rebuild it **in 30 seconds** in Python, C++, or Java every single time.

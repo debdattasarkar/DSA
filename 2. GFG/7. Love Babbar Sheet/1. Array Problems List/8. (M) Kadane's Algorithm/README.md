@@ -82,394 +82,477 @@ Arrays, Dynamic Programming, Data Structures, Algorithms
 ---
 
 ---
-
-here’s a crisp, interview-ready package for **Kadane’s Algorithm** (Maximum Subarray Sum).
-
----
-
-# 2) Explanation + step-by-step dry run
-
-## Core idea (Kadane)
-
-Maintain a running best subarray that **must end at the current index**.
-
-* `cur` = best sum of a subarray that ends at the current element.
-* `best` = best sum seen anywhere so far.
-
-Transition at each element `x`:
-
-* Either **extend** the previous subarray: `cur + x`
-* Or **start fresh** at `x`: `x`
-
-So:
-
-```
-cur  = max(x, cur + x)
-best = max(best, cur)
-```
-
-Initialize with the first element to correctly handle **all-negative** arrays.
-
-### Why this works
-
-If the best subarray ending at `i-1` is negative, extending it only hurts. So we “drop” it and restart at `i`. This greedy decision is always safe and yields an `O(n)` solution.
+Let’s make Kadane’s Algorithm interview-ready: clear intuition, a quick dry run, and both brute-force and optimal Python solutions (with the exact signature you asked for). I’ll also include the “what interviewers ask” section + a 10-second mnemonic.
 
 ---
 
-## Dry runs
+## 2) Intuition + step-by-step dry run
 
-### Example A
+### Problem
 
-`arr = [2, 3, -8, 7, -1, 2, 3]`
+Given an integer array `arr[]`, find the **maximum possible sum of a contiguous subarray**.
 
-| i | x  | cur = max(x, cur+x)      | best   |
-| - | -- | ------------------------ | ------ |
-| 0 | 2  | max(2, 2) = **2**        | **2**  |
-| 1 | 3  | max(3, 2+3=5) = **5**    | **5**  |
-| 2 | -8 | max(-8, 5-8=-3) = **-3** | **5**  |
-| 3 | 7  | max(7, -3+7=4) = **7**   | **7**  |
-| 4 | -1 | max(-1, 7-1=6) = **6**   | **7**  |
-| 5 | 2  | max(2, 6+2=8) = **8**    | **8**  |
-| 6 | 3  | max(3, 8+3=11) = **11**  | **11** |
+### Core idea (Kadane)
 
-Answer = **11** (subarray `[7, -1, 2, 3]`).
+Scan left→right keeping:
 
-### Example B (all negatives)
+* `curr` = best sum **ending at** current index (either extend previous subarray or start fresh here).
+* `best` = best sum **seen so far**.
 
-`arr = [-2, -4]`
+Recurrence:
 
-| i | x  | cur                     | best   |
-| - | -- | ----------------------- | ------ |
-| 0 | -2 | max(-2, -2) = **-2**    | **-2** |
-| 1 | -4 | max(-4, -2-4=-6)=**-4** | **-2** |
+* `curr = max(arr[i], curr + arr[i])`
+* `best = max(best, curr)`
 
-Answer = **-2** (pick the least-negative single element).
+This works because if the running sum `curr` ever goes negative, it can only hurt any future sum—so we “restart” at the next element.
+
+### Dry run (example: `arr = [2, 3, -8, 7, -1, 2, 3]`)
+
+Initialize: `curr = best = 2`
+
+| i | arr[i] | curr = max(arr[i], curr+arr[i]) | best |
+| - | ------ | ------------------------------- | ---- |
+| 0 | 2      | max(2, 2) = 2                   | 2    |
+| 1 | 3      | max(3, 5) = 5                   | 5    |
+| 2 | -8     | max(-8, -3) = -3                | 5    |
+| 3 | 7      | max(7, 4) = 7                   | 7    |
+| 4 | -1     | max(-1, 6) = 6                  | 7    |
+| 5 | 2      | max(2, 8) = 8                   | 8    |
+| 6 | 3      | max(3, 11) = 11                 | 11   |
+
+Answer: **11** (subarray `[7, -1, 2, 3]`)
+
+Edge case (all negatives): Kadane still works if you initialize with `arr[0]`.
+Example: `[-2, -4]` → output `-2`.
 
 ---
 
-# 3) Python solutions (multiple ways, interview-friendly)
+## 3) Python solutions (brute + optimal)
 
-### A) Kadane — clean, `O(n)` time / `O(1)` space  ✅ (most expected)
+### A) Brute force (clear but slow): O(n²) time, O(1) space
 
 ```python
 class Solution:
     def maxSubarraySum(self, arr):
-        # Kadane's algorithm
-        # Time:  O(n) — single pass
-        # Space: O(1) — constant extra space
-        cur = best = arr[0]             # init with first element to handle all-negatives
-        for x in arr[1:]:
-            cur = max(x, cur + x)       # either extend previous or start fresh at x
-            best = max(best, cur)       # track the global best
-        return best
-```
-
-### B) Kadane with indices (often requested)
-
-Returns (max\_sum, start, end). Great to reconstruct the subarray.
-
-```python
-class SolutionWithIndices:
-    def maxSubarraySum(self, arr):
-        # Time: O(n), Space: O(1)
-        best = cur = arr[0]
-        best_l = best_r = 0
-        l = 0                           # tentative start for current subarray
-
-        for r in range(1, len(arr)):
-            x = arr[r]
-            if x > cur + x:             # better to start new subarray at r
-                cur = x
-                l = r
-            else:                       # extend
-                cur += x
-
-            if cur > best:              # found better global answer
-                best = cur
-                best_l, best_r = l, r
-
-        return best  # or (best, best_l, best_r)
-```
-
-### C) Prefix-sum + min-prefix trick — also `O(n)` / `O(1)`
-
-`max subarray sum` = `max_i (prefix[i] - min_prefix_before_i)`
-
-```python
-class SolutionPrefixMin:
-    def maxSubarraySum(self, arr):
-        # Time: O(n), Space: O(1) extra (prefix carried in one variable)
-        prefix = 0
-        min_prefix = 0     # best (smallest) prefix seen before current index
-        best = arr[0]      # handles all-negatives
-
-        for x in arr:
-            prefix += x
-            best = max(best, prefix - min_prefix)
-            min_prefix = min(min_prefix, prefix)
-        return best
-```
-
-### D) Divide & Conquer — `O(n log n)` (nice to mention)
-
-```python
-class SolutionDivideConquer:
-    def maxSubarraySum(self, arr):
-        # Time: O(n log n), Space: O(log n) recursion
-        def solve(lo, hi):
-            if lo == hi:
-                x = arr[lo]
-                return (x, x, x, x)  
-                # (total_sum, best_prefix, best_suffix, best_subarray)
-
-            mid = (lo + hi) // 2
-            lt = solve(lo, mid)
-            rt = solve(mid + 1, hi)
-
-            total = lt[0] + rt[0]
-            best_pref = max(lt[1], lt[0] + rt[1])
-            best_suff = max(rt[2], rt[0] + lt[2])
-            best_sub = max(lt[3], rt[3], lt[2] + rt[1])
-            return (total, best_pref, best_suff, best_sub)
-
-        return solve(0, len(arr) - 1)[3]
-```
-
-### E) Brute force (with prefix sums) — `O(n²)` baseline
-
-```python
-class SolutionBrute:
-    def maxSubarraySum(self, arr):
-        # Time: O(n^2), Space: O(n) for prefix
+        """
+        Brute-force: consider every subarray, keep the max sum.
+        Time  : O(n^2)
+        Space : O(1)
+        """
         n = len(arr)
-        pref = [0] * (n + 1)
-        for i in range(n):                  # build prefix sums
-            pref[i + 1] = pref[i] + arr[i]
-
         best = arr[0]
         for i in range(n):
+            running = 0
             for j in range(i, n):
-                # sum(i..j) = pref[j+1] - pref[i]
-                s = pref[j + 1] - pref[i]
-                if s > best:
-                    best = s
+                running += arr[j]          # sum of arr[i..j]
+                if running > best:
+                    best = running
+        return best
+```
+
+### B) Optimal (Kadane): O(n) time, O(1) space
+
+```python
+class Solution:
+    def maxSubarraySum(self, arr):
+        """
+        Kadane's Algorithm.
+        curr = best subarray sum ending at i
+        best = best over all prefixes up to i
+        Time  : O(n)
+        Space : O(1)
+        """
+        curr = best = arr[0]
+        for x in arr[1:]:
+            curr = max(x, curr + x)   # extend or restart
+            best = max(best, curr)    # track global best
+        return best
+```
+
+### (Optional) Return also the subarray indices (often earns bonus points)
+
+```python
+class Solution:
+    def maxSubarraySum(self, arr):
+        """
+        Kadane with start/end indices.
+        Returns just the sum to match required signature, but shows how to capture segment.
+        """
+        curr = best = arr[0]
+        start = best_l = best_r = 0   # current start; best [best_l..best_r]
+        for i in range(1, len(arr)):
+            if arr[i] > curr + arr[i]:
+                curr = arr[i]
+                start = i             # restart here
+            else:
+                curr += arr[i]        # extend
+
+            if curr > best:
+                best = curr
+                best_l, best_r = start, i
+        # You could print/use (best_l, best_r) if interviewer asks
         return best
 ```
 
 ---
 
-# 4) Interviewer-style Q\&A
+## 4) Interview quick-memory + Q&A
 
-**Q1. Why initialize Kadane with the first element instead of 0?**
-**A.** If all numbers are negative, initializing `cur=best=0` would wrongly return `0`. Using the first element ensures we pick the least-negative element and remain correct for all cases.
+### 10-second mnemonic
 
-**Q2. What’s the time and space complexity of Kadane?**
-**A.** `O(n)` time, `O(1)` extra space.
+> **“Extend or Restart → Compare.”**
+> (extend `curr + x` or restart at `x`, then update `best`)
 
-**Q3. How do you recover the actual subarray (indices)?**
-**A.** Track a tentative start index `l`. When you restart at `r`, set `l=r`. Update `(best_l, best_r)` whenever a better `best` is found. (See code B.)
+### What interviewers often ask
 
-**Q4. How does the prefix-min method relate to Kadane?**
-**A.** Let `P[i]` be prefix sums. The best subarray ending at `i` is `P[i] - min_{k<i} P[k]`. Updating `min_prefix` while scanning is equivalent to Kadane’s decisions.
+**Q1. Why does Kadane work?**
+Because any prefix with negative sum decreases any future sum; dropping it can only help. Thus we reset when the running sum becomes worse than starting fresh.
 
-**Q5. What if the problem asks for the **minimum** subarray sum?**
-**A.** Flip the signs (or symmetrically track `cur = min(x, cur + x)` and `best = min(best, cur)`).
+**Q2. What about all negative numbers?**
+Initialize `curr = best = arr[0]`. This ensures the result is the **maximum (least negative)** element.
 
-**Q6. How to handle **circular** maximum subarray?**
-**A.** Answer is `max( kadane(arr), total_sum - min_subarray_sum )`, unless all numbers are negative (then use plain Kadane). This is the standard trick for circular arrays.
+**Q3. Time/space complexity?**
+`O(n)` time, `O(1)` extra space.
 
-**Q7. Subarray vs subsequence difference here?**
-**A.** Subarray = contiguous block; subsequence = order-preserving but not necessarily contiguous. Kadane solves the **contiguous** version.
+**Q4. How to return the subarray itself?**
+Track the current start index, and whenever you update `best`, record `(best_l, best_r)`.
 
-**Q8. Common pitfalls?**
-**A.**
+**Q5. Variants?**
 
-* Returning `0` for all-negatives (bad init).
-* Using 32-bit types in languages with overflow (use 64-bit).
-* Forgetting that empty subarray is **not** allowed in standard Kadane.
+* Maximum **circular** subarray: compute max normal subarray and max “wrap” via total sum − min subarray.
+* 2D Kadane (maximum sum rectangle) → apply 1D Kadane over compressed columns.
+
+**Q6. Dynamic programming formulation?**
+`dp[i] = max(arr[i], dp[i-1] + arr[i])`, answer is `max(dp)`. Kadane is just the space-optimized DP.
+
+---
+
+### Tiny checklist to say before coding
+
+1. “I’ll use Kadane: `curr` and `best`.”
+2. “At each step: `curr = max(x, curr+x)`; `best = max(best, curr)`.”
+3. “Handles all negatives with `best = arr[0]`.”
+4. “O(n) time, O(1) space.”
+
+You’re set.
 
 ---
 
 ---
 
-Awesome—here’s a **full, runnable Python program** for **Kadane’s Algorithm** that:
 
-* prints outputs for several **input arrays**,
-* includes **inline time & space complexity comments for each step**,
-* and **benchmarks** the optimized solution using `timeit` right inside `main`.
-
-It uses the exact interview-style signature:
-
-```python
-class Solution:
-    def maxSubarraySum(self, arr):
-        # Code here
-```
+Absolutely—let’s close Kadane’s Algorithm with practical context and a runnable, timed script.
 
 ---
+
+## 5) Real-World Use Cases (easy to relate)
+
+* **Single buy–sell stock profit (on diffs):**
+  Convert prices to daily differences; the best single trade is the **max sum subarray** on those diffs.
+
+* **Error/latency burst detection:**
+  Treat “improvement = baseline − latency”. The biggest contiguous improvement window is Kadane’s best subarray.
+
+* **Engagement streaks:**
+  Map each day to a score (+ for good signals, − for bad). The **strongest streak** is the max sum subarray.
+
+* **Network/CPU utilization peaks:**
+  After zero-centering the series, the **largest positive energy window** emerges as Kadane’s segment.
+
+* **Revenue/retention uplift window (A/B):**
+  Daily deltas vs. control → contiguous period of **maximum uplift** is Kadane.
+
+---
+
+## 6) Full Program (with inline complexity notes + timings)
 
 ```python
 #!/usr/bin/env python3
 """
-Kadane's Algorithm — Maximum Subarray Sum
-Goal: Given an integer array arr, find the maximum sum over all CONTIGUOUS subarrays.
+Kadane's Algorithm: Maximum Subarray Sum
+---------------------------------------
+- Optimal time: O(n)
+- Space: O(1)
 
 This script:
-  1) Implements the optimized O(n) Kadane solution in class Solution (interview-friendly).
-  2) Demonstrates results on sample inputs (prints both inputs and outputs).
-  3) Benchmarks the algorithm using timeit on a large random array.
-
-All major steps include inline time/space complexity notes.
+  * Implements Kadane (and a brute-force reference)
+  * Runs sample inputs
+  * Times runs using perf_counter and timeit
 """
 
-from __future__ import annotations
-import random
+from time import perf_counter
 import timeit
-from typing import List, Tuple
+from typing import List
 
 
 class Solution:
     def maxSubarraySum(self, arr: List[int]) -> int:
         """
-        Kadane's Algorithm — O(n) time, O(1) extra space
-
-        Steps & complexities:
-        - Initialize current and best sums with arr[0] (O(1) time, O(1) space).
-        - Single pass over the rest of the array (O(n) time, O(1) space):
-          For each x: cur = max(x, cur + x); best = max(best, cur).
-          Greedy restart when the previous sum is negative.
-        - Return best (O(1) time, O(1) space).
+        Kadane's Algorithm
+        ------------------
+        At each element x:
+          - Either extend the previous subarray (curr + x) or start fresh at x
+          - Update global best
+        Time  : O(n)  — single pass
+        Space : O(1)  — constant extra variables
         """
-        # Edge cases are guaranteed by constraints (len(arr) >= 1). If needed, guard here.
-
-        # O(1) time / O(1) space
-        cur = best = arr[0]
-
-        # O(n) time total / O(1) extra space
-        for x in arr[1:]:
-            # Decide to extend or restart — O(1)
-            cur = max(x, cur + x)
-            # Track global best — O(1)
-            best = max(best, cur)
-
-        # O(1) time / O(1) space
+        curr = best = arr[0]          # O(1)
+        for x in arr[1:]:             # O(n-1) ~ O(n)
+            curr = max(x, curr + x)   # O(1)
+            best = max(best, curr)    # O(1)
         return best
 
 
-class SolutionWithIndices:
+def brute_max_subarray_sum(arr: List[int]) -> int:
     """
-    Same as Kadane but also tracks (start, end) indices of the best subarray.
-    Time:  O(n)
-    Space: O(1)
+    Brute-force reference (for validation)
+    Consider all O(n^2) subarrays and track max sum.
+    Time  : O(n^2)
+    Space : O(1)
     """
-    def maxSubarraySum(self, arr: List[int]) -> Tuple[int, int, int]:
-        best = cur = arr[0]
-        best_l = best_r = 0
-        l = 0  # tentative start of current window
-
-        for r in range(1, len(arr)):
-            x = arr[r]
-            # If starting fresh at r is better than extending, restart here.
-            if x > cur + x:
-                cur = x
-                l = r
-            else:
-                cur += x
-
-            # Update global best and its indices
-            if cur > best:
-                best = cur
-                best_l, best_r = l, r
-
-        return best, best_l, best_r
+    best = arr[0]
+    n = len(arr)
+    for i in range(n):                   # O(n)
+        run = 0
+        for j in range(i, n):            # O(n-i)
+            run += arr[j]                # O(1)
+            if run > best:
+                best = run
+    return best
 
 
-def demo_on_samples() -> None:
-    """
-    Show correctness on a handful of inputs.
-    Each print includes the input values and the output from both versions.
-    """
-    samples = [
-        [2, 3, -8, 7, -1, 2, 3],  # expected 11
-        [-2, -4],                 # expected -2 (least negative element)
-        [5, 4, 1, 7, 8],          # expected 25
-        [-5],                     # single negative
-        [0, 0, 0, 0],             # all zeros => 0
-        [1, -2, 3, 10, -4, 7, 2, -5],  # classic => 18 (3 + 10 - 4 + 7 + 2)
-    ]
+# ------------------------ Timing helpers ------------------------
 
-    kadane = Solution()
-    kadane_idx = SolutionWithIndices()
+def time_single_run(func, *args, **kwargs):
+    """Wall-clock one run. Overhead O(1)."""
+    t0 = perf_counter()
+    out = func(*args, **kwargs)
+    t1 = perf_counter()
+    return out, t1 - t0
 
-    print("=== Sample Runs ===")
-    for arr in samples:
-        # Optimized O(n) Kadane — O(n) time, O(1) space
-        ans = kadane.maxSubarraySum(arr)
-
-        # Optional: show indices and actual subarray
-        best, L, R = kadane_idx.maxSubarraySum(arr)
-        subarr = arr[L:R+1]
-        print(f"Input:  {arr}")
-        print(f"Output (Kadane sum): {ans}")
-        print(f"Output (sum, L, R):  ({best}, {L}, {R})  Subarray: {subarr}")
-        print("-" * 60)
+def avg_time_with_timeit(stmt: str, globals_dict: dict, number: int = 5) -> float:
+    """Average across 'number' runs using timeit."""
+    return timeit.timeit(stmt, number=number, globals=globals_dict) / number
 
 
-# Helper used by timeit; keeps only the O(n) algorithm in the timed section
-def _bench_once(arr_large: List[int]) -> None:
-    Solution().maxSubarraySum(arr_large)
-
-
-def benchmark() -> None:
-    """
-    Benchmark the optimized solution using timeit.
-
-    Complexity of prep below:
-      - Building the random array: O(N) time, O(N) space.
-    The timed part (_bench_once) does:
-      - Kadane O(N) time, O(1) extra space.
-    """
-    SIZE = 200_000  # adjust if running locally on limited hardware
-    rng = random.Random(12345)
-
-    # Build input outside the timed function so we only measure algorithm time.
-    # O(N) time, O(N) space
-    arr_large = [rng.randrange(-10**6, 10**6) for _ in range(SIZE)]
-
-    # Time only the algorithm; run it a few times to average out noise.
-    # The lambda closes over arr_large (no copying).
-    runs = 3
-    total = timeit.timeit(lambda: _bench_once(arr_large), number=runs)
-
-    print("=== Benchmark (Optimized Kadane O(n)) ===")
-    print(f"Array size : {SIZE}")
-    print(f"Runs       : {runs}")
-    print(f"Total time : {total:.6f} s")
-    print(f"Avg / run  : {total / runs:.6f} s")
-    print("-" * 60)
-
-
-def main() -> None:
-    # 1) Show outputs for several inputs (prints both input values and outputs)
-    demo_on_samples()
-
-    # 2) Benchmark the optimized solution using timeit
-    benchmark()
-
+# ---------------------------- Demo ------------------------------
 
 if __name__ == "__main__":
-    main()
+    samples = [
+        [2, 3, -8, 7, -1, 2, 3],    # expected 11
+        [-2, -4],                   # expected -2 (all negative)
+        [5, 4, 1, 7, 8],            # expected 25 (whole array)
+        [1, -3, 2, 1, -1, 3, -2],   # expected 5 (2+1-1+3)
+    ]
+
+    sol = Solution()
+
+    print("Kadane's Algorithm — Maximum Subarray Sum\n")
+
+    for arr in samples:
+        # Validate against brute force for peace of mind
+        brute_ans, t_brute = time_single_run(brute_max_subarray_sum, arr)
+        kadane_ans, t_kadane = time_single_run(sol.maxSubarraySum, arr)
+
+        print(f"Input:  {arr}")
+        print(f"Brute:  {brute_ans}  (time: {t_brute*1e6:.1f} µs)")
+        print(f"Kadane: {kadane_ans}  (time: {t_kadane*1e6:.1f} µs)")
+        print("-" * 56)
+
+    # Larger randomized-like case for average timing
+    big = [(-1)**i * (i % 7) for i in range(200000)]  # length 200k
+
+    stmt = "Solution().maxSubarraySum(big)"
+    avg = avg_time_with_timeit(stmt, globals_dict={"Solution": Solution, "big": big}, number=5)
+    print(f"\nAverage Kadane time on 200k elements over 5 runs: {avg:.6f} s")
+
+    print("\nComplexity (Kadane):")
+    print("  Time  : O(n)")
+    print("  Space : O(1)")
+```
+
+### What you’ll see (example)
+
+```
+Kadane's Algorithm — Maximum Subarray Sum
+
+Input:  [2, 3, -8, 7, -1, 2, 3]
+Brute:  11  (time: 3xx.xx µs)
+Kadane: 11  (time: 2x.xx µs)
+--------------------------------------------------------
+Input:  [-2, -4]
+Brute:  -2  (time: 2x.xx µs)
+Kadane: -2  (time: 1x.xx µs)
+--------------------------------------------------------
+...
+
+Average Kadane time on 200k elements over 5 runs: 0.0xx s
+
+Complexity (Kadane):
+  Time  : O(n)
+  Space : O(1)
 ```
 
 ---
 
-## Real-World Use Cases (few, but important)
+### Interview one-liner to say before coding
 
-1. **Trading / Portfolio Analytics**
-   Model daily **returns** as an array. Kadane finds the **best contiguous run** of days (max cumulative return), i.e., the most profitable continuous holding period.
+> “I’ll use **Kadane’s Algorithm**: at each step I either **extend or restart** the current subarray, and keep a **global best**. That’s **O(n) time, O(1) space**, and it naturally handles all-negative arrays by initializing with `arr[0]`.”
 
-2. **Performance Monitoring / Telemetry**
-   Given per-interval **delta improvements** (positive/negative), Kadane pinpoints the longest/highest **net positive streak**, useful for detecting periods of strong recovery or growth.
+---
 
-3. **Signal Processing / Sensor Data**
-   Over noise-like readings converted to **signed deviations**, Kadane extracts the strongest continuous **positive energy** segment—handy for event detection or burst identification.
+---
+
+Excellent — this is one of the **most fundamental and beautiful algorithms** in computer science interviews, and understanding *why it works* makes you instantly stronger at dynamic programming and array problems.
+
+Let’s go step by step 👇
+
+---
+
+## 💡 **Definition — What is Kadane’s Algorithm?**
+
+> **Kadane’s Algorithm** is a **dynamic programming / greedy** algorithm used to find the **maximum sum of any contiguous subarray** in a one-dimensional array (which can have positive and negative numbers).
+
+So if you’re given an array:
+
+```
+arr = [2, 3, -8, 7, -1, 2, 3]
+```
+
+Kadane’s Algorithm finds that the **subarray [7, -1, 2, 3]** has the largest possible sum = **11**.
+
+---
+
+## ⚙️ **The Intuition — Why it Works**
+
+Imagine scanning the array **from left to right**, keeping track of:
+
+* The **current best subarray sum** ending *right here*, and
+* The **global best sum** seen so far.
+
+We make a simple observation:
+
+> If the running sum ever becomes negative, it can only hurt any future subarray.
+> So, we discard it (reset the sum) and start fresh from the next element.
+
+In other words:
+
+* **Continue adding** if the sum stays positive.
+* **Restart** if it drops below zero.
+
+---
+
+## 🧩 **Recurrence Relation (the core formula)**
+
+Let:
+
+* `curr_sum` = maximum subarray sum ending at current index
+* `max_sum` = maximum sum found so far
+
+Then:
+
+```
+curr_sum = max(arr[i], curr_sum + arr[i])
+max_sum  = max(max_sum, curr_sum)
+```
+
+You can interpret this as:
+
+> At every step, either **extend** the existing subarray or **start a new one**.
+
+---
+
+## 🔁 **Step-by-Step Example**
+
+Let’s dry run on:
+
+```
+arr = [2, 3, -8, 7, -1, 2, 3]
+```
+
+| i | arr[i] | curr_sum = max(arr[i], curr_sum + arr[i]) | max_sum |
+| - | ------ | ----------------------------------------- | ------- |
+| 0 | 2      | 2                                         | 2       |
+| 1 | 3      | 5                                         | 5       |
+| 2 | -8     | -3                                        | 5       |
+| 3 | 7      | 7                                         | 7       |
+| 4 | -1     | 6                                         | 7       |
+| 5 | 2      | 8                                         | 8       |
+| 6 | 3      | 11                                        | 11      |
+
+✅ **Result = 11**
+
+---
+
+## 🧠 **Simplified Intuition**
+
+Think of walking through the array carrying a “running happiness meter.”
+
+* If you feel negative overall, drop that baggage and start again.
+* Keep the best happiness level ever reached.
+  That’s Kadane in plain English.
+
+---
+
+## ⚡ **Pseudocode (5 lines you can recall easily)**
+
+```
+function maxSubarraySum(arr):
+    curr = best = arr[0]
+    for x in arr[1:]:
+        curr = max(x, curr + x)   # extend or restart
+        best = max(best, curr)
+    return best
+```
+
+---
+
+## ⏱️ **Complexities**
+
+| Metric    | Value | Why                    |
+| --------- | ----- | ---------------------- |
+| **Time**  | O(n)  | One pass through array |
+| **Space** | O(1)  | Only two variables     |
+
+---
+
+## 📦 **When to Use Kadane’s Algorithm**
+
+Use Kadane’s whenever you see:
+
+* “Maximum sum of a subarray / contiguous segment.”
+* “Best period / streak / profit / performance.”
+* Or any question hinting: “You can’t reorder elements.”
+
+---
+
+## 🌍 **Real-World Analogies / Applications**
+
+| Context                     | How it maps to Kadane                                            |
+| --------------------------- | ---------------------------------------------------------------- |
+| 📈 **Stock trading**        | Max profit from one buy-sell (apply Kadane on price differences) |
+| 💰 **Revenue tracking**     | Best contiguous period of profit                                 |
+| 🧠 **Signal processing**    | Strongest contiguous positive energy burst                       |
+| 📊 **Analytics dashboards** | Maximum streak of growth or engagement                           |
+| 🎮 **Gaming**               | Longest “winning streak” based on score deltas                   |
+
+---
+
+## 🎯 **Interview Soundbite (say this confidently)**
+
+> “Kadane’s Algorithm is a linear-time dynamic programming approach to find the maximum sum of a contiguous subarray.
+> It keeps a running sum and resets it when it becomes negative, because a negative prefix can only reduce future sums.”
+
+---
+
+## 🧠 **Mnemonic to Recall Quickly**
+
+> **“Extend or Restart → Compare → Return.”**
+
+That’s all you need to rebuild Kadane’s in 30 seconds during an interview.
+
+---
+
+✅ **In One Line (summary):**
+
+> Kadane’s Algorithm scans the array once, keeping a running maximum and resetting when it becomes negative — resulting in an O(n), O(1)-space solution for the maximum subarray sum.
