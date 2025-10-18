@@ -156,42 +156,48 @@ class Solution:
         n = len(arr)
         if not (1 <= k <= n):
             raise ValueError("k out of bounds")
-
         # We want 0-based index
-        target = k - 1
-        low, high = 0, n - 1
-
-        while True:
-            if low == high:
-                return arr[low]
-
-            # --- choose a random pivot to avoid adversarial worst cases
-            pivot_idx = random.randint(low, high)
-            pivot = arr[pivot_idx]
-
+        target = k-1
+        left, right = 0, n-1
+        
+        while True: # Keep narrowing the search range until the k-th element is found.
+            if left == right: # Base case: only one element left in the current search window [left..right].
+                return arr[left]
+            # Random pivot = Pick a random pivot value from the current window to avoid worst-case behavior.
+            pivot_index = random.randint(left, right)
+            pivot = arr[pivot_index]
             # 3-way partition around pivot: < pivot | == pivot | > pivot
-            left, i, right = low, low, high
-            while i <= right:
-                if arr[i] < pivot:
-                    arr[left], arr[i] = arr[i], arr[left]
-                    left += 1; i += 1
-                elif arr[i] > pivot:
-                    arr[i], arr[right] = arr[right], arr[i]
-                    right -= 1
-                else:  # equal
-                    i += 1
-
+            """
+            DNF scan with three pointers
+            Initialize 3 pointers for Dutch National Flag partitioning over [left..right]:
+            partsn_left → boundary where the next < pivot element should go.
+            i → current scanner index (the element we’re classifying).
+            partsn_right→ boundary where the next > pivot element should go.
+            """
+            partsn_left, i , partsn_right = left, left, right
+            while i <= partsn_right: # Inner loop (the 3-way partition)
+                if arr[i] < pivot: # Current element belongs to the < pivot zone.
+                    arr[partsn_left], arr[i] = arr[i], arr[partsn_left] # Swap it forward into the left bucket’s next slot (partsn_left).
+                    partsn_left += 1 # Advance both: partsn_left grows (left zone expanded),
+                    i += 1 # i moves on (the swapped-in element at i is already known to be < pivot).
+                elif arr[i] > pivot: # Current element belongs to the > pivot zone.
+                    arr[i], arr[partsn_right] = arr[partsn_right], arr[i] # Swap it back into the right bucket’s next slot (partsn_right)
+                    partsn_right -= 1 # Shrink right bucket
+                else: # equal, Current element equals the pivot → it lives in the middle zone.
+                    i += 1 # Nothing to swap; just move past it by incrementing i.
             # Now:
-            # arr[low:left]   < pivot
-            # arr[left:right+1] == pivot
-            # arr[right+1:high+1] > pivot
+            # arr[left:          partsn_left]    <  pivot
+            # arr[partsn_left:partsn_right+1]   ==  pivot
+            # arr[partsn_right+1:    right+1]    >  pivot
 
-            if target < left:
-                high = left - 1                 # go left
-            elif target > right:
-                low = right + 1                 # go right
+            # Compare target against the equal band; shrink or return.
+            # Decide which side to keep (finish or shrink search)
+            if target < partsn_left: # If the target index (k-1) is before the equal block, the answer lies in the < pivot zone.
+                right = partsn_left - 1 # go left, Narrow the search to [left .. partsn_left-1].
+            elif target > partsn_right: # If the target index is after the equal block, the answer lies in the > pivot zone.
+                left = partsn_right + 1 # go right, Narrow the search to [partsn_right+1 .. right].
             else:
-                return arr[target]          # inside the equal block → done
+                return arr[target] # inside the equal block → done
 
     # ---------- Primary: Quickselect (average O(n), in-place O(1) space) ----------
     def kthSmallest_LP(self, arr: List[int], k: int) -> int:
