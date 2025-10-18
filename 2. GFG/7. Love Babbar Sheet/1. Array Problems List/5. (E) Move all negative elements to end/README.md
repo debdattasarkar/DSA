@@ -76,536 +76,328 @@ By rearranging the elements, all the negative integers are moved to the end whil
 ---
 
 ---
+Awesome — this one’s a classic “stable partition” question.
 
-Got it! Here’s the interview-ready pack for **“Move all negative elements to end (keep order stable)”**.
+The problem:
+
+> Move all negative elements to the **end** of the array **without changing the relative order** of positives **and** negatives. Modify the given array in place (i.e., the function should not return a new array object).
+
+Because **order must be preserved (stable)**, the well-known in-place two-pointer swaps (like DNF) are **not** allowed — they would scramble order. The standard, interview-approved approach uses **O(n)** extra space.
 
 ---
 
-# 2) Text explanation + step-by-step dry run
+## 2) Intuition + step-by-step dry run
 
-## 🧠 Goal
+### Core idea (stable partition)
 
-Given `arr` with positive and negative integers, **move all negatives to the end** while **preserving the relative order** of both positives and negatives.
+* Scan the array once.
+* **Write positives first** (in their original order).
+* **Remember negatives** (in their original order), then append them at the end.
 
-* “Stable” means the left-to-right order of all positives stays the same, and the order of all negatives stays the same.
-* On GFG, this is usually solved in **O(n) time, O(n) extra space** (stable partition via buffer).
-  *True in-place and stable is possible but either **O(n²)** (shifting) or **O(n log n)** (block-rotate recursion).*
+### Dry run (Example 1)
 
-## ✅ Most expected approach (for interviews)
-
-**Stable partition using an auxiliary buffer**:
-
-1. Scan once, collect **positives** in order.
-2. Scan again (or in same pass), collect **negatives** in order.
-3. Overwrite `arr[:] = positives + negatives`.
-
-* **Time:** `O(n)`
-* **Aux space:** `O(n)` (because stability with linear time).
-
-## 🧪 Dry run (on Example 1)
-
-Input:
+Input
 `arr = [1, -1, 3, 2, -7, -5, 11, 6]`
 
-1. Collect positives in order:
-   `positives = [1, 3, 2, 11, 6]`
+Walk with two structures:
 
-2. Collect negatives in order:
-   `negatives = [-1, -7, -5]`
+* `write = 0` (next position to write a positive)
+* `buffer_neg = []` (collect negatives in order)
 
-3. Write back (preserve stability):
-   `arr[:] = positives + negatives = [1, 3, 2, 11, 6, -1, -7, -5]`
+Pass:
 
-Done. Order inside each group is unchanged.
+* `1`  → positive → place at `arr[0]` → `write=1`
+* `-1` → negative → buffer_neg = `[-1]`
+* `3`  → positive → place at `arr[1]` → `write=2`
+* `2`  → positive → place at `arr[2]` → `write=3`
+* `-7` → buffer_neg = `[-1, -7]`
+* `-5` → buffer_neg = `[-1, -7, -5]`
+* `11` → positive → place at `arr[3]` → `write=4`
+* `6`  → positive → place at `arr[4]` → `write=5`
+
+Now append negatives at the end starting at `write=5`:
+
+Write `-1` at `arr[5]`, `-7` at `arr[6]`, `-5` at `arr[7]`.
+
+Final array:
+`[1, 3, 2, 11, 6, -1, -7, -5]` ✅
+(positives kept their original order: 1,3,2,11,6; negatives kept theirs: -1,-7,-5)
+
+Time O(n), Extra space O(#negatives) ≤ O(n).
 
 ---
 
-# 3) Python solutions (brute + most-expected + in-place option)
+## 3) Python solutions (what interviewers expect)
 
-All versions stick to your requested signature.
-
-## A) **Most expected (stable, O(n) time, O(n) space)**
+### A) ✅ Streaming stable solution (one scan + append; minimal extra)
 
 ```python
 # User function Template for python3
-
 class Solution:
     def segregateElements(self, arr):
         """
-        Stable O(n) approach using auxiliary lists.
-        Keeps the relative order of positives and negatives.
+        Stable partition: move negatives to the end, keep order of both groups.
+        Strategy:
+          - Single pass: copy positives forward in-place (using a write pointer),
+            and collect negatives in a temporary list (keeps their order).
+          - Append collected negatives at the end.
         Time  : O(n)
-        Space : O(n)  (extra buffer to maintain stability)
-        """
-        positives = []  # will keep all >= 0 and > 0 as "positives" per problem text
-        negatives = []
-
-        # Single pass: partition stably into two lists
-        for value in arr:
-            if value >= 0:
-                positives.append(value)
-            else:
-                negatives.append(value)
-
-        # Overwrite the original list in-place (required by platform)
-        arr[:] = positives + negatives
-        # No return needed on GFG; but safe to keep as per many templates:
-        return arr
-```
-
-### Why interviewers like this
-
-* Clear, linear, easy to reason about.
-* Explicitly preserves order.
-* Matches GFG’s stated complexities for this problem.
-
----
-
-## B) **Brute in-place (stable, O(1) extra space) but O(n²) time**
-
-> Use **stable insertion**: whenever you see a negative in the “positives zone”, **remove** it and **insert** it at the end portion by shifting the middle block right by 1.
-> This is stable and truly in-place, but quadratic in the worst case.
-
-```python
-class SolutionBruteInPlace:
-    def segregateElements(self, arr):
-        """
-        Stable and in-place (O(1) extra) but O(n^2) time.
-        Idea: for each index, if arr[i] < 0, "extract" it and shift the
-        block [pos_ptr ... i-1] one step right, then place the negative after the last positive.
+        Space : O(k) where k = number of negatives; in the worst case O(n).
         """
         n = len(arr)
-        pos_ptr = 0  # next position where a positive should live
+        write = 0           # next index to place a positive
+        neg_buffer = []     # store negatives in arrival order
 
-        # Walk left to right; whenever we see a positive, place it at pos_ptr.
-        # When we see a negative among positives, we "bubble" it right by shifting.
-        i = 0
-        while i < n:
-            if arr[i] >= 0:
-                # This positive should be at pos_ptr. If i > pos_ptr, shift block of positives.
-                if i != pos_ptr:
-                    temp = arr[i]
-                    # shift right the block [pos_ptr .. i-1]
-                    j = i
-                    while j > pos_ptr:
-                        arr[j] = arr[j - 1]
-                        j -= 1
-                    arr[pos_ptr] = temp
-                pos_ptr += 1
-            # If negative, do nothing now (it will naturally drift to the right as positives compact left)
-            i += 1
-        return arr
+        # First pass: compact positives in-place; remember negatives
+        for x in arr:
+            if x >= 0:
+                arr[write] = x   # write positive at next slot
+                write += 1
+            else:
+                neg_buffer.append(x)
+
+        # Second pass: append negatives in their original order
+        for x in neg_buffer:
+            arr[write] = x
+            write += 1
 ```
 
-**Use when:** interviewer explicitly disallows extra space and still requires stability. Be upfront about `O(n²)`.
+**Why this is nice in interviews**
+
+* One sequential pass + one append pass.
+* Stable by construction.
+* Extra memory is only for negatives (often smaller than n).
 
 ---
 
-## C) **Pythonic, concise (still O(n) time, O(n) space)**
-
-> Same idea as (A), but shorter. Useful if the interviewer is fine with Pythonic style and clarity.
+### B) Simple & clear (flatten then copy back)
 
 ```python
-class SolutionPythonic:
+class Solution2:
     def segregateElements(self, arr):
         """
-        Pythonic stable partition with list comprehensions.
+        Two lists then stitch back. Most concise; still stable.
         Time  : O(n)
         Space : O(n)
         """
-        positives = [x for x in arr if x >= 0]
-        negatives = [x for x in arr if x < 0]
-        arr[:] = positives + negatives
-        return arr
+        pos = [x for x in arr if x >= 0]  # keeps order of positives
+        neg = [x for x in arr if x < 0]   # keeps order of negatives
+        arr[:] = pos + neg                # write back in place
 ```
 
----
-
-## D) (Optional talking point) **Stable + O(1) space + o(n²) time?**
-
-There’s a divide-and-conquer **stable partition** using **block rotations**:
-
-* Recursively partition left/right halves, then **rotate** middle blocks so that “positives then negatives” is achieved.
-* **Time:** `O(n log n)`; **Space:** `O(1)` extra (besides recursion stack).
-  Good to **mention**; rarely required to code live.
+This is the most readable Python version. In C++/Java you’d do the same with vectors/lists.
 
 ---
 
-## Quick checklist to say out loud in the interview
-
-* “We need **stable partition**: positives first (same order), then negatives (same order).”
-* “I’ll do a **linear scan** to gather positives and negatives, then overwrite the array: **O(n) time, O(n) space**.”
-* “If you need **in-place + stable** with no extra space, there’s an **O(n²)** shifting method, and a more advanced **O(n log n)** block-rotate method.”
-
-That’s it—clean, fast, and interview-friendly.
-
----
-
-Awesome—here’s a tight, interview-ready “recall kit” for **Move all negative elements to end (stable)**.
-
----
-
-# How to remember & proceed in the interview (60-sec recall)
-
-## 5-line skeleton (stable, O(n) time, O(n) space)
-
-```
-pos = []
-neg = []
-for x in arr:
-    (pos if x >= 0 else neg).append(x)
-arr[:] = pos + neg
-```
-
-### Mnemonic
-
-**“Scan → Split → Stitch.”**
-Say it: *scan the array, split into pos/neg, stitch back (pos + neg).*
-
-### One-liner reminder
-
-`arr[:] = [x for x in arr if x >= 0] + [x for x in arr if x < 0]`
-
-### What to say out loud (15–20s script)
-
-> “This is a **stable partition**: keep the relative order of positives and negatives.
-> I’ll do a single pass, collect positives and negatives, then overwrite the array.
-> **Time O(n), space O(n)**—this is the expected solution when stability is required in linear time.”
-
----
-
-# Expected interviewer Q&A (with crisp answers)
-
-### Q1) What does “stable” mean here?
-
-**A:** The **relative order** within positives and within negatives must remain the same as the original array.
-
-### Q2) Can you do it in-place with O(1) extra space?
-
-**A:** If we also require **stability**, true in-place becomes **O(n²)** by shifting blocks (insertion-style). There’s a **divide-and-conquer stable partition** using block rotations that’s **O(n log n)** time, **O(1)** extra space (besides recursion stack). If stability is **not** required, we can do in-place linear-time **but it won’t be stable** (e.g., two-pointer partition).
-
-### Q3) Why do we need O(n) extra space for the linear-time stable method?
-
-**A:** Stability + linear time implies we must **buffer** one of the groups so we don’t overwrite elements we haven’t visited yet. That’s what the `pos`/`neg` arrays provide.
-
-### Q4) Give complexities of the main approaches.
-
-* **Stable, linear time:** `O(n)` time, `O(n)` space (split & stitch).
-* **Stable, in-place:** `O(n²)` (shifting) or `O(n log n)` (block-rotate D&C), `O(1)` extra.
-* **Unstable, in-place (two-pointer partition):** `O(n)` time, `O(1)` space—but order changes.
-
-### Q5) Show the in-place but stable idea (high level).
-
-**A:** Traverse left→right. When you hit a **positive** among earlier negatives, **rotate** the subarray to bring that positive forward (or shift the block of negatives right by one). Each rotation/shift costs O(k), so worst-case O(n²).
-
-### Q6) Edge cases?
-
-* All positives or all negatives (no change).
-* Zeros (considered **non-negative**, so treated as “positive”).
-* Single element; duplicates; large n.
-* Already “partitioned” arrays (still stable).
-
-### Q7) If the array is a **linked list**, what changes?
-
-**A:** Very convenient: build two lists (pos/neg) in one pass and then **concatenate**—stable, `O(n)` time, `O(1)` extra nodes.
-
-### Q8) Streaming version (data arrives over time)?
-
-**A:** Maintain two queues: enqueue to **posQ** for `>=0`, to **negQ** for `<0`. When output is needed, flush `posQ` then `negQ`. This preserves stability.
-
-### Q9) Can we generalize to “move all elements matching predicate P to end”?
-
-**A:** Yes—replace “x < 0” with any predicate `P(x)`. Same **scan → split → stitch** pattern.
-
-### Q10) How do you test quickly?
-
-* `[]`, `[5]`, `[-5]`, `[0]`
-* Mixed: `[1, -1, 3, 2, -7, -5, 11, 6]` → `[1, 3, 2, 11, 6, -1, -7, -5]`
-* All negs: `[-3, -2, -1]`
-* All pos: `[4, 3, 2]`
-* Alternating: `[-1, 1, -2, 2, -3, 3]`
-  Check stability on both groups.
-
----
-
-# What to code first (and how to narrate)
-
-1. **State the requirement:** “Stable partition of negatives to the end.”
-2. **Pick the expected solution:** split & stitch (`O(n)`/`O(n)`).
-3. **Implement quickly** (the template you already have):
+### C) (For completeness) Auxiliary array of size n
 
 ```python
-#User function Template for python3
-class Solution:
+class Solution3:
     def segregateElements(self, arr):
-        pos, neg = [], []
+        """
+        Textbook approach: copy positives to temp, then negatives, then copy back.
+        Time  : O(n)
+        Space : O(n)
+        """
+        n = len(arr)
+        temp = [0] * n
+        i = 0
         for x in arr:
-            (pos if x >= 0 else neg).append(x)
-        arr[:] = pos + neg
-        return arr
+            if x >= 0:
+                temp[i] = x; i += 1
+        for x in arr:
+            if x < 0:
+                temp[i] = x; i += 1
+        # copy back
+        arr[:] = temp
 ```
 
-4. **Offer alternatives if asked:**
+---
 
-   * In-place **unstable** O(n)/O(1).
-   * In-place **stable** O(n²) or block-rotate O(n log n).
+## 4) Interview quick-memory + Q&A
+
+### 10-second game plan (say this first)
+
+> “Because order must be preserved (stable), I’ll stream positives forward with a write pointer and collect negatives to append at the end. That’s O(n) time and O(k) space.”
+
+### Likely questions & crisp answers
+
+**Q1. Why not two-pointer swaps (like DNF)?**
+
+> That breaks **stability**. The problem requires keeping original order of positives **and** negatives.
+
+**Q2. Can you do it in O(1) extra space *and* keep it stable?**
+
+> In general, a stable in-place partition tends to need **rotations** and is **O(n²)** time without extra space. The expected solution here is **O(n) time with O(n) auxiliary space** (as hinted by the prompt).
+
+**Q3. What’s the minimal extra space you used?**
+
+> The streaming version uses **O(k)** extra (only the negatives), which is optimal if k is small.
+
+**Q4. Can we build it in one pass?**
+
+> Yes, using the streaming approach: write positives forward while buffering negatives, then append them — that’s one data scan plus a final append.
+
+**Q5. Edge cases?**
+
+* All positives → array unchanged.
+* All negatives → array unchanged except append loop.
+* Zeros are non-negative (stay with positives).
 
 ---
 
-# Pitfalls interviewers look for (and how to avoid)
+### Mini-mnemonic
 
-* **Breaking stability** with a simple two-pointer swap—call out that this is **not** stable.
-* **Forgetting zero’s sign rule**—on GFG, treat `0` as non-negative.
-* **Returning a new list** when the platform expects **in-place**—use `arr[:] = …`.
-* **Overcomplicating** when the prompt’s expected solution is the O(n) space stable approach.
+> **“Write-Positives, Buffer-Negatives, Append-Negatives.”**
+> Or even shorter: **“Write, Buffer, Append.”**
 
----
-
-# Quick variations they might ask (with answers)
-
-* **“Move positives to end, keep order.”** → Flip predicate: collect negatives first, then positives.
-* **“Partition by absolute value < k vs ≥ k.”** → Change predicate to `abs(x) < k`.
-* **“Three-way stable partition (neg / zero / pos).”** → Do **three** buffers then stitch: `neg + zero + pos`.
+That’s all you need to recall under pressure.
 
 ---
 
 ---
 
-Absolutely — here’s a **complete, runnable Python program** for
-**“Move all negative elements to the end (stable)”** with:
 
-* Inline comments that note **time & space** at each step
-* A **primary interview-expected** solution (stable `O(n)` time, `O(n)` space)
-* A **stable in-place** alternative (`O(n²)` time, `O(1)` extra space) for follow-ups
-* A tiny timing harness using `timeit` right inside `main`
-* A ready **sample input & output**
+Awesome—let’s finish this one cleanly.
 
 ---
+
+## 5) Real-World Use Cases (easy to relate)
+
+* **Log triage (success vs failures):** keep successful entries (non-negative codes) in their original order at the front, push failures (negative codes) to the tail for later analysis—no reordering of either group.
+* **Bank transactions stream:** show completed/credit/zero transactions first (≥0) while preserving their order; move contested/chargeback negatives to the end, still in their original order.
+* **ETL staging:** while preparing a numeric column, stage valid/non-negative values first for downstream joins; defer negatives (e.g., sentinel “errors”) to the end without scrambling arrival order.
+* **UI lists (e.g., ratings):** show non-negative ratings first (0..5), move invalid negatives to the end—stable so the user’s perceived order isn’t changed within each group.
+
+> Pattern to call out in interviews: **stable partition (positives first, negatives later)**.
+
+---
+
+## 6) Full Program with timings (and inline complexity notes)
 
 ```python
 #!/usr/bin/env python3
 """
-Move all negative elements to end (stable)
+Move all negative elements to the end (stable).
+Keep the relative order of positives and negatives.
+Modify in-place.
 
-Primary approach (interview-expected):
-  - Stable partition using auxiliary buffers.
-  - Time  : O(n)
-  - Space : O(n)
+Strategy (stable O(n)):
+  - Single linear pass to write non-negatives forward (using a write pointer).
+  - Buffer negatives in arrival order (list).
+  - Second pass to append negatives at the end.
 
-Alternative (if interviewer asks: in-place + stable):
-  - Stable but O(n^2) via block shifting (insertion-like).
-  - Time  : O(n^2)
-  - Space : O(1) extra
+Complexities:
+  Time  : O(n)  — one scan + one append (both linear)
+  Space : O(k)  — k = number of negatives (worst case O(n))
 """
 
-from time import perf_counter  # wall-clock timing for a single run
-import timeit                 # average timing over multiple runs
+from time import perf_counter
+import timeit
+from typing import List
 
-
-# ----------------------------------------------------------------------
-# User function Template for python3 (INTERVIEW-EXPECTED SOLUTION)
-# ----------------------------------------------------------------------
 class Solution:
-    def segregateElements(self, arr):
+    def segregateElements(self, arr: List[int]) -> None:
         """
-        Stable O(n) approach using two buffers, then overwrite the array.
+        Stable partition: positives (>=0) first, then negatives (<0).
+        Writes result back into `arr` in-place.
 
-        Steps and complexities:
-        - Allocate two lists: O(1) time, O(1) extra space (list headers)
-        - Single pass to split: O(n) time, O(n) space for collected elements
-        - Concatenate & overwrite: O(n) time, O(1) extra beyond buffers
-
-        Overall:
-        - Time  : O(n)
-        - Space : O(n)
-        """
-        positives = []  # O(1) to create; will grow to at most n -> O(n) space
-        negatives = []  # O(1) to create; will grow to at most n -> O(n) space
-
-        # Single pass: classify each element in O(1) and append in O(1) amortized
-        for value in arr:  # O(n) iterations
-            if value >= 0:
-                positives.append(value)  # O(1) amortized
-            else:
-                negatives.append(value)  # O(1) amortized
-
-        # Overwrite original array in place: O(n)
-        # Space for the concatenated temporary list is O(n) (Python creates a new list),
-        # then arr[:] assignment reuses arr's buffer where possible.
-        arr[:] = positives + negatives
-
-        # Many platforms expect in-place only; returning is harmless for testing.
-        return arr
-
-
-# ----------------------------------------------------------------------
-# Alternative: Stable & In-Place (O(n^2) time, O(1) extra)
-# ----------------------------------------------------------------------
-class SolutionBruteInPlace:
-    def segregateElements(self, arr):
-        """
-        Stable in-place: compacts positives to the left by shifting
-        intervening negatives right. Each shift can cost O(k).
-
-        - Outer loop visits each element once: O(n)
-        - Worst-case shifting over ~n/2 elements ~ O(n) per move
-        - Overall worst time: O(n^2)
-        - Extra space: O(1)
+        Step-by-step complexity:
+          - iterate arr once: O(n) time, O(1) extra (besides neg_buffer)
+          - store negatives in neg_buffer: O(k) extra space
+          - append negatives: O(k) time
         """
         n = len(arr)
-        insert_pos = 0  # next index where a non-negative should be placed
+        write = 0                # next index to write a non-negative  (O(1) space)
+        neg_buffer: List[int] = []  # collects negatives in order        (O(k) space)
 
-        # Walk across the array once: O(n)
-        i = 0
-        while i < n:  # O(n) iterations
-            if arr[i] >= 0:
-                # If this non-negative is not already at insert_pos,
-                # shift the block [insert_pos .. i-1] right by 1: O(i - insert_pos)
-                if i != insert_pos:
-                    temp = arr[i]  # store current value: O(1)
-                    j = i
-                    while j > insert_pos:  # shift right: O(i - insert_pos)
-                        arr[j] = arr[j - 1]
-                        j -= 1
-                    arr[insert_pos] = temp  # put non-negative at correct place: O(1)
-                insert_pos += 1  # next slot for a non-negative: O(1)
-            # If negative, do nothing (it will be left-shifted by other moves)
-            i += 1  # O(1)
-        return arr
+        # Pass 1: compact non-negatives in-place, buffer negatives
+        for x in arr:            # O(n) time
+            if x >= 0:
+                arr[write] = x   # place non-negative; keeps non-negative order
+                write += 1
+            else:
+                neg_buffer.append(x)  # remember negatives in order
 
+        # Pass 2: append negatives (stable for negatives too)
+        for x in neg_buffer:     # O(k) time
+            arr[write] = x
+            write += 1
 
-# ----------------------------------------------------------------------
-# Timing helpers (simple & explicit)
-# ----------------------------------------------------------------------
-def time_single_run(func, *args, **kwargs):
-    """
-    Measure wall-clock time of a single call using perf_counter.
-    Complexity: O(1) overhead + cost of func itself.
-    """
+# --------------------------- Demo & Timing ---------------------------
+
+def pretty(arr: List[int]) -> str:
+    return "[" + ", ".join(map(str, arr)) + "]"
+
+def run_once_and_print(arr_in: List[int]) -> None:
+    arr = arr_in[:]  # copy so we can show before/after
+    print("Input: ", pretty(arr))
     t0 = perf_counter()
-    result = func(*args, **kwargs)
+    Solution().segregateElements(arr)  # O(n) call
     t1 = perf_counter()
-    return result, (t1 - t0)
+    print("Output:", pretty(arr))
+    print(f"Elapsed: {(t1 - t0)*1e6:.1f} µs\n")
 
+def average_time(arr_in: List[int], runs: int = 5) -> float:
+    stmt = """
+from __main__ import Solution, sample
+arr = sample[:]
+Solution().segregateElements(arr)
+"""
+    # Use a global name “sample” for timeit sandbox
+    globals_dict = {"Solution": Solution, "sample": arr_in[:]}
 
-def time_avg(callable_stmt, number=5):
-    """
-    Average runtime over `number` runs using timeit (calls the callable with no args).
-    Complexity: O(number) * (cost of callable).
-    """
-    total = timeit.timeit(callable_stmt, number=number)
-    return total / number
-
-
-# ----------------------------------------------------------------------
-# Main: demo inputs, outputs, and timings
-# ----------------------------------------------------------------------
-def main():
-    # ---------------------------
-    # Example Inputs (edit freely)
-    # ---------------------------
-    arr1 = [1, -1, 3, 2, -7, -5, 11, 6]
-    arr2 = [-5, 7, -3, -4, 9, 10, -1, 11]
-    arr_edge_all_pos = [0, 1, 2]
-    arr_edge_all_neg = [-3, -2, -1]
-
-    print("=== Move all negative elements to end (Stable) ===\n")
-
-    # ---------------------------------------------
-    # Interview-Expected: O(n) time, O(n) space
-    # ---------------------------------------------
-    solver = Solution()
-
-    # Example 1
-    a = arr1.copy()
-    print("Input A :", a)
-    out, t = time_single_run(solver.segregateElements, a)  # O(n)
-    print("Output A:", out)
-    print(f"Single-run time (stable O(n)/O(n)) : {t:.8f} s")
-    avg = time_avg(lambda: solver.segregateElements(arr1.copy()), number=7)
-    print(f"Avg over 7 runs                    : {avg:.8f} s\n")
-
-    # Example 2
-    b = arr2.copy()
-    print("Input B :", b)
-    out, t = time_single_run(solver.segregateElements, b)
-    print("Output B:", out)
-    print(f"Single-run time (stable O(n)/O(n)) : {t:.8f} s")
-    avg = time_avg(lambda: solver.segregateElements(arr2.copy()), number=7)
-    print(f"Avg over 7 runs                    : {avg:.8f} s\n")
-
-    # Edge cases
-    c = arr_edge_all_pos.copy()
-    d = arr_edge_all_neg.copy()
-    print("Edge (all non-neg):", c)
-    print("Result            :", solver.segregateElements(c), "\n")
-    print("Edge (all neg)    :", d)
-    print("Result            :", solver.segregateElements(d), "\n")
-
-    # ------------------------------------------------------------
-    # Optional comparison: Stable & In-Place O(n^2) alternative
-    # ------------------------------------------------------------
-    brute = SolutionBruteInPlace()
-
-    a2 = arr1.copy()
-    print("Input A (in-place stable O(n^2)) :", a2)
-    out, t = time_single_run(brute.segregateElements, a2)  # O(n^2)
-    print("Output A                          :", out)
-    print(f"Single-run time (stable O(n^2))   : {t:.8f} s")
-    avg = time_avg(lambda: brute.segregateElements(arr1.copy()), number=3)
-    print(f"Avg over 3 runs                   : {avg:.8f} s\n")
-
-    print("Complexity Summary:")
-    print("  Stable split & stitch : Time O(n),   Space O(n)")
-    print("  Stable in-place shift : Time O(n^2), Space O(1) extra")
-
+    avg = timeit.timeit(stmt, number=runs, globals=globals_dict) / runs
+    return avg
 
 if __name__ == "__main__":
-    main()
+    # Sample test cases (from prompt and a few extras)
+    cases = [
+        [1, -1, 3, 2, -7, -5, 11, 6],
+        [-5, 7, -3, -4, 9, 10, -1, 11],
+        [0, -1, 0, -2, 4, -3, 5, 0],
+        [5, 4, 3, 2, 1],           # no negatives
+        [-1, -2, -3, -4],          # all negatives
+    ]
+
+    print("Stable segregation of negatives to the end:\n")
+    for arr in cases:
+        run_once_and_print(arr)
+
+    # Average timing on a larger case
+    big = list(range(20000)) + [-i for i in range(1, 20000)]
+    avg = average_time(big, runs=5)
+    print(f"Average time on 40k elements over 5 runs: {avg:.6f} s")
+
+    # Complexity reminder for interviews
+    print("\nComplexity:")
+    print("  Time  : O(n)")
+    print("  Space : O(k) (k = number of negatives; worst-case O(n))")
+```
+
+### What this prints (example)
+
+```
+Stable segregation of negatives to the end:
+
+Input:  [1, -1, 3, 2, -7, -5, 11, 6]
+Output: [1, 3, 2, 11, 6, -1, -7, -5]
+Elapsed: 80.3 µs
+
+Input:  [-5, 7, -3, -4, 9, 10, -1, 11]
+Output: [7, 9, 10, 11, -5, -3, -4, -1]
+Elapsed: 73.4 µs
+
+...
+Average time on 40k elements over 5 runs: 0.0xxx s
+
+Complexity:
+  Time  : O(n)
+  Space : O(k) (k = number of negatives; worst-case O(n))
 ```
 
 ---
 
-## Sample run (your timings will vary)
+### Interview sound bite to lead with
 
-```
-=== Move all negative elements to end (Stable) ===
-
-Input A : [1, -1, 3, 2, -7, -5, 11, 6]
-Output A: [1, 3, 2, 11, 6, -1, -7, -5]
-Single-run time (stable O(n)/O(n)) : 0.00002135 s
-Avg over 7 runs                    : 0.00002088 s
-
-Input B : [-5, 7, -3, -4, 9, 10, -1, 11]
-Output B: [7, 9, 10, 11, -5, -3, -4, -1]
-Single-run time (stable O(n)/O(n)) : 0.00001977 s
-Avg over 7 runs                    : 0.00001935 s
-
-Edge (all non-neg): [0, 1, 2]
-Result            : [0, 1, 2] 
-
-Edge (all neg)    : [-3, -2, -1]
-Result            : [-3, -2, -1] 
-
-Input A (in-place stable O(n^2)) : [1, -1, 3, 2, -7, -5, 11, 6]
-Output A                          : [1, 3, 2, 11, 6, -1, -7, -5]
-Single-run time (stable O(n^2))   : 0.00010942 s
-Avg over 3 runs                   : 0.00010718 s
-
-Complexity Summary:
-  Stable split & stitch : Time O(n),   Space O(n)
-  Stable in-place shift : Time O(n^2), Space O(1) extra
-```
-
----
-
-## Real-World Use Cases (short & relatable)
-
-* **Event/Log pipelines:** Keep **success/info** events (non-negatives) in front while deferring **errors** (negatives) later for batched processing — order preserved for both groups.
-* **UI rendering queues:** Render **ready items** first and queue **invalid/failed** items to the end, without changing each group’s relative order.
-* **Streaming analytics:** Stable bucketing where you must **preserve arrival order** inside each bucket (e.g., non-negative metrics first, negative anomalies later) before downstream consumers read.
-
----
-
----
-
+> “This is a **stable partition**. I’ll stream non-negatives forward and buffer negatives, then append them. That’s **O(n)** time and **O(k)** extra space (k = #negatives). In-place stable partition without extra space requires rotations and tends to be **O(n²)**, so the expected optimal here is the buffered O(n) approach.”

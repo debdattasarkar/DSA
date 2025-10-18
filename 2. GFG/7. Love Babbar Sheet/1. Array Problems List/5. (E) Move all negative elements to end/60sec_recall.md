@@ -1,65 +1,40 @@
-Memorizable kit for **“Move all negative elements to the end (stable)”**.
+Here’s your **“60-second recall kit”** and **5-line pseudo-code** for
+**Move all negative elements to the end (stable order).**
 
 ---
 
-## ⚡ 5-line universal pseudo-code (stable O(n) / O(n))
+## 🧠 5-Line Pseudo-code (language-agnostic)
 
 ```
-1. pos ← empty list
-2. neg ← empty list
-3. for each x in arr:
-4.     if x ≥ 0 then append x to pos else append x to neg
-5. arr[:] ← pos + neg
+function moveNegativesToEndStable(A):
+    write = 0; neg = []                # buffer negatives
+    for x in A:                        # one linear scan
+        if x >= 0: A[write] = x; write += 1
+        else: neg.append(x)
+    for x in neg: A[write] = x; write += 1
 ```
 
-### 🧠 Mnemonic
-
-**“Scan → Split → Stitch.”**
-Say it out loud: *scan the array, split into pos/neg, stitch back with `pos` first*.
+**Complexity:** Time O(n); Extra space O(k) (k = #negatives), worst-case O(n).
+**Why it’s correct:** We copy non-negatives in arrival order, then append negatives in their arrival order → **stable partition**.
 
 ---
 
-## ⏱️ 60-second recall script (what to say before coding)
+## 🎯 Mnemonic (say before coding)
 
-> “This is a **stable partition**: keep order within positives and within negatives.
-> I’ll do one linear scan, collect `pos` and `neg`, then overwrite the array:
-> **Time O(n)**, **Space O(n)**. If they insist on in-place and stable, it becomes **O(n²)** by shifting (or **O(n log n)** with block rotations).”
-
----
-
-## 30-second rebuild in 4 languages
-
-* **Python:** `pos=[x for x in arr if x>=0]; neg=[x for x in arr if x<0]; arr[:]=pos+neg`
-* **C++:**
-
-  ```cpp
-  vector<int> pos, neg;
-  for (int x: arr) (x>=0?pos:neg).push_back(x);
-  int i=0; for (int x: pos) arr[i++]=x; for (int x: neg) arr[i++]=x;
-  ```
-* **Java:**
-
-  ```java
-  List<Integer> pos=new ArrayList<>(), neg=new ArrayList<>();
-  for (int x: arr) if (x>=0) pos.add(x); else neg.add(x);
-  int i=0; for (int x: pos) arr[i++]=x; for (int x: neg) arr[i++]=x;
-  ```
-* **JavaScript:**
-
-  ```js
-  const pos = arr.filter(x=>x>=0), neg = arr.filter(x=>x<0);
-  arr.splice(0, arr.length, ...pos, ...neg);
-  ```
+> **“Write, Buffer, Append.”**
+>
+> * **Write** non-negatives forward,
+> * **Buffer** negatives,
+> * **Append** negatives at the end.
 
 ---
 
-## Quick interviewer Q&A you can rattle off
+## ⏱️ 60-Second Interview Recall
 
-* **Q:** Why not two-pointer swaps?
-  **A:** That’s **unstable**; order within groups changes.
-* **Q:** In-place + stable?
-  **A:** Yes, but **O(n²)** by shifting blocks; or **O(n log n)** via divide-and-conquer + rotations.
-* **Q:** How do you treat zero?
-  **A:** As **non-negative** (goes with positives).
+1. **Goal:** Stable partition → preserve order within positives and within negatives.
+2. **Constraint:** In-place result; returning a new array is optional, but we’ll modify `A`.
+3. **Plan:** One pass `for x in A` — write `x>=0` to next slot; push negatives to `neg`.
+4. **Finish:** Second pass over `neg` to append at the end.
+5. **Talk track:** “O(n) time, O(k) extra; stable. In-place + stable with O(1) space generally needs rotations → O(n²), so this is the practical optimum.”
 
-Memorize **Scan → Split → Stitch**, and you’ll rebuild this in any language in seconds.
+That’s it—repeat **“Write, Buffer, Append”** and you can rebuild this in any language in ~30 seconds.
