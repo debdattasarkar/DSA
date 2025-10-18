@@ -5,11 +5,11 @@
 ## ⚡ 5-Line Universal Pseudo-code Template
 
 ```
-1. low ← 0, mid ← 0, high ← n - 1
-2. while mid ≤ high:
-3.     if arr[mid] == 0: swap(arr[low++], arr[mid++])
+1. left ← 0, mid ← 0, right ← n - 1
+2. while mid ≤ right:
+3.     if arr[mid] == 0: swap(arr[left++], arr[mid++])
 4.     elif arr[mid] == 1: mid++
-5.     else: swap(arr[mid], arr[high--])
+5.     else: swap(arr[mid], arr[right--])
 ```
 
 ✅ **Time:** O(n)
@@ -18,11 +18,11 @@
 
 ---
 
-## 🧠 Mnemonic: **“Low–Mid–High, Swap–Check–Fly”**
+## 🧠 Mnemonic: **“Left–Mid–Right, Swap–Check–Fly”**
 
 Break it into a rhythm:
 
-> **Low, Mid, High — Move or Swap, Don’t Cry!**
+> **Left, Mid, Right — Move or Swap, Don’t Cry!**
 
 Or logically:
 
@@ -30,21 +30,21 @@ Or logically:
 
 Just remember the **L–M–H triangle:**
 
-* `low` — boundary for 0s
+* `left` — boundary for 0s
 * `mid` — current explorer
-* `high` — boundary for 2s
+* `right` — boundary for 2s
 
 ---
 
 ## 🧩 Dry Run in 3 Steps (Mental Picture)
 
 Array: `[2, 0, 1]`
-Start: `low=0, mid=0, high=2`
+Start: `left=0, mid=0, right=2`
 
-| Step | arr       | low | mid | high | Action                     |
+| Step | arr       | left | mid | right | Action                     |
 | ---- | --------- | --- | --- | ---- | -------------------------- |
-| 1    | [1, 0, 2] | 0   | 0   | 1    | 2→end swap, high--         |
-| 2    | [0, 1, 2] | 0   | 0   | 1    | 0→front swap, low++, mid++ |
+| 1    | [1, 0, 2] | 0   | 0   | 1    | 2→end swap, right--         |
+| 2    | [0, 1, 2] | 0   | 0   | 1    | 0→front swap, left++, mid++ |
 | 3    | [0, 1, 2] | 1   | 1   | 1    | mid==1 → mid++ stop        |
 
 ✅ Sorted `[0,1,2]`
@@ -55,8 +55,8 @@ Start: `low=0, mid=0, high=2`
 
 Repeat this mini mantra:
 
-> “Three pointers: Low, Mid, High.
-> While Mid ≤ High:
+> “Three pointers: Left, Mid, Right.
+> While Mid ≤ Right:
 > 0 → swap left,
 > 1 → skip,
 > 2 → swap right.”
@@ -69,10 +69,10 @@ That’s it — you can now rebuild DNF in any syntax.
 
 | Language       | 30-sec Rebuild Code                                                                                                                                                  |
 | -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Python**     | `while mid<=high: if arr[mid]==0: arr[low],arr[mid]=arr[mid],arr[low]; low+=1; mid+=1 elif arr[mid]==1: mid+=1 else: arr[mid],arr[high]=arr[high],arr[mid]; high-=1` |
-| **C++**        | `while(mid<=high){ if(a[mid]==0) swap(a[low++],a[mid++]); else if(a[mid]==1) mid++; else swap(a[mid],a[high--]); }`                                                  |
-| **Java**       | `while(mid<=high){ if(arr[mid]==0){ swap(arr,low++,mid++);} else if(arr[mid]==1) mid++; else swap(arr,mid,high--); }`                                                |
-| **JavaScript** | `while(mid<=high){ if(a[mid]==0){ [a[low],a[mid]]=[a[mid],a[low]]; low++; mid++; } else if(a[mid]==1) mid++; else { [a[mid],a[high]]=[a[high],a[mid]]; high--; } }`  |
+| **Python**     | `while mid<=right: if arr[mid]==0: arr[left],arr[mid]=arr[mid],arr[left]; left+=1; mid+=1 elif arr[mid]==1: mid+=1 else: arr[mid],arr[right]=arr[right],arr[mid]; right-=1` |
+| **C++**        | `while(mid<=right){ if(a[mid]==0) swap(a[left++],a[mid++]); else if(a[mid]==1) mid++; else swap(a[mid],a[right--]); }`                                                  |
+| **Java**       | `while(mid<=right){ if(arr[mid]==0){ swap(arr,left++,mid++);} else if(arr[mid]==1) mid++; else swap(arr,mid,right--); }`                                                |
+| **JavaScript** | `while(mid<=right){ if(a[mid]==0){ [a[left],a[mid]]=[a[mid],a[left]]; left++; mid++; } else if(a[mid]==1) mid++; else { [a[mid],a[right]]=[a[right],a[mid]]; right--; } }`  |
 
 ---
 
@@ -90,7 +90,7 @@ The same template appears in:
 
 ✅ **Final 60-second summary mantra before interviews:**
 
-> “Low–Mid–High.
+> “Left–Mid–Right.
 > If 0 → swap left.
 > If 1 → move mid.
 > If 2 → swap right.

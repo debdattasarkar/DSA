@@ -97,37 +97,37 @@ Goal: **O(n) time**, **O(1) extra space**, ideally **one pass**.
 2. **Dutch National Flag (DNF) — one pass, in-place (most expected)**
    Maintain three regions using pointers:
 
-   * `low`   : boundary after the last 0
+   * `left`   : boundary after the last 0
    * `mid`   : current element under inspection
-   * `high`  : boundary before the first 2 (from the right)
+   * `right`  : boundary before the first 2 (from the right)
 
    Invariant at any moment:
 
    ```
    [ 0s | 1s/unknown | unknown | 2s ]
-     0..low-1      low..mid-1    mid..high      high+1..end
+     0..left-1      left..mid-1    mid..right      right+1..end
    ```
 
-   Rules while `mid <= high`:
+   Rules while `mid <= right`:
 
-   * `arr[mid] == 0` → swap `arr[low]`↔`arr[mid]`, ++low, ++mid
+   * `arr[mid] == 0` → swap `arr[left]`↔`arr[mid]`, ++left, ++mid
    * `arr[mid] == 1` → just ++mid
-   * `arr[mid] == 2` → swap `arr[mid]`↔`arr[high]`, --high (do **not** ++mid; the new `arr[mid]` must be inspected)
+   * `arr[mid] == 2` → swap `arr[mid]`↔`arr[right]`, --right (do **not** ++mid; the new `arr[mid]` must be inspected)
 
 #### Dry run (DNF)
 
 Input: `arr = [0, 1, 2, 0, 1, 2]`
 
-Start: `low=0, mid=0, high=5`
+Start: `left=0, mid=0, right=5`
 
-| Step | arr                | low | mid | high | action                                                                |
+| Step | arr                | left | mid | right | action                                                                |
 | ---: | ------------------ | --: | --: | ---: | --------------------------------------------------------------------- |
-|    1 | [0, 1, 2, 0, 1, 2] |   0 |   0 |    5 | arr[mid]=0 → swap mid↔low (no change), low=1, mid=1                   |
+|    1 | [0, 1, 2, 0, 1, 2] |   0 |   0 |    5 | arr[mid]=0 → swap mid↔left (no change), left=1, mid=1                   |
 |    2 | [0, 1, 2, 0, 1, 2] |   1 |   1 |    5 | arr[mid]=1 → mid=2                                                    |
-|    3 | [0, 1, 2, 0, 1, 2] |   1 |   2 |    5 | arr[mid]=2 → swap mid↔high → [0,1,2,0,1,2] (2 swapped with 2), high=4 |
-|    4 | [0, 1, 1, 0, 2, 2] |   1 |   2 |    4 | arr[mid]=2 → swap mid↔high → [0,1,1,0,2,2], high=3                    |
+|    3 | [0, 1, 2, 0, 1, 2] |   1 |   2 |    5 | arr[mid]=2 → swap mid↔right → [0,1,2,0,1,2] (2 swapped with 2), right=4 |
+|    4 | [0, 1, 1, 0, 2, 2] |   1 |   2 |    4 | arr[mid]=2 → swap mid↔right → [0,1,1,0,2,2], right=3                    |
 |    5 | [0, 0, 1, 1, 2, 2] |   1 |   2 |    3 | arr[mid]=1 → mid=3                                                    |
-|    6 | [0, 0, 1, 1, 2, 2] |   1 |   3 |    3 | arr[mid]=1 → mid=4 > high stop                                        |
+|    6 | [0, 0, 1, 1, 2, 2] |   1 |   3 |    3 | arr[mid]=1 → mid=4 > right stop                                        |
 
 Result: `[0, 0, 1, 1, 2, 2]`
 
@@ -143,26 +143,26 @@ class Solution:
         Time  : O(n)   -- each index visited at most once
         Space : O(1)   -- constant extra pointers
         """
-        low, mid, high = 0, 0, len(arr) - 1
+        left, mid, right = 0, 0, len(arr) - 1
 
         # Maintain invariants:
-        # 0..low-1   -> all 0s
-        # low..mid-1 -> all 1s
-        # mid..high  -> unknown
-        # high+1..n-1-> all 2s
-        while mid <= high:
+        # 0..left-1   -> all 0s
+        # left..mid-1 -> all 1s
+        # mid..right  -> unknown
+        # right+1..n-1-> all 2s
+        while mid <= right:
             if arr[mid] == 0:
-                # put 0 into the 0s region, expand both low and mid
-                arr[low], arr[mid] = arr[mid], arr[low]
-                low += 1
+                # put 0 into the 0s region, expand both left and mid
+                arr[left], arr[mid] = arr[mid], arr[left]
+                left += 1
                 mid += 1
             elif arr[mid] == 1:
                 # correct region, just advance
                 mid += 1
             else:  # arr[mid] == 2
                 # put 2 into the 2s region; do NOT advance mid yet
-                arr[mid], arr[high] = arr[high], arr[mid]
-                high -= 1
+                arr[mid], arr[right] = arr[right], arr[mid]
+                right -= 1
         return arr  # returning for convenience; in many platforms in-place is enough
 ```
 
@@ -206,13 +206,13 @@ Sorting is `O(n log n)`. With only three distinct values we can do **O(n)** and 
 **Q2. Prove one-pass correctness for DNF.**
 Maintain the invariant:
 
-* `[0..low-1]` are all 0s,
-* `[low..mid-1]` are all 1s,
-* `[mid..high]` unknown,
-* `[high+1..n-1]` all 2s.
+* `[0..left-1]` are all 0s,
+* `[left..mid-1]` are all 1s,
+* `[mid..right]` unknown,
+* `[right+1..n-1]` all 2s.
   Each rule (0,1,2 case) **shrinks** the unknown window while keeping other regions valid.
 
-**Q3. Why not advance `mid` after swapping with `high`?**
+**Q3. Why not advance `mid` after swapping with `right`?**
 Because the element swapped into `mid` is **unprocessed**; it could be 0/1/2. We must re-check it.
 
 **Q4. Stability required?**
@@ -265,30 +265,30 @@ def sort012_dnf(arr):
     """
     In-place DNF.
     Invariant:
-      0..low-1   -> all 0s
-      low..mid-1 -> all 1s
-      mid..high  -> unknown
-      high+1..n-1-> all 2s
+      0..left-1   -> all 0s
+      left..mid-1 -> all 1s
+      mid..right  -> unknown
+      right+1..n-1-> all 2s
 
     Time  : O(n)    (each index examined at most once)
     Space : O(1)    (three pointers)
     """
-    low, mid, high = 0, 0, len(arr) - 1  # O(1)
+    left, mid, right = 0, 0, len(arr) - 1  # O(1)
 
-    # Main loop shrinks [mid..high] unknown region -> O(n) total
-    while mid <= high:
+    # Main loop shrinks [mid..right] unknown region -> O(n) total
+    while mid <= right:
         if arr[mid] == 0:
             # put 0 to the front region
-            arr[low], arr[mid] = arr[mid], arr[low]  # O(1)
-            low += 1                                  # O(1)
+            arr[left], arr[mid] = arr[mid], arr[left]  # O(1)
+            left += 1                                  # O(1)
             mid += 1                                  # O(1)
         elif arr[mid] == 1:
             # already in correct middle region
             mid += 1                                  # O(1)
         else:  # arr[mid] == 2
             # put 2 to the back region; DO NOT advance mid yet
-            arr[mid], arr[high] = arr[high], arr[mid] # O(1)
-            high -= 1                                  # O(1)
+            arr[mid], arr[right] = arr[right], arr[mid] # O(1)
+            right -= 1                                  # O(1)
     return arr  # in-place but return for convenience
 
 
@@ -409,6 +409,6 @@ Complexity Summary:
 
 * **Streaming telemetry bucketing:** Fast in-place bucketing of states (e.g., OK/WARN/ALERT = 0/1/2) before aggregation.
 * **Color quantization / label grouping:** Grouping a small, fixed set of labels (e.g., three classes) efficiently without sort.
-* **Network packet prioritization:** Partition queues into *low/medium/high* priority (0/1/2) in a single pass for scheduling.
+* **Network packet prioritization:** Partition queues into *left/medium/right* priority (0/1/2) in a single pass for scheduling.
 
 > In interviews, prefer **DNF** (one pass, O(1) space). Mention **Counting** as a simple alternative and call out the key gotcha: **after swapping a 2 to the end, don’t advance `mid` until you re-check the new element**.
