@@ -208,6 +208,7 @@ class Solution:
 ## 4) Likely interviewer Q\&A
 
 **Q1. Why did your earlier attempt fail with `[2, 2, 3, 6, 8, 10, 10]`?**
+
 Because that’s **not a union**—it still has duplicates (`2` and `10`). Union must include **each value once**.
 
 **Q2. Complexity of each method?**
