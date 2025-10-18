@@ -21,14 +21,19 @@ You need to solve this problem **without** utilizing the built-in sort function.
 ### Example 1
 
 **Input:** `arr[] = [0, 1, 2, 0, 1, 2]`
+
 **Output:** `[0, 0, 1, 1, 2, 2]`
+
 **Explanation:** 0s, 1s, and 2s are segregated into ascending order.
 
 ### Example 2
 
 **Input:** `arr[] = [0, 1, 1, 0, 1, 2, 1, 2, 0, 0, 1]`
+
 **Output:** `[0, 0, 0, 0, 1, 1, 1, 1, 2, 2]`
+
 **Explanation:** 0s, 1s, and 2s are segregated into ascending order.
+
 
 **Follow up:** Could you come up with a **one-pass** algorithm using only **constant extra space**?
 
@@ -198,9 +203,11 @@ Same as the main DNF solution; the key interview gotcha: **after swapping a 2 to
 ## 4) Interviewer-style Q&A
 
 **Q1. Why not just sort?**
+
 Sorting is `O(n log n)`. With only three distinct values we can do **O(n)** and **O(1)** space via DNF or counting.
 
 **Q2. Prove one-pass correctness for DNF.**
+
 Maintain the invariant:
 
 * `[0..left-1]` are all 0s,
@@ -210,22 +217,26 @@ Maintain the invariant:
   Each rule (0,1,2 case) **shrinks** the unknown window while keeping other regions valid.
 
 **Q3. Why not advance `mid` after swapping with `right`?**
+
 Because the element swapped into `mid` is **unprocessed**; it could be 0/1/2. We must re-check it.
 
 **Q4. Stability required?**
+
 No. The task is just to group 0s, 1s, 2s; order within groups is irrelevant.
 
 **Q5. When is counting preferable?**
+
 When readability trumps single-pass, or when multiple passes are acceptable; also convenient if you later need counts anyway.
 
 **Q6. Edge cases?**
+
 Already sorted arrays, reverse sorted, all same values, and tiny arrays (size 1–2). DNF handles all.
 
 ---
 
 ---
 
-awesome — here’s a **complete, runnable Python program** for **Sort 0s, 1s and 2s** that:
+A **complete, runnable Python program** for **Sort 0s, 1s and 2s** that:
 
 * reads the array from stdin (space-separated 0/1/2),
 * runs **Dutch National Flag (one pass, O(n), O(1))** and **Counting (two pass, O(n), O(1))**,
