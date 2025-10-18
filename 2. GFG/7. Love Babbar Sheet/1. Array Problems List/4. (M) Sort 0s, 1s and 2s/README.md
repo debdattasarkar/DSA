@@ -76,9 +76,6 @@ Arrays • Sorting • Data Structures • Algorithms
 ---
 
 ---
-got it — let’s make “Sort 0s, 1s and 2s” interview-ready.
-
----
 
 ## 2) Explanation + step-by-step dry run
 
