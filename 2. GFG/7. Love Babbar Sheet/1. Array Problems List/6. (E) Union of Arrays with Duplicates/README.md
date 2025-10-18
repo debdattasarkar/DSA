@@ -25,21 +25,21 @@ The **Union** of two arrays is a collection of **all distinct elements** present
 
 ### Example 1
 
-**Input:** `a[] = [1, 2, 3, 2, 1],  b[] = [3, 2, 2, 3, 3, 2]`
-**Output:** `[1, 2, 3]`
-**Explanation:** Union set of both arrays is `1, 2, 3`.
+* **Input:** `a[] = [1, 2, 3, 2, 1],  b[] = [3, 2, 2, 3, 3, 2]`
+* **Output:** `[1, 2, 3]`
+* **Explanation:** Union set of both arrays is `1, 2, 3`.
 
 ### Example 2
 
-**Input:** `a[] = [1, 2, 3],  b[] = [4, 5, 6]`
-**Output:** `[1, 2, 3, 4, 5, 6]`
-**Explanation:** Union set of both arrays will be `1, 2, 3, 4, 5, 6`.
+* **Input:** `a[] = [1, 2, 3],  b[] = [4, 5, 6]`
+* **Output:** `[1, 2, 3, 4, 5, 6]`
+* **Explanation:** Union set of both arrays will be `1, 2, 3, 4, 5, 6`.
 
 ### Example 3
 
-**Input:** `a[] = [1, 2, 1, 1, 2],  b[] = [2, 2, 1, 2, 1]`
-**Output:** `[1, 2]`
-**Explanation:** Union set of both arrays will be `1` and `2`.
+* **Input:** `a[] = [1, 2, 1, 1, 2],  b[] = [2, 2, 1, 2, 1]`
+* **Output:** `[1, 2]`
+* **Explanation:** Union set of both arrays will be `1` and `2`.
 
 ---
 
@@ -65,10 +65,7 @@ Zoho • Rockstand
 
 ## Topic Tags
 
-* Hash
-* Data Structures
-* Algorithms
-* Arrays
+* `Hash`, `Data Structures`, `Algorithms`, `Arrays`
 
 ---
 
@@ -77,9 +74,6 @@ Zoho • Rockstand
 * [Union Of Two Arrays](https://www.geeksforgeeks.org/Union%20of%20Two%20Arrays/)
 
 ---
-
----
-Awesome — let’s lock in the **correct approach** and make it interview-ready.
 
 ---
 
