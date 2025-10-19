@@ -77,10 +77,6 @@ The difference between the largest and the smallest is `17 - 6 = 11`.
 
 ---
 
-Here’s the crisp, interview-style guide to **Minimize the Heights II**.
-
----
-
 ## 2) Intuition + step-by-step dry run
 
 ### Key idea (classic greedy)
