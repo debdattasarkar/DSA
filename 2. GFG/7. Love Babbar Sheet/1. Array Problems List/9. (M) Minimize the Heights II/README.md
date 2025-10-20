@@ -206,18 +206,23 @@ class SolutionBruteTiny:
 ## 4) Interviewer Q\&A (high-yield)
 
 **Q1. Why does a single “split index” capture the optimal solution?**
+
 After sorting, it’s never beneficial to interleave add/sub operations that “cross” each other; that only widens extremes. One can show (exchange argument) that there exists an optimal solution where all elements up to some index are `+k` and the rest are `-k`.
 
 **Q2. Why check `arr[i] - k < 0`?**
+
 The statement requires the final array to contain **no negatives** after applying exactly one operation per tower.
 
 **Q3. Why start with `ans = arr[n-1] - arr[0]`?**
+
 That’s the spread if you don’t improve the array. Every valid transformation should only reduce or keep the spread, so it’s a safe initial upper bound.
 
 **Q4. What about `base_small` and `base_big`?**
+
 They represent the extremes if you **raise the smallest** and **lower the largest**. Each split locally adjusts these candidates, producing a candidate min/max for that configuration.
 
 **Q5. Time/space complexity?**
+
 Sorting dominates: **O(n log n)** time, **O(1)** extra space (beyond the sort).
 
 **Q6. Edge cases?**
@@ -228,6 +233,7 @@ Sorting dominates: **O(n log n)** time, **O(1)** extra space (beyond the sort).
 * `k = 0` → answer is the original spread.
 
 **Q7. Can we reconstruct the final modified array?**
+
 Yes: remember which `i` gave the best `ans`, then apply `+k` to indices `< i` and `-k` to indices `≥ i` (or the swapped logic if you swapped `base_small/base_big`—track that as well).
 
 ---

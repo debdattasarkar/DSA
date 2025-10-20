@@ -2,44 +2,44 @@
 ---
 
 ### 🧩 Array Problems List
-| Title                      | Logic     |
-|:--------------------|:--------------|
-| 1. [Reverse an Array](https://www.geeksforgeeks.org/problems/reverse-a-string/1) | 1. Swapping loop - `s = list(s)` `left, right = 0, len(arr) - 1` `while left < right: arr[left]` `arr[right] = arr[right], arr[left]` `return ''.join(s)` , 2. Slice creates reversed copy - `arr[::-1]`, 3. Modifies list in-place - `arr.reverse()` |
-| 2. [Find the maximum and minimum element in an array](https://www.geeksforgeeks.org/problems/find-minimum-and-maximum-element-in-an-array4428/1) | Implement **One-Pass** confidently, mention **Tournament** for reduced comparisons, and acknowledge built-ins for readability |
-| 3. [Find the "Kth" max and min element of an array](https://www.geeksforgeeks.org/problems/kth-smallest-element5635/1) | Implement **Quickselect** confidently, mention **Heap** for streaming / small k, and **Counting** when the value range is small and bounded. |
-| 4. [Given an array which consists of only 0, 1, and 2. Sort the array without using any sorting algorithm](https://www.geeksforgeeks.org/problems/sort-an-array-of-0s-1s-and-2s4231/1) | prefer **DNF** (one pass, O(1) space). Mention **Counting** as a simple alternative and call out the key gotcha: **after swapping a 2 to the end, don’t advance `mid` until you re-check the new element** |
-5. Move all the negative elements to one side of the array
-6. Find the Union and Intersection of the two sorted arrays
-7. Write a program to cyclically rotate an array by one
-8. Find Largest sum contiguous Subarray [V. IMP]
-9. Minimize the maximum difference between heights [V.IMP]
-10. Minimum number of Jumps to reach end of an array
-11. Find duplicate in an array of N+1 Integers
-12. Merge 2 sorted arrays without using extra space
-13. Kadane’s Algo [V.V.V.V.V IMP]
-14. Merge Intervals
-15. Next Permutation
-16. Count Inversion
-17. Best time to buy and sell stock
-18. Find all pairs in an integer array whose sum is equal to a given number
-19. Find common elements in 3 sorted arrays
-20. Rearrange the array in alternating positive and negative items with O(1) extra space
-21. Find if there is any subarray with sum equal to 0
-22. Find factorial of a large number
-23. Find maximum product subarray
-24. Find longest consecutive subsequence
-25. Given an array of size n and a number k, find all elements that appear more than n/k times
-26. Maximum profit by buying and selling a share at most twice
-27. Find whether an array is a subset of another array
-28. Find the triplet that sum to a given value
-29. Trapping Rain Water problem
-30. Chocolate Distribution problem
-31. Smallest Subarray with sum greater than a given value
-32. Three-way partitioning of an array around a given value
-33. Minimum swaps required to bring elements ≤ K together
-34. Minimum number of operations required to make an array palindrome
-35. Median of 2 sorted arrays of equal size
-36. Median of 2 sorted arrays of different size
+| Title                      | Logic     | GitHub | 
+|:--------------------|:--------------|:--------------| 
+| 1. [Reverse an Array](https://www.geeksforgeeks.org/problems/reverse-a-string/1) | 1. Swapping loop - `s = list(s)` `left, right = 0, len(arr) - 1` `while left < right: arr[left]` `arr[right] = arr[right], arr[left]` `return ''.join(s)` , 2. Slice creates reversed copy - `arr[::-1]`, 3. Modifies list in-place - `arr.reverse()` | [Link](<1. Array Problems List/1. (E) Reverse an Array/>) |
+| 2. [Find the maximum and minimum element in an array](https://www.geeksforgeeks.org/problems/find-minimum-and-maximum-element-in-an-array4428/1) | Implement **One-Pass** confidently, mention **Tournament** for reduced comparisons, and acknowledge built-ins for readability | [Link](<1. Array Problems List/2. (B) Min and Max in Array/>) |
+| 3. [Find the "Kth" max and min element of an array](https://www.geeksforgeeks.org/problems/kth-smallest-element5635/1) | Implement **Quickselect** confidently, mention **Heap** for streaming / small k, and **Counting** when the value range is small and bounded. | [Link](<1. Array Problems List/3. (M) Kth Smallest>) |
+| 4. [Given an array which consists of only 0, 1, and 2. Sort the array without using any sorting algorithm](https://www.geeksforgeeks.org/problems/sort-an-array-of-0s-1s-and-2s4231/1) | prefer **DNF** (one pass, O(1) space). Mention **Counting** as a simple alternative and call out the key gotcha: **after swapping a 2 to the end, don’t advance `mid` until you re-check the new element** | [Link](<1. Array Problems List/5. (E) Move all negative elements to end/>) |
+| 5. [Move all the negative elements to one side of the array](https://www.geeksforgeeks.org/problems/move-all-negative-elements-to-end1813/1) | **Write-Positives, Buffer-Negatives, Append-Negatives** | [Link](<1. Array Problems List/5. (E) Move all negative elements to end/>) |
+| 6. [Find the Union and Intersection of the two sorted arrays](https://www.geeksforgeeks.org/problems/union-of-two-arrays3538/1) | **Sort–Merge–Skip–Append** | [Link](<1. Array Problems List/6. (E) Union of Arrays with Duplicates/>) |
+| 7. [Write a program to cyclically rotate an array by one](https://www.geeksforgeeks.org/problems/cyclically-rotate-an-array-by-one2614/1) | **Save, Shift, Place, Return** | [Link](<1. Array Problems List/7. (B) Rotate Array by One/>) |
+| 8. [Find Largest sum contiguous Subarray [V. IMP]](https://www.geeksforgeeks.org/problems/kadanes-algorithm-1587115620/1) | **ECKR → Extend, Compare, Keep, Return** | [Link](<1. Array Problems List/8. (M) Kadane's Algorithm/>) |
+| 9. [Minimize the maximum difference between heights [V.IMP]](https://www.geeksforgeeks.org/problems/minimize-the-heights3351/1) | **Sort, Start, Split, Skip, Shrink** | [Link](<1. Array Problems List/9. (M) Minimize the Heights II/>) |
+| 10. [Minimum number of Jumps to reach end of an array](https://www.geeksforgeeks.org/problems/minimum-number-of-jumps-1587115620/1) | **Climb ladder, count stairs - Step, Update, Jump, Reset** | [Link](<1. Array Problems List/10. (M) Minimum Jumps/>) |
+| 11. [Find duplicate in an array of N+1 Integers]() | | [Link]() |
+| 12. [Merge 2 sorted arrays without using extra space]() | | [Link]() |
+| 13. [Kadane’s Algo [V.V.V.V.V IMP]]() | | [Link]() |
+| 14. [Merge Intervals]() | | [Link]() |
+| 15. [Next Permutation]() | | [Link]() |
+| 16. [Count Inversion]() | | [Link]() |
+| 17. [Best time to buy and sell stock]() | | [Link]() |
+| 18. [Find all pairs in an integer array whose sum is equal to a given number]() | | [Link]() |
+| 19. [Find common elements in 3 sorted arrays]() | | [Link]() |
+| 20. [Rearrange the array in alternating positive and negative items with O(1) extra space]() | | [Link]() |
+| 21. [Find if there is any subarray with sum equal to 0]() | | [Link]() |
+| 22. [Find factorial of a large number]() | | [Link]() |
+| 23. [Find maximum product subarray]() | | [Link]() |
+| 24. [Find longest consecutive subsequence]() | | [Link]() |
+| 25. [Given an array of size n and a number k, find all elements that appear more than n/k times]() | | [Link]() |
+| 26. [Maximum profit by buying and selling a share at most twice]() | | [Link]() |
+| 27. [Find whether an array is a subset of another array]() | | [Link]() |
+| 28. [Find the triplet that sum to a given value]() | | [Link]() |
+| 29. [Trapping Rain Water problem]() | | [Link]() |
+| 30. [Chocolate Distribution problem]() | | [Link]() |
+| 31. [Smallest Subarray with sum greater than a given value]() | | [Link]() |
+| 32. [Three-way partitioning of an array around a given value]() | | [Link]() |
+| 33. [Minimum swaps required to bring elements ≤ K together]() | | [Link]() |
+| 34. [Minimum number of operations required to make an array palindrome]() | | [Link]() |
+| 35. [Median of 2 sorted arrays of equal size]() | | [Link]() |
+| 36. [Median of 2 sorted arrays of different size]() | | [Link]() |
 
 ---
 

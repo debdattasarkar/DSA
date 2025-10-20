@@ -289,5 +289,3 @@ if __name__ == "__main__":
 * **Scheduling/round-robin:** Rotating a queue of tasks so the next candidate becomes the head.
 * **Data shuffling in streaming systems:** Right-shifts to bring newest data up front while preserving ordering for the rest.
 * **Array-based deques:** Implementing a one-step rotate in fixed-size arrays without extra memory.
-
-If you want a version generalized to rotate by **k** (clockwise/anticlockwise) with the 3-reverse template, I can drop it in too.

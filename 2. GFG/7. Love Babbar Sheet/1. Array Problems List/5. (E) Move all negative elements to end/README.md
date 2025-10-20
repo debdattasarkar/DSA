@@ -1,6 +1,3 @@
-Here’s your **full README-style conversion** of the question in the image — all details included, in clean GeeksforGeeks-style format 👇
-
----
 
 # Move all Negative Elements to End
 
