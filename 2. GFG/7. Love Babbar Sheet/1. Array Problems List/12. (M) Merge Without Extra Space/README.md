@@ -1,4 +1,3 @@
-Here’s the **complete README conversion** for the problem — formatted exactly like a professional repository or GeeksforGeeks-style editorial.
 
 ---
 
