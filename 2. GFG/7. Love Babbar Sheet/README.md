@@ -18,7 +18,7 @@
 | 12. [Merge 2 sorted arrays without using extra space](https://www.geeksforgeeks.org/problems/merge-two-sorted-arrays-1587115620/1) | **“G-C-S-S” Gap → Compare → Swap → Shrink** | [Link](<1. Array Problems List/12. (M) Merge Without Extra Space/>) |
 | 13. [Kadane’s Algo [V.V.V.V.V IMP]](https://www.geeksforgeeks.org/problems/kadanes-algorithm-1587115620/1) | **ECKR → Extend, Compare, Keep, Return**| [Link](<1. Array Problems List/8. (M) Kadane's Algorithm/>) |
 | 14. [Merge Intervals](https://www.geeksforgeeks.org/problems/overlapping-intervals--170633/1) | **Sort, Scan, Merge, Flush, Push** | [Link](<1. Array Problems List/14. (M) Overlapping Intervals/>) |
-| 15. [Next Permutation]() | | [Link]() |
+| 15. [Next Permutation](https://www.geeksforgeeks.org/problems/next-permutation5226/1) | **Find → Reverse → Swap → Reverse → Return** | [Link](<1. Array Problems List/15. (M) Next Permutation/>) |
 | 16. [Count Inversion]() | | [Link]() |
 | 17. [Best time to buy and sell stock]() | | [Link]() |
 | 18. [Find all pairs in an integer array whose sum is equal to a given number]() | | [Link]() |
