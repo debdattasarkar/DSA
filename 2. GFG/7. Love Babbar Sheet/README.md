@@ -17,7 +17,7 @@
 | 11. [Find duplicate in an array of N+1 Integers](https://www.geeksforgeeks.org/problems/find-duplicates-in-an-array/1) | **C-F-R-S → Count, Filter, Return, Sort → O(n), O(n)** | [Link](<1. Array Problems List/11. (E) Array Duplicates/>) |
 | 12. [Merge 2 sorted arrays without using extra space](https://www.geeksforgeeks.org/problems/merge-two-sorted-arrays-1587115620/1) | **“G-C-S-S” Gap → Compare → Swap → Shrink** | [Link](<1. Array Problems List/12. (M) Merge Without Extra Space/>) |
 | 13. [Kadane’s Algo [V.V.V.V.V IMP]](https://www.geeksforgeeks.org/problems/kadanes-algorithm-1587115620/1) | **ECKR → Extend, Compare, Keep, Return**| [Link](<1. Array Problems List/8. (M) Kadane's Algorithm/>) |
-| 14. [Merge Intervals]() | | [Link]() |
+| 14. [Merge Intervals](https://www.geeksforgeeks.org/problems/overlapping-intervals--170633/1) | **Sort, Scan, Merge, Flush, Push** | [Link](<1. Array Problems List/14. (M) Overlapping Intervals/>) |
 | 15. [Next Permutation]() | | [Link]() |
 | 16. [Count Inversion]() | | [Link]() |
 | 17. [Best time to buy and sell stock]() | | [Link]() |
