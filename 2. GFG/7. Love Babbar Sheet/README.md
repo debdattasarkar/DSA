@@ -19,7 +19,7 @@
 | 13. [Kadane’s Algo [V.V.V.V.V IMP]](https://www.geeksforgeeks.org/problems/kadanes-algorithm-1587115620/1) | **ECKR → Extend, Compare, Keep, Return**| [Link](<1. Array Problems List/8. (M) Kadane's Algorithm/>) |
 | 14. [Merge Intervals](https://www.geeksforgeeks.org/problems/overlapping-intervals--170633/1) | **Sort, Scan, Merge, Flush, Push** | [Link](<1. Array Problems List/14. (M) Overlapping Intervals/>) |
 | 15. [Next Permutation](https://www.geeksforgeeks.org/problems/next-permutation5226/1) | **Find → Reverse → Swap → Reverse → Return** | [Link](<1. Array Problems List/15. (M) Next Permutation/>) |
-| 16. [Count Inversion]() | | [Link]() |
+| 16. [Count Inversion](https://www.geeksforgeeks.org/problems/inversion-of-array-1587115620/1) | **SPLIT–SORT–COUNT** | [Link](<1. Array Problems List/16. (M) Count Inversions/>) |
 | 17. [Best time to buy and sell stock]() | | [Link]() |
 | 18. [Find all pairs in an integer array whose sum is equal to a given number]() | | [Link]() |
 | 19. [Find common elements in 3 sorted arrays]() | | [Link]() |
