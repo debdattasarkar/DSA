@@ -21,7 +21,7 @@
 | 15. [Next Permutation](https://www.geeksforgeeks.org/problems/next-permutation5226/1) | **Find → Reverse → Swap → Reverse → Return** | [Link](<1. Array Problems List/15. (M) Next Permutation/>) |
 | 16. [Count Inversion](https://www.geeksforgeeks.org/problems/inversion-of-array-1587115620/1) | **SPLIT–SORT–COUNT** | [Link](<1. Array Problems List/16. (M) Count Inversions/>) |
 | 17. [Best time to buy and sell stock](https://www.geeksforgeeks.org/problems/stock-buy-and-sell-1587115621/1) | **“If it goes up, add the gap.or “Climb = Cash.”**| [Link](<1. Array Problems List/17. (M) Stock Buy and Sell/>) |
-| 18. [Find all pairs in an integer array whose sum is equal to a given number]() | | [Link]() |
+| 18. [Find all pairs in an integer array whose sum is equal to a given number](https://www.geeksforgeeks.org/problems/count-pairs-with-given-sum5022/1) | **S – Sort**, **A – Add when zero**, **M – Move pointers smartly** | [Link](<1. Array Problems List/18. (E) Two sum -Pairs with 0 Sum/>) |
 | 19. [Find common elements in 3 sorted arrays]() | | [Link]() |
 | 20. [Rearrange the array in alternating positive and negative items with O(1) extra space]() | | [Link]() |
 | 21. [Find if there is any subarray with sum equal to 0]() | | [Link]() |
