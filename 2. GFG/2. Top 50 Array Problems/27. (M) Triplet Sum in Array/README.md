@@ -97,349 +97,121 @@ Explanation: No triplet in the array sums to 24
 ---
 
 ---
-
-Sure! Let's walk through this in the order you've asked.
-
----
-
-## ✅ Problem: Triplet Sum in Array
-
-Given an array `arr[]` and a number `target`, check if there exists a triplet `{i, j, k}` such that:
-
-```
-arr[i] + arr[j] + arr[k] == target  and i < j < k
-```
-
-Return `True` if such a triplet exists, otherwise return `False`.
+awesome—here’s your interview-ready pack for **Triplet Sum in Array**.
 
 ---
 
-## 🧠 Step-by-step Explanation + Dry Run
+# 2) Explanation + step-by-step dry run
 
-### Example Input:
+## Problem in one line
 
-```python
-arr = [1, 4, 45, 6, 10, 8]
-target = 13
-```
+Given `arr` and an integer `target`, determine if **any three numbers** in `arr` sum to `target`. Return **True/False**.
 
-### Brute-force Idea:
+## Most-expected idea (sort + two pointers)
 
-* Try all possible combinations of triplets.
-* Time Complexity: O(n³)
+1. **Sort** the array (doesn’t change existence of a triplet).
+2. Fix one element at index `i`.
+3. Solve a **2-sum** on the remaining suffix using **two pointers**:
 
-### Optimized Idea (Two-pointer approach after sorting):
+   * `left = i + 1`, `right = n - 1`
+   * If `arr[i] + arr[left] + arr[right] == target` → True.
+   * If sum `< target` → move `left` up to increase sum.
+   * If sum `> target` → move `right` down to decrease sum.
+4. Repeat for all `i`.
 
-1. Sort the array.
-2. Fix the first element (let’s say at index `i`).
-3. Use two pointers `left = i+1` and `right = n-1` to find the remaining two elements.
-4. Move `left` or `right` based on whether the sum is less than or greater than the target.
+### Why it’s optimal enough
 
-### Dry Run (Optimized):
+* Sorting `O(n log n)` and the inner two-pointer scan per `i` is `O(n)`.
+* Overall **O(n²)** time, **O(1)** extra space—exactly what most platforms expect.
 
-Sorted: `[1, 4, 6, 8, 10, 45]`, target = 13
+## Dry run (from prompt)
 
-* i=0 (1), left=1 (4), right=5 (45): 1+4+45=50 → too big → right--
-* right=4 (10): 1+4+10=15 → too big → right--
-* right=3 (8): 1+4+8=13 ✅ Found!
-
----
-
-## ✅ Python Code (Optimized with sorting + 2 pointers)
-
-```python
-
-class Solution:
-    def hasTripletSum(self, arr, target):
-        arr.sort()  # Sort the array
-        n = len(arr)
-
-        for i in range(n - 2):  # Fix the first element
-            left = i + 1
-            right = n - 1
-            while left < right:
-                total = arr[i] + arr[left] + arr[right]
-
-                if total == target:
-                    return True  # Triplet found
-
-                elif total < target:
-                    left += 1  # Need a bigger sum
-                else:
-                    right -= 1  # Need a smaller sum
-
-        return False
-```
-
-### Example Run:
-
-```python
-arr = [1, 4, 45, 6, 10, 8]
-target = 13
-print(Solution().hasTripletSum(arr, target))  # Output: True
-```
-
----
-
-## 📦 Time and Space Complexity (Optimized)
-
-* **Time Complexity:** `O(n^2)`
-
-  * Outer loop: `O(n)`
-  * Inner loop with 2-pointers: `O(n)`
-* **Space Complexity:** `O(1)` (ignoring sorting, in-place)
-
----
-
-## 🧪 Brute-force Version (Not recommended for large input)
-
-```python
-class Solution:
-    def hasTripletSum(self, arr, target):
-        n = len(arr)
-        for i in range(n):
-            for j in range(i+1, n):
-                for k in range(j+1, n):
-                    if arr[i] + arr[j] + arr[k] == target:
-                        print(f"Triplet Found: {arr[i]}, {arr[j]}, {arr[k]}")
-                        return True
-        return False
-```
-
-* **Time Complexity:** `O(n^3)`
-* **Space Complexity:** `O(1)`
-
----
-
-## 🔁 Interview-Focused Questions & Answers
-
-### Q1: Why did you sort the array before applying the two-pointer method?
-
-> Sorting helps us apply the two-pointer technique efficiently and reduces complexity from O(n³) to O(n²).
-
-### Q2: What if array contains duplicates?
-
-> The algorithm still works correctly since we are just checking for existence of a triplet with a specific sum.
-
-### Q3: Can this be solved using a HashSet?
-
-> Yes, you can fix one element and use a set to check if `target - (arr[i] + arr[j])` exists. This gives O(n²) time and O(n) space.
-
-### Q4: How would you handle very large arrays?
-
-> Stick to O(n²) solutions (two-pointer or hashset approach) and avoid nested loops.
-
-### Q5: Can this be parallelized or distributed?
-
-> Yes, the outer loop can be parallelized if needed, but coordination of shared results would add complexity.
-
----
-
----
-
-Here is the **complete Python program** with inline comments, time and space complexity per step, sample input/output, and runtime timing using `time.time()`:
-
----
-
-### ✅ Problem Statement:
-
-Given an array `arr[]` and a target value, determine if there exists a triplet in the array that sums to the target.
-
----
-
-### ✅ Python Code:
-
-```python
-import time
-
-class Solution:
-    def hasTripletSum(self, arr, target):
-        start_time = time.time()  # Start measuring execution time
-
-        # Step 1: Sort the array to use two-pointer approach
-        # Time: O(n log n), Space: O(1) if in-place
-        arr.sort()
-        n = len(arr)
-
-        # Step 2: Traverse array with a fixed element and two pointers
-        # Time: O(n^2), Space: O(1)
-        for i in range(n - 2):
-            left = i + 1
-            right = n - 1
-
-            while left < right:
-                current_sum = arr[i] + arr[left] + arr[right]
-                if current_sum == target:
-                    end_time = time.time()
-                    print(f"Input Array: {arr}")
-                    print(f"Target Sum: {target}")
-                    print(f"Output: True (Triplet Found: {arr[i]}, {arr[left]}, {arr[right]})")
-                    print(f"Execution Time: {end_time - start_time:.8f} seconds")
-                    return True
-                elif current_sum < target:
-                    left += 1
-                else:
-                    right -= 1
-
-        end_time = time.time()
-        print(f"Input Array: {arr}")
-        print(f"Target Sum: {target}")
-        print("Output: False (No valid triplet found)")
-        print(f"Execution Time: {end_time - start_time:.8f} seconds")
-        return False
-
-# -------- Main Program --------
-arr = [1, 4, 45, 6, 10, 8]
-target = 13
-solution = Solution()
-solution.hasTripletSum(arr, target)
-```
-
----
-
-### 🧮 Input:
-
-```python
-arr = [1, 4, 45, 6, 10, 8]
-target = 13
-```
-
-### ✅ Output:
-
-```
-Input Array: [1, 4, 6, 8, 10, 45]
-Target Sum: 13
-Output: True (Triplet Found: 1, 4, 8)
-Execution Time: 0.00000477 seconds
-```
-
----
-
-### 📈 Time & Space Complexity Summary:
-
-* **Time Complexity:**
-
-  * Sorting: `O(n log n)`
-  * Two-pointers for each element: `O(n^2)`
-  * **Total:** `O(n^2)`
-
-* **Space Complexity:**
-
-  * **In-place sort + two pointers:** `O(1)` auxiliary space
-  * If using input copies or storing results, could go up to `O(n)`
-
----
-
----
-
-Yes, **binary search can be used**, but not as a full replacement — only as a helper within a triplet loop. It **won’t improve the overall time complexity**, but it gives you a **cleaner alternative** to the two-pointer approach.
-
----
-
-### 🔍 How Binary Search Can Be Used:
-
-After sorting the array, you can:
-
-1. Fix two elements `arr[i]` and `arr[j]`
-2. Compute the third element `needed = target - arr[i] - arr[j]`
-3. Use **binary search** to check if `needed` exists in the subarray `arr[j+1:]`
-
----
-
-### ✅ Code Using Binary Search (O(n² log n))
-
-```python
-import bisect
-
-class Solution:
-    def hasTripletSum(self, arr, target):
-        arr.sort()  # Step 1: Sort the array
-        n = len(arr)
-
-        for i in range(n - 2):
-            for j in range(i + 1, n - 1):
-                needed = target - arr[i] - arr[j]
-
-                # Binary search in arr[j+1:]
-                index = bisect.bisect_left(arr, needed, j + 1, n)
-                if index < n and arr[index] == needed:
-                    print(f"Triplet Found: {arr[i]}, {arr[j]}, {arr[index]}")
-                    return True
-
-        return False
-```
-
----
-
-### 📊 Time and Space Complexity:
-
-| Step               | Time        | Space |
-| ------------------ | ----------- | ----- |
-| Sorting            | O(n log n)  | O(1)  |
-| Two loops + binary | O(n² log n) | O(1)  |
-
-* Slightly slower than two-pointer (`O(n²)`) due to the `log n` binary search.
-* **Still correct and acceptable in interviews**.
-
----
-
-### ❓Should You Use Binary Search in Interviews?
-
-* ✅ **If asked to use binary search**, yes — this is the cleanest way.
-* ✅ Also valid for **variant problems** where two-pointer is tricky or not allowed.
-* ❌ But for optimal performance and simplicity, **two-pointer is preferred**.
-
----
-
----
-
-Here’s a crisp interview-style walkthrough and several Python solutions you can drop into the given function signature.
-
----
-
-## 2) Explanation + Step-by-Step Dry Run
-
-**Problem**
-Given an array `arr` and an integer `target`, determine whether there exists **any** triplet `(i, j, k)` with `i < j < k` such that `arr[i] + arr[j] + arr[k] == target`. Return `True` if it exists, else `False`.
-
-**Key idea (most asked-in-interviews): sort + two pointers**
-
-1. Sort the array.
-2. Fix one element at index `i` (from `0` to `n-3`).
-3. Use two pointers `l = i+1`, `r = n-1` to scan the remaining range:
-
-   * If `arr[i] + arr[l] + arr[r] == target` → found.
-   * If the sum is **smaller** than target → we need a bigger sum → move `l += 1`.
-   * If the sum is **greater** than target → we need a smaller sum → move `r -= 1`.
-     Because the array is sorted, moving pointers changes the sum monotonically, ensuring we never re-check the same combinations.
-
-**Dry run** (example from prompt)
 `arr = [1, 4, 45, 6, 10, 8], target = 13`
+Sorted → `[1, 4, 6, 8, 10, 45]`
 
-1. Sort → `[1, 4, 6, 8, 10, 45]`
+* `i=0 (1)`: `left=1(4)`, `right=5(45)` → sum = 1+4+45 = 50 > 13 → `right--`
+  `right=4(10)` → sum = 1+4+10 = 15 > 13 → `right--`
+  `right=3(8)`  → sum = 1+4+8  = 13 ✅ Found → **True**.
 
-* i = 0 (val=1), l = 1 (4), r = 5 (45) → sum = 1+4+45=50 > 13 → r--
-* l=1 (4), r=4 (10) → sum = 1+4+10=15 > 13 → r--
-* l=1 (4), r=3 (8)  → sum = 1+4+8=13 == 13 → **found**, return True.
+Another example: `arr=[1,2,4,3,6,7], target=10`
+Sorted → `[1,2,3,4,6,7]`
 
-(We can stop as soon as one valid triplet is found.)
+* `i=0(1)`: `l=1(2), r=5(7)` → 10 ✅ Found.
+  (Also `{1,2,7}` and `{1,3,6}` both sum 10.)
 
 ---
 
-## 3) Python Solutions (from brute to optimized)
+# 3) Python solutions (optimized + alternatives)
 
-### A) Brute force: triple loop (clear but slow)
-
-* **Time:** O(n³)
-* **Space:** O(1)
+## A) Sorting + two pointers (recommended / most expected)
 
 ```python
 class Solution:
     def hasTripletSum(self, arr, target):
-        # O(n^3) brute force: check all triplets
+        """
+        Sort + two pointers.
+        Time:  O(n^2)  (outer loop n, inner two-pointer n)
+        Space: O(1)    (ignoring sort's internal workspace)
+        """
         n = len(arr)
         if n < 3:
             return False
+
+        arr.sort()  # O(n log n)
+
+        for i in range(n - 2):  # fix first element
+            # Optional: skip exact duplicates for minor speedup
+            if i > 0 and arr[i] == arr[i - 1]:
+                continue
+
+            left, right = i + 1, n - 1
+            while left < right:
+                current = arr[i] + arr[left] + arr[right]
+                if current == target:
+                    return True
+                if current < target:
+                    left += 1                 # need a larger sum
+                else:
+                    right -= 1                # need a smaller sum
+
+        return False
+```
+
+## B) Two-sum hash for each fixed first element (clean alternative)
+
+```python
+class SolutionHash:
+    def hasTripletSum(self, arr, target):
+        """
+        For each i, solve 2-sum on the suffix using a hash set.
+        Time:  O(n^2) average
+        Space: O(n) for the hash set (per i)
+        """
+        n = len(arr)
+        if n < 3:
+            return False
+
+        for i in range(n - 2):
+            need = target - arr[i]
+            seen = set()
+            for j in range(i + 1, n):
+                if need - arr[j] in seen:
+                    return True
+                seen.add(arr[j])
+        return False
+```
+
+## C) Brute force (educational, not for large n)
+
+```python
+class SolutionBrute:
+    def hasTripletSum(self, arr, target):
+        """
+        Try all triplets.
+        Time:  O(n^3)
+        Space: O(1)
+        """
+        n = len(arr)
         for i in range(n - 2):
             for j in range(i + 1, n - 1):
                 for k in range(j + 1, n):
@@ -448,198 +220,389 @@ class Solution:
         return False
 ```
 
-### B) Better: fix one element, solve 2-sum with a hash set
+---
 
-* **Time:** O(n²)
-* **Space:** O(n) for the set (per fixed i, resets each time)
+# 4) Interview quick-recall + expected Q&A
+
+## 10-second memory hook
+
+* **Mantra:** “**Sort, fix one, two-pointer the rest.**”
+* **Skeleton in words:** sort → for each `i` → `l=i+1`, `r=n-1` → compare sum → move `l`/`r`.
+
+## Likely follow-ups (crisp answers)
+
+**Q1. Why sorting helps?**
+It enables the **monotonic two-pointer** move: increasing `l` increases the sum; decreasing `r` decreases it. Without sort you can’t do this in linear time per `i`.
+
+**Q2. Complexity?**
+
+* Sort: O(n log n)
+* For each `i`, two-pointer O(n) → **O(n²)** overall.
+* Space: **O(1)** extra.
+
+**Q3. Duplicates?**
+They don’t hurt correctness. You can skip duplicate `i` (and/or move `l/r` over duplicates) to avoid rechecking identical triplets; it doesn’t change the boolean outcome.
+
+**Q4. Need to **return the triplet(s)**?**
+Change the return to capture triplets in a list. Keep skipping duplicates to avoid repeats.
+
+**Q5. Negative numbers and zeros?**
+No special cases needed—the same logic works because ordering/monotonicity after sorting still holds.
+
+**Q6. What if multiple triplets exist?**
+For the boolean problem, return immediately on first match. For listing all, collect while skipping dups.
+
+**Q7. Very large values—overflow?**
+In Python you’re safe; in fixed-width languages cast to 64-bit when summing.
+
+---
+
+### Pocket “5-line” you can say out loud before coding
+
+```
+sort(a); 
+for i in 0..n-3:
+  l=i+1; r=n-1
+  while l<r:
+    s=a[i]+a[l]+a[r]
+    if s==T: return True
+    elif s<T: l+=1
+    else: r-=1
+return False
+```
+
+That’s the whole plan—you can rebuild it in any language in under 30 seconds.
+
+---
+
+---
+
+awesome — here are the last two parts for **Triplet Sum in Array** 👇
+
+---
+
+# 5) Real-World Use Cases (short, interview-friendly)
+
+* **Fraud/Rules matching:** flag a transaction if *three independent signals* (e.g., velocity score + device risk + geo risk) combine to a risk **threshold**.
+* **Budget / portfolio splits:** check if any **three line items** can be combined to hit an **exact budget** (target).
+* **Reconciliation / inventory kits:** detect whether **three SKUs** can be bundled to reach a **target price/weight** for a promo kit.
+
+All map to: *does any 3-tuple reach the target sum?* — exactly this problem.
+
+---
+
+# 6) Full Python Program
+
+Contains:
+
+* **Two-pointer O(n²)** solution (most expected).
+* **Hash-based O(n²)** alternative.
+* **Brute O(n³)** for comparison.
+* Uses `timeit` to measure runtime on larger inputs.
+* Prints results for examples (from the prompt) and a couple extras.
 
 ```python
+from timeit import timeit
+from random import randint, seed
+
+# ------------------------------------------------------------
+# Solution A: Sort + Two Pointers (most expected in interviews)
+# ------------------------------------------------------------
 class Solution:
     def hasTripletSum(self, arr, target):
+        """
+        Logic:
+          1) Sort array (O(n log n)). Sorting enables monotonic two-pointer moves.
+          2) For each i, two-pointer on the suffix to find 2-sum = target - arr[i].
+        Complexity:
+          - Sorting: O(n log n)
+          - For each i, two-pointer is O(n) -> total O(n^2)
+          - Extra space: O(1) (ignoring the sort's internal temp)
+        """
         n = len(arr)
         if n < 3:
             return False
-        # For each i, look for two numbers summing to (target - arr[i])
-        for i in range(n - 2):
-            need = target - arr[i]
-            seen = set()  # values we've visited for the current i
-            for j in range(i + 1, n):
-                # If we already saw (need - arr[j]), we found a pair for this i
-                if (need - arr[j]) in seen:
+
+        arr.sort()                                  # O(n log n)
+        for i in range(n - 2):                      # O(n) iterations
+            if i > 0 and arr[i] == arr[i - 1]:      # optional: skip duplicate i
+                continue
+            left, right = i + 1, n - 1
+            while left < right:                     # each pair considered once -> O(n)
+                s = arr[i] + arr[left] + arr[right]
+                if s == target:
+                    return True
+                if s < target:
+                    left += 1                       # need larger sum
+                else:
+                    right -= 1                      # need smaller sum
+        return False
+
+
+# ------------------------------------------------------------
+# Solution B: Fix one, 2-sum with a set (clean alternative)
+# ------------------------------------------------------------
+class SolutionHash:
+    def hasTripletSum(self, arr, target):
+        """
+        For each i, check if any pair in suffix sums to (target - arr[i])
+        using a hash set.
+        Complexity:
+          - Outer loop over i: O(n)
+          - Inner loop with set: O(n) average
+          -> O(n^2) time, O(n) extra space (for the set).
+        """
+        n = len(arr)
+        if n < 3:
+            return False
+
+        for i in range(n - 2):                # O(n)
+            needed = target - arr[i]
+            seen = set()
+            for j in range(i + 1, n):         # O(n) average with hashing
+                if needed - arr[j] in seen:   # found arr[j] + arr[k] = needed
                     return True
                 seen.add(arr[j])
         return False
+
+
+# ------------------------------------------------------------
+# Solution C: Brute force (educational baseline)
+# ------------------------------------------------------------
+class SolutionBrute:
+    def hasTripletSum(self, arr, target):
+        """
+        Try all triplets.
+        Time:  O(n^3)
+        Space: O(1)
+        """
+        n = len(arr)
+        for i in range(n - 2):
+            for j in range(i + 1, n - 1):
+                for k in range(j + 1, n):
+                    if arr[i] + arr[j] + arr[k] == target:
+                        return True
+        return False
+
+
+# ------------------------------------------------------------
+# Demo + Timing
+# ------------------------------------------------------------
+def run_demo():
+    print("=== Triplet Sum in Array ===\n")
+
+    samples = [
+        # (name, array, target, expected)
+        ("Ex1", [1, 4, 45, 6, 10, 8], 13, True),
+        ("Ex2", [1, 2, 4, 3, 6, 7],    10, True),
+        ("Ex3", [40, 20, 10, 3, 6, 7], 24, False),
+        ("SmallFalse", [5, 1, 2],       20, False),
+        ("Negatives", [-2, 0, 1, 5, 7],  5, True),  # (-2,0,7) = 5
+    ]
+
+    two_ptr = Solution()
+    use_hash = SolutionHash()
+    brute    = SolutionBrute()
+
+    for name, arr, target, expected in samples:
+        a1, a2, a3 = arr[:], arr[:], arr[:]
+        r1 = two_ptr.hasTripletSum(a1, target)
+        r2 = use_hash.hasTripletSum(a2, target)
+        r3 = brute.hasTripletSum(a3, target)
+        print(f"{name}:")
+        print(f"  Input:  arr={arr}, target={target}")
+        print(f"  Two-Pointer (O(n^2)): {r1}")
+        print(f"  Hash-2Sum  (O(n^2)): {r2}")
+        print(f"  Brute      (O(n^3)): {r3}")
+        print(f"  Expected:             {expected}")
+        print(f"  Match? {r1 == r2 == r3 == expected}\n")
+
+    # ---- Timing on a larger random array ----
+    seed(42)
+    n = 4000
+    big = [randint(-10_000, 10_000) for _ in range(n)]
+    target = randint(-15_000, 15_000)
+
+    # timeit runs the function several times to get stable timing
+    t_two_ptr = timeit(lambda: Solution().hasTripletSum(big[:], target), number=3)
+    t_hash    = timeit(lambda: SolutionHash().hasTripletSum(big[:], target), number=3)
+    # Brute force is far too slow for n=4000; time it on a tiny slice
+    small = big[:200]
+    t_brute   = timeit(lambda: SolutionBrute().hasTripletSum(small[:], target), number=1)
+
+    print("=== Timing (seconds) ===")
+    print(f"Two-Pointer O(n^2) on n={n}, runs=3: {t_two_ptr:.4f}s (avg {(t_two_ptr/3):.4f}s/run)")
+    print(f"Hash 2-sum  O(n^2) on n={n}, runs=3: {t_hash:.4f}s (avg {(t_hash/3):.4f}s/run)")
+    print(f"Brute O(n^3) on n=200, run=1       : {t_brute:.4f}s")
+
+
+if __name__ == "__main__":
+    run_demo()
 ```
 
-### C) Most expected: **Sort + two pointers** (O(1) extra)
+### What you’ll see when you run it
 
-* **Time:** O(n log n) to sort + O(n²) scanning → **O(n²)**
-* **Space:** O(1) extra (ignore sorting in-place or use Timsort’s small temp usage)
+* For each sample, all three methods produce the same boolean and a **Match? True**.
+* The timing section shows practical performance:
+
+  * Two-pointer and hash both scale as **O(n²)** (two-pointer is often a bit faster, in-place).
+  * Brute is demonstrated on a tiny slice to avoid huge runtimes.
+
+  ---
+
+  ---
+
+  you got it — here are the last two pieces, tight and interview-friendly 👇
+
+---
+
+# 5) Real-World Use Cases (quick, relatable)
+
+* **Fraud/risk rule firing**: check if any 3 risk scores (device, velocity, geo) together reach a threshold → block/step-up.
+* **Procurement/budget fit**: can three items be combined to hit a fixed budget (exact fit kit/combination)?
+* **Promo bundle design**: find any 3 SKUs that total a target price/weight for a limited-time bundle.
+* **Capacity planning**: choose three workloads whose CPU footprints exactly fill a single server’s target capacity.
+
+All are “does *any* triple sum to the target?”
+
+---
+
+# 6) Full Python Program (with inline complexities + timing)
 
 ```python
+from timeit import timeit
+from random import randint, seed
+
+# ------------------------------------------------------------
+# Solution A: Sort + Two Pointers (most expected)
+# ------------------------------------------------------------
 class Solution:
     def hasTripletSum(self, arr, target):
+        """
+        Sort + two-pointers.
+        Time:  sort O(n log n) + outer O(n) * inner O(n) = O(n^2)
+        Space: O(1) extra (ignoring sort temp)
+        """
         n = len(arr)
         if n < 3:
             return False
-        
-        arr.sort()  # O(n log n). Sorting enables two-pointer pruning.
-        
-        # Fix one number and two-pointer the rest
-        for i in range(n - 2):
-            l, r = i + 1, n - 1
-            while l < r:
-                s = arr[i] + arr[l] + arr[r]
+
+        arr.sort()  # O(n log n)
+
+        for i in range(n - 2):  # O(n)
+            # (Optional micro-opt) skip identical anchors
+            if i > 0 and arr[i] == arr[i - 1]:
+                continue
+
+            left, right = i + 1, n - 1
+            while left < right:  # O(n) per i (pointers move inward once each)
+                s = arr[i] + arr[left] + arr[right]
                 if s == target:
                     return True
-                elif s < target:
-                    l += 1    # need a larger sum → move left pointer right
+                if s < target:
+                    left += 1    # need bigger sum
                 else:
-                    r -= 1    # need a smaller sum → move right pointer left
+                    right -= 1   # need smaller sum
         return False
-```
 
-> Interviewers typically expect solution **C** first (after a brief outline of A/B).
 
----
-
-## 4) Common Interview Q\&A
-
-**Q1. Why does the two-pointer approach work only after sorting?**
-Because sorting imposes order; when the sum is too small we can safely increase it by moving `l` right, and when it’s too large we can decrease it by moving `r` left. Without sorting, those pointer moves wouldn’t be logically valid.
-
-**Q2. What are time/space complexities of each approach?**
-
-* Brute force: O(n³)/O(1)
-* Hash-set 2-sum per fixed `i`: O(n²)/O(n)
-* Sort + two pointers: O(n²)/O(1) extra (sorting cost dominated by O(n²) for large n)
-
-**Q3. How do you handle duplicates?**
-This task returns just a boolean, so duplicates don’t affect correctness. If the task required listing **unique** triplets, you’d skip over duplicates after a match and while advancing pointers.
-
-**Q4. Can the array contain negative numbers?**
-Yes; the algorithm doesn’t assume positivity. Sorting + two pointers still works.
-
-**Q5. Can we early-exit?**
-Yes; as soon as we find one valid triplet we return `True`.
-
-**Q6. What if `n < 3`?**
-Return `False` immediately—there aren’t enough elements to form a triplet.
-
-**Q7. Which approach would you choose in production?**
-The **sort + two pointers** solution: simplest, cleanest O(n²) with constant extra space and great practical performance.
-
----
-
----
-
-Awesome — here’s a clean, self-contained program for **Spiral Traversal of a Matrix** that:
-
-* implements the standard O(n·m) algorithm,
-* prints inputs and outputs,
-* and uses `timeit.timeit` to measure the **full run** of the main routine.
-
-I’ve added **inline comments** that call out **time/space complexity** for each step.
-
-```python
-from typing import List
-import timeit
-
-class Solution:
-    def spirallyTraverse(self, mat: List[List[int]]) -> List[int]:
+# ------------------------------------------------------------
+# Solution B: Fix one, 2-sum with a set (clear alternative)
+# ------------------------------------------------------------
+class SolutionHash:
+    def hasTripletSum(self, arr, target):
         """
-        Spiral-order traversal of a rectangular matrix.
-
-        Let n = number of rows, m = number of columns.
-        Time  : O(n*m)  — every element is visited exactly once.
-        Space : O(1) extra (excluding the output list of size n*m).
+        For each i, do 2-sum on suffix via a hash set.
+        Time:  O(n^2) average (hash lookups O(1) expected)
+        Space: O(n) for the set (per anchor)
         """
-        # Guard: empty input — O(1) time/space
-        if not mat or not mat[0]:
-            return []
+        n = len(arr)
+        if n < 3:
+            return False
 
-        n, m = len(mat), len(mat[0])       # O(1)
-        top, bottom = 0, n - 1             # O(1)
-        left, right = 0, m - 1             # O(1)
-
-        res: List[int] = []                # O(n*m) output storage (required)
-
-        # Each boundary contraction removes an outer “ring”.
-        # Across the whole loop, the four traversals visit each cell once ⇒ O(n*m).
-        while top <= bottom and left <= right:
-            # 1) Top row: left → right   (≤ m elements)
-            for j in range(left, right + 1):
-                res.append(mat[top][j])
-            top += 1  # O(1)
-
-            # 2) Right column: top → bottom (≤ n elements)
-            for i in range(top, bottom + 1):
-                res.append(mat[i][right])
-            right -= 1  # O(1)
-
-            # 3) Bottom row: right → left (only if still valid)
-            if top <= bottom:
-                for j in range(right, left - 1, -1):
-                    res.append(mat[bottom][j])
-                bottom -= 1  # O(1)
-
-            # 4) Left column: bottom → top (only if still valid)
-            if left <= right:
-                for i in range(bottom, top - 1, -1):
-                    res.append(mat[i][left])
-                left += 1  # O(1)
-
-        return res
+        for i in range(n - 2):  # O(n)
+            need = target - arr[i]
+            seen = set()
+            for j in range(i + 1, n):  # O(n) average
+                if need - arr[j] in seen:
+                    return True
+                seen.add(arr[j])
+        return False
 
 
-# --------------------------- Demo + Full-Run Timing ---------------------------
+# ------------------------------------------------------------
+# Solution C: Brute force (educational baseline)
+# ------------------------------------------------------------
+class SolutionBrute:
+    def hasTripletSum(self, arr, target):
+        """
+        Try all triplets.
+        Time:  O(n^3)
+        Space: O(1)
+        """
+        n = len(arr)
+        for i in range(n - 2):
+            for j in range(i + 1, n - 1):
+                for k in range(j + 1, n):
+                    if arr[i] + arr[j] + arr[k] == target:
+                        return True
+        return False
 
-def main():
-    """
-    Driver that builds several matrices, runs the solver, and prints results.
-    Complexity per case is dominated by O(n*m) of the traversal.
-    """
-    sol = Solution()
 
-    cases = [
-        ("4x4",
-         [[1,  2,  3,  4],
-          [5,  6,  7,  8],
-          [9, 10, 11, 12],
-          [13,14, 15,16]]),
+# ------------------------------------------------------------
+# Demo + Timing
+# ------------------------------------------------------------
+def run_demo():
+    print("=== Triplet Sum in Array ===\n")
 
-        ("3x6",
-         [[1, 2, 3, 4, 5, 6],
-          [7, 8, 9,10,11,12],
-          [13,14,15,16,17,18]]),
-
-        ("2x4",
-         [[32, 44, 27, 23],
-          [54, 28, 50, 62]]),
-
-        ("1x4", [[1, 2, 3, 4]]),
-        ("5x1", [[1], [2], [3], [4], [5]]),
-        ("1x1", [[7]])
+    samples = [
+        ("Ex1", [1, 4, 45, 6, 10, 8], 13, True),
+        ("Ex2", [1, 2, 4, 3, 6, 7],    10, True),
+        ("Ex3", [40, 20, 10, 3, 6, 7], 24, False),
+        ("SmallFalse", [5, 1, 2],      20, False),
+        ("Negatives", [-2, 0, 1, 5, 7], 5, True),  # (-2,0,7)=5
     ]
 
-    for name, mat in cases:
-        print(f"\n{name} input:")
-        for row in mat:
-            print("  ", row)
-        out = sol.spirallyTraverse(mat)        # O(n*m) per case
-        print("Spiral traversal:", out)
+    two_ptr = Solution()
+    use_hash = SolutionHash()
+    brute    = SolutionBrute()
+
+    for name, arr, target, expected in samples:
+        print(f"{name}:")
+        print(f"  Input:  arr={arr}, target={target}")
+        r1 = two_ptr.hasTripletSum(arr[:], target)
+        r2 = use_hash.hasTripletSum(arr[:], target)
+        r3 = brute.hasTripletSum(arr[:], target)
+        print(f"  Two-Pointer (O(n^2)): {r1}")
+        print(f"  Hash-2Sum  (O(n^2)): {r2}")
+        print(f"  Brute      (O(n^3)): {r3}")
+        print(f"  Expected:             {expected}")
+        print(f"  Match? {r1 == r2 == r3 == expected}\n")
+
+    # ---- Timing on a larger random array ----
+    seed(123)
+    n = 4000
+    big = [randint(-10_000, 10_000) for _ in range(n)]
+    target = randint(-15_000, 15_000)
+
+    # Time: use separate fresh copies where needed
+    t_two_ptr = timeit(lambda: Solution().hasTripletSum(big[:], target), number=3)
+    t_hash    = timeit(lambda: SolutionHash().hasTripletSum(big[:], target), number=3)
+    # Brute is too slow for n=4000; run on a small slice to show scale
+    small     = big[:180]
+    t_brute   = timeit(lambda: SolutionBrute().hasTripletSum(small[:], target), number=1)
+
+    print("=== Timing (seconds) ===")
+    print(f"Two-Pointer O(n^2) on n={n}, runs=3: {t_two_ptr:.4f}s (avg {(t_two_ptr/3):.4f}s/run)")
+    print(f"Hash 2-sum  O(n^2) on n={n}, runs=3: {t_hash:.4f}s (avg {(t_hash/3):.4f}s/run)")
+    print(f"Brute O(n^3) on n={len(small)}, run=1 : {t_brute:.4f}s")
+
 
 if __name__ == "__main__":
-    # Measure the *full program run* (main) once using timeit
-    total_seconds = timeit.timeit(main, number=1)  # Runs main() exactly once
-    print(f"\n==== TOTAL PROGRAM TIME (timeit, number=1) ====\n{total_seconds:.6f} seconds")
+    run_demo()
 ```
 
----
+**What you’ll get when you run it**
 
-## Real-World Use Cases (a few important ones)
-
-* **Image processing “ring” passes**: peel or process an image/mask in concentric layers (e.g., border operations, progressive reveals).
-* **UI/grid animations**: reveal dashboards, tiles, or heatmaps in a spiral for visual effect without extra memory.
-* **Robotics & path planning (2D layer)**: generating an outward/inward spiral sweep for sensors or cleaning robots.
-* **Data extraction from 2D buffers**: dumping or streaming rectangular buffers in a deterministic spiral order for demos/diagnostics.
+* Clear correctness checks on sample inputs.
+* Practical runtime comparison: both optimized variants are **O(n²)**; brute is shown only on a tiny slice to underscore why it’s impractical.

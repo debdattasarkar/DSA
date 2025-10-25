@@ -31,7 +31,7 @@
 | 25. [Given an array of size n and a number k, find all elements that appear more than n/k times](https://www.geeksforgeeks.org/problems/count-element-occurences/1) | “**K-C-V**” → *Keep, Cancel, Verify* | [Link](<1. Array Problems List/25. (E) More than n by k Occurrences/>) |
 | 26. [Maximum profit by buying and selling a share at most twice](https://www.geeksforgeeks.org/problems/maximum-profit4657/1) | “**B–S Loop**” → *Buy, Sell, Loop through days & k* | [Link](<1. Array Problems List/26. (H) Stock Buy and Sell – Max K Transactions Allowed/>) |
 | 27. [Find whether an array is a subset of another array](https://www.geeksforgeeks.org/problems/array-subset-of-another-array2317/1) | “**C-C-M**” → *Count, Check, Match* | [Link](<1. Array Problems List/27. (B) Array Subset/>) |
-| 28. [Find the triplet that sum to a given value]() | | [Link]() |
+| 28. [Find the triplet that sum to a given value](https://www.geeksforgeeks.org/problems/triplet-sum-in-array-1587115621/1) | “Sort → Fix → Two-pointer shrink — match target or move inward.” | [Link](<1. Array Problems List/28. (M) Triplet Sum in Array/>) |
 | 29. [Trapping Rain Water problem]() | | [Link]() |
 | 30. [Chocolate Distribution problem]() | | [Link]() |
 | 31. [Smallest Subarray with sum greater than a given value]() | | [Link]() |
