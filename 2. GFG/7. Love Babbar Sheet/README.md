@@ -27,7 +27,7 @@
 | 21. [Find if there is any subarray with sum equal to 0](https://www.geeksforgeeks.org/problems/subarray-with-0-sum-1587115621/1) | “**S-A-S-H**” → *Sum, Add, Seen, Hit* | [Link](<1. Array Problems List/21. (M) Subarray with 0 sum/>) |
 | 22. [Find factorial of a large number](https://www.geeksforgeeks.org/problems/factorials-of-large-numbers2508/1) | “**M-C-D**” → *Multiply, Carry, Dump* | [Link](<1. Array Problems List/22. (M) Factorials of large numbers/>) |
 | 23. [Find maximum product subarray](https://www.geeksforgeeks.org/problems/maximum-product-subarray3604/1) | “**S-W-U-T**” | [Link](<1. Array Problems List/23. (M) Maximum Product Subarray/>) |
-| 24. [Find longest consecutive subsequence]() | | [Link]() |
+| 24. [Find longest consecutive subsequence](https://www.geeksforgeeks.org/problems/longest-consecutive-subsequence2449/1) | “**S-S-C-G-M**” | [Link](<1. Array Problems List/24. (M) Longest Consecutive Subsequence/>) |
 | 25. [Given an array of size n and a number k, find all elements that appear more than n/k times]() | | [Link]() |
 | 26. [Maximum profit by buying and selling a share at most twice]() | | [Link]() |
 | 27. [Find whether an array is a subset of another array]() | | [Link]() |
