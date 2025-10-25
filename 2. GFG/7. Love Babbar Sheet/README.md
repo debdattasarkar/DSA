@@ -25,7 +25,7 @@
 | 19. [Find common elements in 3 sorted arrays](https://www.geeksforgeeks.org/problems/common-elements1132/1) | **Compare → Catch → Climb (smallest)** | [Link](<1. Array Problems List/19. (E) Common in 3 Sorted Arrays/>) |
 | 20. [Rearrange the array in alternating positive and negative items with O(1) extra space](https://www.geeksforgeeks.org/problems/-rearrange-array-alternately-1587115620/1) | “**S B L H E D**” → **Sort → Base → Lo/Hi → Encode → Decode** | [Link](<1. Array Problems List\20. (M) Rearrange Array Alternately/>) |
 | 21. [Find if there is any subarray with sum equal to 0](https://www.geeksforgeeks.org/problems/subarray-with-0-sum-1587115621/1) | “**S-A-S-H**” → *Sum, Add, Seen, Hit* | [Link](<1. Array Problems List/21. (M) Subarray with 0 sum/>) |
-| 22. [Find factorial of a large number]() | | [Link]() |
+| 22. [Find factorial of a large number](https://www.geeksforgeeks.org/problems/factorials-of-large-numbers2508/1) | “**M-C-D**” → *Multiply, Carry, Dump* | [Link](<1. Array Problems List/22. (M) Factorials of large numbers/>) |
 | 23. [Find maximum product subarray]() | | [Link]() |
 | 24. [Find longest consecutive subsequence]() | | [Link]() |
 | 25. [Given an array of size n and a number k, find all elements that appear more than n/k times]() | | [Link]() |
