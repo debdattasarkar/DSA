@@ -1,4 +1,4 @@
-Perfect 👌 — here’s your **“5-line pseudo-code + 60-second recall system”** for
+**“5-line pseudo-code + 60-second recall system”** for
 🧩 **Three-Way Partitioning (around range [a, b])**
 
 ---
