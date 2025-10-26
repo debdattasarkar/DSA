@@ -34,7 +34,7 @@
 | 28. [Find the triplet that sum to a given value](https://www.geeksforgeeks.org/problems/triplet-sum-in-array-1587115621/1) | “Sort → Fix → Two-pointer shrink — match target or move inward.” | [Link](<1. Array Problems List/28. (M) Triplet Sum in Array/>) |
 | 29. [Trapping Rain Water problem](https://www.geeksforgeeks.org/problems/trapping-rain-water-1587115621/1) | “**S-B-C**” → *Smaller Boundary Controls* | [Link](<1. Array Problems List/29. (H) Trapping Rain Water/>) |
 | 30. [Chocolate Distribution problem](https://www.geeksforgeeks.org/problems/chocolate-distribution-problem3825/1) | “**S-W-M**” → *Sort, Window, Minimize* | [Link](<1. Array Problems List/30. (E) Chocolate Distribution Problem/>) |
-| 31. [Smallest Subarray with sum greater than a given value]() | | [Link]() |
+| 31. [Smallest Subarray with sum greater than a given value](https://www.geeksforgeeks.org/problems/smallest-subarray-with-sum-greater-than-x5651/1) | “**E-S-S-M**” → *Expand, Shrink, Save, Move* | [Link](<1. Array Problems List/31. (E) Smallest subarray with sum greater than x/>) |
 | 32. [Three-way partitioning of an array around a given value]() | | [Link]() |
 | 33. [Minimum swaps required to bring elements ≤ K together]() | | [Link]() |
 | 34. [Minimum number of operations required to make an array palindrome]() | | [Link]() |
