@@ -39,7 +39,7 @@
 | 33. [Minimum swaps required to bring elements ≤ K together](https://www.geeksforgeeks.org/problems/minimum-swaps-required-to-bring-all-elements-less-than-or-equal-to-k-together4847/1) | “**G-B-W**” → *Good–Bad–Window* | [Link](<1. Array Problems List/33. (M) Minimum swaps and K together/>) |
 | 34. [Minimum number of operations required to make an array palindrome](https://www.geeksforgeeks.org/problems/palindromic-array-1587115620/1) | “**C-R-M**” → *Check, Reverse, Match* | [Link](<1. Array Problems List/34. (B) Palindromic Array/>) |
 | 35. [Median of 2 sorted arrays of equal size](https://www.geeksforgeeks.org/problems/find-the-median0527/1) | “**S-M-A**” → *Sort → Middle → Average (if even)* | [Link](<1. Array Problems List/35. (B) Median of an Array/>) |
-| 36. [Median of 2 sorted arrays of different size](https://www.geeksforgeeks.org/problems/median-of-2-sorted-arrays-of-different-sizes/1) | | [Link]() |
+| 36. [Median of 2 sorted arrays of different size](https://www.geeksforgeeks.org/problems/median-of-2-sorted-arrays-of-different-sizes/1) | **"S-P-C" → Swap → Partition → Compare** | [Link](<1. Array Problems List/36. (H) Median of 2 Sorted Arrays of Different Sizes>) |
 
 ---
 
