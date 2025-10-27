@@ -491,5 +491,3 @@ if __name__ == "__main__":
 * Timing for a single run via `perf_counter`, and an averaged microseconds-per-run via `timeit`.
 
 ---
-
-Want a quick 30-second check: which two neighbors do we push from a popped cell `(i, j)` in the heap method—and when do we allow `(i+1, 0)`?

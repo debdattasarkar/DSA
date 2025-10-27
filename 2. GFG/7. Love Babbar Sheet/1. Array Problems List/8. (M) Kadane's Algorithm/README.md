@@ -206,24 +206,24 @@ class Solution:
 ### What interviewers often ask
 
 **Q1. Why does Kadane work?**
-Because any prefix with negative sum decreases any future sum; dropping it can only help. Thus we reset when the running sum becomes worse than starting fresh.
+> Because any prefix with negative sum decreases any future sum; dropping it can only help. Thus we reset when the running sum becomes worse than starting fresh.
 
 **Q2. What about all negative numbers?**
-Initialize `curr = best = arr[0]`. This ensures the result is the **maximum (least negative)** element.
+> Initialize `curr = best = arr[0]`. This ensures the result is the **maximum (least negative)** element.
 
 **Q3. Time/space complexity?**
-`O(n)` time, `O(1)` extra space.
+> `O(n)` time, `O(1)` extra space.
 
 **Q4. How to return the subarray itself?**
-Track the current start index, and whenever you update `best`, record `(best_l, best_r)`.
+> Track the current start index, and whenever you update `best`, record `(best_l, best_r)`.
 
 **Q5. Variants?**
 
-* Maximum **circular** subarray: compute max normal subarray and max “wrap” via total sum − min subarray.
-* 2D Kadane (maximum sum rectangle) → apply 1D Kadane over compressed columns.
+> * Maximum **circular** subarray: compute max normal subarray and max “wrap” via total sum − min subarray.
+> * 2D Kadane (maximum sum rectangle) → apply 1D Kadane over compressed columns.
 
 **Q6. Dynamic programming formulation?**
-`dp[i] = max(arr[i], dp[i-1] + arr[i])`, answer is `max(dp)`. Kadane is just the space-optimized DP.
+> `dp[i] = max(arr[i], dp[i-1] + arr[i])`, answer is `max(dp)`. Kadane is just the space-optimized DP.
 
 ---
 
@@ -248,19 +248,19 @@ Absolutely—let’s close Kadane’s Algorithm with practical context and a run
 ## 5) Real-World Use Cases (easy to relate)
 
 * **Single buy–sell stock profit (on diffs):**
-  Convert prices to daily differences; the best single trade is the **max sum subarray** on those diffs.
+>  Convert prices to daily differences; the best single trade is the **max sum subarray** on those diffs.
 
 * **Error/latency burst detection:**
-  Treat “improvement = baseline − latency”. The biggest contiguous improvement window is Kadane’s best subarray.
+>  Treat “improvement = baseline − latency”. The biggest contiguous improvement window is Kadane’s best subarray.
 
 * **Engagement streaks:**
-  Map each day to a score (+ for good signals, − for bad). The **strongest streak** is the max sum subarray.
+>  Map each day to a score (+ for good signals, − for bad). The **strongest streak** is the max sum subarray.
 
 * **Network/CPU utilization peaks:**
-  After zero-centering the series, the **largest positive energy window** emerges as Kadane’s segment.
+>  After zero-centering the series, the **largest positive energy window** emerges as Kadane’s segment.
 
 * **Revenue/retention uplift window (A/B):**
-  Daily deltas vs. control → contiguous period of **maximum uplift** is Kadane.
+>  Daily deltas vs. control → contiguous period of **maximum uplift** is Kadane.
 
 ---
 

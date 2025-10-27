@@ -65,8 +65,3 @@ best = max(best, curr)
 ### 🧩 One-Line Summary to Say Aloud Before You Code:
 
 > “Kadane’s scans once, keeps a running sum, resets if it goes negative, and records the best sum — extend or restart, compare, return.”
-
----
-
-That’s your **mental 5-line skeleton + ECKR mnemonic** —
-you can rebuild it **in 30 seconds** in Python, C++, or Java every single time.
