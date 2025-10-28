@@ -26,21 +26,21 @@ Your task is to find the **minimum number of jumps** needed to move from the **f
 
 ### Example 1
 
->**Input:** `arr = [1, 3, 5, 8, 9, 2, 6, 7, 6, 8, 9]`
->**Output:** `3`
->**Explanation:** First jump from 1st element to 2nd element with value 3. From here we jump to 5th element with value 9, and from here we will jump to the last.
+> **Input:** `arr = [1, 3, 5, 8, 9, 2, 6, 7, 6, 8, 9]`
+> **Output:** `3`
+> **Explanation:** First jump from 1st element to 2nd element with value 3. From here we jump to 5th element with value 9, and from here we will jump to the last.
 
 ### Example 2
 
->**Input:** `arr = [1, 4, 3, 2, 6, 7]`
->**Output:** `2`
->**Explanation:** First we jump from the 1st to 2nd element and then jump to the last element.
+> **Input:** `arr = [1, 4, 3, 2, 6, 7]`
+> **Output:** `2`
+> **Explanation:** First we jump from the 1st to 2nd element and then jump to the last element.
 
 ### Example 3
 
->**Input:** `arr = [0, 10, 20]`
->**Output:** `-1`
->**Explanation:** We cannot go anywhere from the 1st element.
+> **Input:** `arr = [0, 10, 20]`
+> **Output:** `-1`
+> **Explanation:** We cannot go anywhere from the 1st element.
 
 ---
 
@@ -239,26 +239,26 @@ class Solution:
 ## 4) Interviewer Q\&A
 
 **Q1. Why does the greedy window approach give the minimum jumps?**
-We expand a **reachable window** to the farthest index we can reach with the current number of jumps. Once we’ve consumed all “stairs” inside the window, we **must** take one more jump to continue. Choosing the farthest `ladder` at every step ensures the fewest window boundaries → the fewest jumps. This is equivalent to BFS levels on a line.
+> We expand a **reachable window** to the farthest index we can reach with the current number of jumps. Once we’ve consumed all “stairs” inside the window, we **must** take one more jump to continue. Choosing the farthest `ladder` at every step ensures the fewest window boundaries → the fewest jumps. This is equivalent to BFS levels on a line.
 
 **Q2. What are the time and space complexities?**
-Greedy/BFS: **O(n)** time, **O(1)** extra space. DP brute: **O(n²)** time, **O(n)** space.
+> Greedy/BFS: **O(n)** time, **O(1)** extra space. DP brute: **O(n²)** time, **O(n)** space.
 
 **Q3. What edge cases should I check?**
 
-* `n <= 1` → `0`.
-* `arr[0] == 0` with `n > 1` → `-1`.
-* Arrays with long zeros in the middle (ensure the “stuck” check is present).
-* Already at or near the end.
+> * `n <= 1` → `0`.
+> * `arr[0] == 0` with `n > 1` → `-1`.
+> * Arrays with long zeros in the middle (ensure the “stuck” check is present).
+> * Already at or near the end.
 
 **Q4. Can we reconstruct the actual jump path?**
-Yes. While running the greedy, keep parent pointers for the index that set the newest `ladder`. Or run a BFS that stores predecessors. This is extra bookkeeping; not required for just the count.
+> Yes. While running the greedy, keep parent pointers for the index that set the newest `ladder`. Or run a BFS that stores predecessors. This is extra bookkeeping; not required for just the count.
 
 **Q5. Is there any case where DP is preferred over greedy?**
-For this specific problem, greedy is standard and optimal. DP is useful as a teaching or fallback solution but isn’t necessary in production.
+> For this specific problem, greedy is standard and optimal. DP is useful as a teaching or fallback solution but isn’t necessary in production.
 
 **Q6. How is this related to “Jump Game I/II” from LeetCode?**
-This is equivalent to **Jump Game II** (minimum jumps). The greedy solution is the canonical approach there too.
+> This is equivalent to **Jump Game II** (minimum jumps). The greedy solution is the canonical approach there too.
 
 ---
 
