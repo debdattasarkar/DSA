@@ -49,16 +49,16 @@
 ### 🧮 Matrix Problems List
 | Title                      | Mnemonic Logic     | GitHub | 
 |:--------------------|:--------------|:--------------| 
-| 1. [Spiral traversal on a Matrix]() | | [Link](<>) |
-| 2. [Search an element in a Matrix]() | | [Link](<>) |
-| 3. [Find median in a row-wise sorted matrix]() | | [Link](<>) |
-| 4. [Find row with maximum number of 1’s]() | | [Link](<>) |
-| 5. [Print elements in sorted order using row–column-wise sorted matrix]() | | [Link](<>) |
-| 6. [Maximum size rectangle]() | | [Link](<>) |
-| 7. [Find a specific pair in a matrix]() | | [Link](<>) |
-| 8. [Rotate matrix by 90 degrees]() | | [Link](<>) |
-| 9. [Kth smallest element in a row–column-wise sorted matrix]() | | [Link](<>) |
-| 10. [Common elements in all rows of a given matrix]() | | [Link](<>) |
+| 1. [Spiral traversal on a Matrix](https://www.geeksforgeeks.org/problems/spirally-traversing-a-matrix-1587115621/1) | **“T-R-B-L → Top, Right, Bottom, Left”** | [Link](<2. Matrix Problems List/1. (M) Spirally traversing a matrix>) |
+| 2. [Search an element in a Matrix](https://www.geeksforgeeks.org/problems/search-in-a-matrix-1587115621/1) | “**Think 1D → Map → Compare → Narrow → Done**” | [Link](<2. Matrix Problems List/2. (M) Search in a sorted Matrix>) |
+| 3. [Find median in a row-wise sorted matrix](https://www.geeksforgeeks.org/problems/median-in-a-row-wise-sorted-matrix1527/1) | “**Value Range → Count ≤ mid → Adjust Bounds → Return low**” | [Link](<2. Matrix Problems List/3. (H) Median in a row-wise sorted Matrix>) |
+| 4. [Find row with maximum number of 1’s](https://www.geeksforgeeks.org/problems/row-with-max-1s0023/1) | **“Top-Right → 1 Left, 0 Down.”** | [Link](<2. Matrix Problems List/4. (M) Row with max 1s>) |
+| 5. [Print elements in sorted order using row–column-wise sorted matrix](https://www.geeksforgeeks.org/problems/sorted-matrix2333/1) | **“Flat → Sort → Fill → Return.”** | [Link](<2. Matrix Problems List/5. (B) Sorted matrix>) |
+| 6. [Maximum size rectangle](https://www.geeksforgeeks.org/problems/max-rectangle/1) | **“Row → Heights → Histogram → Max → Next.”** | [Link](<2. Matrix Problems List/6. (H) Max rectangle>) |
+|  [Find a specific pair in a matrix](https://www.geeksforgeeks.org/dsa/find-a-specific-pair-in-matrix/) |  | [Link](<>) |
+| 7. [Rotate matrix by 90 degrees](https://www.geeksforgeeks.org/problems/rotate-by-90-degree0356/1) | **“Diagonal Flip → Row Flip → Done.”** | [Link](<2. Matrix Problems List/7. (M) Rotate by 90 degree>) |
+| 8. [Kth smallest element in a row–column-wise sorted matrix](https://www.geeksforgeeks.org/problems/kth-element-in-matrix/1) | **“mid → count ≤ mid → shrink range → answer = low.”** | [Link](<2. Matrix Problems List/8. (M) Kth smallest element in a Matrix>) |
+| 9. [Common elements in all rows of a given matrix](https://www.geeksforgeeks.org/problems/common-elements1132/1) | “**3 arrays walk together — smallest moves, equals collect.**” | [Link](<2. Matrix Problems List/9. (E) Common in 3 Sorted Arrays>) |
 
 ---
 
