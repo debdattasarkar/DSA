@@ -58,3 +58,37 @@ Output = `[[1,4],[6,8],[9,10]]`.
 
 ✅ Memorize the phrase **“Sort, Scan, Merge, Flush, Push.”**
 That’s your **universal skeleton** for interval-merging questions — you can rebuild full working code in **under 30 seconds** in any language.
+
+---
+
+Here’s a tiny “merge-intervals brain card” you can memorize.
+
+---
+
+## 5-line pseudo-code template (Merge Overlapping Intervals)
+
+```text
+sort intervals by start
+current = first interval
+for each next in intervals[1..]:
+    if next.start <= current.end: current.end = max(current.end, next.end)
+    else: add current to ans; current = next
+add current to ans and return ans
+```
+
+That’s all the logic you need.
+
+---
+
+## Easy mnemonic (60-second recall)
+
+Phrase to remember:
+
+> **“Sort, Sweep, Stretch, or Store.”**
+
+* **Sort** by start time.
+* **Sweep** from left to right.
+* If it overlaps, **Stretch** current interval’s end.
+* If it doesn’t, **Store** current interval and start a new one.
+
+If you can recall **“sort + sweep; overlap → extend, gap → push”**, you can rebuild the full code in any language in under a minute.

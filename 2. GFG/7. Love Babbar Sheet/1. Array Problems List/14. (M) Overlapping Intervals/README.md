@@ -100,64 +100,151 @@ Arrays · Hash · Sorting · Data Structures · Algorithms
 
 ---
 
-Let’s make **Overlapping Intervals** interview-ready: quick intuition + dry runs, then clean Python in the exact signature you asked for, plus what to say when you’re in the room.
+Let’s go step by step and make this super interview-friendly.
 
 ---
 
-## 2) Intuition + step-by-step dry run
+## 2. Explanation of the logic + step-by-step dry run
 
-### Core idea (why it works)
+### Problem in simple words
 
-1. **Sort** intervals by start time.
-2. Walk left→right, keep a **current merged interval** `[curL, curR]`.
-3. For each next `[L, R]`:
+You’re given a list of intervals `arr`, where each interval is `[start, end]`.
 
-   * If it **overlaps** (`L ≤ curR`) → extend: `curR = max(curR, R)`.
-   * Else → push `[curL, curR]` to the answer and start a new current interval.
-4. Push the last current interval.
+> You must **merge all intervals that overlap** and return the resulting list of non-overlapping intervals.
 
-Sorting ensures that when you see a new interval, any possible overlap is **only with the interval you’re currently building**, never with something earlier already finalized.
+Intervals **overlap** if:
 
-> Overlap rule used here: **closed intervals** (touching counts as overlap), i.e., `[a,b]` overlaps `[c,d]` when `c ≤ b`.
-> (If your interviewer wants “touching is not overlap”, change the check to `c < b` → `c ≤ b - 1` or simply `c > b` for non-overlap.)
+```text
+next_start <= current_end
+```
+
+(assuming we process them in order of increasing `start`).
+
+### High-level approach (optimized)
+
+1. **Sort** the intervals by `start` (and `end` if you want to be precise).
+2. Keep a `current` interval (`[cur_start, cur_end]`).
+3. Scan the sorted intervals from left to right:
+
+   * If the `next` interval’s `start` is **≤** `cur_end`, they overlap → extend `cur_end = max(cur_end, next_end)`.
+   * Else, they don’t overlap → push `[cur_start, cur_end]` into answer and start a new `current` interval.
+4. After the loop, push the last `current` interval.
+
+Time:
+
+* Sorting: `O(n log n)`
+* Scan/merge: `O(n)`
+  → `O(n log n)` overall.
+
+Space:
+
+* Answer list + maybe a few variables → `O(1)` extra (if we’re allowed to modify in place).
 
 ---
 
-### Dry runs
+### Dry run 1
 
-#### Example 1
+Input from problem:
 
-```
-arr = [[1,3], [2,4], [6,8], [9,10]]
-(sort by start → already sorted)
-
-current = [1,3]
-next [2,4] : 2 ≤ 3 ⇒ overlap → current = [1, max(3,4)] = [1,4]
-next [6,8] : 6 ≤ 4 ? no  ⇒ output [1,4], current = [6,8]
-next [9,10]: 9 ≤ 8 ? no  ⇒ output [6,8], current = [9,10]
-end → output [9,10]
-Answer = [[1,4], [6,8], [9,10]]
+```text
+arr = [[1, 3], [2, 4], [6, 8], [9, 10]]
 ```
 
-#### Example 2
+Step 1 – Sort by `start`:
 
+```text
+Sorted: [[1, 3], [2, 4], [6, 8], [9, 10]]
 ```
-arr = [[6,8], [1,9], [2,4], [4,7]]
-sort → [[1,9], [2,4], [4,7], [6,8]]
 
-current = [1,9]
-[2,4] : 2 ≤ 9  → current = [1, max(9,4)]=[1,9]
-[4,7] : 4 ≤ 9  → current = [1, max(9,7)]=[1,9]
-[6,8] : 6 ≤ 9  → current = [1, max(9,8)]=[1,9]
-end → output [1,9]
-Answer = [[1,9]]
+Step 2 – Initialize:
+
+```text
+current = [1, 3]
+result = []
 ```
+
+Step 3 – Process each remaining interval:
+
+* **Next = [2, 4]**
+
+  * next_start = 2, current_end = 3
+  * 2 <= 3 → they **overlap**
+  * Merge: `current_end = max(3, 4) = 4`
+  * `current = [1, 4]`
+
+* **Next = [6, 8]**
+
+  * next_start = 6, current_end = 4
+  * 6 > 4 → **no overlap**
+  * Append current: `result = [[1, 4]]`
+  * Start new `current = [6, 8]`
+
+* **Next = [9, 10]**
+
+  * next_start = 9, current_end = 8
+  * 9 > 8 → **no overlap**
+  * Append current: `result = [[1, 4], [6, 8]]`
+  * New `current = [9, 10]`
+
+End of loop → append last current:
+
+```text
+result = [[1, 4], [6, 8], [9, 10]]
+```
+
+Matches expected output.
 
 ---
 
-## 3) Python solutions (brute + optimal), interview-style comments
+### Dry run 2
 
-Your required signature:
+Input from statement:
+
+```text
+arr = [[6, 8], [1, 9], [2, 4], [4, 7]]
+```
+
+Step 1 – Sort by start:
+
+```text
+Sorted: [[1, 9], [2, 4], [4, 7], [6, 8]]
+```
+
+Step 2:
+
+```text
+current = [1, 9]
+result = []
+```
+
+Step 3 – Process:
+
+* **Next = [2, 4]**
+
+  * 2 <= 9 → overlap
+  * current_end = max(9, 4) = 9 → `current` stays `[1, 9]`
+* **Next = [4, 7]**
+
+  * 4 <= 9 → overlap
+  * current_end = max(9, 7) = 9
+* **Next = [6, 8]**
+
+  * 6 <= 9 → overlap
+  * current_end = max(9, 8) = 9
+
+No non-overlap found → at the end:
+
+```text
+result = [[1, 9]]
+```
+
+Matches expected `[[1, 9]]`.
+
+---
+
+## 3. Python solutions (brute + optimized)
+
+Required signature:
 
 ```python
 class Solution:
@@ -165,289 +252,396 @@ class Solution:
         # Code here
 ```
 
-### A) Optimal & standard: sort + linear merge (O(n log n), O(1) extra if sorting in place)
+We’ll give:
+
+1. A **brute-ish** solution (sort + mark + scan) for understanding.
+2. The **clean optimized** sort-and-merge solution (what you should present in interviews).
+
+### 3.1 “Brute” idea (still sorts, but less elegant)
+
+You could:
+
+1. Sort intervals.
+2. Use an auxiliary array to store merged output.
+3. Always compare with the **last merged interval**.
+
+(It’s basically the optimized algo, just written slightly more verbose—so I’ll jump right to the clean version, since anything truly O(n²) isn’t needed here.)
+
+### 3.2 Optimized, clean Python solution (expected in interviews)
 
 ```python
+from typing import List
+
 class Solution:
-    def mergeOverlap(self, arr):
+    def mergeOverlap(self, arr: List[List[int]]) -> List[List[int]]:
         """
-        Merge overlapping (closed) intervals.
-        - Overlap rule: [L1,R1] overlaps [L2,R2] iff L2 <= R1
-        Time  : O(n log n) due to sort
-        Space : O(1) extra (aside from output) if in-place sort is allowed
+        Merge overlapping intervals.
+
+        Parameters:
+            arr: List of intervals [start, end].
+
+        Returns:
+            A new list of non-overlapping intervals sorted by start,
+            where any overlapping intervals have been merged.
+
+        Overall Complexity:
+            Let n = len(arr).
+
+            - Sorting intervals: O(n log n)
+            - Single pass to merge: O(n)
+            => Time  : O(n log n)
+            - Extra space (besides result): O(1) if we sort arr in-place,
+                                            O(n) for the output list itself.
         """
-        if not arr:
+        n = len(arr)
+        if n == 0:
             return []
 
-        # 1) Sort by start (then by end for determinism)
-        arr.sort(key=lambda it: (it[0], it[1]))  # O(n log n)
+        # 1) Sort intervals by their start time.
+        #    Time: O(n log n), Space: O(1) extra (in-place sort).
+        arr.sort(key=lambda interval: interval[0])
 
-        merged = []
-        curL, curR = arr[0][0], arr[0][1]       # current merged interval
+        merged: List[List[int]] = []
 
-        # 2) Scan left → right, merging on the fly
-        for i in range(1, len(arr)):
-            L, R = arr[i]
-            if L <= curR:                       # overlap → extend current
-                curR = max(curR, R)
-            else:                               # no overlap → flush current
-                merged.append([curL, curR])
-                curL, curR = L, R
+        # 2) Initialize the current interval to the first one.
+        current_start, current_end = arr[0]
 
-        # 3) Push the final interval
-        merged.append([curL, curR])
+        # 3) Iterate over the remaining intervals and merge overlapping ones.
+        #    Single pass: O(n).
+        for i in range(1, n):
+            next_start, next_end = arr[i]
+
+            if next_start <= current_end:
+                # Overlap: extend the current interval's end if needed.
+                # O(1) operation.
+                current_end = max(current_end, next_end)
+            else:
+                # No overlap: push the finished current interval to result,
+                # and start a new current interval.
+                merged.append([current_start, current_end])
+                current_start, current_end = next_start, next_end
+
+        # 4) Append the last remaining current interval.
+        merged.append([current_start, current_end])
+
         return merged
 ```
 
-### B) Simple “brute-ish” insertion style (O(n²) worst-case), no pre-sort
-
-For each interval, insert it into the result list and **re-merge** overlaps within result. Clearer than building an interval graph, but far less efficient than sorting.
-
-```python
-class Solution:
-    def mergeOverlap(self, arr):
-        """
-        Brute / insertion-style:
-        - For each interval, insert into result then merge any overlaps in result.
-        - No initial sort; worst-case O(n^2).
-        Useful to discuss as a baseline; not preferred in production.
-        """
-        res = []
-        for L, R in arr:
-            self._insert_and_merge(res, [L, R])
-        # Optional: return sorted by start for determinism
-        res.sort(key=lambda it: (it[0], it[1]))
-        return res
-
-    def _insert_and_merge(self, res, newI):
-        """Insert newI into res and merge overlaps (in-place)."""
-        L, R = newI
-        out = []
-        placed = False
-        for a, b in sorted(res + [newI], key=lambda it: (it[0], it[1])):
-            if not out or a > out[-1][1]:   # no overlap with last
-                out.append([a, b])
-            else:                            # merge with last
-                out[-1][1] = max(out[-1][1], b)
-        res.clear()
-        res.extend(out)
-```
-
-> In interviews, use A (sort+merge). Mention B only as a conceptual baseline.
+This is exactly the textbook “merge intervals” solution: sort + sweep + merge.
 
 ---
 
-## 4) Interview quick-recall + common Q&A
+## 4. Interview: how to remember it + likely Q&A
 
-### 5-Line Pseudocode (the muscle memory)
+### Tiny memory hook
 
-```
+Think:
+
+> **“Sort by start, then sweep and extend until gap.”**
+
+Or as 5-line pseudo-code you can keep in your head:
+
+```text
 sort intervals by start
-cur = first
-for each next:
-    if next.start <= cur.end: cur.end = max(cur.end, next.end)
-    else: output cur, cur = next
-output cur
+current = first interval
+for each next interval:
+    if next.start <= current.end: current.end = max(current.end, next.end)
+    else: add current to answer; current = next
+add current to answer
 ```
 
-**Mnemonic:** **“Sort → Sweep → Merge/Flush → Done.”**
+If you remember that, you can rebuild the full solution in any language in under a minute.
 
 ---
 
-### Quick Q&A you may be asked
-
-* **Why do we sort by start?**
-  After sorting, any interval can only overlap with the **currently open** merged interval. We never need to look back beyond it → one linear pass.
-
-* **What’s the overlap condition?**
-  With **closed intervals**, `[a,b]` overlaps `[c,d]` iff `c ≤ b`.
-  If the problem defines “touching not overlapping”, change to `c > b` for non-overlap.
-
-* **Time and space complexity?**
-  `O(n log n)` to sort, `O(n)` scan afterwards. Extra space `O(1)` if sorting in place (output `O(k)` for k merged intervals).
-
-* **Do we ever need to look more than one interval back?**
-  No. Sorting guarantees that once an interval doesn’t overlap with `cur`, it won’t overlap with anything earlier.
-
-* **Edge cases?**
-  Empty list, single interval, fully nested intervals, duplicates, already disjoint, already merged, very large endpoints — all naturally handled.
-
-* **Stability / order of output?**
-  By sorting by start (and end as tiebreaker), the output is deterministic.
+### Typical interview questions & solid answers
 
 ---
 
-### One-liner you can say before you code
+**Q1. What’s the brute-force way to do this and why is it bad?**
 
-> “I’ll **sort** by start and scan once, keeping a running interval.
-> If the next interval starts **before or at** the current end, I **merge** by extending the end; otherwise I **flush** the current interval and start a new one.
-> That’s **O(n log n)** time and **O(1)** extra space.”
+**A:**
+Brute force:
+
+* For each interval, compare it to all others, merge overlaps, and repeat until nothing changes.
+* That can be `O(n²)` or worse depending on implementation (nested loops or repeated merging).
+* With up to `10^5` intervals, `O(n²)` is too slow, so we must do better.
+
+---
+
+**Q2. Why do you sort first?**
+
+**A:**
+Sorting by start time guarantees that:
+
+* When we process intervals from left to right, any interval that overlaps the current one will appear **contiguously** after it.
+* Once we encounter an interval whose `start > current_end`, we know that **no later interval** can overlap `current` (because starts only increase).
+* This lets us merge in a single linear pass after sorting.
+
+---
+
+**Q3. What’s the time and space complexity of your solution?**
+
+**A:**
+
+* Sorting: `O(n log n)`.
+* Single pass merge: `O(n)`.
+* Overall time: **`O(n log n)`**.
+* Extra space:
+
+  * Sorting in-place → `O(1)` auxiliary.
+  * We store merged intervals in a result list → `O(k)` where `k ≤ n`.
+
+So auxiliary space is `O(1)` beyond the output list itself.
+
+---
+
+**Q4. How do you detect overlap between two intervals?**
+
+**A:**
+For intervals `[a_start, a_end]` and `[b_start, b_end]` with `a_start <= b_start` (ensured by the sort):
+
+* They overlap iff `b_start <= a_end`.
+* If so, the merged interval is `[a_start, max(a_end, b_end)]`.
+
+If `b_start > a_end`, they don’t overlap and can’t be merged further.
+
+---
+
+**Q5. What edge cases do you consider?**
+
+**A:**
+
+* Empty list of intervals → return empty list.
+* Single interval → return it as is.
+* Intervals fully contained in others, e.g. `[1, 10]` and `[2, 3]` → after sort, `[1,10]` first, and we simply extend `current_end` to `max(10, 3) = 10`, so result stays `[1,10]`.
+* Intervals touching at borders, e.g. `[1,3]` and `[3,5]`:
+
+  * Problem statement usually considers `start ≤ end` and “overlap or touch” as merge condition `next_start <= current_end`. If they want strictly disjoint, we’d use `<` instead.
+
+---
+
+If you keep the phrase:
+
+> **“Sort by start; sweep: overlapping → extend; gap → push & reset.”**
+
+in your head, you’ll recall the logic and code comfortably under interview pressure.
 
 ---
 
 ---
 
-Awesome—let’s wrap **Overlapping Intervals** with real-world motivation and a clean, runnable program you can drop into any editor.
+Nice, let’s wrap this one fully.
 
 ---
 
-## 5) Real-World Use Cases (easy to relate)
+## 5. Real-World Use Cases (easy to explain in interviews)
 
-* **Calendar / meeting scheduling:** merge overlapping meeting slots to find free time or total busy duration.
-* **Booking systems (rooms, flights):** coalesce overlapping reservations to prevent double-counting capacity.
-* **Log compaction / monitoring windows:** merge alert windows to compute total downtime.
-* **IP/network ranges & firewall rules:** merge overlapping ranges to minimize rule count.
-* **Genomics:** merge overlapping genomic intervals (exons/peaks) to compute coverage.
+Keep a few **clear, concrete** examples in mind:
+
+1. **Calendar / Meeting Scheduling**
+
+   * Each meeting is an interval `[startTime, endTime]`.
+   * To see when a room is busy, you merge overlapping meetings first → get a set of **non-overlapping busy blocks**.
+   * Then you can easily find free slots, total busy time, etc.
+
+2. **CPU / Resource Usage Timelines**
+
+   * A server logs time windows where it’s under high load.
+   * These windows often overlap. Merging intervals gives the total time the CPU was “hot”.
+   * Same idea for network usage, disk I/O, etc.
+
+3. **Video Editing / Subtitles / Ads**
+
+   * Subtitle or ad intervals might overlap if multiple are scheduled around the same time.
+   * Merging gives a clean list of continuous segments where something is on screen.
+
+4. **Reservation Systems (rooms, cars, bikes)**
+
+   * A car rental might have several bookings that touch or overlap.
+   * Merging intervals is used to compute **availability** or **total booked time** without double-counting overlaps.
+
+In an interview you can say:
+
+> “Anytime you store time ranges or numeric ranges (bookings, CPU usage, availability), you almost always normalize them by merging overlaps—exactly what this function does.”
 
 ---
 
-## 6) Full Program (runnable)
+## 6. Full Python Program with Timing & Detailed Complexity Comments
 
-* Implements the optimal **sort + sweep** solution.
-* Lots of inline comments calling out **time/space complexity** of each step.
-* Includes sample inputs, outputs, and timing with `perf_counter` and `timeit`.
+This script:
+
+* Reads number of intervals.
+* Reads each interval.
+* Calls `mergeOverlap` (O(n log n)).
+* Prints merged intervals and total runtime.
 
 ```python
-#!/usr/bin/env python3
-"""
-Overlapping Intervals — Merge all overlapping closed intervals.
-Strategy: sort by start, sweep once, extend current interval or flush to output.
-
-Complexities:
-- Sorting: O(n log n) time, O(1) extra if in-place (Python's Timsort uses O(n) aux on worst cases; we ignore that here).
-- Single pass merge: O(n) time.
-- Output: O(k) intervals (k <= n).
-Overall: O(n log n) time, O(1) extra beyond output.
-"""
-
-from time import perf_counter
-import timeit
+import time
 from typing import List
 
 
 class Solution:
     def mergeOverlap(self, arr: List[List[int]]) -> List[List[int]]:
         """
-        Merge overlapping intervals (closed intervals).
-        Overlap rule: [a,b] overlaps [c,d] iff c <= b.
+        Merge overlapping intervals.
 
-        Parameters
-        ----------
-        arr : List[List[int]]
-            List of [start, end], may be unsorted.
+        arr: List of [start, end] intervals.
 
-        Returns
-        -------
-        List[List[int]] : merged, non-overlapping intervals sorted by start.
+        Overall complexity overview:
+            Let n = len(arr).
+            - Sorting intervals:  O(n log n)
+            - Single scan & merge: O(n)
+            => Total Time:  O(n log n)
+            => Extra Space: O(1) auxiliary (besides output list),
+                           because we sort in-place and keep only a few variables.
         """
-        # Edge case: empty input → O(1)
-        if not arr:
-            return []
+        n = len(arr)
 
-        # 1) SORT by start (then end for determinism)
-        #    Time: O(n log n). Space: O(1) extra (conceptually).
-        arr.sort(key=lambda it: (it[0], it[1]))
+        # Edge case: no intervals or single interval
+        # Time: O(1)  |  Space: O(1)
+        if n <= 1:
+            return arr
 
-        # 2) SWEEP once left→right; keep current merged interval
-        #    Time: O(n). Space: O(1) beyond result.
+        # 1) Sort intervals by start time.
+        #    Python's sort is Timsort, average/worst: O(n log n).
+        #    Space: O(1) auxiliary (in-place).
+        arr.sort(key=lambda interval: interval[0])
+
         merged: List[List[int]] = []
-        curL, curR = arr[0]
 
-        for i in range(1, len(arr)):
-            L, R = arr[i]
-            if L <= curR:                 # Overlap → extend
-                # O(1) update
-                if R > curR:
-                    curR = R
+        # 2) Initialize current interval with the first interval.
+        #    Time: O(1)  |  Space: O(1)
+        current_start, current_end = arr[0]
+
+        # 3) Iterate over the remaining intervals and merge if overlapping.
+        #    Loop runs (n-1) times => O(n) time.
+        for i in range(1, n):
+            next_start, next_end = arr[i]  # O(1)
+
+            # Case A: Overlap -> extend the current interval.
+            # Overlap condition: next_start <= current_end
+            if next_start <= current_end:
+                # Update end with max to cover both intervals.
+                # Time: O(1)
+                current_end = max(current_end, next_end)
             else:
-                # No overlap → flush current interval
-                merged.append([curL, curR])  # Amortized O(1)
-                curL, curR = L, R            # Start new
+                # Case B: No overlap -> push current interval and reset.
+                # Append is O(1) amortized.
+                merged.append([current_start, current_end])
+                # Start a new current interval.
+                current_start, current_end = next_start, next_end
 
-        # 3) Push the tail interval — O(1)
-        merged.append([curL, curR])
+        # 4) Append the final current interval.
+        #    Time: O(1)
+        merged.append([current_start, current_end])
+
+        # merged holds all non-overlapping, merged intervals.
+        # Space used by 'merged' is O(k), where k <= n (output size).
         return merged
 
 
-# -------------------------- Demonstration & Timing --------------------------
+# --------------------------- Driver with timing --------------------------- #
 
-def demo():
-    cases = [
-        # From prompt style
-        ([[1,3], [2,4], [6,8], [9,10]],
-         [[1,4], [6,8], [9,10]]),
+def main():
+    """
+    Driver for local testing.
 
-        ([[6,8], [1,9], [2,4], [4,7]],
-         [[1,9]]),
+    Input format (simple):
 
-        # More edge-ish cases
-        ([], []),
-        ([[1,5]], [[1,5]]),
-        ([[1,2], [3,4]], [[1,2], [3,4]]),             # disjoint
-        ([[1,10], [2,3], [4,5], [6,7], [8,9]], [[1,10]]),  # nested
-        ([[1,2], [2,3], [3,4]], [[1,4]]),             # touching (closed intervals → merge)
-    ]
+        n
+        start1 end1
+        start2 end2
+        ...
+        startn endn
 
-    sol = Solution()
-    print("=== Sample I/O ===")
-    for arr, expected in cases:
-        start = perf_counter()
-        out = sol.mergeOverlap([x[:] for x in arr])  # copy for safety
-        dur = (perf_counter() - start) * 1e6
-        print(f"Input : {arr}")
-        print(f"Output: {out}   (took {dur:.1f} µs)")
-        if expected is not None:
-            print(f"Expect: {expected}")
-        print("-" * 50)
+    Example input:
+        4
+        1 3
+        2 4
+        6 8
+        9 10
 
-    # Timing on a larger random case
-    import random
-    random.seed(7)
-    n = 200_000
-    # Create random intervals with start<=end
-    big = []
+    Example output:
+        Merged intervals:
+        1 4
+        6 8
+        9 10
+
+        Total elapsed time (seconds): 0.0000xx
+    """
+    print("Enter number of intervals n:")
+    first_line = input().strip()
+    if not first_line:
+        print("No input provided.")
+        return
+
+    n = int(first_line)
+
+    print(f"Enter {n} intervals as 'start end' on each line:")
+    intervals: List[List[int]] = []
+
+    # Reading n lines: O(n) time, O(n) space for storing intervals.
     for _ in range(n):
-        a = random.randint(0, 1_000_000)
-        b = a + random.randint(0, 1000)
-        big.append([a, b])
+        parts = input().split()
+        # Basic defensive handling if user types extra columns.
+        start = int(parts[0])
+        end = int(parts[1])
+        intervals.append([start, end])
 
-    sol = Solution()
-    avg = timeit.timeit("sol.mergeOverlap(big[:])", number=3, globals={"sol": sol, "big": big}) / 3
-    print(f"\nAverage time on n={n} intervals over 3 runs: {avg:.3f} s")
+    solver = Solution()
 
-    print("\nComplexity recap:")
-    print("  Sort  : O(n log n)")
-    print("  Sweep : O(n)")
-    print("  Extra : O(1) beyond the output list")
+    # Start timing just before the algorithm.
+    start_time = time.perf_counter()
+
+    # Core algorithm: O(n log n) time, O(1) auxiliary space.
+    merged = solver.mergeOverlap(intervals)
+
+    # Stop timing right after.
+    end_time = time.perf_counter()
+
+    print("\nMerged intervals:")
+    for s, e in merged:
+        print(s, e)
+
+    print(f"\nTotal elapsed time (seconds): {end_time - start_time:.8f}")
 
 
 if __name__ == "__main__":
-    demo()
+    main()
 ```
 
-### Example Output (illustrative)
+### How a sample run looks (mentally)
 
-```
-=== Sample I/O ===
-Input : [[1, 3], [2, 4], [6, 8], [9, 10]]
-Output: [[1, 4], [6, 8], [9, 10]]   (took 85.7 µs)
-Expect: [[1, 4], [6, 8], [9, 10]]
---------------------------------------------------
-Input : [[6, 8], [1, 9], [2, 4], [4, 7]]
-Output: [[1, 9]]   (took 92.3 µs)
-Expect: [[1, 9]]
---------------------------------------------------
-...
-Average time on n=200000 intervals over 3 runs: 0.4xx s
+Input:
 
-Complexity recap:
-  Sort  : O(n log n)
-  Sweep : O(n)
-  Extra : O(1) beyond the output list
+```text
+4
+1 3
+2 4
+6 8
+9 10
 ```
 
----
+Output:
 
-### What to say in the interview (10 seconds)
+```text
+Enter number of intervals n:
+4
+Enter 4 intervals as 'start end' on each line:
+1 3
+2 4
+6 8
+9 10
 
-> “I’ll **sort by start**, then do a **single sweep** keeping a running interval. If the next starts **≤ current end**, **extend**; otherwise, **flush** current and start a new one. That’s **O(n log n)** time and **O(1)** extra space.”
+Merged intervals:
+1 4
+6 8
+9 10
+
+Total elapsed time (seconds): 0.0000xx
+```
+
+You can paste this into `merge_intervals.py` and run it directly.
+In a coding interview / platform, you’d only submit the `Solution` class with `mergeOverlap`, but this full script is great for practicing and benchmarking.
+
